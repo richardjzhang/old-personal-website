@@ -1,7 +1,16 @@
 // @flow
 import React, { Component } from 'react';
 import Panel from '../../components/Panel';
-import { breakPoints, colors, fontSize, fontWeight, zIndex } from '../../utils';
+import {
+  breakPoints,
+  colors,
+  fontSize,
+  fontWeight,
+  zIndex,
+} from '../../utils/themes.jsx';
+import { urls } from '../../utils/urls.jsx';
+
+const PANEL_HEIGHT = '95vh';
 
 class Landing extends Component<{}> {
   render() {
@@ -14,17 +23,14 @@ class Landing extends Component<{}> {
             <div className="title">Educator.</div>
             <div className="description">
               Currently creating the future of maths education{' '}
-              <a href="https://twitter.com/mathspace" className="link">
+              <a href={urls.mathspaceTwitter} className="link">
                 @Mathspace
               </a>{' '}
               as a frontend engineer. Now in the process of sharing what I've
-              learned with those who want to grow into this space.
+              learned with those who want to enter this space.
             </div>
             <div className="button">
-              <a
-                href="mailto:richardjzhang@outlook.com?subject=Website%20Inquiry"
-                className="buttonLink"
-              >
+              <a href={urls.mailTo} className="buttonLink">
                 Get in touch!
               </a>
             </div>
@@ -32,10 +38,13 @@ class Landing extends Component<{}> {
         </div>
         <div className="column">
           <div className="fixedHeader">test</div>
-          <Panel height="95vh" backgroundColor={colors.pickledBluewood} />
-          <Panel height="95vh" backgroundColor={colors.saffron} />
-          <Panel height="95vh" backgroundColor={colors.lochmara} />
-          <Panel height="95vh" backgroundColor={colors.waterLeaf} />
+          <Panel
+            height={PANEL_HEIGHT}
+            backgroundColor={colors.pickledBluewood}
+          />
+          <Panel height={PANEL_HEIGHT} backgroundColor={colors.saffron} />
+          <Panel height={PANEL_HEIGHT} backgroundColor={colors.lochmara} />
+          <Panel height={PANEL_HEIGHT} backgroundColor={colors.waterLeaf} />
         </div>
         <style jsx>
           {`
@@ -47,7 +56,6 @@ class Landing extends Component<{}> {
               position: static;
               overflow: visible;
               height: 100vh;
-              width: 100%;
               padding: ${fontSize.xlarge}px;
               box-sizing: border-box;
               background-color: ${colors.athensGray};
@@ -92,7 +100,6 @@ class Landing extends Component<{}> {
             .column {
               position: static;
               overflow: visible;
-              width: 100%;
             }
             .fixedHeader {
               display: none;
