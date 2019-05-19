@@ -1,9 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import Panel from '../../components/Panel';
-import Header from '../../components/Header';
-import { breakPoints, colors, fontSize, fontWeight } from '../../utils';
-// import logo from '../../static/dark_logo_transparent.png';
+import { breakPoints, colors, fontSize, fontWeight, zIndex } from '../../utils';
 
 class Landing extends Component<{}> {
   render() {
@@ -15,14 +13,17 @@ class Landing extends Component<{}> {
             <div className="title">Engineer.</div>
             <div className="title">Educator.</div>
             <div className="description">
-              Currently creating the future of maths education at Mathspace as a
-              frontend engineer. Open to opportunities to grow and connect with
-              others.
+              Currently creating the future of maths education{' '}
+              <a href="https://twitter.com/mathspace" className="link">
+                @Mathspace
+              </a>{' '}
+              as a frontend engineer. Now in the process of sharing what I've
+              learned with those who want to grow into this space.
             </div>
             <div className="button">
               <a
                 href="mailto:richardjzhang@outlook.com?subject=Website%20Inquiry"
-                className="linkStyle"
+                className="buttonLink"
               >
                 Get in touch!
               </a>
@@ -30,18 +31,11 @@ class Landing extends Component<{}> {
           </div>
         </div>
         <div className="column">
-          <Panel height="100vh" backgroundColor={colors.saffron}>
-            <Header backgroundColor={colors.saffron} />
-          </Panel>
-          <Panel height="100vh" backgroundColor={colors.lochmara}>
-            <Header backgroundColor={colors.lochmara} />
-          </Panel>
-          <Panel height="100vh" backgroundColor={colors.iceberg}>
-            <Header backgroundColor={colors.iceberg} />
-          </Panel>
-          <Panel height="100vh" backgroundColor={colors.mako}>
-            <Header backgroundColor={colors.mako} />
-          </Panel>
+          <div className="fixedHeader">test</div>
+          <Panel height="95vh" backgroundColor={colors.pickledBluewood} />
+          <Panel height="95vh" backgroundColor={colors.saffron} />
+          <Panel height="95vh" backgroundColor={colors.lochmara} />
+          <Panel height="95vh" backgroundColor={colors.waterLeaf} />
         </div>
         <style jsx>
           {`
@@ -74,6 +68,11 @@ class Landing extends Component<{}> {
               font-weight: ${fontWeight.light};
               color: ${colors.cloudBurst};
             }
+            .link {
+              font-size: 15px;
+              color: ${colors.dodgerBlue};
+              text-decoration: none;
+            }
             .button {
               border-radius: 300px;
               padding: 16px 16px;
@@ -85,7 +84,7 @@ class Landing extends Component<{}> {
               text-align: center;
               cursor: pointer;
             }
-            .linkStyle {
+            .buttonLink {
               text-decoration: none;
               width: 100%;
               color: ${colors.white};
@@ -95,8 +94,8 @@ class Landing extends Component<{}> {
               overflow: visible;
               width: 100%;
             }
-            .logo {
-              width: 50%;
+            .fixedHeader {
+              display: none;
             }
             @media (min-width: ${breakPoints.medium}px) {
               .sidePanel {
@@ -110,6 +109,18 @@ class Landing extends Component<{}> {
                 position: static;
                 overflow: visible;
                 width: 60%;
+                margin-left: 40%;
+              }
+              .fixedHeader {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 60px;
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                z-index: ${zIndex.header};
                 margin-left: 40%;
               }
             }

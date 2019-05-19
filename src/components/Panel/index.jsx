@@ -4,7 +4,7 @@ import React, { type Node } from 'react';
 type Props = {|
   height: string,
   backgroundColor: string,
-  children: Node,
+  children?: Node,
 |};
 
 class Panel extends React.Component<Props> {

@@ -19,6 +19,8 @@ export const colors = {
   chateauGreen: '#40B261',
   surfieGreen: '#0B5F4D',
   vulcan: '#0D1E2A',
+  dodgerBlue: '#3B80FE',
+  waterLeaf: '#ABEDDF',
 
   // Greys
   cloudBurst: '#21374D',
@@ -68,4 +70,8 @@ export const fontWeight = {
   regular: 400,
   semibold: 600,
   bold: 700,
+};
+
+export const zIndex = {
+  header: 100,
 };
