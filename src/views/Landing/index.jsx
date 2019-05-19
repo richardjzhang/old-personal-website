@@ -11,6 +11,8 @@ import {
 import { urls } from '../../utils/urls.jsx';
 
 const PANEL_HEIGHT = '95vh';
+const SIDE_PANEL_WIDTH = '40%';
+const MAIN_PANEL_WIDTH = '60%';
 
 class Landing extends Component<{}> {
   render() {
@@ -109,14 +111,14 @@ class Landing extends Component<{}> {
                 position: fixed;
                 left: 0;
                 top: 0;
-                width: 40%;
+                width: ${SIDE_PANEL_WIDTH};
                 height: 100vh;
               }
               .column {
                 position: static;
                 overflow: visible;
-                width: 60%;
-                margin-left: 40%;
+                width: ${MAIN_PANEL_WIDTH};
+                margin-left: ${SIDE_PANEL_WIDTH};
               }
               .fixedHeader {
                 display: flex;
@@ -128,7 +130,7 @@ class Landing extends Component<{}> {
                 right: 0;
                 top: 0;
                 z-index: ${zIndex.header};
-                margin-left: 40%;
+                margin-left: ${SIDE_PANEL_WIDTH};
               }
             }
           `}
