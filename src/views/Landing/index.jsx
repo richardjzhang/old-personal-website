@@ -55,8 +55,6 @@ class Landing extends Component<{}> {
               flex-direction: column;
               align-items: center;
               justify-content: center;
-              position: static;
-              overflow: visible;
               height: 100vh;
               padding: ${fontSize.xlarge}px;
               box-sizing: border-box;
@@ -106,7 +104,7 @@ class Landing extends Component<{}> {
             .fixedHeader {
               display: none;
             }
-            @media (min-width: ${breakPoints.medium}px) {
+            @media (min-width: ${breakPoints.large}px) {
               .leftPanel {
                 position: fixed;
                 left: 0;
