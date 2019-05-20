@@ -18,7 +18,7 @@ class Landing extends Component<{}> {
   render() {
     return (
       <React.Fragment>
-        <div className="sidePanel">
+        <div className="leftPanel">
           <div className="titleWrapper">
             <div className="title">Creator.</div>
             <div className="title">Engineer.</div>
@@ -38,7 +38,7 @@ class Landing extends Component<{}> {
             </div>
           </div>
         </div>
-        <div className="column">
+        <div className="rightPanel">
           <div className="fixedHeader">test</div>
           <Panel
             height={PANEL_HEIGHT}
@@ -50,7 +50,7 @@ class Landing extends Component<{}> {
         </div>
         <style jsx>
           {`
-            .sidePanel {
+            .leftPanel {
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -99,7 +99,7 @@ class Landing extends Component<{}> {
               width: 100%;
               color: ${colors.white};
             }
-            .column {
+            .rightPanel {
               position: static;
               overflow: visible;
             }
@@ -107,14 +107,14 @@ class Landing extends Component<{}> {
               display: none;
             }
             @media (min-width: ${breakPoints.medium}px) {
-              .sidePanel {
+              .leftPanel {
                 position: fixed;
                 left: 0;
                 top: 0;
                 width: ${SIDE_PANEL_WIDTH};
                 height: 100vh;
               }
-              .column {
+              .rightPanel {
                 position: static;
                 overflow: visible;
                 width: ${MAIN_PANEL_WIDTH};
