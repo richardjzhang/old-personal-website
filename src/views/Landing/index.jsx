@@ -97,10 +97,6 @@ class Landing extends Component<{}> {
               width: 100%;
               color: ${colors.white};
             }
-            .rightPanel {
-              position: static;
-              overflow: visible;
-            }
             .fixedHeader {
               display: none;
             }
@@ -113,8 +109,6 @@ class Landing extends Component<{}> {
                 height: 100vh;
               }
               .rightPanel {
-                position: static;
-                overflow: visible;
                 width: ${MAIN_PANEL_WIDTH};
                 margin-left: ${SIDE_PANEL_WIDTH};
               }
