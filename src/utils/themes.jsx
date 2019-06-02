@@ -46,14 +46,18 @@ export const colors = {
   tropicalBlue: '#D5E8F9',
   snuff: '#E1E2F1',
   provincialPink: '#FDEBE8',
-  papayaWhip: '#FFECCF',
+  papayaWhip: '#FFECCF'
+};
+
+export const hoverColors = {
+  cornflowerBlue: '#3435d8'
 };
 
 export const breakPoints = {
   small: 480,
   medium: 780,
   large: 1024,
-  extraLarge: 1280,
+  extraLarge: 1280
 };
 
 export const fontSize = {
@@ -62,16 +66,16 @@ export const fontSize = {
   large: 24,
   xlarge: 32,
   xxlarge: 36,
-  xxxlarge: 48,
+  xxxlarge: 48
 };
 
 export const fontWeight = {
   light: 200,
   regular: 400,
   semibold: 600,
-  bold: 700,
+  bold: 700
 };
 
 export const zIndex = {
-  header: 100,
+  header: 100
 };

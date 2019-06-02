@@ -4,6 +4,7 @@ import Panel from '../../components/Panel';
 import {
   breakPoints,
   colors,
+  hoverColors,
   fontSize,
   fontWeight,
   zIndex
@@ -18,16 +19,15 @@ const Landing = () => (
   <React.Fragment>
     <div className="leftPanel">
       <div className="titleWrapper">
-        <div className="title">Creator.</div>
-        <div className="title">Engineer.</div>
-        <div className="title">Educator.</div>
+        <div className="title">Hey, I'm</div>
+        <div className="title">Richard</div>
         <div className="description">
-          Currently creating the future of maths education{' '}
+          I'm currently creating the future of maths education{' '}
           <a href={urls.mathspaceTwitter} className="link">
             @Mathspace
           </a>{' '}
-          as a frontend engineer. Now in the process of sharing what I've
-          learned with those who want to enter this space.
+          as a frontend product engineer. Now I'm sharing what I've learned with
+          those interested in this space.
         </div>
         <div className="button">
           <a href={urls.mailTo} className="buttonLink">
@@ -37,11 +37,7 @@ const Landing = () => (
       </div>
     </div>
     <div className="rightPanel">
-      <div className="fixedHeader">test</div>
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.pickledBluewood} />
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.saffron} />
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.lochmara} />
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.waterLeaf} />
+      <Panel height={PANEL_HEIGHT} backgroundColor={colors.java} />
     </div>
     <style jsx>
       {`
@@ -86,6 +82,11 @@ const Landing = () => (
           font-weight: ${fontWeight.light};
           text-align: center;
           cursor: pointer;
+          transition: background-color 0.5s ease;
+        }
+        .button:hover {
+          background-color: ${hoverColors.cornflowerBlue};
+          transition: background-color 0.5s ease;
         }
         .buttonLink {
           text-decoration: none;
