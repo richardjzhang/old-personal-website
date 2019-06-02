@@ -23,6 +23,7 @@ const Panel = ({ height, backgroundColor, children }: Props) => (
         .container {
           padding: 24px 56px;
           flex: 1;
+          box-sizing: border-box;
         }
       `}
     </style>

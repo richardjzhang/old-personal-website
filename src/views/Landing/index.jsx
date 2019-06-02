@@ -10,8 +10,9 @@ import {
   zIndex
 } from '../../utils/themes.jsx';
 import { urls } from '../../utils/urls.jsx';
+import picture from '../../static/personal_picture.png';
 
-const PANEL_HEIGHT = '95vh';
+const PANEL_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '40%';
 const MAIN_PANEL_WIDTH = '60%';
 
@@ -19,6 +20,7 @@ const Landing = () => (
   <React.Fragment>
     <div className="leftPanel">
       <div className="titleWrapper">
+        <img src={picture} alt="" className="image" />
         <div className="title">Hey, I'm</div>
         <div className="title">Richard</div>
         <div className="description">
@@ -38,17 +40,17 @@ const Landing = () => (
     </div>
     <div className="rightPanel">
       <Panel height={PANEL_HEIGHT} backgroundColor={colors.astronaut}>
-        <div
-          style={{
-            color: colors.tropicalBlue,
-            fontSize: 108,
-            display: 'flex',
-            alignItems: 'center',
-            height: '100%',
-            justifyContent: 'center'
-          }}
-        >
-          {'</>'}
+        <div className="panelWrapper">
+          <div
+            style={{
+              maxWidth: 350,
+              position: 'absolute',
+              top: '10%',
+              left: '5%'
+            }}
+          >
+            {'<Learn To Code />'}
+          </div>
         </div>
       </Panel>
     </div>
@@ -56,7 +58,6 @@ const Landing = () => (
       {`
         .leftPanel {
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
           height: 100vh;
@@ -65,8 +66,18 @@ const Landing = () => (
           background-color: ${colors.athensGray};
         }
         .titleWrapper {
-          text-align: left;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
           max-width: 80%;
+        }
+        .image {
+          width: 60%;
+          border-radius: 50%;
+          margin: 20px auto;
+          max-width: 250px;
         }
         .title {
           text-transform: uppercase;
@@ -105,6 +116,15 @@ const Landing = () => (
           text-decoration: none;
           width: 100%;
           color: ${colors.white};
+        }
+        .panelWrapper {
+          color: ${colors.tropicalBlue};
+          font-size: 64px;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          height: 100%;
+          position: relative;
         }
         .fixedHeader {
           display: none;
