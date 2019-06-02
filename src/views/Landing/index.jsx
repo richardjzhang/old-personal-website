@@ -4,13 +4,15 @@ import Panel from '../../components/Panel';
 import {
   breakPoints,
   colors,
+  hoverColors,
   fontSize,
   fontWeight,
   zIndex
 } from '../../utils/themes.jsx';
 import { urls } from '../../utils/urls.jsx';
+import picture from '../../static/personal_picture.png';
 
-const PANEL_HEIGHT = '95vh';
+const PANEL_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '40%';
 const MAIN_PANEL_WIDTH = '60%';
 
@@ -18,16 +20,16 @@ const Landing = () => (
   <React.Fragment>
     <div className="leftPanel">
       <div className="titleWrapper">
-        <div className="title">Creator.</div>
-        <div className="title">Engineer.</div>
-        <div className="title">Educator.</div>
+        <img src={picture} alt="" className="image" />
+        <div className="title">Hey, I'm</div>
+        <div className="title">Richard</div>
         <div className="description">
-          Currently creating the future of maths education{' '}
+          I'm currently creating the future of maths education{' '}
           <a href={urls.mathspaceTwitter} className="link">
             @Mathspace
           </a>{' '}
-          as a frontend engineer. Now in the process of sharing what I've
-          learned with those who want to enter this space.
+          as a frontend product engineer. Now I'm sharing what I've learned with
+          those interested in this space.
         </div>
         <div className="button">
           <a href={urls.mailTo} className="buttonLink">
@@ -37,17 +39,25 @@ const Landing = () => (
       </div>
     </div>
     <div className="rightPanel">
-      <div className="fixedHeader">test</div>
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.pickledBluewood} />
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.saffron} />
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.lochmara} />
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.waterLeaf} />
+      <Panel height={PANEL_HEIGHT} backgroundColor={colors.astronaut}>
+        <div className="panelWrapper">
+          <div
+            style={{
+              maxWidth: 350,
+              position: 'absolute',
+              top: '10%',
+              left: '5%'
+            }}
+          >
+            {'<Learn To Code />'}
+          </div>
+        </div>
+      </Panel>
     </div>
     <style jsx>
       {`
         .leftPanel {
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
           height: 100vh;
@@ -56,8 +66,18 @@ const Landing = () => (
           background-color: ${colors.athensGray};
         }
         .titleWrapper {
-          text-align: left;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
           max-width: 80%;
+        }
+        .image {
+          width: 60%;
+          border-radius: 50%;
+          margin: 24px auto;
+          max-width: 250px;
         }
         .title {
           text-transform: uppercase;
@@ -86,11 +106,25 @@ const Landing = () => (
           font-weight: ${fontWeight.light};
           text-align: center;
           cursor: pointer;
+          transition: background-color 0.5s ease;
+        }
+        .button:hover {
+          background-color: ${hoverColors.cornflowerBlue};
+          transition: background-color 0.5s ease;
         }
         .buttonLink {
           text-decoration: none;
           width: 100%;
           color: ${colors.white};
+        }
+        .panelWrapper {
+          color: ${colors.tropicalBlue};
+          font-size: 64px;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          height: 100%;
+          position: relative;
         }
         .fixedHeader {
           display: none;
