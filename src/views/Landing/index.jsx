@@ -37,7 +37,20 @@ const Landing = () => (
       </div>
     </div>
     <div className="rightPanel">
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.java} />
+      <Panel height={PANEL_HEIGHT} backgroundColor={colors.astronaut}>
+        <div
+          style={{
+            color: colors.tropicalBlue,
+            fontSize: 108,
+            display: 'flex',
+            alignItems: 'center',
+            height: '100%',
+            justifyContent: 'center'
+          }}
+        >
+          {'</>'}
+        </div>
+      </Panel>
     </div>
     <style jsx>
       {`
