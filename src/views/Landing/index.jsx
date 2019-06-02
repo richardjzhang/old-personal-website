@@ -76,7 +76,7 @@ const Landing = () => (
         .image {
           width: 60%;
           border-radius: 50%;
-          margin: 20px auto;
+          margin: 24px auto;
           max-width: 250px;
         }
         .title {
