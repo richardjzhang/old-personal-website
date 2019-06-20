@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import Panel from '../../components/Panel';
+import Timeline from '../../components/Timeline';
 import {
   breakPoints,
   colors,
@@ -15,6 +16,23 @@ import picture from '../../static/personal_picture.png';
 const PANEL_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '40%';
 const MAIN_PANEL_WIDTH = '60%';
+const TIMELINE_NODES = [
+  {
+    title: 'Mathspace',
+    description:
+      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of mathematics education today.",
+    image: picture,
+    proportion: '80%',
+    position: 'top'
+  },
+  {
+    title: "McDonald's",
+    description: 'Hello',
+    image: 'test',
+    proportion: '20%',
+    position: 'bottom'
+  }
+];
 
 const Landing = () => (
   <React.Fragment>
@@ -37,7 +55,9 @@ const Landing = () => (
     </div>
     <div className="rightPanel">
       <Panel height={PANEL_HEIGHT} backgroundColor={colors.vulcan}>
-        <div className="panelWrapper" />
+        <div className="panelWrapper">
+          <Timeline nodes={TIMELINE_NODES} />
+        </div>
       </Panel>
     </div>
     <style jsx>
