@@ -24,12 +24,9 @@ const Landing = () => (
         <div className="title">Hey, I'm</div>
         <div className="title">Richard</div>
         <div className="description">
-          I'm currently creating the future of maths education{' '}
-          <a href={urls.mathspaceTwitter} className="link">
-            @Mathspace
-          </a>{' '}
-          as a frontend product engineer. Now I'm sharing what I've learned with
-          those interested in this space.
+          My purpose in life is to inspire ideas and solutions in people so that
+          we can ultimately fulfill our potential. What gets you up in the
+          morning?
         </div>
         <div className="button">
           <a href={urls.mailTo} className="buttonLink">
@@ -39,19 +36,8 @@ const Landing = () => (
       </div>
     </div>
     <div className="rightPanel">
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.astronaut}>
-        <div className="panelWrapper">
-          <div
-            style={{
-              maxWidth: 350,
-              position: 'absolute',
-              top: '10%',
-              left: '5%'
-            }}
-          >
-            {'<Learn To Code />'}
-          </div>
-        </div>
+      <Panel height={PANEL_HEIGHT} backgroundColor={colors.vulcan}>
+        <div className="panelWrapper" />
       </Panel>
     </div>
     <style jsx>
@@ -60,7 +46,7 @@ const Landing = () => (
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 100vh;
+          min-height: 100vh;
           padding: ${fontSize.xlarge}px;
           box-sizing: border-box;
           background-color: ${colors.athensGray};
@@ -101,7 +87,7 @@ const Landing = () => (
           padding: 16px 16px;
           background-color: ${colors.cornflowerBlue};
           width: 175px;
-          margin-top: 48px;
+          margin-top: 32px;
           font-size: ${fontSize.medium}px;
           font-weight: ${fontWeight.light};
           text-align: center;
@@ -119,12 +105,12 @@ const Landing = () => (
         }
         .panelWrapper {
           color: ${colors.tropicalBlue};
-          font-size: 64px;
           display: flex;
           justify-content: center;
           flex-direction: column;
           height: 100%;
           position: relative;
+          padding-bottom: 24px;
         }
         .fixedHeader {
           display: none;
