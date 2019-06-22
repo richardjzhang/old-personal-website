@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import Panel from '../../components/Panel';
-import Timeline from '../../components/Timeline';
+import Timeline from '../../components/HorizontalTimeline';
 import {
   breakPoints,
   colors,
