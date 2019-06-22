@@ -1,5 +1,5 @@
 // @flow
-import React, { type Node } from 'react';
+import React from 'react';
 
 import { colors } from '../../utils/themes.jsx';
 
@@ -8,42 +8,58 @@ type Props = {|
     title: string,
     description: string,
     image: string,
-    proportion: string,
+    proportion: number,
     position: 'top' | 'bottom'
   }>
 |};
 
 const TimeLine = ({ nodes }: Props) => (
   <React.Fragment>
-    {nodes
-      .filter(node => node.position === 'top')
-      .map(node => (
-        <div
-          style={{
-            borderLeft: `2px solid ${colors.athensGrey}`,
-            height: 10,
-            marginLeft: node.proportion
-          }}
-        />
-      ))}
-    <div className="line">
+    <div className="wrapper">
       {nodes
-        .filter(node => node.position === 'bottom')
-        .map(node => (
+        .filter(node => node.position === 'top')
+        .map((node, index) => (
           <div
+            className="tick"
             style={{
-              borderLeft: `2px solid ${colors.athensGrey}`,
-              height: 10,
-              marginLeft: node.proportion
+              marginLeft:
+                index !== 0 && index !== 1
+                  ? `${100 * (node.proportion - nodes[index - 2].proportion)}%`
+                  : `${100 * node.proportion}%`
             }}
           />
         ))}
+    </div>
+    <div className="line">
+      <div className="wrapper">
+        {nodes
+          .filter(node => node.position === 'bottom')
+          .map((node, index) => (
+            <div
+              className="tick"
+              style={{
+                marginLeft:
+                  index !== 0 && index !== 1
+                    ? `${100 *
+                        (node.proportion - nodes[index - 2].proportion)}%`
+                    : `${100 * node.proportion}%`
+              }}
+            />
+          ))}
+      </div>
     </div>
     <style jsx>
       {`
         .line {
           height: 1px;
           border-top: 2px solid ${colors.athensGrey};
+        }
+        .wrapper {
+          display: flex;
+        }
+        .tick {
+          border-left: 2px solid ${colors.athensGrey};
+          height: 10px;
         }
       `}
     </style>

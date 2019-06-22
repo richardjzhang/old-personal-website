@@ -18,18 +18,59 @@ const SIDE_PANEL_WIDTH = '40%';
 const MAIN_PANEL_WIDTH = '60%';
 const TIMELINE_NODES = [
   {
-    title: 'Mathspace',
+    title: "McDonald's",
     description:
-      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of mathematics education today.",
+      'My first gig, which I will always keep close to my heart. The lessons I learnt about sacrifice and team comradarie will resonate with me for a long time.',
+    image: 'test',
+    proportion: 0.1,
+    position: 'bottom'
+  },
+  {
+    title: 'Subway',
+    description:
+      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
     image: picture,
-    proportion: '80%',
+    proportion: 0.2,
     position: 'top'
   },
   {
-    title: "McDonald's",
-    description: 'Hello',
-    image: 'test',
-    proportion: '20%',
+    title: 'University of Sydney',
+    description:
+      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
+    image: picture,
+    proportion: 0.25,
+    position: 'bottom'
+  },
+  {
+    title: 'S4S Coaching',
+    description:
+      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
+    image: picture,
+    proportion: 0.45,
+    position: 'top'
+  },
+  {
+    title: 'B.Inspiring',
+    description:
+      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
+    image: picture,
+    proportion: 0.6,
+    position: 'bottom'
+  },
+  {
+    title: 'SMASH',
+    description:
+      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
+    image: picture,
+    proportion: 0.65,
+    position: 'top'
+  },
+  {
+    title: 'Mathspace',
+    description:
+      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
+    image: picture,
+    proportion: 0.8,
     position: 'bottom'
   }
 ];
@@ -42,9 +83,9 @@ const Landing = () => (
         <div className="title">Hey, I'm</div>
         <div className="title">Richard</div>
         <div className="description">
-          My purpose in life is to inspire ideas and solutions in people so that
-          we can ultimately fulfill our potential. What gets you up in the
-          morning?
+          My purpose in life is to inspire ideas and build solutions with people
+          so that we can ultimately fulfill our potential. What gets you up in
+          the morning?
         </div>
         <div className="button">
           <a href={urls.mailTo} className="buttonLink">
