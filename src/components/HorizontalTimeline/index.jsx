@@ -20,6 +20,7 @@ const TimeLine = ({ nodes }: Props) => (
         .filter(node => node.position === 'top')
         .map((node, index) => (
           <div
+            key={node.title}
             className="tick"
             style={{
               marginLeft:
@@ -36,6 +37,7 @@ const TimeLine = ({ nodes }: Props) => (
           .filter(node => node.position === 'bottom')
           .map((node, index) => (
             <div
+              key={node.title}
               className="tick"
               style={{
                 marginLeft:
