@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import Panel from '../../components/Panel';
-import Timeline from '../../components/HorizontalTimeline';
 import {
   breakPoints,
   colors,
@@ -16,64 +15,6 @@ import picture from '../../static/personal_picture.png';
 const PANEL_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '40%';
 const MAIN_PANEL_WIDTH = '60%';
-const TIMELINE_NODES = [
-  {
-    title: "McDonald's",
-    description:
-      'My first gig, which I will always keep close to my heart. The lessons I learnt about sacrifice and team comradarie will resonate with me for a long time.',
-    image: 'test',
-    proportion: 0.1,
-    position: 'bottom'
-  },
-  {
-    title: 'Subway',
-    description:
-      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
-    image: picture,
-    proportion: 0.2,
-    position: 'top'
-  },
-  {
-    title: 'University of Sydney',
-    description:
-      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
-    image: picture,
-    proportion: 0.25,
-    position: 'bottom'
-  },
-  {
-    title: 'S4S Coaching',
-    description:
-      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
-    image: picture,
-    proportion: 0.45,
-    position: 'top'
-  },
-  {
-    title: 'B.Inspiring',
-    description:
-      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
-    image: picture,
-    proportion: 0.6,
-    position: 'bottom'
-  },
-  {
-    title: 'SMASH',
-    description:
-      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
-    image: picture,
-    proportion: 0.65,
-    position: 'top'
-  },
-  {
-    title: 'Mathspace',
-    description:
-      "We believe every student should be able to learn mathematics at their own pace. That's why we've Mathspace - to enable teachers to deliver tomorrow's model of education today.",
-    image: picture,
-    proportion: 0.8,
-    position: 'bottom'
-  }
-];
 
 const Landing = () => (
   <React.Fragment>
@@ -83,9 +24,13 @@ const Landing = () => (
         <div className="title">Hey, I'm</div>
         <div className="title">Richard</div>
         <div className="description">
-          My purpose in life is to inspire ideas and build solutions with people
-          so that we can ultimately fulfill our potential. What gets you up in
-          the morning?
+          My purpose in life is to help people build their dreams into reality
+          so that they can fully realise their potential. Currently, I'm living
+          that out{' '}
+          <a href={urls.mathspaceTwitter} className="link">
+            @Mathspace
+          </a>{' '}
+          by creating the future of maths education.
         </div>
         <div className="button">
           <a href={urls.mailTo} className="buttonLink">
@@ -97,7 +42,10 @@ const Landing = () => (
     <div className="rightPanel">
       <Panel height={PANEL_HEIGHT} backgroundColor={colors.vulcan}>
         <div className="panelWrapper">
-          <Timeline nodes={TIMELINE_NODES} />
+          <div className="panelContentTitle">My Journey</div>
+          <div className="panelContentTitle">My Stories</div>
+          <div className="panelContentTitle">My Work</div>
+          <div className="panelContentTitle">My Lessons</div>
         </div>
       </Panel>
     </div>
@@ -108,7 +56,7 @@ const Landing = () => (
           align-items: center;
           justify-content: center;
           min-height: 100vh;
-          padding: ${fontSize.xlarge}px;
+          padding: 32px 32px 80px 32px;
           box-sizing: border-box;
           background-color: ${colors.athensGray};
         }
@@ -125,6 +73,7 @@ const Landing = () => (
           border-radius: 50%;
           margin: 24px auto;
           max-width: 250px;
+          max-height: 250px;
         }
         .title {
           text-transform: uppercase;
@@ -144,7 +93,6 @@ const Landing = () => (
           text-decoration: none;
         }
         .button {
-          border-radius: 300px;
           padding: 16px 16px;
           background-color: ${colors.cornflowerBlue};
           width: 175px;
@@ -152,6 +100,7 @@ const Landing = () => (
           font-size: ${fontSize.medium}px;
           font-weight: ${fontWeight.light};
           text-align: center;
+          border-radius: 300px;
           cursor: pointer;
           transition: background-color 0.5s ease;
         }
@@ -165,13 +114,25 @@ const Landing = () => (
           color: ${colors.white};
         }
         .panelWrapper {
-          color: ${colors.tropicalBlue};
           display: flex;
-          justify-content: center;
           flex-direction: column;
+          align-items: center;
+          justify-content: center;
           height: 100%;
           position: relative;
-          padding-bottom: 24px;
+          color: ${colors.tropicalBlue};
+        }
+        .panelContentTitle {
+          margin-bottom: 32px;
+          cursor: pointer;
+          text-transform: uppercase;
+          font-size: ${fontSize.xlarge}px;
+          font-weight: ${fontWeight.semibold};
+          color: ${colors.white};
+        }
+        .panelContentTitle:hover {
+          color: ${colors.tropicalBlue};
+          transition: background-color 0.5s ease;
         }
         .fixedHeader {
           display: none;
