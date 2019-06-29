@@ -24,12 +24,13 @@ const Landing = () => (
         <div className="title">Hey, I'm</div>
         <div className="title">Richard</div>
         <div className="description">
-          I'm currently creating the future of maths education{' '}
+          My purpose in life is to help people build their dreams into reality
+          so that they can fully realise their potential. Currently, I'm living
+          that out{' '}
           <a href={urls.mathspaceTwitter} className="link">
             @Mathspace
           </a>{' '}
-          as a frontend product engineer. Now I'm sharing what I've learned with
-          those interested in this space.
+          by creating the future of maths education.
         </div>
         <div className="button">
           <a href={urls.mailTo} className="buttonLink">
@@ -39,18 +40,12 @@ const Landing = () => (
       </div>
     </div>
     <div className="rightPanel">
-      <Panel height={PANEL_HEIGHT} backgroundColor={colors.astronaut}>
+      <Panel height={PANEL_HEIGHT} backgroundColor={colors.vulcan}>
         <div className="panelWrapper">
-          <div
-            style={{
-              maxWidth: 350,
-              position: 'absolute',
-              top: '10%',
-              left: '5%'
-            }}
-          >
-            {'<Learn To Code />'}
-          </div>
+          <div className="panelContentTitle">My Journey</div>
+          <div className="panelContentTitle">My Stories</div>
+          <div className="panelContentTitle">My Work</div>
+          <div className="panelContentTitle">My Lessons</div>
         </div>
       </Panel>
     </div>
@@ -60,8 +55,8 @@ const Landing = () => (
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 100vh;
-          padding: ${fontSize.xlarge}px;
+          min-height: 100vh;
+          padding: 32px 32px 80px 32px;
           box-sizing: border-box;
           background-color: ${colors.athensGray};
         }
@@ -78,6 +73,7 @@ const Landing = () => (
           border-radius: 50%;
           margin: 24px auto;
           max-width: 250px;
+          max-height: 250px;
         }
         .title {
           text-transform: uppercase;
@@ -97,14 +93,14 @@ const Landing = () => (
           text-decoration: none;
         }
         .button {
-          border-radius: 300px;
           padding: 16px 16px;
           background-color: ${colors.cornflowerBlue};
           width: 175px;
-          margin-top: 48px;
+          margin-top: 32px;
           font-size: ${fontSize.medium}px;
           font-weight: ${fontWeight.light};
           text-align: center;
+          border-radius: 300px;
           cursor: pointer;
           transition: background-color 0.5s ease;
         }
@@ -118,13 +114,25 @@ const Landing = () => (
           color: ${colors.white};
         }
         .panelWrapper {
-          color: ${colors.tropicalBlue};
-          font-size: 64px;
           display: flex;
-          justify-content: center;
           flex-direction: column;
+          align-items: center;
+          justify-content: center;
           height: 100%;
           position: relative;
+          color: ${colors.tropicalBlue};
+        }
+        .panelContentTitle {
+          margin-bottom: 32px;
+          cursor: pointer;
+          text-transform: uppercase;
+          font-size: ${fontSize.xlarge}px;
+          font-weight: ${fontWeight.semibold};
+          color: ${colors.white};
+        }
+        .panelContentTitle:hover {
+          color: ${colors.tropicalBlue};
+          transition: background-color 0.5s ease;
         }
         .fixedHeader {
           display: none;
