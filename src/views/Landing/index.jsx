@@ -44,7 +44,7 @@ const Landing = () => (
         <div className="panelWrapper">
           <div className="panelContentTitle">My Journey</div>
           <div className="panelContentTitle">My Stories</div>
-          <div className="panelContentTitle">My Work</div>
+          <div className="panelContentTitle">My Creations</div>
           <div className="panelContentTitle">My Lessons</div>
         </div>
       </Panel>
