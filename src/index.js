@@ -10,7 +10,7 @@ import './index.css';
 
 WebFont.load({
   google: {
-    families: ['Montserrat Web:400', 'sans-serif']
+    families: ['Montserrat:400,700', 'sans-serif']
   }
 });
 
