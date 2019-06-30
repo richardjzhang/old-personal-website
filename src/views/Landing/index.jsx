@@ -10,7 +10,7 @@ import {
   zIndex
 } from '../../utils/themes.jsx';
 import { urls } from '../../utils/urls.jsx';
-import picture from '../../static/personal_picture.png';
+import logo from '../../static/personal_logo_transparent.png';
 
 const PANEL_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '40%';
@@ -20,17 +20,10 @@ const Landing = () => (
   <React.Fragment>
     <div className="leftPanel">
       <div className="titleWrapper">
-        <img src={picture} alt="" className="image" />
-        <div className="title">Hey, I'm</div>
-        <div className="title">Richard</div>
+        <img src={logo} alt="" className="image" />
+        <div className="title">Richard Zhang</div>
         <div className="description">
-          My purpose in life is to help people build their dreams into reality
-          so that they can fully realise their potential. Currently, I'm living
-          that out{' '}
-          <a href={urls.mathspaceTwitter} className="link">
-            @Mathspace
-          </a>{' '}
-          by creating the future of maths education.
+          Crafting code that executes people's dream's into reality
         </div>
         <div className="button">
           <a href={urls.mailTo} className="buttonLink">
@@ -66,26 +59,25 @@ const Landing = () => (
           align-items: center;
           justify-content: center;
           text-align: center;
-          max-width: 80%;
+          max-width: 85%;
         }
         .image {
-          width: 60%;
-          border-radius: 50%;
-          margin: 24px auto;
-          max-width: 250px;
-          max-height: 250px;
+          width: 40%;
+          margin-bottom: 32px;
+          max-width: 200px;
+          max-height: 200px;
         }
         .title {
           text-transform: uppercase;
-          font-size: ${fontSize.xxlarge}px;
+          font-size: ${fontSize.xxxlarge}px;
           font-weight: ${fontWeight.semibold};
-          color: ${colors.mako};
+          color: ${colors.pickledBluewood};
         }
         .description {
-          font-size: ${fontSize.normal}px;
+          font-size: ${fontSize.large}px;
           margin-top: 24px;
           font-weight: ${fontWeight.light};
-          color: ${colors.cloudBurst};
+          color: ${colors.pickledBluewood};
         }
         .link {
           font-size: 15px;
@@ -94,9 +86,9 @@ const Landing = () => (
         }
         .button {
           padding: 16px 16px;
-          background-color: ${colors.cornflowerBlue};
+          background-color: ${colors.pickledBluewood};
           width: 175px;
-          margin-top: 32px;
+          margin-top: 48px;
           font-size: ${fontSize.medium}px;
           font-weight: ${fontWeight.light};
           text-align: center;
@@ -105,7 +97,7 @@ const Landing = () => (
           transition: background-color 0.5s ease;
         }
         .button:hover {
-          background-color: ${hoverColors.cornflowerBlue};
+          background-color: ${colors.cloudBurst};
           transition: background-color 0.5s ease;
         }
         .buttonLink {
