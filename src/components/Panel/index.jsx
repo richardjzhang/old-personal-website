@@ -1,6 +1,12 @@
 // @flow
 import React, { type Node } from 'react';
+import styled from 'styled-components';
 
+const Container = styled.div`
+  padding: 24px 56px;
+  flex: 1;
+  box-sizing: border-box;
+`;
 type Props = {|
   height: string,
   backgroundColor: string,
@@ -8,26 +14,14 @@ type Props = {|
 |};
 
 const Panel = ({ height, backgroundColor, children }: Props) => (
-  <React.Fragment>
-    <div
-      className="container"
-      style={{
-        height,
-        backgroundColor
-      }}
-    >
-      {children}
-    </div>
-    <style jsx>
-      {`
-        .container {
-          padding: 24px 56px;
-          flex: 1;
-          box-sizing: border-box;
-        }
-      `}
-    </style>
-  </React.Fragment>
+  <Container
+    style={{
+      height,
+      backgroundColor
+    }}
+  >
+    {children}
+  </Container>
 );
 
 export default Panel;
