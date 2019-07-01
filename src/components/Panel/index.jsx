@@ -3,7 +3,7 @@ import React, { type Node } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  padding: 24px 56px;
+  padding: 56px;
   flex: 1;
   box-sizing: border-box;
 `;

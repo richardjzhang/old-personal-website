@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import Journey from './Journey';
 import Panel from '../../components/Panel';
 import Timeline from '../../components/VerticalTimeline';
 import {
@@ -11,7 +12,7 @@ import {
 } from '../../utils/themes.jsx';
 import logo from '../../static/personal_logo_transparent.png';
 
-const PANEL_HEIGHT = '100vh';
+export const PANEL_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '40%';
 const MAIN_PANEL_WIDTH = '60%';
 
@@ -174,11 +175,7 @@ const Landing = () => {
           </PanelWrapper>
         </Panel>
         <div ref={journeyRef} />
-        <Panel height={PANEL_HEIGHT} backgroundColor={colors.lochmara}>
-          <PanelWrapper>
-            <Timeline />
-          </PanelWrapper>
-        </Panel>
+        <Journey />
         <div ref={storiesRef} />
         <Panel height={PANEL_HEIGHT} backgroundColor={colors.saffron}>
           <PanelWrapper>
