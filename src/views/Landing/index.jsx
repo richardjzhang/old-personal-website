@@ -64,14 +64,14 @@ const Title = styled.div`
   text-transform: uppercase;
   font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.semibold};
-  color: ${colors.pickledBluewood};
+  color: ${colors.outerSpace};
 `;
 
 const Description = styled.div`
   font-size: ${fontSize.xmedium}px;
   margin-top: ${6 * BASE_UNIT}px;
   font-weight: ${fontWeight.light};
-  color: ${colors.pickledBluewood};
+  color: ${colors.outerSpace};
 `;
 const Button = styled.div`
   padding: ${4 * BASE_UNIT}px ${4 * BASE_UNIT}px;
@@ -145,7 +145,7 @@ const Landing = () => {
         </TitleWrapper>
       </LeftPanel>
       <RightPanel>
-        <Panel height={PANEL_HEIGHT} backgroundColor={colors.vulcan}>
+        <Panel height={PANEL_HEIGHT} backgroundColor={colors.outerSpace}>
           <PanelWrapper>
             <ContentLink
               onClick={() =>
@@ -180,16 +180,18 @@ const Landing = () => {
         <div ref={journeyRef} />
         <Journey />
         <div ref={storiesRef} />
-        <Panel height={PANEL_HEIGHT} backgroundColor={colors.saffron}>
-          <PanelWrapper>My stories</PanelWrapper>
+        <Panel height={PANEL_HEIGHT} backgroundColor={colors.carribeanGreen}>
+          <PanelWrapper>My stories coming soon...</PanelWrapper>
         </Panel>
         <div ref={creationsRef} />
-        <Panel height={PANEL_HEIGHT} backgroundColor={colors.mountainMeadow}>
-          <PanelWrapper>My creations</PanelWrapper>
+        <Panel height={PANEL_HEIGHT} backgroundColor={colors.mustard}>
+          <PanelWrapper style={{ color: colors.cloudBurst }}>
+            My creations coming soon...
+          </PanelWrapper>
         </Panel>
         <div ref={lessonsRef} />
         <Panel height={PANEL_HEIGHT} backgroundColor={colors.cornflowerBlue}>
-          <PanelWrapper>My lessons</PanelWrapper>
+          <PanelWrapper>My lessons coming soon...</PanelWrapper>
         </Panel>
       </RightPanel>
     </React.Fragment>

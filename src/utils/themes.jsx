@@ -6,8 +6,10 @@ export const colors = {
   bayOfMany: '#2E3696',
   ebony: '#0D0D21',
   mountainMeadow: '#1ABC9C',
-  pictonBlue: '#47DBEB',
   white: '#ffffff',
+  outerSpace: '#263238',
+  carribeanGreen: '#00BFA5',
+  mustard: '#FFD54F',
 
   // Secondary Colors
   purpleHeart: '#7547D8',

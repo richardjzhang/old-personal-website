@@ -14,7 +14,7 @@ const PanelWrapper = styled.div`
 `;
 
 const Journey = () => (
-  <Panel height={PANEL_HEIGHT} backgroundColor={colors.lochmara}>
+  <Panel height={PANEL_HEIGHT} backgroundColor={colors.dodgerBlue}>
     <PanelWrapper>
       <MiniCard title="Mathspace" label="2017 - Present">
         <img src={mathspace_logo} alt="" width={45} height={36} />
