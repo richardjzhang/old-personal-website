@@ -1,32 +1,72 @@
 // @flow
+import React, { type Node } from 'react';
 import styled from 'styled-components';
 
-import { colors, fontSize, fontWeight } from '../../utils/themes.jsx';
+import {
+  BASE_UNIT,
+  borderRadius,
+  boxShadow,
+  colors,
+  fontSize,
+  fontWeight
+} from '../../utils/themes.jsx';
 
 export const Card = styled.div`
-  height: 250px;
-  width: 250px;
+  max-width: 225px;
   background-color: ${colors.white};
-  border-radius: 4px;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  border-radius: ${borderRadius.regular}px;
+  box-shadow: ${boxShadow};
+  padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${colors.porcelain};
+    transition: background-color 0.5s ease;
+  }
 `;
+
 export const CardHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 24px 24px 8px 24px;
   font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
   color: ${colors.cloudBurst};
 `;
 
 export const CardContent = styled.div`
-  padding: 8px 16px;
   display: flex;
   justify-content: center;
+  margin-top: ${4 * BASE_UNIT}px;
   font-size: ${fontSize.normal}px;
   color: ${colors.cloudBurst};
   text-overflow: ellipsis;
 `;
+
+// Mini Card
+const TitleWrapper = styled.div`
+  margin-left: ${6 * BASE_UNIT}px;
+`;
+
+const Subtitle = styled.div`
+  font-size: ${fontSize.normal}px;
+  font-weight: ${fontWeight.regular};
+  color: ${colors.hitGray};
+  margin-top: ${BASE_UNIT}px;
+`;
+
+type MiniCardProps = {|
+  title: string,
+  label: string,
+  children: Node
+|};
+
+export const MiniCard = ({ title, label, children }: MiniCardProps) => (
+  <Card>
+    <CardHeader>
+      {children}
+      <TitleWrapper>
+        {title} <Subtitle>{label}</Subtitle>
+      </TitleWrapper>
+    </CardHeader>
+  </Card>
+);

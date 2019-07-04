@@ -2,8 +2,10 @@
 import React, { type Node } from 'react';
 import styled from 'styled-components';
 
+import { BASE_UNIT } from '../../utils/themes.jsx';
+
 const Container = styled.div`
-  padding: 56px;
+  padding: ${14 * BASE_UNIT}px;
   flex: 1;
   box-sizing: border-box;
 `;

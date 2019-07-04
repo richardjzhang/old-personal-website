@@ -3,25 +3,28 @@ import React from 'react';
 import styled from 'styled-components';
 import Journey from './Journey';
 import Panel from '../../components/Panel';
-import Timeline from '../../components/VerticalTimeline';
 import {
+  BASE_UNIT,
+  borderRadius,
   breakPoints,
   colors,
   fontSize,
   fontWeight
 } from '../../utils/themes.jsx';
+import { urls } from '../../utils/urls.jsx';
 import logo from '../../static/personal_logo_transparent.png';
 
 export const PANEL_HEIGHT = '100vh';
-const SIDE_PANEL_WIDTH = '40%';
-const MAIN_PANEL_WIDTH = '60%';
+const SIDE_PANEL_WIDTH = '35%';
+const MAIN_PANEL_WIDTH = '65%';
 
 const LeftPanel = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 32px 32px 80px 32px;
+  padding: ${8 * BASE_UNIT}px ${8 * BASE_UNIT}px ${20 * BASE_UNIT}px
+    ${8 * BASE_UNIT}px;
   box-sizing: border-box;
   background-color: ${colors.athensGray};
 
@@ -52,33 +55,33 @@ const TitleWrapper = styled.div`
 
 const Image = styled.img`
   width: 40%;
-  margin-bottom: 32px;
+  margin-bottom: ${8 * BASE_UNIT}px;
   max-width: 200px;
   max-height: 200px;
 `;
 
 const Title = styled.div`
   text-transform: uppercase;
-  font-size: ${fontSize.xxxlarge}px;
+  font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.semibold};
   color: ${colors.pickledBluewood};
 `;
 
 const Description = styled.div`
-  font-size: ${fontSize.large}px;
-  margin-top: 24px;
+  font-size: ${fontSize.xmedium}px;
+  margin-top: ${6 * BASE_UNIT}px;
   font-weight: ${fontWeight.light};
   color: ${colors.pickledBluewood};
 `;
 const Button = styled.div`
-  padding: 16px 16px;
+  padding: ${4 * BASE_UNIT}px ${4 * BASE_UNIT}px;
   background-color: ${colors.pickledBluewood};
   width: 175px;
-  margin-top: 48px;
+  margin-top: ${12 * BASE_UNIT}px;
   font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.light};
   text-align: center;
-  border-radius: 300px;
+  border-radius: ${borderRadius.circle}px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 
@@ -105,7 +108,7 @@ const PanelWrapper = styled.div`
 `;
 
 const ContentLink = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: ${8 * BASE_UNIT}px;
   cursor: pointer;
   text-transform: uppercase;
   font-size: ${fontSize.xlarge}px;
@@ -137,7 +140,7 @@ const Landing = () => {
             Crafting code that executes people's dream's into reality
           </Description>
           <Button>
-            <ButtonLink>Get in touch!</ButtonLink>
+            <ButtonLink href={urls.mailTo}>Get in touch!</ButtonLink>
           </Button>
         </TitleWrapper>
       </LeftPanel>
@@ -178,21 +181,15 @@ const Landing = () => {
         <Journey />
         <div ref={storiesRef} />
         <Panel height={PANEL_HEIGHT} backgroundColor={colors.saffron}>
-          <PanelWrapper>
-            <Timeline />
-          </PanelWrapper>
+          <PanelWrapper>My stories</PanelWrapper>
         </Panel>
         <div ref={creationsRef} />
         <Panel height={PANEL_HEIGHT} backgroundColor={colors.mountainMeadow}>
-          <PanelWrapper>
-            <Timeline />
-          </PanelWrapper>
+          <PanelWrapper>My creations</PanelWrapper>
         </Panel>
         <div ref={lessonsRef} />
         <Panel height={PANEL_HEIGHT} backgroundColor={colors.cornflowerBlue}>
-          <PanelWrapper>
-            <Timeline />
-          </PanelWrapper>
+          <PanelWrapper>My lessons</PanelWrapper>
         </Panel>
       </RightPanel>
     </React.Fragment>
