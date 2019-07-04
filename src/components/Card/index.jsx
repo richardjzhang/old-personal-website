@@ -12,11 +12,12 @@ import {
 } from '../../utils/themes.jsx';
 
 export const Card = styled.div`
-  max-width: 225px;
+  display: flex;
+  padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
   background-color: ${colors.white};
   border-radius: ${borderRadius.regular}px;
   box-shadow: ${boxShadow};
-  padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
+  min-height: 60px;
   cursor: pointer;
 
   &:hover {
