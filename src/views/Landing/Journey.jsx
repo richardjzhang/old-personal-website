@@ -1,0 +1,53 @@
+import React from 'react';
+import styled from 'styled-components';
+import mathspace_logo from '../../static/mathspace_logo.png';
+import s4s_logo from '../../static/s4s_logo.png';
+import smash_logo from '../../static/smash_logo.png';
+import usyd_logo from '../../static/usyd_logo.png';
+import kpmg_logo from '../../static/kpmg_logo.png';
+import b_inspiring_logo from '../../static/b_inspiring_logo.png';
+import Panel from '../../components/Panel';
+import { MiniCard } from '../../components/Card';
+import { PANEL_HEIGHT } from '.';
+
+import { BASE_UNIT, colors } from '../../utils/themes.jsx';
+
+const PanelWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap ${8 * BASE_UNIT}px;
+  color: ${colors.tropicalBlue};
+`;
+
+const Journey = () => (
+  <Panel height={PANEL_HEIGHT} backgroundColor={colors.dodgerBlue}>
+    <PanelWrapper>
+      <MiniCard title="University of Sydney" label="2013 - 2018">
+        <img src={usyd_logo} alt="" width={100} height={35} />
+      </MiniCard>
+      <MiniCard title="S4S Coaching" label="2013 - 2017">
+        <img src={s4s_logo} alt="" width={50} height={42} />
+      </MiniCard>
+      <MiniCard title="SMASH Inc." label="2014 - 2015">
+        <img src={smash_logo} alt="" width={100} height={20} />
+      </MiniCard>
+      <MiniCard title="B.Inspiring Inc." label="2015 - 2016">
+        <img
+          src={b_inspiring_logo}
+          alt=""
+          width={45}
+          height={45}
+          style={{ borderRadius: '100px' }}
+        />
+      </MiniCard>
+      <MiniCard title="KPMG" label="2016 - 2017">
+        <img src={kpmg_logo} alt="" width={100} height={42} />
+      </MiniCard>
+      <MiniCard title="Mathspace" label="2017 - Present">
+        <img src={mathspace_logo} alt="" width={45} height={36} />
+      </MiniCard>
+    </PanelWrapper>
+  </Panel>
+);
+
+export default Journey;
