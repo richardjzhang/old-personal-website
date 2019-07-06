@@ -14,7 +14,7 @@ import {
 import { urls } from '../../utils/urls.jsx';
 import logo from '../../static/personal_logo_transparent.png';
 
-export const PANEL_HEIGHT = '100vh';
+export const PANEL_MIN_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '35%';
 const MAIN_PANEL_WIDTH = '65%';
 
@@ -22,7 +22,6 @@ const LeftPanel = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   padding: ${8 * BASE_UNIT}px ${8 * BASE_UNIT}px ${20 * BASE_UNIT}px
     ${8 * BASE_UNIT}px;
   box-sizing: border-box;
@@ -98,12 +97,6 @@ const ButtonLink = styled.a`
 `;
 
 const PanelWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  position: relative;
   color: ${colors.tropicalBlue};
 `;
 
@@ -145,7 +138,11 @@ const Landing = () => {
         </TitleWrapper>
       </LeftPanel>
       <RightPanel>
-        <Panel height={PANEL_HEIGHT} backgroundColor={colors.outerSpace}>
+        <Panel
+          minHeight={PANEL_MIN_HEIGHT}
+          backgroundColor={colors.outerSpace}
+          isCentered
+        >
           <PanelWrapper>
             <ContentLink
               onClick={() =>
@@ -180,17 +177,23 @@ const Landing = () => {
         <div ref={journeyRef} />
         <Journey />
         <div ref={storiesRef} />
-        <Panel height={PANEL_HEIGHT} backgroundColor={colors.carribeanGreen}>
+        <Panel
+          minHeight={PANEL_MIN_HEIGHT}
+          backgroundColor={colors.carribeanGreen}
+        >
           <PanelWrapper>My stories coming soon...</PanelWrapper>
         </Panel>
         <div ref={creationsRef} />
-        <Panel height={PANEL_HEIGHT} backgroundColor={colors.mustard}>
+        <Panel minHeight={PANEL_MIN_HEIGHT} backgroundColor={colors.mustard}>
           <PanelWrapper style={{ color: colors.cloudBurst }}>
             My creations coming soon...
           </PanelWrapper>
         </Panel>
         <div ref={lessonsRef} />
-        <Panel height={PANEL_HEIGHT} backgroundColor={colors.cornflowerBlue}>
+        <Panel
+          minHeight={PANEL_MIN_HEIGHT}
+          backgroundColor={colors.cornflowerBlue}
+        >
           <PanelWrapper>My lessons coming soon...</PanelWrapper>
         </Panel>
       </RightPanel>
