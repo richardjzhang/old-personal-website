@@ -10,16 +10,25 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 type Props = {|
-  height: string,
+  minHeight: string,
   backgroundColor: string,
+  isCentered: boolean,
   children?: Node
 |};
 
-const Panel = ({ height, backgroundColor, children }: Props) => (
+const Panel = ({ minHeight, backgroundColor, isCentered, children }: Props) => (
   <Container
     style={{
-      height,
-      backgroundColor
+      minHeight,
+      backgroundColor,
+      ...(isCentered
+        ? {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column'
+          }
+        : {})
     }}
   >
     {children}

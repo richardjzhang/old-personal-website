@@ -8,19 +8,27 @@ import kpmg_logo from '../../static/kpmg_logo.png';
 import b_inspiring_logo from '../../static/b_inspiring_logo.png';
 import Panel from '../../components/Panel';
 import { MiniCard } from '../../components/Card';
-import { PANEL_HEIGHT } from '.';
+import { PANEL_MIN_HEIGHT } from '.';
 
-import { BASE_UNIT, colors } from '../../utils/themes.jsx';
+import { BASE_UNIT, breakPoints, colors } from '../../utils/themes.jsx';
 
 const PanelWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap ${8 * BASE_UNIT}px;
   color: ${colors.tropicalBlue};
+
+  @media (min-width: ${breakPoints.medium}px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const Journey = () => (
-  <Panel height={PANEL_HEIGHT} backgroundColor={colors.dodgerBlue}>
+  <Panel
+    minHeight={PANEL_MIN_HEIGHT}
+    backgroundColor={colors.dodgerBlue}
+    isCentered
+  >
     <PanelWrapper>
       <MiniCard title="University of Sydney" label="2013 - 2018">
         <img src={usyd_logo} alt="" width={100} height={35} />
