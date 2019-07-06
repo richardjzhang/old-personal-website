@@ -22,6 +22,7 @@ const LeftPanel = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
   padding: ${8 * BASE_UNIT}px ${8 * BASE_UNIT}px ${20 * BASE_UNIT}px
     ${8 * BASE_UNIT}px;
   box-sizing: border-box;
@@ -53,8 +54,8 @@ const TitleWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  width: 40%;
-  margin-bottom: ${8 * BASE_UNIT}px;
+  width: 50%;
+  margin-bottom: ${4 * BASE_UNIT}px;
   max-width: 200px;
   max-height: 200px;
 `;
@@ -97,7 +98,7 @@ const ButtonLink = styled.a`
 `;
 
 const PanelWrapper = styled.div`
-  color: ${colors.tropicalBlue};
+  color: ${colors.athensGrey};
 `;
 
 const ContentLink = styled.div`
