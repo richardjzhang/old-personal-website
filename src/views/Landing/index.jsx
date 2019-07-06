@@ -74,7 +74,8 @@ const Description = styled.div`
   color: ${colors.outerSpace};
 `;
 const Button = styled.div`
-  padding: ${4 * BASE_UNIT}px ${4 * BASE_UNIT}px;
+  display: flex;
+
   background-color: ${colors.pickledBluewood};
   width: 175px;
   margin-top: ${12 * BASE_UNIT}px;
@@ -92,8 +93,10 @@ const Button = styled.div`
 `;
 
 const ButtonLink = styled.a`
-  text-decoration: none;
+  padding: ${4 * BASE_UNIT}px ${4 * BASE_UNIT}px;
+  height: 100%;
   width: 100%;
+  text-decoration: none;
   color: ${colors.white};
 `;
 
