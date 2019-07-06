@@ -6,6 +6,7 @@ import {
   BASE_UNIT,
   borderRadius,
   boxShadow,
+  breakPoints,
   colors,
   fontSize,
   fontWeight
@@ -32,6 +33,12 @@ export const CardHeader = styled.div`
   font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
   color: ${colors.cloudBurst};
+
+  @media (max-width: ${breakPoints.medium}px) {
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 export const CardContent = styled.div`
@@ -46,6 +53,12 @@ export const CardContent = styled.div`
 // Mini Card
 const TitleWrapper = styled.div`
   margin-left: ${6 * BASE_UNIT}px;
+
+  @media (max-width: ${breakPoints.medium}px) {
+    text-align: center;
+    margin-left: 0;
+    margin-top: ${3 * BASE_UNIT}px;
+  }
 `;
 
 const Subtitle = styled.div`

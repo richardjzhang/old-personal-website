@@ -12,7 +12,7 @@ const Container = styled.div`
 type Props = {|
   minHeight: string,
   backgroundColor: string,
-  isCentered: boolean,
+  isCentered?: boolean,
   children?: Node
 |};
 
