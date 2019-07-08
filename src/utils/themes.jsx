@@ -23,6 +23,7 @@ export const colors = {
   vulcan: '#0D1E2A',
   dodgerBlue: '#3B80FE',
   waterLeaf: '#ABEDDF',
+  black: '#000000',
 
   // Greys
   cloudBurst: '#21374D',
