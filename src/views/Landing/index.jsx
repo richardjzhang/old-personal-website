@@ -13,6 +13,7 @@ import {
 } from '../../utils/themes.jsx';
 import { urls } from '../../utils/urls.jsx';
 import logo from '../../static/personal_logo_transparent.png';
+import background from '../../static/pedestrian_crossing.png';
 
 export const PANEL_MIN_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '35%';
@@ -93,7 +94,7 @@ const Button = styled.div`
 `;
 
 const ButtonLink = styled.a`
-  padding: ${4 * BASE_UNIT}px ${4 * BASE_UNIT}px;
+  padding: ${4 * BASE_UNIT}px;
   height: 100%;
   width: 100%;
   text-decoration: none;
@@ -104,8 +105,32 @@ const PanelWrapper = styled.div`
   color: ${colors.athensGrey};
 `;
 
+const ContentsWrapper = styled.div`
+  display: inherit;
+  flex-direction: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  width: 100%;
+  height: 100vh;
+  background-image: url(${background});
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  background-position: center center;
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast;
+  text-align: center;
+`;
+
+const Contents = styled.div`
+  background-color: ${colors.black};
+  opacity: 0.95;
+  padding: ${12 * BASE_UNIT}px;
+  border-radius: ${borderRadius.regular}px;
+`;
+
 const ContentLink = styled.div`
-  margin-bottom: ${8 * BASE_UNIT}px;
   cursor: pointer;
   text-transform: uppercase;
   font-size: ${fontSize.xlarge}px;
@@ -115,6 +140,10 @@ const ContentLink = styled.div`
   &:hover {
     color: ${colors.tropicalBlue};
     transition: background-color 0.5s ease;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: ${8 * BASE_UNIT}px;
   }
 `;
 
@@ -147,36 +176,38 @@ const Landing = () => {
           backgroundColor={colors.outerSpace}
           isCentered
         >
-          <PanelWrapper>
-            <ContentLink
-              onClick={() =>
-                journeyRef.current != null && handleTransition(journeyRef)
-              }
-            >
-              My Journey
-            </ContentLink>
-            <ContentLink
-              onClick={() =>
-                storiesRef.current != null && handleTransition(storiesRef)
-              }
-            >
-              My Stories
-            </ContentLink>
-            <ContentLink
-              onClick={() =>
-                creationsRef.current != null && handleTransition(creationsRef)
-              }
-            >
-              My Creations
-            </ContentLink>
-            <ContentLink
-              onClick={() =>
-                lessonsRef.current != null && handleTransition(lessonsRef)
-              }
-            >
-              My Lessons
-            </ContentLink>
-          </PanelWrapper>
+          <ContentsWrapper>
+            <Contents>
+              <ContentLink
+                onClick={() =>
+                  journeyRef.current != null && handleTransition(journeyRef)
+                }
+              >
+                My Journey
+              </ContentLink>
+              <ContentLink
+                onClick={() =>
+                  storiesRef.current != null && handleTransition(storiesRef)
+                }
+              >
+                My Stories
+              </ContentLink>
+              <ContentLink
+                onClick={() =>
+                  creationsRef.current != null && handleTransition(creationsRef)
+                }
+              >
+                My Creations
+              </ContentLink>
+              <ContentLink
+                onClick={() =>
+                  lessonsRef.current != null && handleTransition(lessonsRef)
+                }
+              >
+                My Lessons
+              </ContentLink>
+            </Contents>
+          </ContentsWrapper>
         </Panel>
         <div ref={journeyRef} />
         <Journey />
@@ -184,11 +215,16 @@ const Landing = () => {
         <Panel
           minHeight={PANEL_MIN_HEIGHT}
           backgroundColor={colors.carribeanGreen}
+          isCentered
         >
           <PanelWrapper>My stories coming soon...</PanelWrapper>
         </Panel>
         <div ref={creationsRef} />
-        <Panel minHeight={PANEL_MIN_HEIGHT} backgroundColor={colors.mustard}>
+        <Panel
+          minHeight={PANEL_MIN_HEIGHT}
+          backgroundColor={colors.mustard}
+          isCentered
+        >
           <PanelWrapper style={{ color: colors.cloudBurst }}>
             My creations coming soon...
           </PanelWrapper>
@@ -197,6 +233,7 @@ const Landing = () => {
         <Panel
           minHeight={PANEL_MIN_HEIGHT}
           backgroundColor={colors.cornflowerBlue}
+          isCentered
         >
           <PanelWrapper>My lessons coming soon...</PanelWrapper>
         </Panel>

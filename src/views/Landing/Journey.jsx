@@ -28,6 +28,10 @@ const Journey = () => (
     minHeight={PANEL_MIN_HEIGHT}
     backgroundColor={colors.dodgerBlue}
     isCentered
+    paddingTop={`${14 * BASE_UNIT}px`}
+    paddingRight={`${14 * BASE_UNIT}px`}
+    paddingBottom={`${14 * BASE_UNIT}px`}
+    paddingLeft={`${14 * BASE_UNIT}px`}
   >
     <PanelWrapper>
       <MiniCard title="University of Sydney" label="2013 - 2018">

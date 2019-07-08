@@ -2,25 +2,39 @@
 import React, { type Node } from 'react';
 import styled from 'styled-components';
 
-import { BASE_UNIT } from '../../utils/themes.jsx';
-
 const Container = styled.div`
-  padding: ${14 * BASE_UNIT}px;
   flex: 1;
   box-sizing: border-box;
 `;
 type Props = {|
   minHeight: string,
   backgroundColor: string,
+  paddingTop?: string,
+  paddingRight?: string,
+  paddingBottom?: string,
+  paddingLeft?: string,
   isCentered?: boolean,
   children?: Node
 |};
 
-const Panel = ({ minHeight, backgroundColor, isCentered, children }: Props) => (
+const Panel = ({
+  minHeight,
+  backgroundColor,
+  paddingTop,
+  paddingRight,
+  paddingBottom,
+  paddingLeft,
+  isCentered,
+  children
+}: Props) => (
   <Container
     style={{
       minHeight,
       backgroundColor,
+      paddingTop,
+      paddingRight,
+      paddingBottom,
+      paddingLeft,
       ...(isCentered
         ? {
             display: 'flex',
