@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import Fade from 'react-reveal/Fade';
 import Journey from './Journey';
 import Panel from '../../components/Panel';
 import {
@@ -13,7 +14,7 @@ import {
 } from '../../utils/themes.jsx';
 import { urls } from '../../utils/urls.jsx';
 import logo from '../../static/personal_logo_transparent.png';
-import background from '../../static/pedestrian_crossing.png';
+import background from '../../static/abstract_background_calm_water.png';
 
 export const PANEL_MIN_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '35%';
@@ -55,7 +56,7 @@ const TitleWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  width: 50%;
+  width: 75%;
   margin-bottom: ${4 * BASE_UNIT}px;
   max-width: 200px;
   max-height: 200px;
@@ -124,21 +125,20 @@ const ContentsWrapper = styled.div`
 `;
 
 const Contents = styled.div`
-  background-color: ${colors.black};
-  opacity: 0.95;
   padding: ${12 * BASE_UNIT}px;
+  border: ${2 * BASE_UNIT}px solid ${colors.outerSpace};
   border-radius: ${borderRadius.regular}px;
+  font-size: ${fontSize.xlarge}px;
+  font-weight: ${fontWeight.semibold};
+  color: ${colors.outerSpace};
 `;
 
 const ContentLink = styled.div`
   cursor: pointer;
   text-transform: uppercase;
-  font-size: ${fontSize.xlarge}px;
-  font-weight: ${fontWeight.semibold};
-  color: ${colors.white};
 
   &:hover {
-    color: ${colors.tropicalBlue};
+    color: ${colors.black};
     transition: background-color 0.5s ease;
   }
 
@@ -160,14 +160,20 @@ const Landing = () => {
     <React.Fragment>
       <LeftPanel>
         <TitleWrapper>
-          <Image src={logo} alt="" />
-          <Title>Richard Zhang</Title>
-          <Description>
-            Crafting code that executes people's dream's into reality
-          </Description>
-          <Button>
-            <ButtonLink href={urls.mailTo}>Get in touch!</ButtonLink>
-          </Button>
+          <Fade top>
+            <Image src={logo} alt="" />
+          </Fade>
+          <Fade left>
+            <Title>Richard Zhang</Title>
+            <Description>
+              Crafting code that executes people's dream's into reality
+            </Description>
+          </Fade>
+          <Fade bottom>
+            <Button>
+              <ButtonLink href={urls.mailTo}>Get in touch!</ButtonLink>
+            </Button>
+          </Fade>
         </TitleWrapper>
       </LeftPanel>
       <RightPanel>
@@ -177,36 +183,39 @@ const Landing = () => {
           isCentered
         >
           <ContentsWrapper>
-            <Contents>
-              <ContentLink
-                onClick={() =>
-                  journeyRef.current != null && handleTransition(journeyRef)
-                }
-              >
-                My Journey
-              </ContentLink>
-              <ContentLink
-                onClick={() =>
-                  storiesRef.current != null && handleTransition(storiesRef)
-                }
-              >
-                My Stories
-              </ContentLink>
-              <ContentLink
-                onClick={() =>
-                  creationsRef.current != null && handleTransition(creationsRef)
-                }
-              >
-                My Creations
-              </ContentLink>
-              <ContentLink
-                onClick={() =>
-                  lessonsRef.current != null && handleTransition(lessonsRef)
-                }
-              >
-                My Lessons
-              </ContentLink>
-            </Contents>
+            <Fade bottom>
+              <Contents>
+                <ContentLink
+                  onClick={() =>
+                    journeyRef.current != null && handleTransition(journeyRef)
+                  }
+                >
+                  My Journey
+                </ContentLink>
+                <ContentLink
+                  onClick={() =>
+                    storiesRef.current != null && handleTransition(storiesRef)
+                  }
+                >
+                  My Stories
+                </ContentLink>
+                <ContentLink
+                  onClick={() =>
+                    creationsRef.current != null &&
+                    handleTransition(creationsRef)
+                  }
+                >
+                  My Creations
+                </ContentLink>
+                <ContentLink
+                  onClick={() =>
+                    lessonsRef.current != null && handleTransition(lessonsRef)
+                  }
+                >
+                  My Lessons
+                </ContentLink>
+              </Contents>
+            </Fade>
           </ContentsWrapper>
         </Panel>
         <div ref={journeyRef} />
