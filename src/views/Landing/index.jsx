@@ -160,7 +160,7 @@ const Landing = () => {
     <React.Fragment>
       <LeftPanel>
         <TitleWrapper>
-          <Fade top>
+          <Fade>
             <Image src={logo} alt="" />
           </Fade>
           <Fade left>
