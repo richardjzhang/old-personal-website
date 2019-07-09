@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Flip from 'react-reveal/Flip';
 import mathspace_logo from '../../static/mathspace_logo.png';
 import s4s_logo from '../../static/s4s_logo.png';
 import smash_logo from '../../static/smash_logo.png';
@@ -34,30 +35,42 @@ const Journey = () => (
     paddingLeft={`${14 * BASE_UNIT}px`}
   >
     <PanelWrapper>
-      <MiniCard title="University of Sydney" label="2013 - 2018">
-        <img src={usyd_logo} alt="" width={100} height={35} />
-      </MiniCard>
-      <MiniCard title="S4S Coaching" label="2013 - 2017">
-        <img src={s4s_logo} alt="" width={50} height={42} />
-      </MiniCard>
-      <MiniCard title="SMASH Inc." label="2014 - 2015">
-        <img src={smash_logo} alt="" width={100} height={20} />
-      </MiniCard>
-      <MiniCard title="B.Inspiring Inc." label="2015 - 2016">
-        <img
-          src={b_inspiring_logo}
-          alt=""
-          width={45}
-          height={45}
-          style={{ borderRadius: '100px' }}
-        />
-      </MiniCard>
-      <MiniCard title="KPMG" label="2016 - 2017">
-        <img src={kpmg_logo} alt="" width={100} height={42} />
-      </MiniCard>
-      <MiniCard title="Mathspace" label="2017 - Present">
-        <img src={mathspace_logo} alt="" width={45} height={36} />
-      </MiniCard>
+      <Flip left>
+        <MiniCard title="University of Sydney" label="2013 - 2018">
+          <img src={usyd_logo} alt="" width={100} height={35} />
+        </MiniCard>
+      </Flip>
+      <Flip right>
+        <MiniCard title="S4S Coaching" label="2013 - 2017">
+          <img src={s4s_logo} alt="" width={50} height={42} />
+        </MiniCard>
+      </Flip>
+      <Flip left>
+        <MiniCard title="SMASH Inc." label="2014 - 2015">
+          <img src={smash_logo} alt="" width={100} height={20} />
+        </MiniCard>
+      </Flip>
+      <Flip right>
+        <MiniCard title="B.Inspiring Inc." label="2015 - 2016">
+          <img
+            src={b_inspiring_logo}
+            alt=""
+            width={45}
+            height={45}
+            style={{ borderRadius: '100px' }}
+          />
+        </MiniCard>
+      </Flip>
+      <Flip left>
+        <MiniCard title="KPMG" label="2016 - 2017">
+          <img src={kpmg_logo} alt="" width={100} height={42} />
+        </MiniCard>
+      </Flip>
+      <Flip right>
+        <MiniCard title="Mathspace" label="2017 - Present">
+          <img src={mathspace_logo} alt="" width={45} height={36} />
+        </MiniCard>
+      </Flip>
     </PanelWrapper>
   </Panel>
 );
