@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import Journey from './Journey';
+import FixedHeader from './FixedHeader';
 import Panel from '../../components/Panel';
 import {
   BASE_UNIT,
@@ -19,6 +20,28 @@ import background from '../../static/abstract_background_calm_water.png';
 export const PANEL_MIN_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '35%';
 const MAIN_PANEL_WIDTH = '65%';
+const HEADER_OPTIONS = [
+  {
+    title: 'Home',
+    backgroundColor: colors.white
+  },
+  {
+    title: 'Journey',
+    backgroundColor: colors.dodgerBlue
+  },
+  {
+    title: 'Stories',
+    backgroundColor: colors.carribeanGreen
+  },
+  {
+    title: 'Creations',
+    backgroundColor: colors.mustard
+  },
+  {
+    title: 'Lessons',
+    backgroundColor: colors.cornflowerBlue
+  }
+];
 
 const LeftPanel = styled.div`
   display: flex;
@@ -121,7 +144,6 @@ const ContentsWrapper = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   image-rendering: -webkit-optimize-contrast;
-  text-align: center;
 `;
 
 const Contents = styled.div`
@@ -160,16 +182,16 @@ const Landing = () => {
     <React.Fragment>
       <LeftPanel>
         <TitleWrapper>
-          <Fade delay={500}>
+          <Fade delay={300}>
             <Image src={logo} alt="" />
           </Fade>
-          <Fade left delay={750}>
+          <Fade left delay={500}>
             <Title>Richard Zhang</Title>
             <Description>
               Crafting code that executes people's dream's into reality
             </Description>
           </Fade>
-          <Fade bottom delay={750}>
+          <Fade bottom delay={500}>
             <Button>
               <ButtonLink href={urls.mailTo}>Get in touch!</ButtonLink>
             </Button>
@@ -183,7 +205,7 @@ const Landing = () => {
           isCentered
         >
           <ContentsWrapper>
-            <Fade bottom delay={750}>
+            <Fade bottom delay={500}>
               <Contents>
                 <ContentLink
                   onClick={() =>
