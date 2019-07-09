@@ -13,7 +13,7 @@ import {
 } from '../../utils/themes.jsx';
 import { urls } from '../../utils/urls.jsx';
 import logo from '../../static/personal_logo_transparent.png';
-import background from '../../static/pedestrian_crossing.png';
+import background from '../../static/abstract_background_calm_water.png';
 
 export const PANEL_MIN_HEIGHT = '100vh';
 const SIDE_PANEL_WIDTH = '35%';
@@ -125,17 +125,17 @@ const ContentsWrapper = styled.div`
 
 const Contents = styled.div`
   background-color: ${colors.black};
-  opacity: 0.95;
+  opacity: 0.65;
   padding: ${12 * BASE_UNIT}px;
   border-radius: ${borderRadius.regular}px;
+  font-size: ${fontSize.xlarge}px;
+  font-weight: ${fontWeight.semibold};
+  color: ${colors.white};
 `;
 
 const ContentLink = styled.div`
   cursor: pointer;
   text-transform: uppercase;
-  font-size: ${fontSize.xlarge}px;
-  font-weight: ${fontWeight.semibold};
-  color: ${colors.white};
 
   &:hover {
     color: ${colors.tropicalBlue};
