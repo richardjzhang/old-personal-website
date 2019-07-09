@@ -12,7 +12,7 @@ import {
   fontWeight
 } from '../../utils/themes.jsx';
 
-export const Card = styled.div`
+const MiniCardStyles = styled.div`
   display: flex;
   padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
   background-color: ${colors.white};
@@ -25,9 +25,13 @@ export const Card = styled.div`
     background-color: ${colors.porcelain};
     transition: background-color 0.5s ease;
   }
+
+  @media (max-width: ${breakPoints.medium}px) {
+    min-height: 100px;
+  }
 `;
 
-export const CardHeader = styled.div`
+const MiniCardHeader = styled.div`
   display: flex;
   align-items: center;
   font-size: ${fontSize.medium}px;
@@ -41,17 +45,7 @@ export const CardHeader = styled.div`
   }
 `;
 
-export const CardContent = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: ${4 * BASE_UNIT}px;
-  font-size: ${fontSize.normal}px;
-  color: ${colors.cloudBurst};
-  text-overflow: ellipsis;
-`;
-
-// Mini Card
-const TitleWrapper = styled.div`
+const MiniCardContent = styled.div`
   margin-left: ${6 * BASE_UNIT}px;
 
   @media (max-width: ${breakPoints.medium}px) {
@@ -61,7 +55,7 @@ const TitleWrapper = styled.div`
   }
 `;
 
-const Subtitle = styled.div`
+const MiniCardLabel = styled.div`
   font-size: ${fontSize.normal}px;
   font-weight: ${fontWeight.regular};
   color: ${colors.hitGray};
@@ -75,12 +69,21 @@ type MiniCardProps = {|
 |};
 
 export const MiniCard = ({ title, label, children }: MiniCardProps) => (
-  <Card>
-    <CardHeader>
+  <MiniCardStyles>
+    <MiniCardHeader>
       {children}
-      <TitleWrapper>
-        {title} <Subtitle>{label}</Subtitle>
-      </TitleWrapper>
-    </CardHeader>
-  </Card>
+      <MiniCardContent>
+        {title} <MiniCardLabel>{label}</MiniCardLabel>
+      </MiniCardContent>
+    </MiniCardHeader>
+  </MiniCardStyles>
 );
+
+const CardContent = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: ${4 * BASE_UNIT}px;
+  font-size: ${fontSize.normal}px;
+  color: ${colors.cloudBurst};
+  text-overflow: ellipsis;
+`;

@@ -35,7 +35,7 @@ const Journey = () => (
     paddingLeft={`${14 * BASE_UNIT}px`}
   >
     <PanelWrapper>
-      <Fade delay={200}>
+      <Fade delay={400}>
         <MiniCard title="University of Sydney" label="2013 - 2018">
           <img src={usyd_logo} alt="" width={100} height={35} />
         </MiniCard>
@@ -45,12 +45,12 @@ const Journey = () => (
           <img src={s4s_logo} alt="" width={50} height={42} />
         </MiniCard>
       </Fade>
-      <Fade delay={600}>
+      <Fade delay={400}>
         <MiniCard title="SMASH Inc." label="2014 - 2015">
           <img src={smash_logo} alt="" width={100} height={20} />
         </MiniCard>
       </Fade>
-      <Fade delay={800}>
+      <Fade delay={400}>
         <MiniCard title="B.Inspiring Inc." label="2015 - 2016">
           <img
             src={b_inspiring_logo}
@@ -61,12 +61,12 @@ const Journey = () => (
           />
         </MiniCard>
       </Fade>
-      <Fade delay={1000}>
+      <Fade delay={400}>
         <MiniCard title="KPMG" label="2016 - 2017">
           <img src={kpmg_logo} alt="" width={100} height={42} />
         </MiniCard>
       </Fade>
-      <Fade delay={1200}>
+      <Fade delay={400}>
         <MiniCard title="Mathspace" label="2017 - Present">
           <img src={mathspace_logo} alt="" width={45} height={36} />
         </MiniCard>
