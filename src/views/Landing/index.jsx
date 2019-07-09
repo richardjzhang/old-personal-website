@@ -160,16 +160,16 @@ const Landing = () => {
     <React.Fragment>
       <LeftPanel>
         <TitleWrapper>
-          <Fade>
+          <Fade delay={500}>
             <Image src={logo} alt="" />
           </Fade>
-          <Fade left>
+          <Fade left delay={750}>
             <Title>Richard Zhang</Title>
             <Description>
               Crafting code that executes people's dream's into reality
             </Description>
           </Fade>
-          <Fade bottom>
+          <Fade bottom delay={750}>
             <Button>
               <ButtonLink href={urls.mailTo}>Get in touch!</ButtonLink>
             </Button>
@@ -183,7 +183,7 @@ const Landing = () => {
           isCentered
         >
           <ContentsWrapper>
-            <Fade bottom>
+            <Fade bottom delay={750}>
               <Contents>
                 <ContentLink
                   onClick={() =>
