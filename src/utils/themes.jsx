@@ -54,7 +54,8 @@ export const colors = {
 };
 
 export const hoverColors = {
-  cornflowerBlue: '#3435d8'
+  cornflowerBlue: '#3435d8',
+  mountainMeadow: '#16a085'
 };
 
 export const breakPoints = {

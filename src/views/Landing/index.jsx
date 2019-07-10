@@ -7,6 +7,7 @@ import FixedHeader from './FixedHeader';
 import Panel from '../../components/Panel';
 import {
   BASE_UNIT,
+  boxShadow,
   borderRadius,
   breakPoints,
   colors,
@@ -98,9 +99,9 @@ const Description = styled.div`
   font-weight: ${fontWeight.light};
   color: ${colors.outerSpace};
 `;
+
 const Button = styled.div`
   display: flex;
-
   background-color: ${colors.pickledBluewood};
   width: 175px;
   margin-top: ${12 * BASE_UNIT}px;
@@ -110,9 +111,10 @@ const Button = styled.div`
   border-radius: ${borderRadius.circle}px;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  box-shadow: ${boxShadow};
 
   &:hover {
-    background-color: ${colors.cloudBurst};
+    background-color: ${colors.outerSpace};
     transition: background-color 0.5s ease;
   }
 `;
