@@ -1,13 +1,23 @@
 import React from 'react';
-import { Card } from '../../../components/Card';
+import Fade from 'react-reveal/Fade';
+import { FADE_DELAY } from '.';
+import { MiniCard, Card } from '../../../components/Card';
 import mathspace_logo from '../../../static/mathspace_logo.png';
 
-export default () => (
-  <Card
-    title="Mathspace"
-    label="2017 - Present"
-    image={<img src={mathspace_logo} alt="" width={45} height={36} />}
-  >
+const TITLE = 'Mathspace';
+const LABEL = '2017 - Present';
+const Image = () => <img src={mathspace_logo} alt="" width={45} height={36} />;
+
+export const MathspaceMiniCard = () => (
+  <Fade delay={FADE_DELAY}>
+    <MiniCard title={TITLE} label={LABEL}>
+      <Image />
+    </MiniCard>
+  </Fade>
+);
+
+export const MathspaceCard = () => (
+  <Card title={TITLE} label={LABEL} image={<Image />}>
     Mathspace is on a mission to take the boring one-size-fits-all mathematics
     textbook and turn it into a personalised interactive journey, helping
     students learn mathematics one step at a time. My role is to transform our
