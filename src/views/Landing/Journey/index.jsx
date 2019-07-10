@@ -7,9 +7,9 @@ import {
   UniversityOfSydneyCard
 } from './UniversityOfSydney';
 import { S4SMiniCard, S4SCard } from './S4S';
-import { SMASHMiniCard, SMASHCard } from './SMASH';
+import { SMASHMiniCard, SMASHCard } from './Smash';
 import { BInspiringMiniCard, BInspiringCard } from './BInspiring';
-import { KPMGMiniCard, KPMGCard } from './KPMG';
+import { KPMGMiniCard, KPMGCard } from './Kpmg';
 import { MathspaceMiniCard, MathspaceCard } from './Mathspace';
 import { PANEL_MIN_HEIGHT } from '../.';
 import {
