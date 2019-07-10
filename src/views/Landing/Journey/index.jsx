@@ -6,11 +6,11 @@ import {
   UniversityOfSydneyMiniCard,
   UniversityOfSydneyCard
 } from './UniversityOfSydney';
-import { S4SMiniCard, S4SCard } from './S4S.jsx';
-import { SMASHMiniCard, SMASHCard } from './Smash.jsx';
-import { BInspiringMiniCard, BInspiringCard } from './BInspiring.jsx';
-import { KPMGMiniCard, KPMGCard } from './Kpmg.jsx';
-import { MathspaceMiniCard, MathspaceCard } from './Mathspace.jsx';
+import { S4SMiniCard, S4SCard } from './S4S';
+import { SMASHMiniCard, SMASHCard } from './smash';
+import { BInspiringMiniCard, BInspiringCard } from './BInspiring';
+import { KPMGMiniCard, KPMGCard } from './kpmg';
+import { MathspaceMiniCard, MathspaceCard } from './Mathspace';
 import { PANEL_MIN_HEIGHT } from '../.';
 import {
   BASE_UNIT,
