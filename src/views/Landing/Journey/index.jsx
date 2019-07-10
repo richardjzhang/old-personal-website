@@ -5,12 +5,12 @@ import Panel from '../../../components/Panel';
 import {
   UniversityOfSydneyMiniCard,
   UniversityOfSydneyCard
-} from './UniversityOfSydney';
-import { S4SMiniCard, S4SCard } from './S4S';
-import { SMASHMiniCard, SMASHCard } from './smash';
-import { BInspiringMiniCard, BInspiringCard } from './BInspiring';
-import { KPMGMiniCard, KPMGCard } from './kpmg';
-import { MathspaceMiniCard, MathspaceCard } from './Mathspace';
+} from './UniversityOfSydneyCards';
+import { S4SMiniCard, S4SCard } from './S4SCards';
+import { SMASHMiniCard, SMASHCard } from './SmashCards';
+import { BInspiringMiniCard, BInspiringCard } from './BInspiringCards';
+import { KPMGMiniCard, KPMGCard } from './KpmgCards';
+import { MathspaceMiniCard, MathspaceCard } from './MathspaceCards';
 import { PANEL_MIN_HEIGHT } from '../.';
 import {
   BASE_UNIT,
