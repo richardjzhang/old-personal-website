@@ -8,21 +8,27 @@ const TITLE = 'S4S Coaching';
 const LABEL = '2013 - 2017';
 const Image = () => <img src={s4s_logo} alt="" width={50} height={42} />;
 
-export const S4SMiniCard = () => (
+type MiniCardProps = {|
+  onClick: () => void
+|};
+
+export const S4SMiniCard = ({ onClick }: MiniCardProps) => (
   <Fade delay={FADE_DELAY}>
-    <MiniCard title={TITLE} label={LABEL}>
+    <MiniCard title={TITLE} label={LABEL} onClick={onClick}>
       <Image />
     </MiniCard>
   </Fade>
 );
 
 export const S4SCard = () => (
-  <Card title={TITLE} label={LABEL} image={<Image />}>
-    At S4S, we help students analyse their mistakes from previous exams and
-    assignments before developing the right strategies to help them improve. As
-    a tutor, this approach to learning helped my students reach their full
-    learning potential. In addition to tutoring, I was also responsible for
-    managing tutors at our Castle Hill Centre - ensuring that all tutors were on
-    time to classes, and teaching to the S4S standard.
-  </Card>
+  <Fade delay={FADE_DELAY}>
+    <Card title={TITLE} label={LABEL} image={<Image />}>
+      At S4S, we help students analyse their mistakes from previous exams and
+      assignments before developing the right strategies to help them improve.
+      As a tutor, this approach to learning helped my students reach their full
+      learning potential. In addition to tutoring, I was also responsible for
+      managing tutors at our Castle Hill Centre - ensuring that all tutors were
+      on time to classes, and teaching to the S4S standard.
+    </Card>
+  </Fade>
 );

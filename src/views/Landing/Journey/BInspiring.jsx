@@ -16,22 +16,29 @@ const Image = () => (
   />
 );
 
-export const BInspiringMiniCard = () => (
+type MiniCardProps = {|
+  onClick: () => void
+|};
+
+export const BInspiringMiniCard = ({ onClick }: MiniCardProps) => (
   <Fade delay={FADE_DELAY}>
-    <MiniCard title={TITLE} label={LABEL}>
+    <MiniCard title={TITLE} label={LABEL} onClick={onClick}>
       <Image />
     </MiniCard>
   </Fade>
 );
 
 export const BInspiringCard = () => (
-  <Card title={TITLE} label={LABEL} image={<Image />}>
-    B.Inspiring Incorporated is a not for profit organisation that aims to
-    inspire and empower Sydney's youth to use their skills and talents to create
-    and sustain positive change in their communities. During my time here, I was
-    given the opportunity to develop and run what would eventually become the
-    STEM and Leadership conference. Students who attend this conference are
-    given exposure to industry and academic professionals in the STEM field, and
-    hone their leadership skills through workshops and pitching sessions.
-  </Card>
+  <Fade delay={FADE_DELAY}>
+    <Card title={TITLE} label={LABEL} image={<Image />}>
+      B.Inspiring Incorporated is a not for profit organisation that aims to
+      inspire and empower Sydney's youth to use their skills and talents to
+      create and sustain positive change in their communities. During my time
+      here, I was given the opportunity to develop and run what would eventually
+      become the STEM and Leadership conference. Students who attend this
+      conference are given exposure to industry and academic professionals in
+      the STEM field, and hone their leadership skills through workshops and
+      pitching sessions.
+    </Card>
+  </Fade>
 );

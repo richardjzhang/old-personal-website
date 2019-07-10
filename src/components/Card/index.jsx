@@ -59,17 +59,23 @@ const CardLabel = styled.div`
   font-size: ${fontSize.normal}px;
   font-weight: ${fontWeight.regular};
   color: ${colors.hitGray};
-  margin-top: ${BASE_UNIT}px;
+  margin-top: ${2 * BASE_UNIT}px;
 `;
 
 type MiniCardProps = {|
   title: string,
   label: string,
+  onClick?: () => void,
   children: Node
 |};
 
-export const MiniCard = ({ title, label, children }: MiniCardProps) => (
-  <MiniCardStyles>
+export const MiniCard = ({
+  title,
+  label,
+  onClick,
+  children
+}: MiniCardProps) => (
+  <MiniCardStyles onClick={onClick}>
     <MiniCardHeader>
       {children}
       <MiniCardContent>
@@ -83,12 +89,13 @@ const CardStyles = styled.div`
   background-color: ${colors.white};
   border-radius: ${borderRadius.regular}px;
   box-shadow: ${boxShadow};
-  flex: 1;
-  width: 100%;
 `;
+
 const CardHeaderStyles = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
   padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
   border-bottom: 1px solid ${colors.iron};
   font-size: ${fontSize.medium}px;
@@ -97,13 +104,13 @@ const CardHeaderStyles = styled.div`
 `;
 
 const CardTitleWrapper = styled.div`
-  margin-left: ${6 * BASE_UNIT}px;
+  text-align: center;
+  margin-top: ${3 * BASE_UNIT}px;
 `;
 
 const CardContentStyles = styled.div`
   display: flex;
-  margin-top: ${4 * BASE_UNIT}px;
-  padding: ${4 * BASE_UNIT}px ${8 * BASE_UNIT}px ${6 * BASE_UNIT}px;
+  padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
   font-size: ${fontSize.normal}px;
   color: ${colors.cloudBurst};
   text-overflow: ellipsis;
