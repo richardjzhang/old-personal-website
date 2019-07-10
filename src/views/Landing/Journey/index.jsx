@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
-import mathspace_logo from '../../static/mathspace_logo.png';
-import s4s_logo from '../../static/s4s_logo.png';
-import smash_logo from '../../static/smash_logo.png';
-import usyd_logo from '../../static/usyd_logo.png';
-import kpmg_logo from '../../static/kpmg_logo.png';
-import b_inspiring_logo from '../../static/b_inspiring_logo.png';
-import Panel from '../../components/Panel';
-import { MiniCard } from '../../components/Card';
-import { PANEL_MIN_HEIGHT } from '.';
+import mathspace_logo from '../../../static/mathspace_logo.png';
+import s4s_logo from '../../../static/s4s_logo.png';
+import smash_logo from '../../../static/smash_logo.png';
+import usyd_logo from '../../../static/usyd_logo.png';
+import kpmg_logo from '../../../static/kpmg_logo.png';
+import b_inspiring_logo from '../../../static/b_inspiring_logo.png';
+import Panel from '../../../components/Panel';
+import MathspaceCard from './MathspaceCard';
+import { MiniCard } from '../../../components/Card';
+import { PANEL_MIN_HEIGHT } from '../.';
 
-import { BASE_UNIT, breakPoints, colors } from '../../utils/themes.jsx';
+import { BASE_UNIT, breakPoints, colors } from '../../../utils/themes.jsx';
 
 const PanelWrapper = styled.div`
   display: grid;
