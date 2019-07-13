@@ -109,7 +109,6 @@ const CardTitleWrapper = styled.div`
 `;
 
 const CardContentStyles = styled.div`
-  display: flex;
   padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
   font-size: ${fontSize.normal}px;
   color: ${colors.cloudBurst};

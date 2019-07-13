@@ -5,6 +5,7 @@ import { MiniCard, Card } from '../../../components/Card';
 import b_inspiring_logo from '../../../static/b_inspiring_logo.png';
 
 const TITLE = 'B.Inspiring Inc.';
+const ROLE = 'Conference Leader';
 const LABEL = '2015 - 2016';
 const Image = () => (
   <img
@@ -30,15 +31,19 @@ export const BInspiringMiniCard = ({ onClick }: MiniCardProps) => (
 
 export const BInspiringCard = () => (
   <Fade delay={FADE_DELAY}>
-    <Card title={TITLE} label={LABEL} image={<Image />}>
-      B.Inspiring Incorporated is a not for profit organisation that aims to
-      inspire and empower Sydney's youth to use their skills and talents to
-      create and sustain positive change in their communities. During my time
-      here, I was given the opportunity to develop and run what would eventually
-      become the STEM and Leadership conference. Students who attend this
-      conference are given exposure to industry and academic professionals in
-      the STEM field, and hone their leadership skills through workshops and
-      pitching sessions.
+    <Card title={ROLE} label={LABEL} image={<Image />}>
+      <p>
+        B.Inspiring Incorporated is a not for profit organisation that aims to
+        Inspire young people with confidence to use their passions, skills and
+        talents to make a positive impact in their communities.
+      </p>
+      <p>
+        During my time here, I was given the opportunity to develop and run what
+        would eventually become the STEM and Leadership conference. Students who
+        attend this conference are given the opportunity to interact with
+        industry and academic professionals in the STEM field, and hone their
+        leadership skills through workshops and pitching sessions.
+      </p>
     </Card>
   </Fade>
 );

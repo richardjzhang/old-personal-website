@@ -243,7 +243,11 @@ const Landing = () => {
           </ContentsWrapper>
         </Panel>
         <div ref={journeyRef} />
-        <Journey />
+        <Journey
+          setJourneyRef={() =>
+            journeyRef.current != null && handleTransition(journeyRef)
+          }
+        />
         <div ref={storiesRef} />
         <Panel
           minHeight={PANEL_MIN_HEIGHT}

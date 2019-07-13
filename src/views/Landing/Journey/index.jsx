@@ -58,8 +58,16 @@ const Button = styled.div`
   }
 `;
 
-const Journey = () => {
+type Props = {|
+  setJourneyRef: () => void
+|};
+
+const Journey = ({ setJourneyRef }: Props) => {
   const [isCardOpen, setCardOpen] = useState(null);
+  const cardAction = (card: ?string) => {
+    setCardOpen(card);
+    setJourneyRef();
+  };
   return (
     <Panel
       minHeight={PANEL_MIN_HEIGHT}
@@ -72,25 +80,25 @@ const Journey = () => {
     >
       {isCardOpen == null && (
         <MiniPanelWrapper>
+          <MathspaceMiniCard onClick={() => cardAction('Mathspace')} />
           <UniversityOfSydneyMiniCard
-            onClick={() => setCardOpen('University of Sydney')}
+            onClick={() => cardAction('University of Sydney')}
           />
-          <S4SMiniCard onClick={() => setCardOpen('S4S')} />
-          <SMASHMiniCard onClick={() => setCardOpen('SMASH')} />
-          <BInspiringMiniCard onClick={() => setCardOpen('B.Inspiring')} />
-          <KPMGMiniCard onClick={() => setCardOpen('KPMG')} />
-          <MathspaceMiniCard onClick={() => setCardOpen('Mathspace')} />
+          <S4SMiniCard onClick={() => cardAction('S4S')} />
+          <KPMGMiniCard onClick={() => cardAction('KPMG')} />
+          <BInspiringMiniCard onClick={() => cardAction('B.Inspiring')} />
+          <SMASHMiniCard onClick={() => cardAction('SMASH')} />
         </MiniPanelWrapper>
       )}
+      {isCardOpen === 'Mathspace' && <MathspaceCard />}
       {isCardOpen === 'University of Sydney' && <UniversityOfSydneyCard />}
       {isCardOpen === 'S4S' && <S4SCard />}
-      {isCardOpen === 'SMASH' && <SMASHCard />}
-      {isCardOpen === 'B.Inspiring' && <BInspiringCard />}
       {isCardOpen === 'KPMG' && <KPMGCard />}
-      {isCardOpen === 'Mathspace' && <MathspaceCard />}
+      {isCardOpen === 'B.Inspiring' && <BInspiringCard />}
+      {isCardOpen === 'SMASH' && <SMASHCard />}
       {isCardOpen != null && (
         <Fade delay={FADE_DELAY}>
-          <Button onClick={() => setCardOpen(null)}>See all</Button>
+          <Button onClick={() => cardAction(null)}>See all</Button>
         </Fade>
       )}
     </Panel>
