@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 import Panel from '../../../components/Panel';
+import { RightCard as EmptyRightCard } from '../../../components/Card/EmptyCard';
 import {
   UniversityOfSydneyMiniCard,
   UniversityOfSydneyCard
@@ -23,7 +24,8 @@ import {
   borderRadius
 } from '../../../utils/themes.jsx';
 
-export const FADE_DELAY = 400;
+export const FADE_DELAY = 300;
+const PANEL_SPACING = 14 * BASE_UNIT;
 
 const MiniPanelWrapper = styled.div`
   display: grid;
@@ -58,6 +60,18 @@ const Button = styled.div`
   }
 `;
 
+const CardWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Spacing = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 type Props = {|
   setJourneyRef: () => void
 |};
@@ -73,10 +87,10 @@ const Journey = ({ setJourneyRef }: Props) => {
       minHeight={PANEL_MIN_HEIGHT}
       backgroundColor={colors.dodgerBlue}
       isCentered
-      paddingTop={`${14 * BASE_UNIT}px`}
-      paddingRight={`${14 * BASE_UNIT}px`}
-      paddingBottom={`${14 * BASE_UNIT}px`}
-      paddingLeft={`${14 * BASE_UNIT}px`}
+      paddingTop={`${PANEL_SPACING}px`}
+      paddingRight={`${PANEL_SPACING}px`}
+      paddingBottom={`${PANEL_SPACING}px`}
+      paddingLeft={`${PANEL_SPACING}px`}
     >
       {isCardOpen == null && (
         <MiniPanelWrapper>
@@ -90,7 +104,19 @@ const Journey = ({ setJourneyRef }: Props) => {
           <SMASHMiniCard onClick={() => cardAction('SMASH')} />
         </MiniPanelWrapper>
       )}
-      {isCardOpen === 'Mathspace' && <MathspaceCard />}
+      {isCardOpen === 'Mathspace' && (
+        <CardWrapper>
+          <Spacing>
+            <MathspaceCard />
+          </Spacing>
+          <Fade delay={FADE_DELAY}>
+            <EmptyRightCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('University of Sydney')}
+            />
+          </Fade>
+        </CardWrapper>
+      )}
       {isCardOpen === 'University of Sydney' && <UniversityOfSydneyCard />}
       {isCardOpen === 'S4S' && <S4SCard />}
       {isCardOpen === 'KPMG' && <KPMGCard />}
