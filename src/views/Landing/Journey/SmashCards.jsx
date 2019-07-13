@@ -25,10 +25,9 @@ export const SMASHCard = () => (
   <Fade delay={FADE_DELAY}>
     <Card title={ROLE} label={LABEL} image={<Image />}>
       <p>
-        SMASH! Sydney Manga and Anime Show is a Japanese pop culture convention
-        that is devoted to artists, creators and fans alike. It has become a
-        driving force in Australia’s anime and manga community, attracting
-        thousands of visitors every year.
+        SMASH is a Japanese pop culture convention that is devoted to artists,
+        creators and fans alike. It has become a driving force in Australia’s
+        anime and manga community, attracting thousands of visitors every year.
       </p>
 
       <p>

@@ -89,6 +89,7 @@ const CardStyles = styled.div`
   background-color: ${colors.white};
   border-radius: ${borderRadius.regular}px;
   box-shadow: ${boxShadow};
+  max-width: 400px;
 `;
 
 const CardHeaderStyles = styled.div`
@@ -96,7 +97,7 @@ const CardHeaderStyles = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
+  padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px ${5 * BASE_UNIT}px;
   border-bottom: 1px solid ${colors.iron};
   font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
