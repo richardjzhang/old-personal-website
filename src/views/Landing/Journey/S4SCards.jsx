@@ -8,6 +8,7 @@ const TITLE = 'S4S Coaching';
 const ROLE = 'Coach';
 const LABEL = '2013 - 2017';
 const Image = () => <img src={s4s_logo} alt="" width={50} height={42} />;
+const LargeImage = () => <img src={s4s_logo} alt="" width={60} height={50} />;
 
 type MiniCardProps = {|
   onClick: () => void
@@ -23,7 +24,7 @@ export const S4SMiniCard = ({ onClick }: MiniCardProps) => (
 
 export const S4SCard = () => (
   <Fade delay={FADE_DELAY}>
-    <Card title={ROLE} label={LABEL} image={<Image />}>
+    <Card title={ROLE} label={LABEL} image={<LargeImage />}>
       <p>
         S4S Coaching stands for 'Students For Students'. This is because we are
         run by young and intelligent university students who are committed to
