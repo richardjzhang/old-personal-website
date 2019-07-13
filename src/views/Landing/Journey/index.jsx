@@ -33,11 +33,12 @@ const PANEL_SPACING = 14 * BASE_UNIT;
 const MiniPanelWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap ${8 * BASE_UNIT}px;
+  grid-gap ${6 * BASE_UNIT}px;
   color: ${colors.tropicalBlue};
 
   @media (min-width: ${breakPoints.medium}px) {
     grid-template-columns: 1fr 1fr;
+    grid-gap: ${8 * BASE_UNIT}px;
   }
 `;
 

@@ -14,7 +14,7 @@ import {
 
 const MiniCardStyles = styled.div`
   display: flex;
-  padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
+  padding: ${8 * BASE_UNIT}px ${8 * BASE_UNIT}px;
   background-color: ${colors.white};
   border-radius: ${borderRadius.regular}px;
   box-shadow: ${boxShadow};
@@ -51,12 +51,12 @@ const MiniCardContent = styled.div`
   @media (max-width: ${breakPoints.medium}px) {
     text-align: center;
     margin-left: 0;
-    margin-top: ${3 * BASE_UNIT}px;
+    margin-top: ${5 * BASE_UNIT}px;
   }
 `;
 
 const CardLabel = styled.div`
-  font-size: ${fontSize.normal}px;
+  font-size: ${fontSize.small}px;
   font-weight: ${fontWeight.regular};
   color: ${colors.hitGray};
   margin-top: ${2 * BASE_UNIT}px;

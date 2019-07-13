@@ -66,6 +66,7 @@ export const breakPoints = {
 };
 
 export const fontSize = {
+  small: 12,
   normal: 14,
   medium: 16,
   xmedium: 20,
