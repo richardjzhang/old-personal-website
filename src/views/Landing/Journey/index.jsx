@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 import Panel from '../../../components/Panel';
-import { RightCard as EmptyRightCard } from '../../../components/Card/EmptyCard';
+import {
+  RightCard as EmptyRightCard,
+  LeftCard as EmptyLeftCard
+} from '../../../components/Card/EmptyCard';
 import {
   UniversityOfSydneyMiniCard,
   UniversityOfSydneyCard
@@ -117,11 +120,95 @@ const Journey = ({ setJourneyRef }: Props) => {
           </Fade>
         </CardWrapper>
       )}
-      {isCardOpen === 'University of Sydney' && <UniversityOfSydneyCard />}
-      {isCardOpen === 'S4S' && <S4SCard />}
-      {isCardOpen === 'KPMG' && <KPMGCard />}
-      {isCardOpen === 'B.Inspiring' && <BInspiringCard />}
-      {isCardOpen === 'SMASH' && <SMASHCard />}
+      {isCardOpen === 'University of Sydney' && (
+        <CardWrapper>
+          <Fade delay={FADE_DELAY}>
+            <EmptyLeftCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('Mathspace')}
+            />
+          </Fade>
+          <Spacing>
+            <UniversityOfSydneyCard />
+          </Spacing>
+          <Fade delay={FADE_DELAY}>
+            <EmptyRightCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('S4S')}
+            />
+          </Fade>
+        </CardWrapper>
+      )}
+      {isCardOpen === 'S4S' && (
+        <CardWrapper>
+          <Fade delay={FADE_DELAY}>
+            <EmptyLeftCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('University of Sydney')}
+            />
+          </Fade>
+          <Spacing>
+            <S4SCard />
+          </Spacing>
+          <Fade delay={FADE_DELAY}>
+            <EmptyRightCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('KPMG')}
+            />
+          </Fade>
+        </CardWrapper>
+      )}
+      {isCardOpen === 'KPMG' && (
+        <CardWrapper>
+          <Fade delay={FADE_DELAY}>
+            <EmptyLeftCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('S4S')}
+            />
+          </Fade>
+          <Spacing>
+            <KPMGCard />
+          </Spacing>
+          <Fade delay={FADE_DELAY}>
+            <EmptyRightCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('B.Inspiring')}
+            />
+          </Fade>
+        </CardWrapper>
+      )}
+      {isCardOpen === 'B.Inspiring' && (
+        <CardWrapper>
+          <Fade delay={FADE_DELAY}>
+            <EmptyLeftCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('KPMG')}
+            />
+          </Fade>
+          <Spacing>
+            <BInspiringCard />
+          </Spacing>
+          <Fade delay={FADE_DELAY}>
+            <EmptyRightCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('SMASH')}
+            />
+          </Fade>
+        </CardWrapper>
+      )}
+      {isCardOpen === 'SMASH' && (
+        <CardWrapper>
+          <Fade delay={FADE_DELAY}>
+            <EmptyLeftCard
+              spacing={PANEL_SPACING}
+              onClick={() => cardAction('B.Inspiring')}
+            />
+          </Fade>
+          <Spacing>
+            <SMASHCard />
+          </Spacing>
+        </CardWrapper>
+      )}
       {isCardOpen != null && (
         <Fade delay={FADE_DELAY}>
           <Button onClick={() => cardAction(null)}>See all</Button>
