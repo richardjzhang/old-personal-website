@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 type Props = {|
   minHeight: string,
-  backgroundColor: string,
+  backgroundColor?: string,
   paddingTop?: string,
   paddingRight?: string,
   paddingBottom?: string,

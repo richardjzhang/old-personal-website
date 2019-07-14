@@ -150,7 +150,7 @@ const ContentsWrapper = styled.div`
 
 const Contents = styled.div`
   padding: ${12 * BASE_UNIT}px;
-  border: ${2 * BASE_UNIT}px solid ${colors.outerSpace};
+  border: ${2 * BASE_UNIT}px solid ${colors.ebony};
   border-radius: ${borderRadius.regular}px;
   font-size: ${fontSize.xlarge}px;
   font-weight: ${fontWeight.semibold};
@@ -251,7 +251,7 @@ const Landing = () => {
         <div ref={storiesRef} />
         <Panel
           minHeight={PANEL_MIN_HEIGHT}
-          backgroundColor={colors.carribeanGreen}
+          backgroundColor={colors.bayOfMany}
           isCentered
         >
           <PanelWrapper>My stories coming soon...</PanelWrapper>
@@ -259,12 +259,10 @@ const Landing = () => {
         <div ref={creationsRef} />
         <Panel
           minHeight={PANEL_MIN_HEIGHT}
-          backgroundColor={colors.mustard}
+          backgroundColor={colors.astronaut}
           isCentered
         >
-          <PanelWrapper style={{ color: colors.cloudBurst }}>
-            My creations coming soon...
-          </PanelWrapper>
+          <PanelWrapper>My creations coming soon...</PanelWrapper>
         </Panel>
         <div ref={lessonsRef} />
         <Panel

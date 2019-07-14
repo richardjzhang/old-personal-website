@@ -71,7 +71,7 @@ const Journey = ({ setJourneyRef }: Props) => {
   return (
     <Panel
       minHeight={PANEL_MIN_HEIGHT}
-      backgroundColor={colors.dodgerBlue}
+      backgroundColor={colors.vulcan}
       isCentered
       paddingTop={`${14 * BASE_UNIT}px`}
       paddingRight={`${14 * BASE_UNIT}px`}
