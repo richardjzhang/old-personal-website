@@ -1,5 +1,6 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
 import { FADE_DELAY } from '.';
 import { MiniCard, Card } from '../../../components/Card';
 import mathspace_logo from '../../../static/mathspace_logo.png';
@@ -21,8 +22,17 @@ export const MathspaceMiniCard = ({ onClick }: MiniCardProps) => (
   </Fade>
 );
 
-export const MathspaceCard = () => (
-  <Fade delay={FADE_DELAY}>
+type CardProps = {|
+  direction: ?string
+|};
+
+export const MathspaceCard = ({ direction, show }: CardProps) => (
+  <Slide
+    right={direction === 'right'}
+    left={direction === 'left'}
+    top={direction === 'top'}
+    duration={1500}
+  >
     <Card title={ROLE} label={LABEL} image={<Image />}>
       <p>
         Mathspace is on a mission to take the boring one-size-fits-all
@@ -39,5 +49,5 @@ export const MathspaceCard = () => (
         education.
       </p>
     </Card>
-  </Fade>
+  </Slide>
 );

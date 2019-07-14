@@ -59,7 +59,7 @@ export const hoverColors = {
 };
 
 export const breakPoints = {
-  small: 480,
+  small: 600,
   medium: 780,
   large: 1024,
   extraLarge: 1280

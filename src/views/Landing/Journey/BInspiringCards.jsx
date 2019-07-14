@@ -1,5 +1,6 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
 import { FADE_DELAY } from '.';
 import { MiniCard, Card } from '../../../components/Card';
 import b_inspiring_logo from '../../../static/b_inspiring_logo.png';
@@ -29,8 +30,17 @@ export const BInspiringMiniCard = ({ onClick }: MiniCardProps) => (
   </Fade>
 );
 
-export const BInspiringCard = () => (
-  <Fade delay={FADE_DELAY}>
+type CardProps = {|
+  direction: ?string
+|};
+
+export const BInspiringCard = ({ direction, show }: CardProps) => (
+  <Slide
+    right={direction === 'right'}
+    left={direction === 'left'}
+    top={direction === 'top'}
+    duration={1500}
+  >
     <Card title={ROLE} label={LABEL} image={<Image />}>
       <p>
         B.Inspiring Incorporated is a not for profit organisation that aims to
@@ -45,5 +55,5 @@ export const BInspiringCard = () => (
         leadership skills through workshops and pitching sessions.
       </p>
     </Card>
-  </Fade>
+  </Slide>
 );

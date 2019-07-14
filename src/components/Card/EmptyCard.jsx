@@ -2,7 +2,12 @@
 import React, { type Node } from 'react';
 import styled from 'styled-components';
 
-import { borderRadius, boxShadow, colors } from '../../utils/themes.jsx';
+import {
+  borderRadius,
+  boxShadow,
+  breakPoints,
+  colors
+} from '../../utils/themes.jsx';
 
 const CardStyle = styled.div`
   height: 400px;
@@ -14,6 +19,10 @@ const CardStyle = styled.div`
   &:hover {
     opacity: 1;
     transition: opacity 0.5s ease;
+  }
+
+  @media (max-width: ${breakPoints.small}px) {
+    display: none;
   }
 `;
 
