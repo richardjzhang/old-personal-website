@@ -64,6 +64,7 @@ const LeftPanel = styled.div`
 `;
 
 const RightPanel = styled.div`
+  overflow: hidden;
   @media (min-width: ${breakPoints.large}px) {
     width: ${MAIN_PANEL_WIDTH};
     margin-left: ${SIDE_PANEL_WIDTH};
@@ -243,7 +244,11 @@ const Landing = () => {
           </ContentsWrapper>
         </Panel>
         <div ref={journeyRef} />
-        <Journey />
+        <Journey
+          setJourneyRef={() =>
+            journeyRef.current != null && handleTransition(journeyRef)
+          }
+        />
         <div ref={storiesRef} />
         <Panel
           minHeight={PANEL_MIN_HEIGHT}

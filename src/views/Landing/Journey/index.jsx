@@ -3,6 +3,10 @@ import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 import Panel from '../../../components/Panel';
 import {
+  RightCard as EmptyRightCard,
+  LeftCard as EmptyLeftCard
+} from '../../../components/Card/EmptyCard';
+import {
   UniversityOfSydneyMiniCard,
   UniversityOfSydneyCard
 } from './UniversityOfSydneyCards';
@@ -23,16 +27,18 @@ import {
   borderRadius
 } from '../../../utils/themes.jsx';
 
-export const FADE_DELAY = 400;
+export const FADE_DELAY = 300;
+const PANEL_SPACING = 14 * BASE_UNIT;
 
 const MiniPanelWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap ${8 * BASE_UNIT}px;
+  grid-gap ${6 * BASE_UNIT}px;
   color: ${colors.tropicalBlue};
 
   @media (min-width: ${breakPoints.medium}px) {
     grid-template-columns: 1fr 1fr;
+    grid-gap: ${8 * BASE_UNIT}px;
   }
 `;
 
@@ -40,9 +46,9 @@ const Button = styled.div`
   display: flex;
   justify-content: center;
   margin-top: ${8 * BASE_UNIT}px;
-  padding: ${2 * BASE_UNIT}px ${4 * BASE_UNIT}px;
+  padding: ${3 * BASE_UNIT}px ${2 * BASE_UNIT}px;
   background-color: ${colors.mountainMeadow};
-  width: 175px;
+  width: 150px;
   font-size: ${fontSize.normal}px;
   font-weight: ${fontWeight.light};
   text-align: center;
@@ -58,39 +64,149 @@ const Button = styled.div`
   }
 `;
 
-const Journey = () => {
-  const [isCardOpen, setCardOpen] = useState(null);
+const CardWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Spacing = styled.div`
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+type Props = {|
+  setJourneyRef: () => void
+|};
+
+const Journey = ({ setJourneyRef }: Props) => {
+  const [isCardOpen, setCardOpen] = useState({ card: null, direction: null });
+  const cardAction = (card: ?string, direction: ?string) => {
+    setCardOpen({ card, direction });
+    setJourneyRef();
+  };
   return (
     <Panel
       minHeight={PANEL_MIN_HEIGHT}
       backgroundColor={colors.dodgerBlue}
       isCentered
-      paddingTop={`${14 * BASE_UNIT}px`}
-      paddingRight={`${14 * BASE_UNIT}px`}
-      paddingBottom={`${14 * BASE_UNIT}px`}
-      paddingLeft={`${14 * BASE_UNIT}px`}
+      paddingTop={`${PANEL_SPACING}px`}
+      paddingRight={`${PANEL_SPACING}px`}
+      paddingBottom={`${PANEL_SPACING}px`}
+      paddingLeft={`${PANEL_SPACING}px`}
     >
-      {isCardOpen == null && (
+      {isCardOpen.card == null && (
         <MiniPanelWrapper>
+          <MathspaceMiniCard onClick={() => cardAction('Mathspace', 'top')} />
           <UniversityOfSydneyMiniCard
-            onClick={() => setCardOpen('University of Sydney')}
+            onClick={() => cardAction('University of Sydney', 'top')}
           />
-          <S4SMiniCard onClick={() => setCardOpen('S4S')} />
-          <SMASHMiniCard onClick={() => setCardOpen('SMASH')} />
-          <BInspiringMiniCard onClick={() => setCardOpen('B.Inspiring')} />
-          <KPMGMiniCard onClick={() => setCardOpen('KPMG')} />
-          <MathspaceMiniCard onClick={() => setCardOpen('Mathspace')} />
+          <S4SMiniCard onClick={() => cardAction('S4S', 'top')} />
+          <KPMGMiniCard onClick={() => cardAction('KPMG', 'top')} />
+          <BInspiringMiniCard
+            onClick={() => cardAction('B.Inspiring', 'top')}
+          />
+          <SMASHMiniCard onClick={() => cardAction('SMASH', 'top')} />
         </MiniPanelWrapper>
       )}
-      {isCardOpen === 'University of Sydney' && <UniversityOfSydneyCard />}
-      {isCardOpen === 'S4S' && <S4SCard />}
-      {isCardOpen === 'SMASH' && <SMASHCard />}
-      {isCardOpen === 'B.Inspiring' && <BInspiringCard />}
-      {isCardOpen === 'KPMG' && <KPMGCard />}
-      {isCardOpen === 'Mathspace' && <MathspaceCard />}
-      {isCardOpen != null && (
+      {isCardOpen.card === 'Mathspace' && (
+        <CardWrapper>
+          <Spacing>
+            <MathspaceCard direction={isCardOpen.direction} />
+          </Spacing>
+
+          <EmptyRightCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('University of Sydney', 'right')}
+          />
+        </CardWrapper>
+      )}
+      {isCardOpen.card === 'University of Sydney' && (
+        <CardWrapper>
+          <EmptyLeftCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('Mathspace', 'left')}
+          />
+
+          <Spacing>
+            <UniversityOfSydneyCard direction={isCardOpen.direction} />
+          </Spacing>
+
+          <EmptyRightCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('S4S', 'right')}
+          />
+        </CardWrapper>
+      )}
+      {isCardOpen.card === 'S4S' && (
+        <CardWrapper>
+          <EmptyLeftCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('University of Sydney', 'left')}
+          />
+
+          <Spacing>
+            <S4SCard direction={isCardOpen.direction} />
+          </Spacing>
+
+          <EmptyRightCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('KPMG', 'right')}
+          />
+        </CardWrapper>
+      )}
+      {isCardOpen.card === 'KPMG' && (
+        <CardWrapper>
+          <EmptyLeftCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('S4S', 'left')}
+          />
+
+          <Spacing>
+            <KPMGCard direction={isCardOpen.direction} />
+          </Spacing>
+
+          <EmptyRightCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('B.Inspiring', 'right')}
+          />
+        </CardWrapper>
+      )}
+      {isCardOpen.card === 'B.Inspiring' && (
+        <CardWrapper>
+          <EmptyLeftCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('KPMG', 'left')}
+          />
+
+          <Spacing>
+            <BInspiringCard direction={isCardOpen.direction} />
+          </Spacing>
+
+          <EmptyRightCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('SMASH', 'right')}
+          />
+        </CardWrapper>
+      )}
+      {isCardOpen.card === 'SMASH' && (
+        <CardWrapper>
+          <EmptyLeftCard
+            spacing={PANEL_SPACING}
+            onClick={() => cardAction('B.Inspiring', 'left')}
+          />
+
+          <Spacing>
+            <SMASHCard direction={isCardOpen.direction} />
+          </Spacing>
+        </CardWrapper>
+      )}
+      {isCardOpen.card != null && (
         <Fade delay={FADE_DELAY}>
-          <Button onClick={() => setCardOpen(null)}>See all</Button>
+          <Button onClick={() => cardAction(null, null)}>See all</Button>
         </Fade>
       )}
     </Panel>
