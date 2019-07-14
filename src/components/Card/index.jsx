@@ -57,7 +57,7 @@ const MiniCardContent = styled.div`
 `;
 
 const CardLabel = styled.div`
-  font-size: ${fontSize.normal}px;
+  font-size: ${fontSize.small}px;
   font-weight: ${fontWeight.regular};
   color: ${colors.hitGray};
   margin-top: ${2 * BASE_UNIT}px;

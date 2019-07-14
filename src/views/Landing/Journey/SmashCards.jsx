@@ -1,5 +1,6 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
 import { FADE_DELAY } from '.';
 import { MiniCard, Card } from '../../../components/Card';
 import smash_logo from '../../../static/smash_logo.png';
@@ -21,8 +22,17 @@ export const SMASHMiniCard = ({ onClick }: MiniCardProps) => (
   </Fade>
 );
 
-export const SMASHCard = () => (
-  <Fade delay={FADE_DELAY}>
+type CardProps = {|
+  direction: ?string
+|};
+
+export const SMASHCard = ({ direction, show }: CardProps) => (
+  <Slide
+    right={direction === 'right'}
+    left={direction === 'left'}
+    top={direction === 'top'}
+    duration={1500}
+  >
     <Card title={ROLE} label={LABEL} image={<Image />}>
       <p>
         SMASH is a Japanese pop culture convention that is devoted to artists,
@@ -38,5 +48,5 @@ export const SMASHCard = () => (
         requests across departments of SMASH.
       </p>
     </Card>
-  </Fade>
+  </Slide>
 );

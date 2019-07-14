@@ -1,5 +1,6 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
 import { FADE_DELAY } from '.';
 import { MiniCard, Card } from '../../../components/Card';
 import s4s_logo from '../../../static/s4s_logo.png';
@@ -22,8 +23,17 @@ export const S4SMiniCard = ({ onClick }: MiniCardProps) => (
   </Fade>
 );
 
-export const S4SCard = () => (
-  <Fade delay={FADE_DELAY}>
+type CardProps = {|
+  direction: ?string
+|};
+
+export const S4SCard = ({ direction, show }: CardProps) => (
+  <Slide
+    right={direction === 'right'}
+    left={direction === 'left'}
+    top={direction === 'top'}
+    duration={1500}
+  >
     <Card title={ROLE} label={LABEL} image={<LargeImage />}>
       <p>
         S4S Coaching stands for 'Students For Students'. This is because we are
@@ -40,5 +50,5 @@ export const S4SCard = () => (
         tips I had for tackling life after high school.
       </p>
     </Card>
-  </Fade>
+  </Slide>
 );

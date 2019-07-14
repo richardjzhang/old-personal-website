@@ -64,6 +64,7 @@ const LeftPanel = styled.div`
 `;
 
 const RightPanel = styled.div`
+  overflow: hidden;
   @media (min-width: ${breakPoints.large}px) {
     width: ${MAIN_PANEL_WIDTH};
     margin-left: ${SIDE_PANEL_WIDTH};
