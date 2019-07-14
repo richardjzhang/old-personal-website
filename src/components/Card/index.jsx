@@ -14,7 +14,7 @@ import {
 
 const MiniCardStyles = styled.div`
   display: flex;
-  padding: ${6 * BASE_UNIT}px ${8 * BASE_UNIT}px;
+  padding: ${8 * BASE_UNIT}px;
   background-color: ${colors.white};
   border-radius: ${borderRadius.regular}px;
   box-shadow: ${boxShadow};
@@ -27,7 +27,8 @@ const MiniCardStyles = styled.div`
   }
 
   @media (max-width: ${breakPoints.medium}px) {
-    min-height: 100px;
+    min-height: 110px;
+    min-width: 110px;
   }
 `;
 
@@ -51,7 +52,7 @@ const MiniCardContent = styled.div`
   @media (max-width: ${breakPoints.medium}px) {
     text-align: center;
     margin-left: 0;
-    margin-top: ${3 * BASE_UNIT}px;
+    margin-top: ${5 * BASE_UNIT}px;
   }
 `;
 
