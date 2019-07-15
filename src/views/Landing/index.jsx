@@ -1,13 +1,11 @@
 // @flow
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import Journey from './Journey';
-import FixedHeader from './FixedHeader';
 import Panel from '../../components/Panel';
 import {
   BASE_UNIT,
-  boxShadow,
   borderRadius,
   breakPoints,
   colors,
@@ -15,59 +13,68 @@ import {
   fontWeight
 } from '../../utils/themes.jsx';
 import { urls } from '../../utils/urls.jsx';
-import logo from '../../static/personal_logo_transparent.png';
-import background from '../../static/abstract_background_calm_water.png';
 
 export const PANEL_MIN_HEIGHT = '100vh';
-const SIDE_PANEL_WIDTH = '35%';
-const MAIN_PANEL_WIDTH = '65%';
-const HEADER_OPTIONS = [
-  {
-    title: 'Home',
-    backgroundColor: colors.white
-  },
-  {
-    title: 'Journey',
-    backgroundColor: colors.dodgerBlue
-  },
-  {
-    title: 'Stories',
-    backgroundColor: colors.carribeanGreen
-  },
-  {
-    title: 'Creations',
-    backgroundColor: colors.mustard
-  },
-  {
-    title: 'Lessons',
-    backgroundColor: colors.cornflowerBlue
-  }
-];
 
-const LeftPanel = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: ${8 * BASE_UNIT}px ${8 * BASE_UNIT}px ${20 * BASE_UNIT}px
-    ${8 * BASE_UNIT}px;
-  box-sizing: border-box;
-  background-color: ${colors.athensGray};
+const Container = styled.div`
+  background-color: ${colors.ebony};
+`;
 
-  @media (min-width: ${breakPoints.large}px) {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: ${SIDE_PANEL_WIDTH};
-    height: 100vh;
+const SideMenu = styled.div`
+  position: fixed;
+  top: 60px;
+  left: 60px;
+
+  @media (max-width: ${breakPoints.large}px) {
+    display: none;
   }
 `;
 
-const RightPanel = styled.div`
-  @media (min-width: ${breakPoints.large}px) {
-    width: ${MAIN_PANEL_WIDTH};
-    margin-left: ${SIDE_PANEL_WIDTH};
+const Button = styled.div`
+  position: fixed;
+  top: 60px;
+  right: 60px;
+  height: 40px;
+  width: 150px;
+  font-size: ${fontSize.medium}px;
+  font-weight: ${fontWeight.light};
+  border: ${BASE_UNIT / 2}px solid ${colors.dodgerBlue};
+  border-radius: ${borderRadius.circle}px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: ${colors.dodgerBlue};
+    transition: background-color 0.5s ease;
   }
+
+  @media (max-width: ${breakPoints.large}px) {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    height: 35px;
+    width: 100px;
+    font-size: ${fontSize.normal}px;
+  }
+`;
+
+const ButtonLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: ${colors.dodgerBlue};
+
+  &:hover {
+    color: ${colors.white};
+    transition: background-color 0.5s ease;
+  }
+`;
+
+const Content = styled.div`
+  background-color: ${colors.athensGrey};
 `;
 
 const TitleWrapper = styled.div`
@@ -79,90 +86,46 @@ const TitleWrapper = styled.div`
   max-width: 85%;
 `;
 
-const Image = styled.img`
-  width: 75%;
-  margin-bottom: ${4 * BASE_UNIT}px;
-  max-width: 200px;
-  max-height: 200px;
-`;
-
 const Title = styled.div`
   text-transform: uppercase;
-  font-size: ${fontSize.xxlarge}px;
+  font-size: ${fontSize.xxxxlarge}px;
   font-weight: ${fontWeight.semibold};
-  color: ${colors.outerSpace};
-`;
+  color: ${colors.white};
 
-const Description = styled.div`
-  font-size: ${fontSize.xmedium}px;
-  margin-top: ${6 * BASE_UNIT}px;
-  font-weight: ${fontWeight.light};
-  color: ${colors.outerSpace};
-`;
-
-const Button = styled.div`
-  display: flex;
-  background-color: ${colors.pickledBluewood};
-  width: 175px;
-  margin-top: ${12 * BASE_UNIT}px;
-  font-size: ${fontSize.medium}px;
-  font-weight: ${fontWeight.light};
-  text-align: center;
-  border-radius: ${borderRadius.circle}px;
-  cursor: pointer;
-  transition: background-color 0.5s ease;
-  box-shadow: ${boxShadow};
-
-  &:hover {
-    background-color: ${colors.outerSpace};
-    transition: background-color 0.5s ease;
+  @media (max-width: ${breakPoints.large}px) {
+    font-size: ${fontSize.xlarge}px;
   }
 `;
 
-const ButtonLink = styled.a`
-  padding: ${4 * BASE_UNIT}px;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
+const Description = styled.div`
+  margin-top: ${6 * BASE_UNIT}px;
+  max-width: 750px;
+  font-size: ${fontSize.large}px;
+  font-weight: ${fontWeight.light};
   color: ${colors.white};
+
+  @media (max-width: ${breakPoints.large}px) {
+    font-size: ${fontSize.medium}px;
+  }
 `;
 
 const PanelWrapper = styled.div`
   color: ${colors.athensGrey};
 `;
 
-const ContentsWrapper = styled.div`
-  display: inherit;
-  flex-direction: inherit;
-  align-items: inherit;
-  justify-content: inherit;
-  width: 100%;
-  height: 100vh;
-  background-image: url(${background});
-  -webkit-background-size: cover !important;
-  -moz-background-size: cover !important;
-  -o-background-size: cover !important;
-  background-size: cover !important;
-  background-position: center center;
-  background-repeat: no-repeat;
-  image-rendering: -webkit-optimize-contrast;
-`;
-
 const Contents = styled.div`
-  padding: ${12 * BASE_UNIT}px;
-  border: ${2 * BASE_UNIT}px solid ${colors.ebony};
-  border-radius: ${borderRadius.regular}px;
-  font-size: ${fontSize.xlarge}px;
+  font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
-  color: ${colors.outerSpace};
+  color: ${colors.white};
 `;
 
 const ContentLink = styled.div`
   cursor: pointer;
   text-transform: uppercase;
+  text-decoration: none;
 
   &:hover {
-    color: ${colors.black};
+    color: ${colors.dodgerBlue};
     transition: background-color 0.5s ease;
   }
 
@@ -176,104 +139,122 @@ const handleTransition = (ref: any) => {
 };
 
 const Landing = () => {
-  const journeyRef = React.useRef(null);
-  const storiesRef = React.useRef(null);
-  const creationsRef = React.useRef(null);
-  const lessonsRef = React.useRef(null);
+  const homeRef = useRef(null);
+  const journeyRef = useRef(null);
+  const storiesRef = useRef(null);
+  const creationsRef = useRef(null);
+  const lessonsRef = useRef(null);
+
+  const [scroll, setScroll] = useState(0);
+
+  const colorCheck = (currentRef: any, nextRef?: any) =>
+    nextRef
+      ? currentRef.current != null &&
+        scroll >= currentRef.current.offsetTop &&
+        nextRef.current != null &&
+        scroll < nextRef.current.offsetTop
+      : currentRef.current != null && scroll >= currentRef.current.offsetTop;
+
+  useEffect(() => {
+    document.addEventListener('scroll', () => {
+      setScroll(window.scrollY);
+    });
+  });
+
   return (
-    <React.Fragment>
-      <LeftPanel>
-        <TitleWrapper>
-          <Fade delay={300}>
-            <Image src={logo} alt="" />
-          </Fade>
-          <Fade left delay={500}>
-            <Title>Richard Zhang</Title>
-            <Description>
-              Crafting code that executes people's dream's into reality
-            </Description>
-          </Fade>
-          <Fade bottom delay={500}>
-            <Button>
-              <ButtonLink href={urls.mailTo}>Get in touch!</ButtonLink>
-            </Button>
-          </Fade>
-        </TitleWrapper>
-      </LeftPanel>
-      <RightPanel>
+    <Container>
+      <SideMenu>
+        <Fade left delay={400}>
+          <Contents
+            style={{
+              color:
+                journeyRef.current != null &&
+                scroll >= journeyRef.current.offsetTop &&
+                colors.outerSpace
+            }}
+          >
+            <ContentLink
+              onClick={() =>
+                journeyRef.current != null && handleTransition(journeyRef)
+              }
+              style={{
+                color: colorCheck(journeyRef, storiesRef) && colors.dodgerBlue
+              }}
+            >
+              Journey
+            </ContentLink>
+            <ContentLink
+              onClick={() =>
+                storiesRef.current != null && handleTransition(storiesRef)
+              }
+              style={{
+                color: colorCheck(storiesRef, creationsRef) && colors.dodgerBlue
+              }}
+            >
+              Stories
+            </ContentLink>
+            <ContentLink
+              onClick={() =>
+                creationsRef.current != null && handleTransition(creationsRef)
+              }
+              style={{
+                color: colorCheck(creationsRef, lessonsRef) && colors.dodgerBlue
+              }}
+            >
+              Creations
+            </ContentLink>
+            <ContentLink
+              onClick={() =>
+                lessonsRef.current != null && handleTransition(lessonsRef)
+              }
+              style={{ color: colorCheck(lessonsRef) && colors.dodgerBlue }}
+            >
+              Lessons
+            </ContentLink>
+          </Contents>
+        </Fade>
+      </SideMenu>
+      <Button>
+        {' '}
+        <ButtonLink href={urls.mailTo}>Say Hello!</ButtonLink>
+      </Button>
+
+      <Content>
+        <div ref={homeRef} />
         <Panel
           minHeight={PANEL_MIN_HEIGHT}
-          backgroundColor={colors.outerSpace}
+          backgroundColor={colors.ebony}
           isCentered
         >
-          <ContentsWrapper>
-            <Fade bottom delay={500}>
-              <Contents>
-                <ContentLink
-                  onClick={() =>
-                    journeyRef.current != null && handleTransition(journeyRef)
-                  }
-                >
-                  My Journey
-                </ContentLink>
-                <ContentLink
-                  onClick={() =>
-                    storiesRef.current != null && handleTransition(storiesRef)
-                  }
-                >
-                  My Stories
-                </ContentLink>
-                <ContentLink
-                  onClick={() =>
-                    creationsRef.current != null &&
-                    handleTransition(creationsRef)
-                  }
-                >
-                  My Creations
-                </ContentLink>
-                <ContentLink
-                  onClick={() =>
-                    lessonsRef.current != null && handleTransition(lessonsRef)
-                  }
-                >
-                  My Lessons
-                </ContentLink>
-              </Contents>
+          <TitleWrapper>
+            <Fade bottom delay={400}>
+              <Title>Hey, I'm Richard</Title>
+              <Description>
+                I craft code that executes people's dream's into reality
+              </Description>
             </Fade>
-          </ContentsWrapper>
+          </TitleWrapper>
         </Panel>
-        <div ref={journeyRef} />
+        <div id="journeyRef" ref={journeyRef} />
         <Journey
           setJourneyRef={() =>
             journeyRef.current != null && handleTransition(journeyRef)
           }
         />
         <div ref={storiesRef} />
-        <Panel
-          minHeight={PANEL_MIN_HEIGHT}
-          backgroundColor={colors.bayOfMany}
-          isCentered
-        >
+        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <PanelWrapper>My stories coming soon...</PanelWrapper>
         </Panel>
         <div ref={creationsRef} />
-        <Panel
-          minHeight={PANEL_MIN_HEIGHT}
-          backgroundColor={colors.astronaut}
-          isCentered
-        >
+        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <PanelWrapper>My creations coming soon...</PanelWrapper>
         </Panel>
         <div ref={lessonsRef} />
-        <Panel
-          minHeight={PANEL_MIN_HEIGHT}
-          backgroundColor={colors.cornflowerBlue}
-          isCentered
-        >
+        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <PanelWrapper>My lessons coming soon...</PanelWrapper>
         </Panel>
-      </RightPanel>
-    </React.Fragment>
+      </Content>
+    </Container>
   );
 };
 export default Landing;
