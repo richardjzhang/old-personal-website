@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import Journey from './Journey';
+import SideMenu from './SideMenu';
 import Panel from '../../components/Panel';
 import {
   BASE_UNIT,
@@ -15,25 +16,16 @@ import {
 import { urls } from '../../utils/urls.jsx';
 
 export const PANEL_MIN_HEIGHT = '100vh';
+const BUTTON_POSITION = 60;
 
 const Container = styled.div`
   background-color: ${colors.ebony};
 `;
 
-const SideMenu = styled.div`
-  position: fixed;
-  top: 60px;
-  left: 60px;
-
-  @media (max-width: ${breakPoints.large}px) {
-    display: none;
-  }
-`;
-
 const Button = styled.div`
   position: fixed;
-  top: 60px;
-  right: 60px;
+  top: ${BUTTON_POSITION}px;
+  right: ${BUTTON_POSITION}px;
   height: 40px;
   width: 150px;
   font-size: ${fontSize.medium}px;
@@ -50,8 +42,8 @@ const Button = styled.div`
 
   @media (max-width: ${breakPoints.large}px) {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: ${BUTTON_POSITION / 2}px;
+    right: ${BUTTON_POSITION / 2}px;
     height: 35px;
     width: 100px;
     font-size: ${fontSize.normal}px;
@@ -110,28 +102,7 @@ const Description = styled.div`
 `;
 
 const PanelWrapper = styled.div`
-  color: ${colors.athensGrey};
-`;
-
-const Contents = styled.div`
-  font-size: ${fontSize.medium}px;
-  font-weight: ${fontWeight.semibold};
-  color: ${colors.white};
-`;
-
-const ContentLink = styled.div`
-  cursor: pointer;
-  text-transform: uppercase;
-  text-decoration: none;
-
-  &:hover {
-    color: ${colors.dodgerBlue};
-    transition: background-color 0.5s ease;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: ${8 * BASE_UNIT}px;
-  }
+  color: ${colors.outerSpace};
 `;
 
 const handleTransition = (ref: any) => {
@@ -147,14 +118,6 @@ const Landing = () => {
 
   const [scroll, setScroll] = useState(0);
 
-  const colorCheck = (currentRef: any, nextRef?: any) =>
-    nextRef
-      ? currentRef.current != null &&
-        scroll >= currentRef.current.offsetTop &&
-        nextRef.current != null &&
-        scroll < nextRef.current.offsetTop
-      : currentRef.current != null && scroll >= currentRef.current.offsetTop;
-
   useEffect(() => {
     document.addEventListener('scroll', () => {
       setScroll(window.scrollY);
@@ -163,69 +126,28 @@ const Landing = () => {
 
   return (
     <Container>
-      <SideMenu>
-        <Fade left delay={400}>
-          <Contents
-            style={{
-              color:
-                journeyRef.current != null &&
-                scroll >= journeyRef.current.offsetTop &&
-                colors.outerSpace
-            }}
-          >
-            <ContentLink
-              onClick={() =>
-                journeyRef.current != null && handleTransition(journeyRef)
-              }
-              style={{
-                color: colorCheck(journeyRef, storiesRef) && colors.dodgerBlue
-              }}
-            >
-              Journey
-            </ContentLink>
-            <ContentLink
-              onClick={() =>
-                storiesRef.current != null && handleTransition(storiesRef)
-              }
-              style={{
-                color: colorCheck(storiesRef, creationsRef) && colors.dodgerBlue
-              }}
-            >
-              Stories
-            </ContentLink>
-            <ContentLink
-              onClick={() =>
-                creationsRef.current != null && handleTransition(creationsRef)
-              }
-              style={{
-                color: colorCheck(creationsRef, lessonsRef) && colors.dodgerBlue
-              }}
-            >
-              Creations
-            </ContentLink>
-            <ContentLink
-              onClick={() =>
-                lessonsRef.current != null && handleTransition(lessonsRef)
-              }
-              style={{ color: colorCheck(lessonsRef) && colors.dodgerBlue }}
-            >
-              Lessons
-            </ContentLink>
-          </Contents>
-        </Fade>
-      </SideMenu>
+      <SideMenu
+        journeyRef={journeyRef}
+        storiesRef={storiesRef}
+        creationsRef={creationsRef}
+        lessonsRef={lessonsRef}
+        scroll={scroll}
+        handleTransition={handleTransition}
+      />
       <Button>
-        {' '}
         <ButtonLink href={urls.mailTo}>Say Hello!</ButtonLink>
       </Button>
-
-      <Content>
+      <Content
+        style={{
+          backgroundColor:
+            journeyRef.current != null && scroll >= journeyRef.current.offsetTop
+              ? colors.porcelain
+              : colors.ebony,
+          transition: 'background-color 0.5s ease'
+        }}
+      >
         <div ref={homeRef} />
-        <Panel
-          minHeight={PANEL_MIN_HEIGHT}
-          backgroundColor={colors.ebony}
-          isCentered
-        >
+        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <TitleWrapper>
             <Fade bottom delay={400}>
               <Title>Hey, I'm Richard</Title>
