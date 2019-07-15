@@ -72,7 +72,7 @@ const Content = styled.div`
 
 const Image = styled.img`
   margin-bottom: ${12 * BASE_UNIT}px;
-  width: 40%;
+  width: 30%;
   max-width: 200px;
   max-height: 200px;
 `;
