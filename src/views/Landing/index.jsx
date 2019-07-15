@@ -13,6 +13,7 @@ import {
   fontSize,
   fontWeight
 } from '../../utils/themes.jsx';
+import logo from '../../static/personal_logo_transparent.png';
 import { urls } from '../../utils/urls.jsx';
 
 export const PANEL_MIN_HEIGHT = '100vh';
@@ -69,11 +70,15 @@ const Content = styled.div`
   background-color: ${colors.athensGrey};
 `;
 
+const Image = styled.img`
+  margin-bottom: ${12 * BASE_UNIT}px;
+  max-width: 200px;
+  max-height: 200px;
+`;
+
 const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 20%;
   text-align: center;
   max-width: 85%;
 `;
@@ -149,6 +154,9 @@ const Landing = () => {
         <div ref={homeRef} />
         <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <TitleWrapper>
+            <Fade delay={300}>
+              <Image src={logo} alt="" />
+            </Fade>
             <Fade bottom delay={400}>
               <Title>Hey, I'm Richard</Title>
               <Description>
