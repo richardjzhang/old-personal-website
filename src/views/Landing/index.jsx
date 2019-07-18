@@ -13,7 +13,7 @@ import {
   fontSize,
   fontWeight
 } from '../../utils/themes.jsx';
-import logo from '../../static/personal_logo_transparent.png';
+import logo from '../../static/personal_logo.png';
 import { urls } from '../../utils/urls.jsx';
 
 export const PANEL_MIN_HEIGHT = '100vh';
