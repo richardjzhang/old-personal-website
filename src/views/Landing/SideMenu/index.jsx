@@ -42,19 +42,17 @@ const Item = styled.div`
 `;
 
 type Props = {|
-  journeyRef: any,
-  storiesRef: any,
+  aboutRef: any,
   creationsRef: any,
-  lessonsRef: any,
+  thoughtsRef: any,
   scroll: number,
   handleTransition: (ref: any) => void
 |};
 
 const SideMenu = ({
-  journeyRef,
-  storiesRef,
+  aboutRef,
   creationsRef,
-  lessonsRef,
+  thoughtsRef,
   scroll,
   handleTransition
 }: Props) => {
@@ -72,40 +70,29 @@ const SideMenu = ({
         <MenuItems
           style={{
             color:
-              journeyRef.current != null &&
-              scroll >= journeyRef.current.offsetTop &&
+              aboutRef.current != null &&
+              scroll >= aboutRef.current.offsetTop &&
               colors.outerSpace,
             transition: 'color 0.5s ease'
           }}
         >
           <Item
             onClick={() =>
-              journeyRef.current != null && handleTransition(journeyRef)
+              aboutRef.current != null && handleTransition(aboutRef)
             }
             style={{
-              color: colorCheck(journeyRef, storiesRef) && colors.dodgerBlue,
+              color: colorCheck(aboutRef, creationsRef) && colors.dodgerBlue,
               transition: 'color 0.5s ease'
             }}
           >
-            Journey
-          </Item>
-          <Item
-            onClick={() =>
-              storiesRef.current != null && handleTransition(storiesRef)
-            }
-            style={{
-              color: colorCheck(storiesRef, creationsRef) && colors.dodgerBlue,
-              transition: 'color 0.5s ease'
-            }}
-          >
-            Stories
+            About
           </Item>
           <Item
             onClick={() =>
               creationsRef.current != null && handleTransition(creationsRef)
             }
             style={{
-              color: colorCheck(creationsRef, lessonsRef) && colors.dodgerBlue,
+              color: colorCheck(creationsRef, thoughtsRef) && colors.dodgerBlue,
               transition: 'color 0.5s ease'
             }}
           >
@@ -113,14 +100,14 @@ const SideMenu = ({
           </Item>
           <Item
             onClick={() =>
-              lessonsRef.current != null && handleTransition(lessonsRef)
+              thoughtsRef.current != null && handleTransition(thoughtsRef)
             }
             style={{
-              color: colorCheck(lessonsRef) && colors.dodgerBlue,
+              color: colorCheck(thoughtsRef) && colors.dodgerBlue,
               transition: 'color 0.5s ease'
             }}
           >
-            Lessons
+            Thoughts
           </Item>
         </MenuItems>
       </Fade>
