@@ -117,10 +117,9 @@ const handleTransition = (ref: any) => {
 
 const Landing = () => {
   const homeRef = useRef(null);
-  const journeyRef = useRef(null);
-  const storiesRef = useRef(null);
+  const aboutRef = useRef(null);
   const creationsRef = useRef(null);
-  const lessonsRef = useRef(null);
+  const thoughtsRef = useRef(null);
 
   const [scroll, setScroll] = useState(0);
 
@@ -133,10 +132,9 @@ const Landing = () => {
   return (
     <Container>
       <SideMenu
-        journeyRef={journeyRef}
-        storiesRef={storiesRef}
+        aboutRef={aboutRef}
         creationsRef={creationsRef}
-        lessonsRef={lessonsRef}
+        thoughtsRef={thoughtsRef}
         scroll={scroll}
         handleTransition={handleTransition}
       />
@@ -146,7 +144,7 @@ const Landing = () => {
       <Content
         style={{
           backgroundColor:
-            journeyRef.current != null && scroll >= journeyRef.current.offsetTop
+            aboutRef.current != null && scroll >= aboutRef.current.offsetTop
               ? colors.porcelain
               : colors.ebony,
           transition: 'background-color 0.5s ease'
@@ -166,23 +164,19 @@ const Landing = () => {
             </Fade>
           </TitleWrapper>
         </Panel>
-        <div id="journeyRef" ref={journeyRef} />
+        <div id="aboutRef" ref={aboutRef} />
         <Journey
-          setJourneyRef={() =>
-            journeyRef.current != null && handleTransition(journeyRef)
+          setaboutRef={() =>
+            aboutRef.current != null && handleTransition(aboutRef)
           }
         />
-        <div ref={storiesRef} />
-        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
-          <PanelWrapper>My stories coming soon...</PanelWrapper>
-        </Panel>
         <div ref={creationsRef} />
         <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <PanelWrapper>My creations coming soon...</PanelWrapper>
         </Panel>
-        <div ref={lessonsRef} />
+        <div ref={thoughtsRef} />
         <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
-          <PanelWrapper>My lessons coming soon...</PanelWrapper>
+          <PanelWrapper>My thoughts coming soon...</PanelWrapper>
         </Panel>
       </Content>
     </Container>
