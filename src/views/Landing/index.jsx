@@ -166,7 +166,7 @@ const Landing = () => {
         </Panel>
         <div id="aboutRef" ref={aboutRef} />
         <Journey
-          setaboutRef={() =>
+          setAboutRef={() =>
             aboutRef.current != null && handleTransition(aboutRef)
           }
         />
