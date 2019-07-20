@@ -93,7 +93,7 @@ const Creations = ({ setCreationsRef }: Props) => (
     paddingBottom={`${15 * BASE_UNIT}px`}
     paddingLeft={`${15 * BASE_UNIT}px`}
   >
-    <Fade delay={FADE_DELAY}>
+    <Fade delay={FADE_DELAY} bottom>
       <PanelWrapper>
         <HumanVsComputer />
         <Section>
