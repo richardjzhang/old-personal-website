@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import About from './About';
+import Creations from './Creations';
 import SideMenu from './SideMenu';
 import Panel from '../../components/Panel';
 import {
@@ -183,9 +184,7 @@ const Landing = () => {
           }
         />
         <div ref={creationsRef} />
-        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
-          <PanelWrapper>My creations coming soon...</PanelWrapper>
-        </Panel>
+        <Creations />
         <div ref={thoughtsRef} />
         <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <PanelWrapper>My thoughts coming soon...</PanelWrapper>
