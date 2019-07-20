@@ -51,7 +51,7 @@ const Link = styled.a`
 const Button = styled.div`
   height: 45px;
   width: 150px;
-  margin-top: ${8 * BASE_UNIT}px;
+  margin-top: ${10 * BASE_UNIT}px;
   padding-left: ${2 * BASE_UNIT}px;
   padding-right: ${2 * BASE_UNIT}px;
   font-size: ${fontSize.medium}px;
@@ -91,10 +91,10 @@ const About = ({ setAboutRef }: Props) => (
   <Panel
     minHeight={PANEL_MIN_HEIGHT}
     isCentered
-    paddingTop={`${24 * BASE_UNIT}px`}
-    paddingRight={`${14 * BASE_UNIT}px`}
-    paddingBottom={`${14 * BASE_UNIT}px`}
-    paddingLeft={`${14 * BASE_UNIT}px`}
+    paddingTop={`${15 * BASE_UNIT}px`}
+    paddingRight={`${15 * BASE_UNIT}px`}
+    paddingBottom={`${15 * BASE_UNIT}px`}
+    paddingLeft={`${15 * BASE_UNIT}px`}
   >
     <Fade bottom delay={300}>
       <Section>
