@@ -114,17 +114,17 @@ const About = ({ setAboutRef }: Props) => (
   >
     <Fade bottom delay={FADE_DELAY}>
       <Section>
-        <SectionTitle>What I'm up to.</SectionTitle>
+        <SectionTitle>What I'm up to</SectionTitle>
         <SectionDescription>
           I'm a software engineer based in Sydney. I'm currently creating the
           future of mathematics education{' '}
-          <Link href={urls.mathspace}>Mathspace</Link> as a frontend engineer.
+          <Link href={urls.mathspace}>@Mathspace</Link> as a frontend engineer.
         </SectionDescription>
       </Section>
     </Fade>
     <Fade bottom delay={FADE_DELAY}>
       <Section>
-        <SectionTitle>What I can do.</SectionTitle>
+        <SectionTitle>What I can do</SectionTitle>
         <SectionDescription>
           By focusing on your goals, I create amazing web interfaces and apps
           that convey your message.
