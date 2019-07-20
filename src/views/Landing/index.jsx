@@ -75,6 +75,16 @@ const Image = styled.img`
   width: 30%;
   max-width: 200px;
   max-height: 200px;
+  min-width: 125px;
+  min-height: 125px;
+
+  @media (max-width: ${breakPoints.large}px) {
+    margin-bottom: ${10 * BASE_UNIT}px;
+  }
+
+  @media (max-width: ${breakPoints.small}px) {
+    margin-bottom: ${8 * BASE_UNIT}px;
+  }
 `;
 
 const TitleWrapper = styled.div`
@@ -86,11 +96,15 @@ const TitleWrapper = styled.div`
 
 const Title = styled.div`
   text-transform: uppercase;
-  font-size: ${fontSize.xxxxlarge}px;
+  font-size: ${fontSize.xxxlarge}px;
   font-weight: ${fontWeight.semibold};
   color: ${colors.white};
 
-  @media (max-width: ${breakPoints.large}px) {
+  @media (max-width: ${breakPoints.medium}px) {
+    font-size: ${fontSize.xxlarge}px;
+  }
+
+  @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.xlarge}px;
   }
 `;
@@ -102,7 +116,11 @@ const Description = styled.div`
   font-weight: ${fontWeight.light};
   color: ${colors.white};
 
-  @media (max-width: ${breakPoints.large}px) {
+  @media (max-width: ${breakPoints.medium}px) {
+    font-size: ${fontSize.xmedium}px;
+  }
+
+  @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.medium}px;
   }
 `;
