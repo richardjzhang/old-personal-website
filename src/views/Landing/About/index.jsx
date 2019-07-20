@@ -15,7 +15,7 @@ import {
 } from '../../../utils/themes.jsx';
 import { urls } from '../../../utils/urls';
 
-export const FADE_DELAY = 400;
+const FADE_DELAY = 300;
 
 const Section = styled.div`
   margin-bottom: ${16 * BASE_UNIT}px;
@@ -28,12 +28,28 @@ const SectionTitle = styled.div`
   font-size: ${fontSize.xlarge}px;
   font-weight: ${fontWeight.semibold};
   color: ${colors.white};
+
+  @media (max-width: ${breakPoints.medium}px) {
+    font-size: ${fontSize.large}px;
+  }
+
+  @media (max-width: ${breakPoints.small}px) {
+    font-size: ${fontSize.xmedium}px;
+  }
 `;
 
 const SectionDescription = styled.div`
   font-size: ${fontSize.xmedium}px;
   line-height: ${lineHeight.SectionDescription};
   color: ${colors.iron};
+
+  @media (max-width: ${breakPoints.small}px) {
+    font-size: ${fontSize.medium}px;
+  }
+
+  @media (max-width: ${breakPoints.small}px) {
+    font-size: ${fontSize.normal}px;
+  }
 `;
 
 const Link = styled.a`
@@ -96,17 +112,17 @@ const About = ({ setAboutRef }: Props) => (
     paddingBottom={`${15 * BASE_UNIT}px`}
     paddingLeft={`${15 * BASE_UNIT}px`}
   >
-    <Fade bottom delay={300}>
+    <Fade bottom delay={FADE_DELAY}>
       <Section>
         <SectionTitle>What I'm up to.</SectionTitle>
         <SectionDescription>
           I'm a software engineer based in Sydney. I'm currently creating the
           future of mathematics education{' '}
-          <Link href={urls.mathspace}>@Mathspace</Link> as a frontend engineer.
+          <Link href={urls.mathspace}>Mathspace</Link> as a frontend engineer.
         </SectionDescription>
       </Section>
     </Fade>
-    <Fade bottom delay={300}>
+    <Fade bottom delay={FADE_DELAY}>
       <Section>
         <SectionTitle>What I can do.</SectionTitle>
         <SectionDescription>
@@ -115,7 +131,7 @@ const About = ({ setAboutRef }: Props) => (
         </SectionDescription>
       </Section>
     </Fade>
-    <Fade bottom delay={300}>
+    <Fade bottom delay={FADE_DELAY}>
       <Section>
         <SectionTitle>Let's work together</SectionTitle>
         <SectionDescription>
