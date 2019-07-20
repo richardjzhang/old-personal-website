@@ -30,16 +30,16 @@ const Section = styled.div`
 
 const SectionTitle = styled.div`
   margin-bottom: ${2 * BASE_UNIT}px;
-  font-size: ${fontSize.large}px;
+  font-size: ${fontSize.xlarge}px;
   font-weight: ${fontWeight.semibold};
   color: ${colors.outerSpace};
 
   @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.xmedium}px;
+    font-size: ${fontSize.large}px;
   }
 
   @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.medium}px;
+    font-size: ${fontSize.xmedium}px;
   }
 `;
 
