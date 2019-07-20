@@ -9,6 +9,7 @@ const Container = styled.div`
 type Props = {|
   minHeight: string,
   backgroundColor?: string,
+  marginTop?: number,
   paddingTop?: string,
   paddingRight?: string,
   paddingBottom?: string,
@@ -20,6 +21,7 @@ type Props = {|
 const Panel = ({
   minHeight,
   backgroundColor,
+  marginTop,
   paddingTop,
   paddingRight,
   paddingBottom,
@@ -31,6 +33,7 @@ const Panel = ({
     style={{
       minHeight,
       backgroundColor,
+      marginTop,
       paddingTop,
       paddingRight,
       paddingBottom,

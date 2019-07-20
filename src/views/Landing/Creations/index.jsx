@@ -10,7 +10,6 @@ import {
   colors,
   fontSize,
   fontWeight,
-  hoverColors,
   lineHeight
 } from '../../../utils/themes.jsx';
 
@@ -68,18 +67,6 @@ const SectionDescription = styled.div`
   }
 `;
 
-const Link = styled.a`
-  color: ${colors.dodgerBlue};
-  font-weight: ${fontWeight.semibold};
-  text-transform: none;
-  text-decoration: none;
-
-  &:hover {
-    color: ${hoverColors.dodgerBlue};
-    transition: background-color 0.5s ease;
-  }
-`;
-
 type Props = {|
   setCreationsRef: () => void
 |};
@@ -88,6 +75,7 @@ const Creations = ({ setCreationsRef }: Props) => (
   <Panel
     minHeight={PANEL_MIN_HEIGHT}
     isCentered
+    marginTop={10 * BASE_UNIT}
     paddingTop={`${15 * BASE_UNIT}px`}
     paddingRight={`${15 * BASE_UNIT}px`}
     paddingBottom={`${15 * BASE_UNIT}px`}
@@ -100,10 +88,10 @@ const Creations = ({ setCreationsRef }: Props) => (
           <SectionTitle>Chess AI</SectionTitle>
           <SectionLabel>MiniMax Algorithm</SectionLabel>
           <SectionDescription>
-            Having always loved Chess, I decided to see what tools were
-            available to me to build my very own Chess playing app. Try moving a
-            piece above to start a game! Careful though, it can see two moves
-            ahead.
+            Having always loved the game of chess, I decided to see what tools
+            were available to me to build my very own chess playing app. Try
+            moving a piece above to start a game! Careful though, it can see two
+            moves ahead.
           </SectionDescription>
         </Section>
       </PanelWrapper>

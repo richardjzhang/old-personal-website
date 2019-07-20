@@ -172,7 +172,7 @@ const Landing = () => {
             <Fade bottom delay={500}>
               <Title>Hey, I'm Richard</Title>
               <Description>
-                I craft code that executes people's dream's into reality
+                I craft code that executes people's dreams into reality
               </Description>
             </Fade>
           </TitleWrapper>
