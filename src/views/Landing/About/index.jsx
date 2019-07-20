@@ -19,7 +19,7 @@ export const FADE_DELAY = 400;
 
 const Section = styled.div`
   margin-bottom: ${16 * BASE_UNIT}px;
-  max-width: 525px;
+  max-width: 600px;
   text-align: left;
 `;
 
@@ -110,7 +110,7 @@ const About = ({ setAboutRef }: Props) => (
       <Section>
         <SectionTitle>What I can do.</SectionTitle>
         <SectionDescription>
-          By focusing on your business goals, I create amazing web interfaces
+          By focusing on your goals, I create amazing web interfaces and apps
           that convey your message.
         </SectionDescription>
       </Section>
