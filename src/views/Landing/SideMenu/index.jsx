@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 const MenuItems = styled.div`
   font-size: ${fontSize.medium}px;
-  font-weight: ${fontWeight.semibold};
+  font-weight: ${fontWeight.bold};
   color: ${colors.white};
 `;
 
@@ -70,8 +70,8 @@ const SideMenu = ({
         <MenuItems
           style={{
             color:
-              aboutRef.current != null &&
-              scroll >= aboutRef.current.offsetTop &&
+              creationsRef.current != null &&
+              scroll >= creationsRef.current.offsetTop &&
               colors.outerSpace,
             transition: 'color 0.5s ease'
           }}

@@ -59,14 +59,14 @@ const Button = styled.div`
 `;
 
 type Props = {|
-  setAboutRef: () => void
+  setJourneyRef: () => void
 |};
 
-const Journey = ({ setAboutRef }: Props) => {
+const Journey = ({ setJourneyRef }: Props) => {
   const [isCardOpen, setCardOpen] = useState(null);
   const cardAction = (card: ?string) => {
     setCardOpen(card);
-    setAboutRef();
+    setJourneyRef();
   };
   return (
     <Panel

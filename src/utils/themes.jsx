@@ -55,7 +55,8 @@ export const colors = {
 
 export const hoverColors = {
   cornflowerBlue: '#3435d8',
-  mountainMeadow: '#16a085'
+  mountainMeadow: '#16a085',
+  dodgerBlue: '#1b6bfe'
 };
 
 export const breakPoints = {
@@ -81,6 +82,10 @@ export const fontWeight = {
   regular: 400,
   semibold: 600,
   bold: 700
+};
+
+export const lineHeight = {
+  description: 1.5
 };
 
 export const zIndex = {

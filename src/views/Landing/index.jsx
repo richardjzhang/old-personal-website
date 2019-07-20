@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
-import Journey from './Journey';
+import About from './About';
 import SideMenu from './SideMenu';
 import Panel from '../../components/Panel';
 import {
@@ -66,15 +66,21 @@ const ButtonLink = styled.a`
   }
 `;
 
-const Content = styled.div`
-  background-color: ${colors.athensGrey};
-`;
-
 const Image = styled.img`
   margin-bottom: ${12 * BASE_UNIT}px;
   width: 30%;
   max-width: 200px;
   max-height: 200px;
+  min-width: 125px;
+  min-height: 125px;
+
+  @media (max-width: ${breakPoints.large}px) {
+    margin-bottom: ${10 * BASE_UNIT}px;
+  }
+
+  @media (max-width: ${breakPoints.small}px) {
+    margin-bottom: ${8 * BASE_UNIT}px;
+  }
 `;
 
 const TitleWrapper = styled.div`
@@ -86,11 +92,15 @@ const TitleWrapper = styled.div`
 
 const Title = styled.div`
   text-transform: uppercase;
-  font-size: ${fontSize.xxxxlarge}px;
-  font-weight: ${fontWeight.semibold};
+  font-size: ${fontSize.xxxlarge}px;
+  font-weight: ${fontWeight.bold};
   color: ${colors.white};
 
-  @media (max-width: ${breakPoints.large}px) {
+  @media (max-width: ${breakPoints.medium}px) {
+    font-size: ${fontSize.xxlarge}px;
+  }
+
+  @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.xlarge}px;
   }
 `;
@@ -99,10 +109,13 @@ const Description = styled.div`
   margin-top: ${6 * BASE_UNIT}px;
   max-width: 750px;
   font-size: ${fontSize.large}px;
-  font-weight: ${fontWeight.light};
   color: ${colors.white};
 
-  @media (max-width: ${breakPoints.large}px) {
+  @media (max-width: ${breakPoints.medium}px) {
+    font-size: ${fontSize.xmedium}px;
+  }
+
+  @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.medium}px;
   }
 `;
@@ -116,7 +129,6 @@ const handleTransition = (ref: any) => {
 };
 
 const Landing = () => {
-  const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const creationsRef = useRef(null);
   const thoughtsRef = useRef(null);
@@ -141,22 +153,22 @@ const Landing = () => {
       <Button>
         <ButtonLink href={urls.mailTo}>Say Hello!</ButtonLink>
       </Button>
-      <Content
+      <div
         style={{
           backgroundColor:
-            aboutRef.current != null && scroll >= aboutRef.current.offsetTop
-              ? colors.porcelain
+            creationsRef.current != null &&
+            scroll >= creationsRef.current.offsetTop
+              ? colors.athensGrey
               : colors.ebony,
           transition: 'background-color 0.5s ease'
         }}
       >
-        <div ref={homeRef} />
         <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <TitleWrapper>
             <Fade delay={300}>
               <Image src={logo} alt="" />
             </Fade>
-            <Fade bottom delay={400}>
+            <Fade bottom delay={500}>
               <Title>Hey, I'm Richard</Title>
               <Description>
                 I craft code that executes people's dream's into reality
@@ -165,7 +177,7 @@ const Landing = () => {
           </TitleWrapper>
         </Panel>
         <div id="aboutRef" ref={aboutRef} />
-        <Journey
+        <About
           setAboutRef={() =>
             aboutRef.current != null && handleTransition(aboutRef)
           }
@@ -178,7 +190,7 @@ const Landing = () => {
         <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <PanelWrapper>My thoughts coming soon...</PanelWrapper>
         </Panel>
-      </Content>
+      </div>
     </Container>
   );
 };
