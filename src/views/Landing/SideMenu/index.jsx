@@ -11,9 +11,12 @@ import {
 } from '../../../utils/themes.jsx';
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 60px;
   left: 60px;
+  bottom: 0px;
 
   @media (max-width: ${breakPoints.large}px) {
     display: none;

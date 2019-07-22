@@ -155,9 +155,9 @@ export default function PlayComputerEngine() {
           <Chessboard
             calcWidth={({ screenWidth, screenHeight }) =>
               screenWidth < breakPoints.small
-                ? 0.6 * screenWidth
+                ? 0.75 * screenWidth
                 : screenWidth < breakPoints.medium
-                ? 0.45 * screenWidth
+                ? 0.5 * screenWidth
                 : screenWidth < breakPoints.large
                 ? 0.4 * screenWidth
                 : 0.3 * screenWidth

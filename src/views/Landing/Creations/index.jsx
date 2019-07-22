@@ -17,36 +17,52 @@ const FADE_DELAY = 300;
 
 const PanelWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  max-width: 600px;
+  margin-right: -150px;
+
+  @media (max-width: ${breakPoints.large}px) {
+    margin-right: 0;
+  }
+
+  @media (max-width: ${breakPoints.medium}px) {
+    flex-direction: column;
+    margin-right: 0;
+  }
 `;
 
 const Section = styled.div`
-  margin-top: ${8 * BASE_UNIT}px;
-  text-align: center;
+  text-align: left;
+  margin-left: ${20 * BASE_UNIT}px;
+  max-width: 425px;
+
+  @media (max-width: ${breakPoints.medium}px) {
+    margin-left: 0;
+    margin-top: ${8 * BASE_UNIT}px;
+    text-align: center;
+  }
 `;
 
 const SectionTitle = styled.div`
-  margin-bottom: ${2 * BASE_UNIT}px;
-  font-size: ${fontSize.xlarge}px;
-  font-weight: ${fontWeight.semibold};
+  margin-bottom: ${4 * BASE_UNIT}px;
+  font-size: ${fontSize.xxxlarge}px;
+  font-weight: ${fontWeight.bold};
   color: ${colors.outerSpace};
 
   @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.large}px;
+    font-size: ${fontSize.xxlarge}px;
   }
 
   @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.xmedium}px;
+    font-size: ${fontSize.xlarge}px;
   }
 `;
 
 const SectionLabel = styled.div`
-  margin-bottom: ${4 * BASE_UNIT}px;
+  margin-bottom: ${2 * BASE_UNIT}px;
   font-size: ${fontSize.xmedium}px;
   font-weight: ${fontWeight.semibold};
   color: ${colors.outerSpace};
+  text-transform: uppercase;
 
   @media (max-width: ${breakPoints.medium}px) {
     font-size: ${fontSize.medium}px;
@@ -63,7 +79,7 @@ const SectionDescription = styled.div`
   color: ${colors.ebony};
 
   @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.normal}px;
+    display: none;
   }
 `;
 
@@ -75,18 +91,17 @@ const Creations = ({ setCreationsRef }: Props) => (
   <Panel
     minHeight={PANEL_MIN_HEIGHT}
     isCentered
-    marginTop={10 * BASE_UNIT}
-    paddingTop={`${15 * BASE_UNIT}px`}
-    paddingRight={`${15 * BASE_UNIT}px`}
-    paddingBottom={`${15 * BASE_UNIT}px`}
-    paddingLeft={`${15 * BASE_UNIT}px`}
+    paddingTop={15 * BASE_UNIT}
+    paddingRight={15 * BASE_UNIT}
+    paddingBottom={15 * BASE_UNIT}
+    paddingLeft={15 * BASE_UNIT}
   >
-    <Fade delay={FADE_DELAY} bottom>
+    <Fade delay={FADE_DELAY}>
       <PanelWrapper>
         <HumanVsComputer />
         <Section>
+          <SectionLabel>Creation 01</SectionLabel>
           <SectionTitle>Chess AI</SectionTitle>
-          <SectionLabel>MiniMax Algorithm</SectionLabel>
           <SectionDescription>
             Having always loved the game of chess, I decided to see what tools
             were available to me to build my very own chess playing app. Try
