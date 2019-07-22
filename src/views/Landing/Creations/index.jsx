@@ -105,8 +105,8 @@ const Creations = ({ setCreationsRef }: Props) => (
           <SectionDescription>
             Having always loved the game of chess, I decided to see what tools
             were available to me to build my very own chess playing app. Try
-            moving a piece above to start a game! Careful though, it can see two
-            moves ahead.
+            moving a piece to start a game! Careful though, it can see two moves
+            ahead.
           </SectionDescription>
         </Section>
       </PanelWrapper>
