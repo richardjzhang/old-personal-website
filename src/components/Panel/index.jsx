@@ -10,10 +10,10 @@ type Props = {|
   minHeight: string,
   backgroundColor?: string,
   marginTop?: number,
-  paddingTop?: string,
-  paddingRight?: string,
-  paddingBottom?: string,
-  paddingLeft?: string,
+  paddingTop?: number,
+  paddingRight?: number,
+  paddingBottom?: number,
+  paddingLeft?: number,
   isCentered?: boolean,
   children?: Node
 |};

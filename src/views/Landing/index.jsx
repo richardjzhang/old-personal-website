@@ -8,63 +8,17 @@ import SideMenu from './SideMenu';
 import Panel from '../../components/Panel';
 import {
   BASE_UNIT,
-  borderRadius,
   breakPoints,
   colors,
   fontSize,
   fontWeight
 } from '../../utils/themes.jsx';
 import logo from '../../static/personal_logo.png';
-import { urls } from '../../utils/urls.jsx';
 
 export const PANEL_MIN_HEIGHT = '100vh';
-const BUTTON_POSITION = 60;
 
 const Container = styled.div`
   background-color: ${colors.ebony};
-`;
-
-const Button = styled.div`
-  position: fixed;
-  top: ${BUTTON_POSITION}px;
-  right: ${BUTTON_POSITION}px;
-  height: 40px;
-  width: 150px;
-  font-size: ${fontSize.medium}px;
-  font-weight: ${fontWeight.light};
-  border: ${BASE_UNIT / 2}px solid ${colors.dodgerBlue};
-  border-radius: ${borderRadius.circle}px;
-  cursor: pointer;
-  transition: background-color 0.5s ease;
-
-  &:hover {
-    background-color: ${colors.dodgerBlue};
-    transition: background-color 0.5s ease;
-  }
-
-  @media (max-width: ${breakPoints.large}px) {
-    position: absolute;
-    top: ${BUTTON_POSITION / 2}px;
-    right: ${BUTTON_POSITION / 2}px;
-    height: 35px;
-    width: 100px;
-    font-size: ${fontSize.normal}px;
-  }
-`;
-
-const ButtonLink = styled.a`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
-  color: ${colors.dodgerBlue};
-
-  &:hover {
-    color: ${colors.white};
-    transition: background-color 0.5s ease;
-  }
 `;
 
 const Image = styled.img`
@@ -151,9 +105,6 @@ const Landing = () => {
         scroll={scroll}
         handleTransition={handleTransition}
       />
-      <Button>
-        <ButtonLink href={urls.mailTo}>Say Hello!</ButtonLink>
-      </Button>
       <div
         style={{
           backgroundColor:
@@ -184,7 +135,23 @@ const Landing = () => {
           }
         />
         <div ref={creationsRef} />
-        <Creations />
+        <div
+          style={{
+            ...(creationsRef.current != null &&
+            scroll >= creationsRef.current.offsetTop
+              ? {
+                  visibility: 'visible',
+                  opacity: 1
+                }
+              : {
+                  visibility: 'hidden',
+                  opacity: 0,
+                  transition: 'visibility 0s, opacity 0.5s linear;'
+                })
+          }}
+        >
+          <Creations />
+        </div>
         <div ref={thoughtsRef} />
         <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <PanelWrapper>My thoughts coming soon...</PanelWrapper>

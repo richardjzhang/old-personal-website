@@ -107,12 +107,12 @@ const About = ({ setAboutRef }: Props) => (
   <Panel
     minHeight={PANEL_MIN_HEIGHT}
     isCentered
-    paddingTop={`${15 * BASE_UNIT}px`}
-    paddingRight={`${15 * BASE_UNIT}px`}
-    paddingBottom={`${15 * BASE_UNIT}px`}
-    paddingLeft={`${15 * BASE_UNIT}px`}
+    paddingTop={15 * BASE_UNIT}
+    paddingRight={15 * BASE_UNIT}
+    paddingBottom={15 * BASE_UNIT}
+    paddingLeft={15 * BASE_UNIT}
   >
-    <Fade bottom delay={FADE_DELAY}>
+    <Fade delay={FADE_DELAY}>
       <Section>
         <SectionTitle>What I'm up to</SectionTitle>
         <SectionDescription>
@@ -122,7 +122,7 @@ const About = ({ setAboutRef }: Props) => (
         </SectionDescription>
       </Section>
     </Fade>
-    <Fade bottom delay={FADE_DELAY}>
+    <Fade delay={FADE_DELAY}>
       <Section>
         <SectionTitle>What I can do</SectionTitle>
         <SectionDescription>
@@ -131,7 +131,7 @@ const About = ({ setAboutRef }: Props) => (
         </SectionDescription>
       </Section>
     </Fade>
-    <Fade bottom delay={FADE_DELAY}>
+    <Fade delay={FADE_DELAY}>
       <Section>
         <SectionTitle>Let's work together</SectionTitle>
         <SectionDescription>
