@@ -6,6 +6,7 @@ import About from './About';
 import Creations from './Creations';
 import SideMenu from './SideMenu';
 import Panel from '../../components/Panel';
+import ChevronDown from '../../components/Icons/ChevronDown';
 import {
   BASE_UNIT,
   breakPoints,
@@ -21,7 +22,7 @@ const Container = styled.div`
   background-color: ${colors.ebony};
 `;
 
-const Image = styled.img`
+const Logo = styled.img`
   margin-bottom: ${12 * BASE_UNIT}px;
   width: 30%;
   max-width: 200px;
@@ -118,7 +119,7 @@ const Landing = () => {
         <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
           <TitleWrapper>
             <Fade delay={300}>
-              <Image src={logo} alt="" />
+              <Logo src={logo} alt="" />
             </Fade>
             <Fade bottom delay={500}>
               <Title>Hey, I'm Richard</Title>
@@ -127,12 +128,10 @@ const Landing = () => {
               </Description>
             </Fade>
           </TitleWrapper>
+          <ChevronDown setRef={() => handleTransition(aboutRef)} />
         </Panel>
         <div id="aboutRef" ref={aboutRef} />
-        <About
-          setAboutRef={() =>
-            aboutRef.current != null && handleTransition(aboutRef)
-          }
+        <About />
         />
         <div ref={creationsRef} />
         <div
