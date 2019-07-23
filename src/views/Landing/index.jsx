@@ -128,11 +128,7 @@ const Landing = () => {
               </Description>
             </Fade>
           </TitleWrapper>
-          <ChevronDown
-            {...(aboutRef.current != null
-              ? { setRef: () => handleTransition(aboutRef) }
-              : {})}
-          />
+          <ChevronDown setRef={() => handleTransition(aboutRef)} />
         </Panel>
         <div id="aboutRef" ref={aboutRef} />
         <About />
