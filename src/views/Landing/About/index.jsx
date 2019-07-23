@@ -2,6 +2,7 @@ import React from 'react';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 import Panel from '../../../components/Panel';
+
 import { PANEL_MIN_HEIGHT } from '../.';
 import {
   BASE_UNIT,
@@ -15,10 +16,8 @@ import {
 } from '../../../utils/themes.jsx';
 import { urls } from '../../../utils/urls';
 
-const FADE_DELAY = 300;
-
 const Section = styled.div`
-  margin-bottom: ${16 * BASE_UNIT}px;
+  margin-bottom: ${12 * BASE_UNIT}px;
   max-width: 600px;
   text-align: left;
 `;
@@ -39,13 +38,9 @@ const SectionTitle = styled.div`
 `;
 
 const SectionDescription = styled.div`
-  font-size: ${fontSize.xmedium}px;
+  font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.SectionDescription};
   color: ${colors.iron};
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.medium}px;
-  }
 
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.normal}px;
@@ -68,8 +63,6 @@ const Button = styled.div`
   height: 45px;
   width: 150px;
   margin-top: ${10 * BASE_UNIT}px;
-  padding-left: ${2 * BASE_UNIT}px;
-  padding-right: ${2 * BASE_UNIT}px;
   font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.light};
   background-color: ${colors.dodgerBlue};
@@ -84,7 +77,7 @@ const Button = styled.div`
 
   @media (max-width: ${breakPoints.large}px) {
     height: 35px;
-    width: 100px;
+    width: 120px;
     font-size: ${fontSize.normal}px;
   }
 `;
@@ -99,11 +92,7 @@ const ButtonLink = styled.a`
   color: ${colors.white};
 `;
 
-type Props = {|
-  setAboutRef: () => void
-|};
-
-const About = ({ setAboutRef }: Props) => (
+const About = () => (
   <Panel
     minHeight={PANEL_MIN_HEIGHT}
     isCentered
@@ -112,7 +101,7 @@ const About = ({ setAboutRef }: Props) => (
     paddingBottom={15 * BASE_UNIT}
     paddingLeft={15 * BASE_UNIT}
   >
-    <Fade delay={FADE_DELAY}>
+    <Fade>
       <Section>
         <SectionTitle>What I'm up to</SectionTitle>
         <SectionDescription>
@@ -122,7 +111,7 @@ const About = ({ setAboutRef }: Props) => (
         </SectionDescription>
       </Section>
     </Fade>
-    <Fade delay={FADE_DELAY}>
+    <Fade>
       <Section>
         <SectionTitle>What I can do</SectionTitle>
         <SectionDescription>
@@ -131,7 +120,7 @@ const About = ({ setAboutRef }: Props) => (
         </SectionDescription>
       </Section>
     </Fade>
-    <Fade delay={FADE_DELAY}>
+    <Fade>
       <Section>
         <SectionTitle>Let's work together</SectionTitle>
         <SectionDescription>
