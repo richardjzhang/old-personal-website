@@ -9,10 +9,8 @@ import WebFont from 'webfontloader';
 import Landing from './views/Landing';
 import './index.css';
 
-if (process.env.NODE_ENV !== 'development') {
-  ReactGA.initialize('UA-144304332-1', { debug: true });
-  ReactGA.pageview('landing');
-}
+ReactGA.initialize('UA-144304332-1', { debug: true });
+ReactGA.pageview('landing');
 
 WebFont.load({
   google: {
