@@ -28,7 +28,7 @@ const IconWrapper = styled.div`
     margin-bottom: ${6 * BASE_UNIT}px;
   }
 
-  @media (max-width: ${breakPoints.small}) {
+  @media (max-width: ${breakPoints.small}px) {
     display: none;
   }
 `;
