@@ -89,6 +89,7 @@ const handleTransition = (ref: any) => {
 
 const Landing = () => {
   const aboutRef = useRef(null);
+  const backgroundRef = useRef(null);
   const creationsRef = useRef(null);
   const thoughtsRef = useRef(null);
 
@@ -112,8 +113,8 @@ const Landing = () => {
       <div
         style={{
           backgroundColor:
-            creationsRef.current != null &&
-            scroll >= creationsRef.current.offsetTop
+            backgroundRef.current != null &&
+            scroll >= backgroundRef.current.offsetTop
               ? colors.athensGrey
               : colors.ebony,
           transition: 'background-color 0.5s ease'
@@ -135,11 +136,12 @@ const Landing = () => {
         </Panel>
         <div id="aboutRef" ref={aboutRef} />
         <About />
-        <div ref={creationsRef} style={{ paddingTop: 200 }} />
+        <div ref={backgroundRef} />
+        <div ref={creationsRef} style={{ marginTop: 200 }} />
         <div
           style={{
-            ...(creationsRef.current != null &&
-            scroll >= creationsRef.current.offsetTop
+            ...(backgroundRef.current != null &&
+            scroll >= backgroundRef.current.offsetTop
               ? {
                   visibility: 'visible',
                   opacity: 1
