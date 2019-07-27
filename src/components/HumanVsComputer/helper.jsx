@@ -1,9 +1,9 @@
 // @flow
-import { pieceValue } from './values.jsx';
+import { getPieceValue } from './values.jsx';
 
-export const convertFen = (fenArray: Array<string>) => {
+const convertFen = (fenArray: Array<string>) => {
   // Transform into following format:
-  // [[{type: 'p', color: 'b', value: 100}, {type: 'q', color: 'b', value: 1000}, ...], [...], ...]
+  // [[{type: 'p', color: 'b'}, {type: 'q', color: 'b'}, ...], [...], ...]
   const board = [[]];
   let count = 0;
   for (let i = 0; i < fenArray.length; i += 1) {
@@ -11,20 +11,18 @@ export const convertFen = (fenArray: Array<string>) => {
     if (!['/', '1', '2', '3', '4', '5', '6', '7', '8'].includes(fenArray[i])) {
       if (fenArray[i] === fenArray[i].toUpperCase()) {
         board[count].push({
-          type: fenArray[i],
-          color: 'w',
-          value: pieceValue[fenArray[i].toLowerCase()]
+          type: fenArray[i].toLowerCase(),
+          color: 'w'
         });
       } else {
         board[count].push({
           type: fenArray[i],
-          color: 'b',
-          value: pieceValue[fenArray[i]]
+          color: 'b'
         });
       }
     } else if (['1', '2', '3', '4', '5', '6', '7', '8'].includes(fenArray[i])) {
       for (let j = 0; j < parseInt(fenArray[i], 10); j += 1) {
-        board[count].push(undefined);
+        board[count].push(null);
       }
     }
 
@@ -36,7 +34,7 @@ export const convertFen = (fenArray: Array<string>) => {
   return board;
 };
 
-export const evaluateBoard = (
+const evaluateBoard = (
   board: Array<
     Array<{
       type: string,
@@ -48,11 +46,11 @@ export const evaluateBoard = (
 ) => {
   // Loop through all pieces on the board and sum up total
   let value = 0;
-  board.forEach(row => {
-    row.forEach(piece => {
+  board.forEach((row, i) => {
+    row.forEach((piece, j) => {
       if (piece) {
         // Subtract piece value if it is opponent's piece
-        value += piece.value * (piece.color === color ? 1 : -1);
+        value += getPieceValue(piece, i, j) * (piece.color === color ? 1 : -1);
       }
     });
   });
@@ -60,79 +58,70 @@ export const evaluateBoard = (
   return value;
 };
 
-export const minMax = (
-  depth: number,
-  game: Object,
-  playerColor: string,
-  alpha: number,
-  beta: number,
-  isMaximizingPlayer: boolean
-) => {
-  let value;
-  // Recursive case: search possible moves
-  let bestMove = null; // best move not set yet
-  const possibleMoves = game.moves();
-
-  // Base case: evaluate board
+const minimax = (depth, game, alpha, beta, isMaximisingPlayer, playerColor) => {
   if (depth === 0) {
     const board = convertFen(game.fen().split(''));
     /* $FlowFixMe */
-    value = evaluateBoard(board, playerColor);
-    return [value, null];
+    return evaluateBoard(board, playerColor);
   }
 
-  // Set random order for possible moves
-  possibleMoves.sort(() => 0.5 - Math.random());
-  // Set a default best move value
-  let bestMoveValue = isMaximizingPlayer
-    ? Number.NEGATIVE_INFINITY
-    : Number.POSITIVE_INFINITY;
-  // Search through all possible moves
-  for (let i = 0; i < possibleMoves.length; i += 1) {
-    const move = possibleMoves[i];
-    // Make the move, but undo before exiting loop
-    game.move(move);
-    // Recursively get the value from this move
-    value = minMax(
+  var newGameMoves = game.moves();
+
+  if (isMaximisingPlayer) {
+    let bestMove = -9999;
+    for (let i = 0; i < newGameMoves.length; i++) {
+      game.move(newGameMoves[i]);
+      bestMove = Math.max(
+        bestMove,
+        minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer, playerColor)
+      );
+      game.undo();
+      alpha = Math.max(alpha, bestMove);
+      if (beta <= alpha) return bestMove;
+    }
+    return bestMove;
+  } else {
+    let bestMove = 9999;
+    for (let i = 0; i < newGameMoves.length; i++) {
+      game.move(newGameMoves[i]);
+      bestMove = Math.min(
+        bestMove,
+        minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer, playerColor)
+      );
+      game.undo();
+      beta = Math.min(beta, bestMove);
+      if (beta <= alpha) return bestMove;
+    }
+    return bestMove;
+  }
+};
+
+export const minimaxRoot = (
+  depth: number,
+  game: Object,
+  isMaximisingPlayer: boolean,
+  playerColor: string
+) => {
+  var newGameMoves = game.moves();
+  var bestMove = -9999;
+  var bestMoveFound;
+
+  for (var i = 0; i < newGameMoves.length; i++) {
+    var newGameMove = newGameMoves[i];
+    game.move(newGameMove);
+    var value = minimax(
       depth - 1,
       game,
-      playerColor,
-      alpha,
-      beta,
-      !isMaximizingPlayer
-    )[0];
-    // Log the value of this move
-    console.log(
-      isMaximizingPlayer ? 'Max: ' : 'Min: ',
-      depth,
-      move,
-      value,
-      bestMove,
-      bestMoveValue
+      -10000,
+      10000,
+      !isMaximisingPlayer,
+      playerColor
     );
-    // Look for moves that maximize position
-    if (isMaximizingPlayer) {
-      // Look for moves that maximize position
-      if (value > bestMoveValue) {
-        bestMoveValue = value;
-        bestMove = move;
-      }
-      alpha = Math.max(alpha, value);
-    } else {
-      // Look for moves that minimize position
-      if (value < bestMoveValue) {
-        bestMoveValue = value;
-        bestMove = move;
-      }
-      beta = Math.min(beta, value);
-    }
-    // Undo previous move
     game.undo();
-    // Check for alpha beta pruning
-    if (beta <= alpha) {
-      console.log('Prune', alpha, beta);
-      break;
+    if (value >= bestMove) {
+      bestMove = value;
+      bestMoveFound = newGameMove;
     }
   }
-  return [bestMoveValue, bestMove || possibleMoves[0]];
+  return bestMoveFound;
 };

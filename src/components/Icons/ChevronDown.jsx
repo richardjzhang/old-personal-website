@@ -14,11 +14,18 @@ const IconWrapper = styled.div`
   position: absolute;
   left: 50%;
   bottom: 0;
-  margin-top: -25px;
   margin-left: -25px;
   height: 50px;
   width: 50px;
   animation: ${bounce} 1s infinite;
+
+  @media (max-height: 600px) {
+    margin-bottom: ${6 * BASE_UNIT}px;
+  }
+
+  @media screen and (max-height: 500px) {
+    display: none;
+  }
 `;
 
 const Icon = styled.svg`
