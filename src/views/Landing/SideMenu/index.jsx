@@ -48,6 +48,7 @@ type Props = {|
   aboutRef: any,
   creationsRef: any,
   thoughtsRef: any,
+  backgroundRef: any,
   scroll: number,
   handleTransition: (ref: any) => void
 |};
@@ -56,6 +57,7 @@ const SideMenu = ({
   aboutRef,
   creationsRef,
   thoughtsRef,
+  backgroundRef,
   scroll,
   handleTransition
 }: Props) => {
@@ -73,8 +75,8 @@ const SideMenu = ({
         <MenuItems
           style={{
             color:
-              creationsRef.current != null &&
-              scroll >= creationsRef.current.offsetTop &&
+              backgroundRef.current != null &&
+              scroll >= backgroundRef.current.offsetTop &&
               colors.outerSpace,
             transition: 'color 0.5s ease'
           }}
