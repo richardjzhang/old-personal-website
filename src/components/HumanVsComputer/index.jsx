@@ -7,7 +7,7 @@ import Chess from 'chess.js';
 
 import { breakPoints, colors } from '../../utils/themes.jsx';
 
-import { convertFen, evaluateBoard, minMax } from './helper.jsx';
+import { minimaxRoot } from './helper.jsx';
 
 const DIFFICULTY = 2;
 
@@ -36,55 +36,9 @@ class HumanVsComputer extends React.Component<Props, State> {
 
   game = () => {};
 
-  makeComputerMoveEasy = () => {
-    const possibleMoves = this.game.moves();
-    possibleMoves.sort(() => 0.5 - Math.random());
-
-    // exit if the game is over
-    if (
-      this.game.game_over() === true ||
-      this.game.in_draw() === true ||
-      possibleMoves.length === 0
-    )
-      return;
-
-    // Search for move with highest value
-    let bestMoveSoFar = null;
-    let bestMoveValue = Number.NEGATIVE_INFINITY;
-    possibleMoves.forEach(move => {
-      this.game.move(move);
-      const board = convertFen(this.game.fen().split(''));
-      const moveValue = evaluateBoard(board, 'b');
-      if (moveValue > bestMoveValue) {
-        bestMoveSoFar = move;
-        bestMoveValue = moveValue;
-      }
-      this.game.undo();
-    });
-
-    this.game.move(bestMoveSoFar);
-    this.setState({
-      fen: this.game.fen(),
-      squareStyles: {
-        [this.game.history({ verbose: true })[this.game.history().length - 1]
-          .to]: {
-          backgroundColor: colors.cornflowerBlue
-        }
-      }
-    });
-  };
-
-  makeComputerMoveHard = () => {
-    const bestMove = minMax(
-      DIFFICULTY,
-      this.game,
-      'b',
-      Number.NEGATIVE_INFINITY,
-      Number.POSITIVE_INFINITY,
-      true
-    )[1];
+  makeComputerBestMove = () => {
+    const bestMove = minimaxRoot(DIFFICULTY, this.game, true, 'b');
     this.game.move(bestMove);
-    console.log(bestMove);
     this.setState({
       fen: this.game.fen(),
       squareStyles: {
@@ -109,7 +63,7 @@ class HumanVsComputer extends React.Component<Props, State> {
 
     this.setState({ fen: this.game.fen() });
 
-    window.setTimeout(this.makeComputerMoveHard, 1000);
+    window.setTimeout(this.makeComputerBestMove, 1000);
   };
 
   onSquareClick = square => {
@@ -130,12 +84,13 @@ class HumanVsComputer extends React.Component<Props, State> {
 
     this.setState({ fen: this.game.fen() });
 
-    window.setTimeout(this.makeComputerMoveHard, 1000);
+    window.setTimeout(this.makeComputerBestMove, 1000);
   };
 
   render() {
     const { fen, squareStyles } = this.state;
     const { children } = this.props;
+
     /* $FlowFixMe */
     return children({
       position: fen,
@@ -176,6 +131,7 @@ export default function PlayComputerEngine() {
             dropSquareStyle={{
               boxShadow: `inset 0 0 1px 4px ${colors.cornflowerBlue}`
             }}
+            showNotation={false}
           />
         )}
       </HumanVsComputer>

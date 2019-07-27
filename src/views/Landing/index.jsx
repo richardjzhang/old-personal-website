@@ -136,7 +136,6 @@ const Landing = () => {
         </Panel>
         <div id="aboutRef" ref={aboutRef} />
         <About />
-        />
         <div ref={creationsRef} />
         <div
           style={{
