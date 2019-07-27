@@ -107,6 +107,7 @@ const Landing = () => {
         aboutRef={aboutRef}
         creationsRef={creationsRef}
         thoughtsRef={thoughtsRef}
+        backgroundRef={backgroundRef}
         scroll={scroll}
         handleTransition={handleTransition}
       />
