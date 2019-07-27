@@ -9,7 +9,7 @@ import { breakPoints, colors } from '../../utils/themes.jsx';
 
 import { minimaxRoot } from './helper.jsx';
 
-const DIFFICULTY = 3;
+const DIFFICULTY = 2;
 
 type Props = {
   children?: Iterable<Node>

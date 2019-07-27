@@ -45,7 +45,7 @@ const Logo = styled.img`
 
 const TitleWrapper = styled.div`
   position: absolute;
-  top: 15%;
+  top: 17.5%;
   text-align: center;
   max-width: 85%;
 `;
