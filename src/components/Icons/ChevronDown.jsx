@@ -1,7 +1,12 @@
 // @flow
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { BASE_UNIT, colors, hoverColors } from '../../utils/themes.jsx';
+import {
+  breakPoints,
+  BASE_UNIT,
+  colors,
+  hoverColors
+} from '../../utils/themes.jsx';
 
 const bounce = keyframes`
 0% { bottom: 0px; } 50% {bottom: 15px;} 100% {bottom: 0px;}
@@ -21,6 +26,10 @@ const IconWrapper = styled.div`
 
   @media (max-height: 600px) {
     margin-bottom: ${6 * BASE_UNIT}px;
+  }
+
+  @media (max-width: ${breakPoints.small}) {
+    display: none;
   }
 `;
 
