@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import About from './About';
 import Creations from './Creations';
+import Thoughts from './Thoughts';
 import SideMenu from './SideMenu';
 import Panel from '../../components/Panel';
 import ChevronDown from '../../components/Icons/ChevronDown';
@@ -158,7 +159,9 @@ const Landing = () => {
         </div>
         <div ref={thoughtsRef} />
         <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
-          <PanelWrapper>My thoughts coming soon...</PanelWrapper>
+          <PanelWrapper>
+            <Thoughts />
+          </PanelWrapper>
         </Panel>
       </div>
     </Container>
