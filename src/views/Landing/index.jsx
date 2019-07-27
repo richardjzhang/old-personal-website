@@ -44,10 +44,9 @@ const Logo = styled.img`
 `;
 
 const TitleWrapper = styled.div`
-  position: absolute;
-  top: 17.5%;
   text-align: center;
   max-width: 85%;
+  margin-top: -100px;
 `;
 
 const Title = styled.div`

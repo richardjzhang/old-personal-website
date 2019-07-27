@@ -22,10 +22,6 @@ const IconWrapper = styled.div`
   @media (max-height: 600px) {
     margin-bottom: ${6 * BASE_UNIT}px;
   }
-
-  @media screen and (max-height: 500px) {
-    display: none;
-  }
 `;
 
 const Icon = styled.svg`
