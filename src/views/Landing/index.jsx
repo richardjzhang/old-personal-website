@@ -135,7 +135,7 @@ const Landing = () => {
         </Panel>
         <div id="aboutRef" ref={aboutRef} />
         <About />
-        <div ref={creationsRef} />
+        <div ref={creationsRef} style={{ paddingTop: 200 }} />
         <div
           style={{
             ...(creationsRef.current != null &&
