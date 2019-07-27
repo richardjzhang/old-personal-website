@@ -9,7 +9,7 @@ import { breakPoints, colors } from '../../utils/themes.jsx';
 
 import { minimaxRoot } from './helper.jsx';
 
-const DIFFICULTY = 2;
+const DIFFICULTY = 3;
 
 type Props = {
   children?: Iterable<Node>
@@ -36,7 +36,7 @@ class HumanVsComputer extends React.Component<Props, State> {
 
   game = () => {};
 
-  makeComputerBestMove = () => {
+  makeComputerMoveHard = () => {
     const bestMove = minimaxRoot(DIFFICULTY, this.game, true, 'b');
     this.game.move(bestMove);
     this.setState({
@@ -48,6 +48,10 @@ class HumanVsComputer extends React.Component<Props, State> {
         }
       }
     });
+
+    if (this.game.game_over()) {
+      alert('Game Over!');
+    }
   };
 
   onDrop = ({ sourceSquare, targetSquare }) => {
@@ -63,7 +67,7 @@ class HumanVsComputer extends React.Component<Props, State> {
 
     this.setState({ fen: this.game.fen() });
 
-    window.setTimeout(this.makeComputerBestMove, 1000);
+    window.setTimeout(this.makeComputerMoveHard, 1);
   };
 
   onSquareClick = square => {
@@ -84,7 +88,7 @@ class HumanVsComputer extends React.Component<Props, State> {
 
     this.setState({ fen: this.game.fen() });
 
-    window.setTimeout(this.makeComputerBestMove, 1000);
+    window.setTimeout(this.makeComputerMoveHard, 1);
   };
 
   render() {
