@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
+
 import About from './About';
 import Creations from './Creations';
 import Thoughts from './Thoughts';
@@ -80,10 +81,6 @@ const Description = styled.div`
   }
 `;
 
-const PanelWrapper = styled.div`
-  color: ${colors.outerSpace};
-`;
-
 const handleTransition = (ref: any) => {
   return ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
@@ -108,7 +105,6 @@ const Landing = () => {
         aboutRef={aboutRef}
         creationsRef={creationsRef}
         thoughtsRef={thoughtsRef}
-        backgroundRef={backgroundRef}
         scroll={scroll}
         handleTransition={handleTransition}
       />
@@ -117,7 +113,7 @@ const Landing = () => {
           backgroundColor:
             backgroundRef.current != null &&
             scroll >= backgroundRef.current.offsetTop
-              ? colors.athensGrey
+              ? colors.brightGray
               : colors.ebony,
           transition: 'background-color 0.5s ease'
         }}
@@ -146,23 +142,21 @@ const Landing = () => {
             scroll >= backgroundRef.current.offsetTop
               ? {
                   visibility: 'visible',
+                  transition: 'visibility 0.5s, opacity 0.5s linear',
                   opacity: 1
                 }
               : {
                   visibility: 'hidden',
                   opacity: 0,
-                  transition: 'visibility 0s, opacity 0.5s linear'
+                  transition: 'visibility 0.5s, opacity 0.5s linear'
                 })
           }}
         >
           <Creations />
         </div>
         <div ref={thoughtsRef} />
-        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
-          <PanelWrapper>
-            <Thoughts />
-          </PanelWrapper>
-        </Panel>
+
+        <Thoughts />
       </div>
     </Container>
   );

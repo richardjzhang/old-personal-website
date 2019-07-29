@@ -2,12 +2,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
+
 import {
   BASE_UNIT,
   breakPoints,
   colors,
   fontSize,
-  fontWeight
+  fontWeight,
+  zIndex
 } from '../../../utils/themes.jsx';
 
 const Wrapper = styled.div`
@@ -17,6 +19,7 @@ const Wrapper = styled.div`
   top: 60px;
   left: 60px;
   bottom: 0px;
+  z-index: ${zIndex.sideMenu};
 
   @media (max-width: ${breakPoints.large}px) {
     display: none;
@@ -48,7 +51,6 @@ type Props = {|
   aboutRef: any,
   creationsRef: any,
   thoughtsRef: any,
-  backgroundRef: any,
   scroll: number,
   handleTransition: (ref: any) => void
 |};
@@ -57,7 +59,6 @@ const SideMenu = ({
   aboutRef,
   creationsRef,
   thoughtsRef,
-  backgroundRef,
   scroll,
   handleTransition
 }: Props) => {
@@ -72,15 +73,7 @@ const SideMenu = ({
   return (
     <Wrapper>
       <Fade left delay={400}>
-        <MenuItems
-          style={{
-            color:
-              backgroundRef.current != null &&
-              scroll >= backgroundRef.current.offsetTop &&
-              colors.outerSpace,
-            transition: 'color 0.5s ease'
-          }}
-        >
+        <MenuItems>
           <Item
             onClick={() =>
               aboutRef.current != null && handleTransition(aboutRef)

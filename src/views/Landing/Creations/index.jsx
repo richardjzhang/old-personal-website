@@ -1,6 +1,7 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
+
 import Panel from '../../../components/Panel';
 import HumanVsComputer from '../../../components/HumanVsComputer';
 import { PANEL_MIN_HEIGHT } from '../.';
@@ -46,7 +47,7 @@ const SectionTitle = styled.div`
   margin-bottom: ${4 * BASE_UNIT}px;
   font-size: ${fontSize.xxxlarge}px;
   font-weight: ${fontWeight.bold};
-  color: ${colors.outerSpace};
+  color: ${colors.saffron};
 
   @media (max-width: ${breakPoints.medium}px) {
     font-size: ${fontSize.xxlarge}px;
@@ -61,7 +62,7 @@ const SectionLabel = styled.div`
   margin-bottom: ${2 * BASE_UNIT}px;
   font-size: ${fontSize.xmedium}px;
   font-weight: ${fontWeight.semibold};
-  color: ${colors.outerSpace};
+  color: ${colors.athensGrey};
   text-transform: uppercase;
 
   @media (max-width: ${breakPoints.medium}px) {
@@ -76,7 +77,7 @@ const SectionLabel = styled.div`
 const SectionDescription = styled.div`
   font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.SectionDescription};
-  color: ${colors.ebony};
+  color: ${colors.athensGrey};
 
   @media (max-width: ${breakPoints.small}px) {
     display: none;
@@ -95,6 +96,7 @@ const Creations = ({ setCreationsRef }: Props) => (
     paddingRight={15 * BASE_UNIT}
     paddingBottom={15 * BASE_UNIT}
     paddingLeft={15 * BASE_UNIT}
+    backgroundColor={colors.brightGray}
   >
     <Fade delay={FADE_DELAY}>
       <PanelWrapper>

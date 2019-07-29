@@ -1,8 +1,8 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
-import Panel from '../../../components/Panel';
 
+import Panel from '../../../components/Panel';
 import { PANEL_MIN_HEIGHT } from '../.';
 import {
   BASE_UNIT,
@@ -17,7 +17,7 @@ import {
 import { urls } from '../../../utils/urls';
 
 const Section = styled.div`
-  margin-bottom: ${12 * BASE_UNIT}px;
+  margin-bottom: ${14 * BASE_UNIT}px;
   max-width: 600px;
   text-align: left;
 `;
@@ -25,8 +25,8 @@ const Section = styled.div`
 const SectionTitle = styled.div`
   margin-bottom: ${4 * BASE_UNIT}px;
   font-size: ${fontSize.xlarge}px;
-  font-weight: ${fontWeight.semibold};
-  color: ${colors.white};
+  font-weight: ${fontWeight.bold};
+  color: ${colors.athensGrey};
 
   @media (max-width: ${breakPoints.medium}px) {
     font-size: ${fontSize.large}px;
@@ -40,7 +40,7 @@ const SectionTitle = styled.div`
 const SectionDescription = styled.div`
   font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.SectionDescription};
-  color: ${colors.iron};
+  color: ${colors.white};
 
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.normal}px;
@@ -62,7 +62,7 @@ const Link = styled.a`
 const Button = styled.div`
   height: 45px;
   width: 150px;
-  margin-top: ${10 * BASE_UNIT}px;
+  margin-top: ${12 * BASE_UNIT}px;
   font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.light};
   background-color: ${colors.dodgerBlue};

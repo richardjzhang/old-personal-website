@@ -21,6 +21,7 @@ export const colors = {
   chateauGreen: '#40B261',
   surfieGreen: '#0B5F4D',
   vulcan: '#0D1E2A',
+  lightDodgerBlue: '#4DB7FF',
   dodgerBlue: '#3B80FE',
   waterLeaf: '#ABEDDF',
   black: '#000000',
@@ -37,6 +38,7 @@ export const colors = {
   porcelain: '#F1F2F3',
   athensGrey: '#F9FAFB',
   blackHaze: '#E6E7E7',
+  brightGray: '#373c49',
 
   // Logo colors
   pelorous: '#31AFB4',
@@ -89,7 +91,7 @@ export const lineHeight = {
 };
 
 export const zIndex = {
-  header: 100
+  sideMenu: 100
 };
 
 export const borderRadius = {
