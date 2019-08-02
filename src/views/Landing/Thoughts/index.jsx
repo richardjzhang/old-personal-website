@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import * as contentful from 'contentful';
 import moment from 'moment';
 
-import { PANEL_MIN_HEIGHT } from '../.';
 import Panel from '../../../components/Panel';
 import {
   BASE_UNIT,
@@ -15,13 +14,11 @@ import {
 import { formatDuration } from '../../../utils/duration.jsx';
 
 const PanelWrapper = styled.div`
-  padding-top: ${16 * BASE_UNIT}px;
-  padding-bottom: ${16 * BASE_UNIT}px;
   max-width: 60%;
 `;
 
 const BlogItem = styled.div`
-  &:not(:last-child) {
+  &:not(:first-child) {
     margin-top: ${16 * BASE_UNIT}px;
   }
 
@@ -33,7 +30,7 @@ const BlogItem = styled.div`
 const BlogTitle = styled.div`
   font-size: ${fontSize.xlarge}px;
   font-weight: ${fontWeight.bold};
-  color: ${colors.lightDodgerBlue};
+  color: ${colors.malibu};
 `;
 const BlogStatus = styled.div`
   display: flex;
@@ -69,9 +66,11 @@ const Thoughts = () => {
 
   return (
     <Panel
-      backgroundColor={colors.brightGray}
-      minHeight={PANEL_MIN_HEIGHT}
-      isCentered
+      minHeight="100vh"
+      backgroundColor={colors.mirage}
+      paddingBottom={25 * BASE_UNIT}
+      isCenteredVertically
+      isCenteredHorizontally
     >
       <PanelWrapper>
         {posts.map(

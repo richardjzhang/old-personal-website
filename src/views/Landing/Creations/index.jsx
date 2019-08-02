@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import Panel from '../../../components/Panel';
 import HumanVsComputer from '../../../components/HumanVsComputer';
-import { PANEL_MIN_HEIGHT } from '../.';
 import {
   BASE_UNIT,
   breakPoints,
@@ -76,7 +75,7 @@ const SectionLabel = styled.div`
 
 const SectionDescription = styled.div`
   font-size: ${fontSize.medium}px;
-  line-height: ${lineHeight.SectionDescription};
+  line-height: ${lineHeight.description};
   color: ${colors.athensGrey};
 
   @media (max-width: ${breakPoints.small}px) {
@@ -90,13 +89,11 @@ type Props = {|
 
 const Creations = ({ setCreationsRef }: Props) => (
   <Panel
-    minHeight={PANEL_MIN_HEIGHT}
-    isCentered
-    paddingTop={15 * BASE_UNIT}
+    isCenteredVertically
+    isCenteredHorizontally
     paddingRight={15 * BASE_UNIT}
-    paddingBottom={15 * BASE_UNIT}
     paddingLeft={15 * BASE_UNIT}
-    backgroundColor={colors.brightGray}
+    backgroundColor={colors.mirage}
   >
     <Fade delay={FADE_DELAY}>
       <PanelWrapper>

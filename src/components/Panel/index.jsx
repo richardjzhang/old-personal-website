@@ -7,14 +7,15 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 type Props = {|
-  minHeight: string,
+  minHeight?: string,
   backgroundColor?: string,
   marginTop?: number,
   paddingTop?: number,
   paddingRight?: number,
   paddingBottom?: number,
   paddingLeft?: number,
-  isCentered?: boolean,
+  isCenteredVertically?: boolean,
+  isCenteredHorizontally?: boolean,
   children?: Node
 |};
 
@@ -26,7 +27,8 @@ const Panel = ({
   paddingRight,
   paddingBottom,
   paddingLeft,
-  isCentered,
+  isCenteredVertically,
+  isCenteredHorizontally,
   children
 }: Props) => (
   <Container
@@ -38,11 +40,17 @@ const Panel = ({
       paddingRight,
       paddingBottom,
       paddingLeft,
-      ...(isCentered
+      ...(isCenteredVertically
+        ? {
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column'
+          }
+        : {}),
+      ...(isCenteredHorizontally
         ? {
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
             flexDirection: 'column'
           }
         : {})

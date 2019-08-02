@@ -18,7 +18,7 @@ import {
 } from '../../utils/themes.jsx';
 import logo from '../../static/personal_logo.png';
 
-export const PANEL_MIN_HEIGHT = '100vh';
+const PANEL_MIN_HEIGHT = '100vh';
 
 const Container = styled.div`
   background-color: ${colors.ebony};
@@ -81,6 +81,29 @@ const Description = styled.div`
   }
 `;
 
+const Divider = styled.div`
+  margin: ${25 * BASE_UNIT}px auto;
+  max-width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Line = styled.span`
+  flex: 1;
+  background-color: ${colors.paleSky};
+  height: 1px;
+`;
+
+const Square = styled.span`
+  width: 9px;
+  height: 9px;
+  margin: 0 10px;
+  border: 1px solid ${colors.paleSky};
+  transform: rotate(45deg);
+  border-radius: 1px;
+`;
+
 const handleTransition = (ref: any) => {
   return ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
@@ -113,12 +136,16 @@ const Landing = () => {
           backgroundColor:
             backgroundRef.current != null &&
             scroll >= backgroundRef.current.offsetTop
-              ? colors.brightGray
+              ? colors.mirage
               : colors.ebony,
           transition: 'background-color 0.5s ease'
         }}
       >
-        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
+        <Panel
+          minHeight={PANEL_MIN_HEIGHT}
+          isCenteredVertically
+          isCenteredHorizontally
+        >
           <TitleWrapper>
             <Fade delay={300}>
               <Logo src={logo} alt="" />
@@ -132,31 +159,38 @@ const Landing = () => {
           </TitleWrapper>
           <ChevronDown setRef={() => handleTransition(aboutRef)} />
         </Panel>
-        <div id="aboutRef" ref={aboutRef} />
-        <About />
-        <div ref={backgroundRef} />
-        <div ref={creationsRef} style={{ marginTop: 200 }} />
+        <div ref={backgroundRef} style={{ marginBottom: 200 }} />
         <div
           style={{
             ...(backgroundRef.current != null &&
             scroll >= backgroundRef.current.offsetTop
               ? {
                   visibility: 'visible',
-                  transition: 'visibility 0.5s, opacity 0.5s linear',
+                  transition: 'visibility 0.5s, opacity 0.5s ease-in-out',
                   opacity: 1
                 }
               : {
                   visibility: 'hidden',
                   opacity: 0,
-                  transition: 'visibility 0.5s, opacity 0.5s linear'
+                  transition: 'visibility 0.5s, opacity 0.5s ease-in-out'
                 })
           }}
         >
+          <div ref={aboutRef} />
+          <About />
+          <Divider ref={creationsRef}>
+            <Line />
+            <Square />
+            <Line />
+          </Divider>
           <Creations />
+          <Divider ref={thoughtsRef}>
+            <Line />
+            <Square />
+            <Line />
+          </Divider>
+          <Thoughts />
         </div>
-        <div ref={thoughtsRef} />
-
-        <Thoughts />
       </div>
     </Container>
   );
