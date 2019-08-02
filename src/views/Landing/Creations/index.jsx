@@ -44,13 +44,9 @@ const Section = styled.div`
 
 const SectionTitle = styled.div`
   margin-bottom: ${4 * BASE_UNIT}px;
-  font-size: ${fontSize.xxxlarge}px;
+  font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.bold};
   color: ${colors.saffron};
-
-  @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.xxlarge}px;
-  }
 
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.xlarge}px;
@@ -59,7 +55,7 @@ const SectionTitle = styled.div`
 
 const SectionLabel = styled.div`
   margin-bottom: ${2 * BASE_UNIT}px;
-  font-size: ${fontSize.xmedium}px;
+  font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
   color: ${colors.athensGrey};
   text-transform: uppercase;

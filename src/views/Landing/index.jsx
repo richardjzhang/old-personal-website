@@ -87,6 +87,10 @@ const Divider = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${breakPoints.large}px) {
+    max-width: 66%;
+  }
 `;
 
 const Line = styled.span`

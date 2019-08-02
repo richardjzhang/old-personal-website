@@ -7,6 +7,7 @@ import moment from 'moment';
 import Panel from '../../../components/Panel';
 import {
   BASE_UNIT,
+  breakPoints,
   colors,
   fontSize,
   fontWeight
@@ -14,7 +15,9 @@ import {
 import { formatDuration } from '../../../utils/duration.jsx';
 
 const PanelWrapper = styled.div`
-  max-width: 60%;
+  @media (min-width: ${breakPoints.large}px) {
+    max-width: 70%;
+  }
 `;
 
 const BlogItem = styled.div`
@@ -28,7 +31,7 @@ const BlogItem = styled.div`
 `;
 
 const BlogTitle = styled.div`
-  font-size: ${fontSize.xlarge}px;
+  font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.bold};
   color: ${colors.malibu};
 `;
@@ -68,6 +71,8 @@ const Thoughts = () => {
     <Panel
       minHeight="100vh"
       backgroundColor={colors.mirage}
+      paddingLeft={15 * BASE_UNIT}
+      paddingRight={15 * BASE_UNIT}
       paddingBottom={25 * BASE_UNIT}
       isCenteredVertically
       isCenteredHorizontally

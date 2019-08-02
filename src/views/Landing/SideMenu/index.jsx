@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 
 const MenuItems = styled.div`
   font-size: ${fontSize.medium}px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${fontWeight.semibold};
   color: ${colors.white};
 `;
 
