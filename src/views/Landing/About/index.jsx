@@ -1,5 +1,4 @@
 import React from 'react';
-import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 
 import Panel from '../../../components/Panel';
@@ -7,7 +6,9 @@ import {
   BASE_UNIT,
   breakPoints,
   borderRadius,
+  boxShadow,
   colors,
+  fontFamily,
   fontSize,
   fontWeight,
   hoverColors,
@@ -26,30 +27,26 @@ const Section = styled.div`
 
 const SectionTitle = styled.div`
   margin-bottom: ${6 * BASE_UNIT}px;
-  font-size: ${fontSize.xxlarge}px;
+  font-size: ${fontSize.xlarge}px;
   font-weight: ${fontWeight.bold};
-  color: ${colors.athensGrey};
+  color: ${colors.white};
 
   @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.xmedium}px;
+    font-size: ${fontSize.large}px;
   }
 `;
 
 const SectionDescription = styled.div`
-  font-size: 18px;
+  font-family: ${fontFamily.body};
+  font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.description};
-  color: ${colors.white};
+  color: ${colors.porcelain};
 `;
 
 const Link = styled.a`
-  color: ${colors.dodgerBlue};
+  color: ${colors.malibu};
   text-transform: none;
   text-decoration: none;
-
-  &:hover {
-    color: ${hoverColors.dodgerBlue};
-    transition: background-color 0.5s ease;
-  }
 `;
 
 const Button = styled.div`
@@ -58,12 +55,13 @@ const Button = styled.div`
   font-size: ${fontSize.xmedium}px;
   font-weight: ${fontWeight.semibold};
   background-color: ${colors.cornflowerBlue};
+  box-shadow: ${boxShadow};
   border-radius: ${borderRadius.regular}px;
   cursor: pointer;
 
   &:hover {
-    transform: scale(1.02) translateZ(0);
-    transition: transform 0.1s linear;
+    background-color: ${hoverColors.cornflowerBlue};
+    transition: background-color 0.5s ease;
   }
 `;
 
@@ -81,37 +79,30 @@ const About = () => (
   <Panel
     isCenteredVertically
     isCenteredHorizontally
-    paddingTop={15 * BASE_UNIT}
     paddingRight={15 * BASE_UNIT}
     paddingLeft={15 * BASE_UNIT}
   >
     <Section>
-      <Fade>
-        <SectionTitle>What I'm up to</SectionTitle>
-        <SectionDescription>
-          I'm a software engineer based in Sydney. I'm currently creating the
-          future of mathematics education{' '}
-          <Link href={urls.mathspace}>@Mathspace</Link> as a frontend engineer.
-        </SectionDescription>
-      </Fade>
+      <SectionTitle>What I'm up to</SectionTitle>
+      <SectionDescription>
+        I'm a software engineer based in Sydney. I'm currently creating the
+        future of mathematics education{' '}
+        <Link href={urls.mathspace}>@Mathspace</Link> as a frontend engineer.
+      </SectionDescription>
     </Section>
     <Section>
-      <Fade>
-        <SectionTitle>What I can do</SectionTitle>
-        <SectionDescription>
-          By focusing on your goals, I create amazing web interfaces and apps
-          that convey your message.
-        </SectionDescription>
-      </Fade>
+      <SectionTitle>What I can do</SectionTitle>
+      <SectionDescription>
+        By focusing on your goals, I create amazing web interfaces and apps that
+        convey your message.
+      </SectionDescription>
     </Section>
     <Section>
-      <Fade>
-        <SectionTitle>Let's work together</SectionTitle>
-        <SectionDescription>
-          If you have a website or project you need help getting started, or
-          simply want to say hi, send me a message.
-        </SectionDescription>
-      </Fade>
+      <SectionTitle>Let's work together</SectionTitle>
+      <SectionDescription>
+        If you have a website or project you need help getting started, or
+        simply want to say hi, send me a message.
+      </SectionDescription>
     </Section>
     <Button>
       <ButtonLink href={urls.mailTo}>Get in touch</ButtonLink>

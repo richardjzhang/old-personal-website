@@ -30,7 +30,7 @@ export const colors = {
 };
 
 export const hoverColors = {
-  dodgerBlue: '#1b6bfe'
+  cornflowerBlue: '#3435D8'
 };
 
 export const breakPoints = {
@@ -56,6 +56,11 @@ export const fontWeight = {
   regular: 400,
   semibold: 600,
   bold: 700
+};
+
+export const fontFamily = {
+  title: 'Montserrat',
+  body: 'Merriweather'
 };
 
 export const lineHeight = {

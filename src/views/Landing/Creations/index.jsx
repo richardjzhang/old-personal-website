@@ -8,6 +8,7 @@ import {
   BASE_UNIT,
   breakPoints,
   colors,
+  fontFamily,
   fontSize,
   fontWeight,
   lineHeight
@@ -57,7 +58,7 @@ const SectionLabel = styled.div`
   margin-bottom: ${2 * BASE_UNIT}px;
   font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
-  color: ${colors.athensGrey};
+  color: ${colors.porcelain};
   text-transform: uppercase;
 
   @media (max-width: ${breakPoints.medium}px) {
@@ -70,9 +71,10 @@ const SectionLabel = styled.div`
 `;
 
 const SectionDescription = styled.div`
+  font-family: ${fontFamily.body};
   font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.description};
-  color: ${colors.athensGrey};
+  color: ${colors.porcelain};
 
   @media (max-width: ${breakPoints.small}px) {
     display: none;

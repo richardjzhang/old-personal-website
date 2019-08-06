@@ -13,6 +13,7 @@ import {
   BASE_UNIT,
   breakPoints,
   colors,
+  fontFamily,
   fontSize,
   fontWeight
 } from '../../utils/themes.jsx';
@@ -69,8 +70,9 @@ const Title = styled.div`
 const Description = styled.div`
   margin-top: ${6 * BASE_UNIT}px;
   max-width: 750px;
+  font-family: ${fontFamily.body};
   font-size: ${fontSize.large}px;
-  color: ${colors.white};
+  color: ${colors.porcelain};
 
   @media (max-width: ${breakPoints.medium}px) {
     font-size: ${fontSize.xmedium}px;
@@ -180,7 +182,11 @@ const Landing = () => {
                 })
           }}
         >
-          <div ref={aboutRef} />
+          <Divider ref={aboutRef}>
+            <Line />
+            <Square />
+            <Line />
+          </Divider>
           <About />
           <Divider ref={creationsRef}>
             <Line />

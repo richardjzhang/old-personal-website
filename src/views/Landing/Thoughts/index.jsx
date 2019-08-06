@@ -1,5 +1,6 @@
 // @flow
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import * as contentful from 'contentful';
 import moment from 'moment';
@@ -13,6 +14,11 @@ import {
   fontWeight
 } from '../../../utils/themes.jsx';
 import { formatDuration } from '../../../utils/duration.jsx';
+
+const {
+  REACT_APP_CONTENTFUL_ACCESS_TOKEN,
+  REACT_APP_CONTENTFUL_SPACE_TOKEN
+} = process.env;
 
 const PanelWrapper = styled.div`
   @media (min-width: ${breakPoints.large}px) {
@@ -34,13 +40,16 @@ const BlogTitle = styled.div`
   font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.bold};
   color: ${colors.malibu};
+  cursor: pointer;
 `;
+
 const BlogStatus = styled.div`
   display: flex;
   margin-top: ${3 * BASE_UNIT}px;
   font-size: ${fontSize.normal}px;
   color: ${colors.iron};
 `;
+
 const StatusSeparator = styled.div`
   text-align: center;
   width: ${4 * BASE_UNIT}px;
@@ -55,8 +64,8 @@ const BlogSpoiler = styled.div`
 const Thoughts = () => {
   const [posts, setPosts] = useState(null);
   const client = contentful.createClient({
-    space: 'fjnh1kuhre2f',
-    accessToken: 'L8k0nAE0DAydMWaUfDz99LBDABmVVxML-puJR2D1TpQ'
+    space: REACT_APP_CONTENTFUL_SPACE_TOKEN,
+    accessToken: REACT_APP_CONTENTFUL_ACCESS_TOKEN
   });
 
   useEffect(() => {
@@ -81,10 +90,12 @@ const Thoughts = () => {
         {posts.map(
           ({
             sys: { id, createdAt },
-            fields: { title, path, content, spoiler, length }
+            fields: { title, path, spoiler, length }
           }) => (
             <BlogItem key={id}>
-              <BlogTitle>{title}</BlogTitle>
+              <Link to={`/blog/${path}`} style={{ textDecoration: 'none' }}>
+                <BlogTitle>{title}</BlogTitle>
+              </Link>
               <BlogStatus>
                 {moment(new Date(createdAt)).format('DD MMMM, YYYY')}{' '}
                 <StatusSeparator>•</StatusSeparator>{' '}
