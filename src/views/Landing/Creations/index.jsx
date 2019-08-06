@@ -60,19 +60,10 @@ const SectionLabel = styled.div`
   font-weight: ${fontWeight.semibold};
   color: ${colors.porcelain};
   text-transform: uppercase;
-
-  @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.medium}px;
-  }
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.normal}px;
-  }
 `;
 
 const SectionDescription = styled.div`
   font-family: ${fontFamily.body};
-  font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.description};
   color: ${colors.porcelain};
 

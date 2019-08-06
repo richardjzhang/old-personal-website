@@ -1,5 +1,6 @@
 // @flow
 import React, { useState, useEffect } from 'react';
+import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import * as contentful from 'contentful';
@@ -19,6 +20,8 @@ const {
   REACT_APP_CONTENTFUL_ACCESS_TOKEN,
   REACT_APP_CONTENTFUL_SPACE_TOKEN
 } = process.env;
+
+const FADE_DELAY = 300;
 
 const PanelWrapper = styled.div`
   @media (min-width: ${breakPoints.large}px) {
@@ -92,17 +95,19 @@ const Thoughts = () => {
             sys: { id, createdAt },
             fields: { title, path, spoiler, length }
           }) => (
-            <BlogItem key={id}>
-              <Link to={`/blog/${path}`} style={{ textDecoration: 'none' }}>
-                <BlogTitle>{title}</BlogTitle>
-              </Link>
-              <BlogStatus>
-                {moment(new Date(createdAt)).format('DD MMMM, YYYY')}{' '}
-                <StatusSeparator>•</StatusSeparator>{' '}
-                {formatDuration(length, 'h m')} read
-              </BlogStatus>
-              <BlogSpoiler>{spoiler}</BlogSpoiler>
-            </BlogItem>
+            <Fade delay={FADE_DELAY}>
+              <BlogItem key={id}>
+                <Link to={`/blog/${path}`} style={{ textDecoration: 'none' }}>
+                  <BlogTitle>{title}</BlogTitle>
+                </Link>
+                <BlogStatus>
+                  {moment(new Date(createdAt)).format('DD MMMM, YYYY')}{' '}
+                  <StatusSeparator>•</StatusSeparator>{' '}
+                  {formatDuration(length, 'h m')} read
+                </BlogStatus>
+                <BlogSpoiler>{spoiler}</BlogSpoiler>
+              </BlogItem>
+            </Fade>
           )
         )}
       </PanelWrapper>
