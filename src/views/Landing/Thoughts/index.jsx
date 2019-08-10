@@ -11,6 +11,7 @@ import {
   BASE_UNIT,
   breakPoints,
   colors,
+  fontFamily,
   fontSize,
   fontWeight
 } from '../../../utils/themes.jsx';
@@ -50,6 +51,7 @@ const BlogTitle = styled.div`
 const BlogStatus = styled.div`
   display: flex;
   margin-top: ${3 * BASE_UNIT}px;
+  font-family: ${fontFamily.body};
   font-size: ${fontSize.normal}px;
   color: ${colors.iron};
 `;
@@ -61,6 +63,7 @@ const StatusSeparator = styled.div`
 
 const BlogSpoiler = styled.div`
   margin-top: ${2 * BASE_UNIT}px;
+  font-family: ${fontFamily.body};
   font-size: ${fontSize.medium}px;
   color: ${colors.white};
 `;
