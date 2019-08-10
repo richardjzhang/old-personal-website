@@ -1,13 +1,14 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
+
 import Panel from '../../../components/Panel';
 import HumanVsComputer from '../../../components/HumanVsComputer';
-import { PANEL_MIN_HEIGHT } from '../.';
 import {
   BASE_UNIT,
   breakPoints,
   colors,
+  fontFamily,
   fontSize,
   fontWeight,
   lineHeight
@@ -44,13 +45,9 @@ const Section = styled.div`
 
 const SectionTitle = styled.div`
   margin-bottom: ${4 * BASE_UNIT}px;
-  font-size: ${fontSize.xxxlarge}px;
+  font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.bold};
-  color: ${colors.outerSpace};
-
-  @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.xxlarge}px;
-  }
+  color: ${colors.saffron};
 
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.xlarge}px;
@@ -59,24 +56,16 @@ const SectionTitle = styled.div`
 
 const SectionLabel = styled.div`
   margin-bottom: ${2 * BASE_UNIT}px;
-  font-size: ${fontSize.xmedium}px;
+  font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
-  color: ${colors.outerSpace};
+  color: ${colors.porcelain};
   text-transform: uppercase;
-
-  @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.medium}px;
-  }
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.normal}px;
-  }
 `;
 
 const SectionDescription = styled.div`
-  font-size: ${fontSize.medium}px;
-  line-height: ${lineHeight.SectionDescription};
-  color: ${colors.ebony};
+  font-family: ${fontFamily.body};
+  line-height: ${lineHeight.description};
+  color: ${colors.porcelain};
 
   @media (max-width: ${breakPoints.small}px) {
     display: none;
@@ -89,12 +78,11 @@ type Props = {|
 
 const Creations = ({ setCreationsRef }: Props) => (
   <Panel
-    minHeight={PANEL_MIN_HEIGHT}
-    isCentered
-    paddingTop={15 * BASE_UNIT}
+    isCenteredVertically
+    isCenteredHorizontally
     paddingRight={15 * BASE_UNIT}
-    paddingBottom={15 * BASE_UNIT}
     paddingLeft={15 * BASE_UNIT}
+    backgroundColor={colors.mirage}
   >
     <Fade delay={FADE_DELAY}>
       <PanelWrapper>
