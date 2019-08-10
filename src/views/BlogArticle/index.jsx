@@ -15,6 +15,8 @@ import {
   fontWeight,
   lineHeight
 } from '../../utils/themes.jsx';
+import Error from '../Error';
+import Loading from '../Loading';
 
 const Root = styled.div`
   padding: ${12 * BASE_UNIT}px ${8 * BASE_UNIT}px;
@@ -72,25 +74,49 @@ type Props = {|
   }
 |};
 
+const client = contentful.createClient({
+  space: REACT_APP_CONTENTFUL_SPACE_TOKEN,
+  accessToken: REACT_APP_CONTENTFUL_ACCESS_TOKEN
+});
+
+const fetch = (path: string) => {
+  const [blogContent, setBlogContent] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  ReactGA.pageview(path);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const entries = await client.getEntries({
+        content_type: 'blog',
+        'fields.path': path
+      });
+      setBlogContent(entries.items);
+    } catch (e) {
+      setError(e);
+    } finally {
+      window.setTimeout(() => setLoading(false), 500);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return [blogContent, error, loading];
+};
+
 const BlogArticle = ({
   match: {
     params: { path }
   }
 }: Props) => {
-  const [blogContent, setBlogContent] = useState([]);
-  const client = contentful.createClient({
-    space: REACT_APP_CONTENTFUL_SPACE_TOKEN,
-    accessToken: REACT_APP_CONTENTFUL_ACCESS_TOKEN
-  });
-  ReactGA.pageview(path);
-
-  useEffect(() => {
-    client
-      .getEntries({ content_type: 'blog', 'fields.path': path })
-      .then(entries => setBlogContent(entries.items));
-  }, []);
-
-  if (blogContent.length === 0) return null;
+  const [blogContent, error, loading] = fetch(path);
+  if (loading) return <Loading />;
+  if (blogContent == null) return null;
+  if (blogContent.length === 0 || error) return <Error />;
 
   const { title, length, contentMarkdown } = blogContent[0].fields;
   const { createdAt } = blogContent[0].sys;

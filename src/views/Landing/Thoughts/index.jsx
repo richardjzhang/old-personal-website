@@ -15,6 +15,7 @@ import {
   fontWeight
 } from '../../../utils/themes.jsx';
 import { formatDuration } from '../../../utils/duration.jsx';
+import Error from '../../Error';
 
 const {
   REACT_APP_CONTENTFUL_ACCESS_TOKEN,
@@ -64,20 +65,35 @@ const BlogSpoiler = styled.div`
   color: ${colors.white};
 `;
 
-const Thoughts = () => {
+const client = contentful.createClient({
+  space: REACT_APP_CONTENTFUL_SPACE_TOKEN,
+  accessToken: REACT_APP_CONTENTFUL_ACCESS_TOKEN
+});
+
+const fetch = () => {
   const [posts, setPosts] = useState(null);
-  const client = contentful.createClient({
-    space: REACT_APP_CONTENTFUL_SPACE_TOKEN,
-    accessToken: REACT_APP_CONTENTFUL_ACCESS_TOKEN
-  });
+  const [error, setError] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const entries = await client.getEntries({ content_type: 'blog' });
+      setPosts(entries.items);
+    } catch (e) {
+      setError(e);
+    }
+  };
 
   useEffect(() => {
-    client
-      .getEntries({ content_type: 'blog' })
-      .then(entries => setPosts(entries.items));
+    fetchData();
   }, []);
 
+  return [posts, error];
+};
+
+const Thoughts = () => {
+  const [posts, error] = fetch();
   if (posts == null) return null;
+  if (posts.length === 0 || error) return <Error />;
 
   return (
     <Panel
@@ -95,8 +111,8 @@ const Thoughts = () => {
             sys: { id, createdAt },
             fields: { title, path, spoiler, length }
           }) => (
-            <Fade delay={FADE_DELAY}>
-              <BlogItem key={id}>
+            <Fade delay={FADE_DELAY} key={id}>
+              <BlogItem>
                 <Link to={`/blog/${path}`} style={{ textDecoration: 'none' }}>
                   <BlogTitle>{title}</BlogTitle>
                 </Link>
