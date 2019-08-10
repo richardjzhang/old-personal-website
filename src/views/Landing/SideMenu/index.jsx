@@ -34,7 +34,6 @@ const MenuItems = styled.div`
 
 const Item = styled.div`
   cursor: pointer;
-  text-transform: uppercase;
   text-decoration: none;
 
   &:hover {

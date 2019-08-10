@@ -29,7 +29,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.img`
-  margin-bottom: ${10 * BASE_UNIT}px;
+  margin-bottom: ${12 * BASE_UNIT}px;
   width: 30%;
   max-width: 200px;
   max-height: 200px;
@@ -40,12 +40,8 @@ const Logo = styled.img`
     margin-bottom: ${10 * BASE_UNIT}px;
   }
 
-  @media (max-width: ${breakPoints.small}px) {
-    margin-bottom: ${8 * BASE_UNIT}px;
-  }
-
   @media screen and (max-height: 600px) {
-    width: 25%;
+    width: 30%;
   }
 `;
 
@@ -56,7 +52,6 @@ const TitleWrapper = styled.div`
 `;
 
 const Title = styled.div`
-  text-transform: uppercase;
   font-size: ${fontSize.xxxlarge}px;
   font-weight: ${fontWeight.bold};
   color: ${colors.white};
