@@ -12,7 +12,6 @@ import Error from './views/Error';
 import './index.css';
 
 ReactGA.initialize('UA-144304332-1', { debug: true });
-ReactGA.pageview('landing');
 
 WebFont.load({
   google: {

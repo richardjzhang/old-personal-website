@@ -1,5 +1,6 @@
 // @flow
 import React, { useRef, useEffect, useState } from 'react';
+import ReactGA from 'react-ga';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 
@@ -18,6 +19,8 @@ import {
   fontWeight
 } from '../../utils/themes.jsx';
 import logo from '../../static/personal_logo.png';
+
+ReactGA.pageview('landing');
 
 const PANEL_MIN_HEIGHT = '100vh';
 
