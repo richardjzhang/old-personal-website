@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
+
 import About from './About';
 import Creations from './Creations';
 import Thoughts from './Thoughts';
@@ -12,12 +13,13 @@ import {
   BASE_UNIT,
   breakPoints,
   colors,
+  fontFamily,
   fontSize,
   fontWeight
 } from '../../utils/themes.jsx';
 import logo from '../../static/personal_logo.png';
 
-export const PANEL_MIN_HEIGHT = '100vh';
+const PANEL_MIN_HEIGHT = '100vh';
 
 const Container = styled.div`
   background-color: ${colors.ebony};
@@ -68,8 +70,9 @@ const Title = styled.div`
 const Description = styled.div`
   margin-top: ${6 * BASE_UNIT}px;
   max-width: 750px;
+  font-family: ${fontFamily.body};
   font-size: ${fontSize.large}px;
-  color: ${colors.white};
+  color: ${colors.porcelain};
 
   @media (max-width: ${breakPoints.medium}px) {
     font-size: ${fontSize.xmedium}px;
@@ -80,8 +83,31 @@ const Description = styled.div`
   }
 `;
 
-const PanelWrapper = styled.div`
-  color: ${colors.outerSpace};
+const Divider = styled.div`
+  margin: ${25 * BASE_UNIT}px auto;
+  max-width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: ${breakPoints.large}px) {
+    max-width: 66%;
+  }
+`;
+
+const Line = styled.span`
+  flex: 1;
+  background-color: ${colors.paleSky};
+  height: 1px;
+`;
+
+const Square = styled.span`
+  width: 9px;
+  height: 9px;
+  margin: 0 10px;
+  border: 1px solid ${colors.paleSky};
+  transform: rotate(45deg);
+  border-radius: 1px;
 `;
 
 const handleTransition = (ref: any) => {
@@ -108,7 +134,6 @@ const Landing = () => {
         aboutRef={aboutRef}
         creationsRef={creationsRef}
         thoughtsRef={thoughtsRef}
-        backgroundRef={backgroundRef}
         scroll={scroll}
         handleTransition={handleTransition}
       />
@@ -117,12 +142,16 @@ const Landing = () => {
           backgroundColor:
             backgroundRef.current != null &&
             scroll >= backgroundRef.current.offsetTop
-              ? colors.athensGrey
+              ? colors.mirage
               : colors.ebony,
           transition: 'background-color 0.5s ease'
         }}
       >
-        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
+        <Panel
+          minHeight={PANEL_MIN_HEIGHT}
+          isCenteredVertically
+          isCenteredHorizontally
+        >
           <TitleWrapper>
             <Fade delay={300}>
               <Logo src={logo} alt="" />
@@ -136,33 +165,42 @@ const Landing = () => {
           </TitleWrapper>
           <ChevronDown setRef={() => handleTransition(aboutRef)} />
         </Panel>
-        <div id="aboutRef" ref={aboutRef} />
-        <About />
-        <div ref={backgroundRef} />
-        <div ref={creationsRef} style={{ marginTop: 200 }} />
+        <div ref={backgroundRef} style={{ marginBottom: 200 }} />
         <div
           style={{
             ...(backgroundRef.current != null &&
             scroll >= backgroundRef.current.offsetTop
               ? {
                   visibility: 'visible',
+                  transition: 'visibility 0.5s, opacity 0.5s ease-in-out',
                   opacity: 1
                 }
               : {
                   visibility: 'hidden',
                   opacity: 0,
-                  transition: 'visibility 0s, opacity 0.5s linear'
+                  transition: 'visibility 0.5s, opacity 0.5s ease-in-out'
                 })
           }}
         >
+          <Divider ref={aboutRef}>
+            <Line />
+            <Square />
+            <Line />
+          </Divider>
+          <About />
+          <Divider ref={creationsRef}>
+            <Line />
+            <Square />
+            <Line />
+          </Divider>
           <Creations />
+          <Divider ref={thoughtsRef}>
+            <Line />
+            <Square />
+            <Line />
+          </Divider>
+          <Thoughts />
         </div>
-        <div ref={thoughtsRef} />
-        <Panel minHeight={PANEL_MIN_HEIGHT} isCentered>
-          <PanelWrapper>
-            <Thoughts />
-          </PanelWrapper>
-        </Panel>
       </div>
     </Container>
   );
