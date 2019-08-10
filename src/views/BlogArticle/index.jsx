@@ -1,5 +1,6 @@
 // @flow
 import React, { useState, useEffect } from 'react';
+import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import * as contentful from 'contentful';
@@ -9,7 +10,6 @@ import moment from 'moment';
 import { formatDuration } from '../../utils/duration.jsx';
 import {
   BASE_UNIT,
-  breakPoints,
   colors,
   fontSize,
   fontWeight,
@@ -82,6 +82,7 @@ const BlogArticle = ({
     space: REACT_APP_CONTENTFUL_SPACE_TOKEN,
     accessToken: REACT_APP_CONTENTFUL_ACCESS_TOKEN
   });
+  ReactGA.pageview(path);
 
   useEffect(() => {
     client

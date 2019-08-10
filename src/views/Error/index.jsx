@@ -1,5 +1,6 @@
 // @flow
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -9,6 +10,8 @@ import {
   fontSize,
   fontWeight
 } from '../../utils/themes.jsx';
+
+ReactGA.pageview('error');
 
 const Root = styled.div`
   position: relative;
