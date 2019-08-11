@@ -22,6 +22,16 @@ blockquote > p {
   padding: 0;
 }
 
+pre {
+  padding: 16px;
+  background-color: #f1f2f3;
+  border-radius: 4px;
+}
+
+pre > code {
+  color: #21374d;
+}
+
 p {
   font-family: 'Merriweather', sans-serif;
   margin-left: 0;

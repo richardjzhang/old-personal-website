@@ -19,13 +19,13 @@ import Error from '../Error';
 import Loading from '../Loading';
 
 const Root = styled.div`
-  padding: ${12 * BASE_UNIT}px ${8 * BASE_UNIT}px;
+  padding: ${12 * BASE_UNIT}px ${15 * BASE_UNIT}px;
   min-height: 100vh;
   background-color: ${colors.mirage};
 `;
 
 const Wrapper = styled.div`
-  max-width: 50%;
+  max-width: 650px;
   margin: 0 auto;
 `;
 
