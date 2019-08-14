@@ -46,7 +46,6 @@ const Title = styled.div`
 const Status = styled.div`
   display: flex;
   margin-top: ${3 * BASE_UNIT}px;
-  margin-bottom: ${8 * BASE_UNIT}px;
   font-size: ${fontSize.normal}px;
   color: ${colors.iron};
 `;
@@ -57,8 +56,23 @@ const StatusSeparator = styled.div`
 `;
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
   line-height: ${lineHeight.description};
   color: ${colors.porcelain};
+`;
+
+const CoverWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: ${8 * BASE_UNIT}px;
+  margin-bottom: ${8 * BASE_UNIT}px;
+`;
+
+const Image = styled.img`
+  width: 75%;
+  height: 75%;
+  object-fit: cover;
 `;
 
 const {
@@ -118,7 +132,16 @@ const BlogArticle = ({
   if (blogContent == null) return null;
   if (blogContent.length === 0 || error) return <Error />;
 
-  const { title, length, contentMarkdown } = blogContent[0].fields;
+  const {
+    title,
+    length,
+    contentMarkdown,
+    cover_image: {
+      fields: {
+        file: { url: coverImage }
+      }
+    }
+  } = blogContent[0].fields;
   const { createdAt } = blogContent[0].sys;
 
   return (
@@ -134,6 +157,9 @@ const BlogArticle = ({
           read
         </Status>
         <Content>
+          <CoverWrapper>
+            <Image src={coverImage}>{console.log(blogContent[0].fields)}</Image>
+          </CoverWrapper>
           <ReactMarkdown source={contentMarkdown} />
         </Content>
       </Wrapper>
