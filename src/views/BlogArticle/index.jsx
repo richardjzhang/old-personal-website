@@ -17,6 +17,7 @@ import {
 } from '../../utils/themes.jsx';
 import Error from '../Error';
 import Loading from '../Loading';
+import SubscribeForm from '../../components/SubscribeForm';
 
 const Root = styled.div`
   padding: ${12 * BASE_UNIT}px ${15 * BASE_UNIT}px;
@@ -162,6 +163,7 @@ const BlogArticle = ({
           </CoverWrapper>
           <ReactMarkdown source={contentMarkdown} />
         </Content>
+        <SubscribeForm />
       </Wrapper>
     </Root>
   );
