@@ -159,7 +159,7 @@ const BlogArticle = ({
         </Status>
         <Content>
           <CoverWrapper>
-            <Image src={coverImage}>{console.log(blogContent[0].fields)}</Image>
+            <Image src={coverImage} />
           </CoverWrapper>
           <ReactMarkdown source={contentMarkdown} />
         </Content>
