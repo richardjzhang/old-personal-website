@@ -1,5 +1,4 @@
 import React from 'react';
-import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 
 import Panel from '../../../components/Panel';
@@ -13,8 +12,6 @@ import {
   fontWeight,
   lineHeight
 } from '../../../utils/themes.jsx';
-
-const FADE_DELAY = 300;
 
 const PanelWrapper = styled.div`
   display: flex;
@@ -84,21 +81,19 @@ const Creations = ({ setCreationsRef }: Props) => (
     paddingLeft={15 * BASE_UNIT}
     backgroundColor={colors.mirage}
   >
-    <Fade delay={FADE_DELAY}>
-      <PanelWrapper>
-        <HumanVsComputer />
-        <Section>
-          <SectionLabel>Creation 01</SectionLabel>
-          <SectionTitle>Chess AI</SectionTitle>
-          <SectionDescription>
-            Having always loved the game of chess, I decided to see what tools
-            were available to me to build my very own chess playing app. Try
-            moving a piece to start a game! Careful though, it can see two moves
-            ahead.
-          </SectionDescription>
-        </Section>
-      </PanelWrapper>
-    </Fade>
+    <PanelWrapper>
+      <HumanVsComputer />
+      <Section>
+        <SectionLabel>Creation 01</SectionLabel>
+        <SectionTitle>Chess AI</SectionTitle>
+        <SectionDescription>
+          Having always loved the game of chess, I decided to see what tools
+          were available to me to build my very own chess playing app. Try
+          moving a piece to start a game! Careful though, it can see two moves
+          ahead.
+        </SectionDescription>
+      </Section>
+    </PanelWrapper>
   </Panel>
 );
 
