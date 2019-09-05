@@ -26,7 +26,7 @@ const Root = styled.div`
 `;
 
 const Wrapper = styled.div`
-  max-width: 650px;
+  max-width: 630px;
   margin: 0 auto;
 `;
 
@@ -64,15 +64,13 @@ const Content = styled.div`
 `;
 
 const CoverWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: ${8 * BASE_UNIT}px;
-  margin-bottom: ${8 * BASE_UNIT}px;
+  margin: ${8 * BASE_UNIT}px auto;
+  max-width: 400px;
 `;
 
 const Image = styled.img`
-  width: 75%;
-  height: 75%;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
 `;
 
