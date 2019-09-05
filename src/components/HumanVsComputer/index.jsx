@@ -54,7 +54,13 @@ class HumanVsComputer extends React.Component<Props, State> {
     }
   };
 
-  onDrop = ({ sourceSquare, targetSquare }) => {
+  onDrop = ({
+    sourceSquare,
+    targetSquare
+  }: {
+    sourceSquare: string,
+    targetSquare: string
+  }) => {
     // see if the move is legal
     const move = this.game.move({
       from: sourceSquare,
@@ -70,7 +76,7 @@ class HumanVsComputer extends React.Component<Props, State> {
     window.setTimeout(this.makeComputerMoveHard, 1);
   };
 
-  onSquareClick = square => {
+  onSquareClick = (square: string) => {
     const { pieceSquare } = this.state;
     this.setState({
       squareStyles: { [square]: { backgroundColor: colors.cornflowerBlue } },
@@ -107,38 +113,36 @@ class HumanVsComputer extends React.Component<Props, State> {
 
 export default function PlayComputerEngine() {
   return (
-    <div>
-      <HumanVsComputer>
-        {/* $FlowFixMe */}
-        {({ position, onDrop, onSquareClick, squareStyles }) => (
-          <Chessboard
-            calcWidth={({ screenWidth, screenHeight }) =>
-              screenWidth < breakPoints.small
-                ? 0.75 * screenWidth
-                : screenWidth < breakPoints.medium
-                ? 0.5 * screenWidth
-                : screenWidth < breakPoints.large
-                ? 0.4 * screenWidth
-                : 0.3 * screenWidth
-            }
-            id="humanVsComputer"
-            position={position}
-            onDrop={onDrop}
-            boardStyle={{
-              borderRadius: '5px',
-              boxShadow: `0 5px 15px rgba(0, 0, 0, 0.5)`
-            }}
-            onSquareClick={onSquareClick}
-            squareStyles={squareStyles}
-            lightSquareStyle={{ backgroundColor: colors.athensGrey }}
-            darkSquareStyle={{ backgroundColor: colors.saffron }}
-            dropSquareStyle={{
-              boxShadow: `inset 0 0 1px 4px ${colors.cornflowerBlue}`
-            }}
-            showNotation={false}
-          />
-        )}
-      </HumanVsComputer>
-    </div>
+    <HumanVsComputer>
+      {/* $FlowFixMe */}
+      {({ position, onDrop, onSquareClick, squareStyles }) => (
+        <Chessboard
+          calcWidth={({ screenWidth, screenHeight }) =>
+            screenWidth < breakPoints.small
+              ? 0.75 * screenWidth
+              : screenWidth < breakPoints.medium
+              ? 0.5 * screenWidth
+              : screenWidth < breakPoints.large
+              ? 0.4 * screenWidth
+              : 0.3 * screenWidth
+          }
+          id="humanVsComputer"
+          position={position}
+          onDrop={onDrop}
+          boardStyle={{
+            borderRadius: '5px',
+            boxShadow: `0 5px 15px rgba(0, 0, 0, 0.5)`
+          }}
+          onSquareClick={onSquareClick}
+          squareStyles={squareStyles}
+          lightSquareStyle={{ backgroundColor: colors.athensGrey }}
+          darkSquareStyle={{ backgroundColor: colors.saffron }}
+          dropSquareStyle={{
+            boxShadow: `inset 0 0 1px 4px ${colors.cornflowerBlue}`
+          }}
+          showNotation={false}
+        />
+      )}
+    </HumanVsComputer>
   );
 }

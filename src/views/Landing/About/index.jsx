@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Panel from '../../../components/Panel';
 import {
   BASE_UNIT,
-  breakPoints,
   borderRadius,
   boxShadow,
   colors,
@@ -25,20 +24,9 @@ const Section = styled.div`
   }
 `;
 
-const SectionTitle = styled.div`
-  margin-bottom: ${6 * BASE_UNIT}px;
-  font-size: ${fontSize.xlarge}px;
-  font-weight: ${fontWeight.bold};
-  color: ${colors.white};
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.large}px;
-  }
-`;
-
 const SectionDescription = styled.div`
   font-family: ${fontFamily.body};
-  font-size: ${fontSize.medium}px;
+  font-size: ${fontSize.xmedium}px;
   line-height: ${lineHeight.description};
   color: ${colors.porcelain};
 `;
@@ -83,7 +71,6 @@ const About = () => (
     paddingLeft={15 * BASE_UNIT}
   >
     <Section>
-      <SectionTitle>What I'm up to</SectionTitle>
       <SectionDescription>
         I'm a software engineer based in Sydney. I'm currently creating the
         future of mathematics education{' '}
@@ -91,14 +78,6 @@ const About = () => (
       </SectionDescription>
     </Section>
     <Section>
-      <SectionTitle>What I can do</SectionTitle>
-      <SectionDescription>
-        By focusing on your goals, I create amazing web interfaces and apps that
-        convey your message.
-      </SectionDescription>
-    </Section>
-    <Section>
-      <SectionTitle>Let's work together</SectionTitle>
       <SectionDescription>
         If you have a website or project you need help getting started, or
         simply want to say hi, send me a message.
