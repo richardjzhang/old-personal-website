@@ -146,7 +146,6 @@ const CustomForm = ({
         </SuccessBox>
       ) : (
         <React.Fragment>
-          {' '}
           <Column style={{ backgroundColor: colors.athensGrey }}>
             <Title>Want to keep up with what I'm up to?</Title>
             <Description>
