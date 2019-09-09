@@ -7,6 +7,7 @@ import Fade from 'react-reveal/Fade';
 import {
   BASE_UNIT,
   borderRadius,
+  breakPoints,
   colors,
   fontSize,
   fontWeight,
@@ -53,6 +54,18 @@ const SuccessText = styled.div`
 const Column = styled.div`
   padding: ${12 * BASE_UNIT}px;
   width: 50%;
+
+  @media (max-width: ${breakPoints.medium}px) {
+    display: none;
+  }
+`;
+
+const FullColumn = styled.div`
+  padding: ${12 * BASE_UNIT}px;
+
+  @media (min-width: ${breakPoints.medium}px) {
+    display: none;
+  }
 `;
 
 const Title = styled.div`
@@ -70,10 +83,8 @@ const Description = styled.div`
   color: ${colors.paleSky};
 `;
 
-const InputWrapper = styled.div`
-  &:first-child {
-    margin-bottom: ${3 * BASE_UNIT}px;
-  }
+const InputSeparator = styled.div`
+  margin-bottom: ${3 * BASE_UNIT}px;
 `;
 
 const Input = styled.input`
@@ -146,7 +157,6 @@ const CustomForm = ({
         </SuccessBox>
       ) : (
         <React.Fragment>
-          {' '}
           <Column style={{ backgroundColor: colors.athensGrey }}>
             <Title>Want to keep up with what I'm up to?</Title>
             <Description>
@@ -155,20 +165,17 @@ const CustomForm = ({
           </Column>
           <Column>
             <React.Fragment>
-              <InputWrapper>
-                <Input
-                  ref={node => (name = node)}
-                  type="text"
-                  placeholder="Your name"
-                />
-              </InputWrapper>
-              <InputWrapper>
-                <Input
-                  ref={node => (email = node)}
-                  type="email"
-                  placeholder="Your email"
-                />
-              </InputWrapper>
+              <Input
+                ref={node => (name = node)}
+                type="text"
+                placeholder="Your name"
+              />
+              <InputSeparator />
+              <Input
+                ref={node => (email = node)}
+                type="email"
+                placeholder="Your email"
+              />
               <Button onClick={handleSubscribe}>Subscribe</Button>
               <Disclaimer>
                 If you change your mind later, no worries. You can unsubscribe
@@ -176,6 +183,25 @@ const CustomForm = ({
               </Disclaimer>
             </React.Fragment>
           </Column>
+          <FullColumn>
+            <Title>Want to keep up with what I'm up to?</Title>
+            <Input
+              ref={node => (name = node)}
+              type="text"
+              placeholder="Your name"
+            />
+            <InputSeparator />
+            <Input
+              ref={node => (email = node)}
+              type="email"
+              placeholder="Your email"
+            />
+            <Button onClick={handleSubscribe}>Subscribe</Button>
+            <Disclaimer>
+              If you change your mind later, no worries. You can unsubscribe
+              whenever you like.
+            </Disclaimer>
+          </FullColumn>
         </React.Fragment>
       )}
     </Container>
