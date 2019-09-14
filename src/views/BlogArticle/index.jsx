@@ -1,6 +1,7 @@
 // @flow
 import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import * as contentful from 'contentful';
@@ -133,6 +134,7 @@ const BlogArticle = ({
 
   const {
     title,
+    spoiler,
     length,
     contentMarkdown,
     cover_image: {
@@ -145,6 +147,15 @@ const BlogArticle = ({
 
   return (
     <Root>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={spoiler} />
+        <meta name="keywords" content={spoiler} />
+        <meta
+          name="url"
+          content={`http://www.richardjzhang.com/blog/${path}`}
+        />
+      </Helmet>
       <Wrapper>
         <Link to="/" style={{ textDecoration: 'none' }}>
           <HomeLink>Home</HomeLink>
