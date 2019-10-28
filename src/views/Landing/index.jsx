@@ -7,9 +7,7 @@ import Fade from 'react-reveal/Fade';
 import About from './About';
 import Creations from './Creations';
 import Thoughts from './Thoughts';
-import SideMenu from './SideMenu';
 import Panel from '../../components/Panel';
-import ChevronDown from '../../components/Icons/ChevronDown';
 import {
   BASE_UNIT,
   breakPoints,
@@ -17,66 +15,46 @@ import {
   fontSize,
   fontWeight
 } from '../../utils/themes.jsx';
-import logo from '../../static/personal_logo.png';
+import camp_fire from '../../static/camp_fire.svg';
 
 ReactGA.pageview('landing');
 
 const PANEL_MIN_HEIGHT = '100vh';
+const NAVBAR_GUTTER = 60;
+const HERO_GUTTER = NAVBAR_GUTTER + 40;
 
 const Container = styled.div`
   background-color: ${colors.ebony};
 `;
 
-const Logo = styled.img`
-  margin-bottom: ${12 * BASE_UNIT}px;
-  width: 30%;
-  max-width: 200px;
-  max-height: 200px;
-  min-width: 125px;
-  min-height: 125px;
-
-  @media (max-width: ${breakPoints.large}px) {
-    margin-bottom: ${10 * BASE_UNIT}px;
-  }
-
-  @media screen and (max-height: 600px) {
-    width: 30%;
-  }
+const Hero = styled.img`
+  position: absolute;
+  top: ${HERO_GUTTER}px;
+  right: 50px;
+  min-width: 700px;
+  width: 60%;
 `;
 
 const TitleWrapper = styled.div`
-  text-align: center;
-  max-width: 85%;
-  margin-bottom: 100px;
+  position: absolute;
+  top: 30%;
+  left: 120px;
+  max-width: 400px;
 `;
 
 const Title = styled.div`
   font-size: ${fontSize.xxxlarge}px;
   font-weight: ${fontWeight.bold};
-  color: ${colors.white};
-
-  @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.xxlarge}px;
-  }
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.xlarge}px;
-  }
+  line-height: 1.25;
+  color: ${colors.athensGrey};
 `;
 
 const Description = styled.div`
+  display: inline-flex;
   margin-top: ${6 * BASE_UNIT}px;
-  max-width: 750px;
   font-size: ${fontSize.large}px;
+  line-height: 1.25;
   color: ${colors.porcelain};
-
-  @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.xmedium}px;
-  }
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.medium}px;
-  }
 `;
 
 const Divider = styled.div`
@@ -106,15 +84,8 @@ const Square = styled.span`
   border-radius: 1px;
 `;
 
-const handleTransition = (ref: any) => {
-  return ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-};
-
 const Landing = () => {
-  const aboutRef = useRef(null);
   const backgroundRef = useRef(null);
-  const creationsRef = useRef(null);
-  const thoughtsRef = useRef(null);
 
   const [scroll, setScroll] = useState(0);
 
@@ -126,20 +97,13 @@ const Landing = () => {
 
   return (
     <Container>
-      <SideMenu
-        aboutRef={aboutRef}
-        creationsRef={creationsRef}
-        thoughtsRef={thoughtsRef}
-        scroll={scroll}
-        handleTransition={handleTransition}
-      />
       <div
         style={{
           backgroundColor:
             backgroundRef.current != null &&
             scroll >= backgroundRef.current.offsetTop
               ? colors.mirage
-              : colors.ebony,
+              : '#575a89',
           transition: 'background-color 0.5s ease'
         }}
       >
@@ -148,18 +112,18 @@ const Landing = () => {
           isCenteredVertically
           isCenteredHorizontally
         >
+          <Hero src={camp_fire} alt="hero" />
           <TitleWrapper>
-            <Fade delay={300}>
-              <Logo src={logo} alt="" />
+            <Fade right delay={500}>
+              <Title>Hey!</Title>
+              <Title>I'm Richard.</Title>
             </Fade>
-            <Fade bottom delay={500}>
-              <Title>Hey, I'm Richard</Title>
+            <Fade delay={1500}>
               <Description>
-                I craft code that executes people's dreams into reality
-              </Description>
+                I like coming up with wacky ideas. And making them happen.
+              </Description>{' '}
             </Fade>
           </TitleWrapper>
-          <ChevronDown setRef={() => handleTransition(aboutRef)} />
         </Panel>
         <div ref={backgroundRef} style={{ marginBottom: 200 }} />
         <div
@@ -178,19 +142,14 @@ const Landing = () => {
                 })
           }}
         >
-          <Divider ref={aboutRef}>
-            <Line />
-            <Square />
-            <Line />
-          </Divider>
           <About />
-          <Divider ref={creationsRef}>
+          <Divider>
             <Line />
             <Square />
             <Line />
           </Divider>
           <Creations />
-          <Divider ref={thoughtsRef}>
+          <Divider>
             <Line />
             <Square />
             <Line />
