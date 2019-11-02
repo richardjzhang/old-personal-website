@@ -1,15 +1,11 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
-import styled from 'styled-components';
-
-import { colors, fontWeight } from 'utils/themes';
 
 import Panel, {
   ColumnWrapper as Wrapper,
   Column,
   ColumnSeparator
 } from 'components/Panel';
-import { urls } from 'utils/urls';
 import code_thinking from 'static/code_thinking.svg';
 
 import {
