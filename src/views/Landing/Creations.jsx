@@ -1,4 +1,5 @@
 import React from 'react';
+import Fade from 'react-reveal/Fade';
 
 import Panel, {
   ColumnWrapper as Wrapper,
@@ -7,30 +8,37 @@ import Panel, {
 } from 'components/Panel';
 import art_museum from 'static/art_museum.svg';
 
-import { Image, Description, Separator, Button, ButtonLink } from './styles';
+import {
+  FADE_DELAY,
+  Image,
+  Description,
+  Separator,
+  Button,
+  ButtonLink
+} from './styles';
 
-type Props = {|
-  setCreationsRef: () => void
-|};
-
-const Creations = ({ setCreationsRef }: Props) => (
+const Creations = () => (
   <Panel>
     <Wrapper>
       <Column width="40%">
-        <Description>
-          Being primarily a product engineer, most of my work has been focused
-          on building valuable and pragmatic experiences for users. I'm proud to
-          say that in many of these projects I made critical decisions that
-          ultimately contributed to higher user satisfaction.
-        </Description>
-        <Separator large />
-        <Button>
-          <ButtonLink>Read more</ButtonLink>
-        </Button>
+        <Fade left delay={FADE_DELAY}>
+          <Description>
+            Being primarily a product engineer, most of my work has been focused
+            on building valuable and pragmatic experiences for users. I'm proud
+            to say that in many of these projects I made critical decisions that
+            ultimately contributed to higher user satisfaction.
+          </Description>
+          <Separator large />
+          <Button>
+            <ButtonLink>Read more</ButtonLink>
+          </Button>
+        </Fade>
       </Column>
       <ColumnSeparator />
       <Column width="60%">
-        <Image src={art_museum} alt="website" />
+        <Fade delay={FADE_DELAY}>
+          <Image src={art_museum} alt="creations" />
+        </Fade>
       </Column>
     </Wrapper>
   </Panel>

@@ -17,9 +17,7 @@ import {
 } from 'utils/themes';
 import camp_fire from 'static/camp_fire.svg';
 
-const HeroImage = styled.img`
-  width: 100%;
-`;
+import { FADE_DELAY, Image } from './styles';
 
 const Title = styled.div`
   font-size: ${fontSize.xxlarge}px;
@@ -29,37 +27,47 @@ const Title = styled.div`
 `;
 
 const Description = styled.div`
-  display: inline-flex;
-  margin-top: ${6 * BASE_UNIT}px;
   font-size: ${fontSize.xmedium}px;
   line-height: ${lineHeight.description};
   color: ${colors.porcelain};
 `;
 
-const Separator = styled.div`
-  flex-shrink: 0;
-  width: ${10 * BASE_UNIT}px;
-  height: ${10 * BASE_UNIT}px;
-`;
+const Separator = styled.div(props => ({
+  flexShrink: 0,
+  ...(props.small
+    ? {
+        height: 6 * BASE_UNIT,
+        width: 6 * BASE_UNIT
+      }
+    : {}),
+  ...(props.large
+    ? {
+        height: 10 * BASE_UNIT,
+        width: 10 * BASE_UNIT
+      }
+    : {})
+}));
 
 const Hero = () => (
   <Panel minHeight="100vh">
     <Wrapper>
       <Column width="30%">
-        <Fade right delay={500}>
+        <Fade right delay={FADE_DELAY}>
           <Title>Hey!</Title>
           <Title>I'm Richard.</Title>
         </Fade>
-        <Fade delay={1500}>
-          <Description>
-            I come up with wacky ideas. Then I make them happen.
-          </Description>
+        <Separator small />
+        <Fade delay={3 * FADE_DELAY}>
+          <Description>I come up with wacky ideas.</Description>
+          <Description>Then I make them happen.</Description>
         </Fade>
-        <Separator />
+        <Separator large />
       </Column>
       <ColumnSeparator />
       <Column width="70%">
-        <HeroImage src={camp_fire} alt="HeroImage" />
+        <Fade delay={FADE_DELAY}>
+          <Image src={camp_fire} alt="hero" />
+        </Fade>
       </Column>
     </Wrapper>
   </Panel>

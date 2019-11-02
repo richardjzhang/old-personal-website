@@ -10,6 +10,8 @@ import {
   lineHeight
 } from 'utils/themes';
 
+export const FADE_DELAY = 500;
+
 export const Image = styled.img`
   width: 100%;
 `;
