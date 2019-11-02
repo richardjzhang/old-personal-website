@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Panel from '../../../components/Panel';
-import HumanVsComputer from '../../../components/HumanVsComputer';
+import Panel from '../../components/Panel';
+import HumanVsComputer from '../../components/HumanVsComputer';
 import {
   BASE_UNIT,
   breakPoints,
@@ -11,7 +11,7 @@ import {
   fontSize,
   fontWeight,
   lineHeight
-} from '../../../utils/themes.jsx';
+} from '../../utils/themes.jsx';
 
 const PanelWrapper = styled.div`
   display: flex;
@@ -79,7 +79,6 @@ const Creations = ({ setCreationsRef }: Props) => (
     isCenteredHorizontally
     paddingRight={15 * BASE_UNIT}
     paddingLeft={15 * BASE_UNIT}
-    backgroundColor={colors.mirage}
   >
     <PanelWrapper>
       <HumanVsComputer />

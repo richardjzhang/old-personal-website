@@ -2,6 +2,28 @@
 import React, { type Node } from 'react';
 import styled from 'styled-components';
 
+import { BASE_UNIT } from '../../utils/themes.jsx';
+
+const PANEL_MIN_HEIGHT = '100vh';
+const PANEL_PADDING = 100;
+
+export const ColumnWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+`;
+
+export const Column = styled.div(props => ({
+  width: props.width
+}));
+
+export const ColumnSeparator = styled.div`
+  flex-shrink: 0;
+  width: ${15 * BASE_UNIT}px;
+  height: ${15 * BASE_UNIT}px;
+`;
+
 const Container = styled.div`
   flex: 1;
   box-sizing: border-box;
@@ -10,25 +32,21 @@ type Props = {|
   minHeight?: string,
   backgroundColor?: string,
   marginTop?: number,
-  paddingTop?: number,
-  paddingRight?: number,
-  paddingBottom?: number,
-  paddingLeft?: number,
+  padding?: number,
   isCenteredVertically?: boolean,
   isCenteredHorizontally?: boolean,
+  isPositionRelative?: boolean,
   children?: Node
 |};
 
 const Panel = ({
-  minHeight,
+  minHeight = PANEL_MIN_HEIGHT,
   backgroundColor,
   marginTop,
-  paddingTop,
-  paddingRight,
-  paddingBottom,
-  paddingLeft,
+  padding = PANEL_PADDING,
   isCenteredVertically,
   isCenteredHorizontally,
+  isPositionRelative,
   children
 }: Props) => (
   <Container
@@ -36,10 +54,7 @@ const Panel = ({
       minHeight,
       backgroundColor,
       marginTop,
-      paddingTop,
-      paddingRight,
-      paddingBottom,
-      paddingLeft,
+      padding,
       ...(isCenteredVertically
         ? {
             display: 'flex',
@@ -53,7 +68,8 @@ const Panel = ({
             alignItems: 'center',
             flexDirection: 'column'
           }
-        : {})
+        : {}),
+      ...(isPositionRelative ? { position: 'relative' } : {})
     }}
   >
     {children}
