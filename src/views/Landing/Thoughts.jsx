@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import * as contentful from 'contentful';
 import moment from 'moment';
 
-import Panel from '../../components/Panel';
+import Panel from 'components/Panel';
 import {
   BASE_UNIT,
   breakPoints,
@@ -14,9 +14,9 @@ import {
   fontFamily,
   fontSize,
   fontWeight
-} from '../../utils/themes.jsx';
-import { formatDuration } from '../../utils/duration.jsx';
-import Error from '../Error';
+} from 'utils/themes';
+import { formatDuration } from 'utils/duration';
+import Error from 'views/Error';
 
 const {
   REACT_APP_CONTENTFUL_ACCESS_TOKEN,

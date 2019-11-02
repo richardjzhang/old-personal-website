@@ -5,7 +5,7 @@ import Panel, {
   ColumnWrapper as Wrapper,
   Column,
   ColumnSeparator
-} from '../../components/Panel';
+} from 'components/Panel';
 import {
   BASE_UNIT,
   borderRadius,
@@ -13,16 +13,16 @@ import {
   fontSize,
   fontWeight,
   lineHeight
-} from '../../utils/themes.jsx';
-import { urls } from '../../utils/urls';
-import website_code from '../../static/website_code.svg';
+} from 'utils/themes';
+import { urls } from 'utils/urls';
+import website_code from 'static/website_code.svg';
 
 const Image = styled.img`
   width: 100%;
 `;
 
 const Description = styled.div`
-  font-size: ${fontSize.large}px;
+  font-size: ${fontSize.xmedium}px;
   line-height: ${lineHeight.description};
   color: ${colors.cloudBurst};
 `;
@@ -51,10 +51,10 @@ const Link = styled.a`
 `;
 
 const Button = styled.div`
-  padding: ${4 * BASE_UNIT}px ${8 * BASE_UNIT}px;
-  max-width: ${35 * BASE_UNIT}px;
+  padding: ${4 * BASE_UNIT}px ${4 * BASE_UNIT}px;
+  max-width: ${32 * BASE_UNIT}px;
   color: ${colors.cloudBurst};
-  font-size: ${fontSize.xmedium}px;
+  font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
   border: 1px solid ${colors.cloudBurst};
   border-radius: ${borderRadius.regular}px;
@@ -86,7 +86,10 @@ const About = () => (
           <Link href={urls.mathspace}>@Mathspace</Link>.
         </Description>
         <Separator small />
-        <Description>Feel free to send me a message &#128516;.</Description>
+        <Description>
+          If you want to get in touch about anything at all, feel free to send
+          me a message &#128516;.
+        </Description>
         <Separator large />
         <Button>
           <ButtonLink href={urls.mailTo}>Get in touch</ButtonLink>

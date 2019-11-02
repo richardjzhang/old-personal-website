@@ -7,7 +7,7 @@ import Hero from './Hero.jsx';
 import About from './About.jsx';
 import Creations from './Creations.jsx';
 import Thoughts from './Thoughts.jsx';
-import { BASE_UNIT, colors } from '../../utils/themes.jsx';
+import { BASE_UNIT, colors } from 'utils/themes.jsx';
 
 ReactGA.pageview('landing');
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Panel from '../../components/Panel';
-import HumanVsComputer from '../../components/HumanVsComputer';
+import Panel from 'components/Panel';
+import HumanVsComputer from 'components/HumanVsComputer';
 import {
   BASE_UNIT,
   breakPoints,
@@ -11,7 +11,7 @@ import {
   fontSize,
   fontWeight,
   lineHeight
-} from '../../utils/themes.jsx';
+} from 'utils/themes';
 
 const PanelWrapper = styled.div`
   display: flex;
