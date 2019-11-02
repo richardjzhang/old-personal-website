@@ -49,7 +49,8 @@ export const fontFamily = {
 };
 
 export const lineHeight = {
-  description: 1.5
+  title: 1.25,
+  description: 1.4
 };
 
 export const zIndex = {

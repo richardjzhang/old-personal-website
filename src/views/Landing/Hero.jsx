@@ -8,7 +8,13 @@ import Panel, {
   Column,
   ColumnSeparator
 } from 'components/Panel';
-import { BASE_UNIT, colors, fontSize, fontWeight } from 'utils/themes';
+import {
+  BASE_UNIT,
+  colors,
+  fontSize,
+  fontWeight,
+  lineHeight
+} from 'utils/themes';
 import camp_fire from 'static/camp_fire.svg';
 
 const HeroImage = styled.img`
@@ -18,7 +24,7 @@ const HeroImage = styled.img`
 const Title = styled.div`
   font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.bold};
-  line-height: 1.25;
+  line-height: ${lineHeight.title};
   color: ${colors.athensGrey};
 `;
 
@@ -26,7 +32,7 @@ const Description = styled.div`
   display: inline-flex;
   margin-top: ${6 * BASE_UNIT}px;
   font-size: ${fontSize.xmedium}px;
-  line-height: 1.4;
+  line-height: ${lineHeight.description};
   color: ${colors.porcelain};
 `;
 
@@ -37,7 +43,7 @@ const Separator = styled.div`
 `;
 
 const Hero = () => (
-  <Panel isCenteredVertically isPositionRelative>
+  <Panel minHeight="100vh">
     <Wrapper>
       <Column width="30%">
         <Fade right delay={500}>

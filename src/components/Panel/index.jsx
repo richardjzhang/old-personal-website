@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { BASE_UNIT } from '../../utils/themes.jsx';
 
-const PANEL_MIN_HEIGHT = '100vh';
+const PANEL_MIN_HEIGHT = '70vh';
 const PANEL_PADDING = 24;
 
 export const ColumnWrapper = styled.div`
@@ -27,15 +27,15 @@ export const ColumnSeparator = styled.div`
 const Container = styled.div`
   flex: 1;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 type Props = {|
   minHeight?: string,
   backgroundColor?: string,
   marginTop?: number,
   padding?: number,
-  isCenteredVertically?: boolean,
-  isCenteredHorizontally?: boolean,
-  isPositionRelative?: boolean,
   children?: Node
 |};
 
@@ -44,9 +44,6 @@ const Panel = ({
   backgroundColor,
   marginTop,
   padding = PANEL_PADDING,
-  isCenteredVertically,
-  isCenteredHorizontally,
-  isPositionRelative,
   children
 }: Props) => (
   <Container
@@ -54,22 +51,7 @@ const Panel = ({
       minHeight,
       backgroundColor,
       marginTop,
-      padding,
-      ...(isCenteredVertically
-        ? {
-            display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column'
-          }
-        : {}),
-      ...(isCenteredHorizontally
-        ? {
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column'
-          }
-        : {}),
-      ...(isPositionRelative ? { position: 'relative' } : {})
+      padding
     }}
   >
     {children}

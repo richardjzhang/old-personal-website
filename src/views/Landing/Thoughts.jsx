@@ -99,12 +99,7 @@ const Thoughts = () => {
   if (posts.length === 0 || error) return <Error />;
 
   return (
-    <Panel
-      minHeight="100vh"
-      padding={100}
-      isCenteredVertically
-      isCenteredHorizontally
-    >
+    <Panel>
       <PanelWrapper>
         {posts.map(
           ({

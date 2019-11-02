@@ -1,98 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import Panel from 'components/Panel';
-import HumanVsComputer from 'components/HumanVsComputer';
-import {
-  BASE_UNIT,
-  breakPoints,
-  colors,
-  fontFamily,
-  fontSize,
-  fontWeight,
-  lineHeight
-} from 'utils/themes';
+import Panel, {
+  ColumnWrapper as Wrapper,
+  Column,
+  ColumnSeparator
+} from 'components/Panel';
+import art_museum from 'static/art_museum.svg';
 
-const PanelWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: -150px;
-
-  @media (max-width: ${breakPoints.large}px) {
-    margin-right: 0;
-  }
-
-  @media (max-width: ${breakPoints.medium}px) {
-    flex-direction: column;
-    margin-right: 0;
-  }
-`;
-
-const Section = styled.div`
-  text-align: left;
-  margin-left: ${20 * BASE_UNIT}px;
-  max-width: 425px;
-
-  @media (max-width: ${breakPoints.medium}px) {
-    margin-left: 0;
-    margin-top: ${8 * BASE_UNIT}px;
-    text-align: center;
-  }
-`;
-
-const SectionTitle = styled.div`
-  margin-bottom: ${4 * BASE_UNIT}px;
-  font-size: ${fontSize.xxlarge}px;
-  font-weight: ${fontWeight.bold};
-  color: ${colors.saffron};
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.xlarge}px;
-  }
-`;
-
-const SectionLabel = styled.div`
-  margin-bottom: ${2 * BASE_UNIT}px;
-  font-size: ${fontSize.medium}px;
-  font-weight: ${fontWeight.semibold};
-  color: ${colors.porcelain};
-  text-transform: uppercase;
-`;
-
-const SectionDescription = styled.div`
-  font-family: ${fontFamily.body};
-  line-height: ${lineHeight.description};
-  color: ${colors.porcelain};
-
-  @media (max-width: ${breakPoints.small}px) {
-    display: none;
-  }
-`;
+import { Image, Description, Separator, Button, ButtonLink } from './styles';
 
 type Props = {|
   setCreationsRef: () => void
 |};
 
 const Creations = ({ setCreationsRef }: Props) => (
-  <Panel
-    isCenteredVertically
-    isCenteredHorizontally
-    paddingRight={15 * BASE_UNIT}
-    paddingLeft={15 * BASE_UNIT}
-  >
-    <PanelWrapper>
-      <HumanVsComputer />
-      <Section>
-        <SectionLabel>Creation 01</SectionLabel>
-        <SectionTitle>Chess AI</SectionTitle>
-        <SectionDescription>
-          Having always loved the game of chess, I decided to see what tools
-          were available to me to build my very own chess playing app. Try
-          moving a piece to start a game! Careful though, it can see two moves
-          ahead.
-        </SectionDescription>
-      </Section>
-    </PanelWrapper>
+  <Panel>
+    <Wrapper>
+      <Column width="40%">
+        <Description>
+          Being primarily a product engineer, most of my work has been focused
+          on building valuable and pragmatic experiences for users. I'm proud to
+          say that in many of these projects I made critical decisions that
+          ultimately contributed to higher user satisfaction.
+        </Description>
+        <Separator large />
+        <Button>
+          <ButtonLink>Read more</ButtonLink>
+        </Button>
+      </Column>
+      <ColumnSeparator />
+      <Column width="60%">
+        <Image src={art_museum} alt="website" />
+      </Column>
+    </Wrapper>
   </Panel>
 );
 

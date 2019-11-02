@@ -23,14 +23,14 @@ const Divider = styled.div(props => ({
   flexShrink: 0,
   ...(props.small
     ? {
-        height: 15 * BASE_UNIT,
-        width: 15 * BASE_UNIT
+        height: 12 * BASE_UNIT,
+        width: 12 * BASE_UNIT
       }
     : {}),
   ...(props.large
     ? {
-        height: 50 * BASE_UNIT,
-        width: 50 * BASE_UNIT
+        height: 70 * BASE_UNIT,
+        width: 70 * BASE_UNIT
       }
     : {})
 }));
