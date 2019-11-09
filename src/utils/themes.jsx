@@ -60,7 +60,7 @@ export const lineHeight = {
 };
 
 export const zIndex = {
-  sideMenu: 100
+  navbar: 100
 };
 
 export const borderRadius = {

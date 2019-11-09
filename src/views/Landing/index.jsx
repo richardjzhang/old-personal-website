@@ -7,6 +7,7 @@ import Hero from './Hero.jsx';
 import About from './About.jsx';
 import Creations from './Creations.jsx';
 import Thoughts from './Thoughts.jsx';
+import Navbar from 'components/Navbar';
 import { BASE_UNIT, colors } from 'utils/themes.jsx';
 
 ReactGA.pageview('landing');
@@ -37,12 +38,20 @@ const Landing = () => {
 
   return (
     <Root>
+      <Navbar
+        backgroundColor={
+          contentRef.current != null && scroll >= contentRef.current.offsetTop
+            ? colors.mirage
+            : colors.jellyBean
+        }
+      />
       <Hero />
-      <Divider ref={contentRef} />
+      <Divider />
       <MainContent
+        ref={contentRef}
         style={{
           ...(contentRef.current != null &&
-          scroll >= contentRef.current.offsetTop
+          scroll >= contentRef.current.offsetTop - 50 * BASE_UNIT
             ? {
                 visibility: 'visible',
                 opacity: 1
