@@ -10,26 +10,30 @@ import {
   zIndex
 } from 'utils/themes.jsx';
 
-const Root = styled.div({
+const Root = styled.div(props => ({
   position: 'fixed',
   top: 0,
   left: 0,
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'flex-end',
   zIndex: zIndex.navbar,
-  padding: `${2 * BASE_UNIT}px ${12 * BASE_UNIT}px`,
-  height: 70,
+  padding: `${2 * BASE_UNIT}px ${25 * BASE_UNIT}px`,
+  height: 80,
   width: '100%',
   boxSizing: 'border-box',
   color: colors.white,
-  transition: 'background-color 0.5s ease-in-out'
-});
+  backgroundColor: props.backgroundColor,
+  transition: 'visibility 0.25s, opacity 0.25s ease-in-out',
+  visibility: props.visible ? 'visible' : 'hidden',
+  opacity: props.visible ? 1 : 0
+}));
 
 const Link = styled.div({
   fontSize: fontSize.medium,
   fontWeight: fontWeight.semibold,
-  textTransform: 'uppercase'
+  textTransform: 'uppercase',
+  cursor: 'pointer'
 });
 
 const Separator = styled.div({
@@ -42,12 +46,32 @@ type Props = {|
   backgroundColor?: string
 |};
 
-const Navbar = ({ backgroundColor }: Props) => (
-  <Root style={{ backgroundColor }}>
-    <Link>About</Link>
-    <Separator />
-    <Link>Work</Link>
-  </Root>
-);
+const Navbar = ({ backgroundColor }: Props) => {
+  const [pos, setPos] = React.useState(window.pageYOffset);
+  const [visible, setVisible] = React.useState(true);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const temp = window.pageYOffset;
+
+      setVisible(pos > temp);
+      setPos(temp);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
+  return (
+    <Root backgroundColor={backgroundColor} visible={visible}>
+      <Link>About</Link>
+      <Separator />
+      <Link>Work</Link>
+      <Separator />
+      <Link>Thoughts</Link>
+    </Root>
+  );
+};
 
 export default Navbar;
