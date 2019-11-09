@@ -24,7 +24,8 @@ const Root = styled.div(props => ({
   boxSizing: 'border-box',
   color: colors.white,
   backgroundColor: props.backgroundColor,
-  transition: 'visibility 0.25s, opacity 0.25s ease-in-out',
+  transition:
+    'visibility 0.25s, opacity 0.25s, background-color 0.25s ease-in-out',
   visibility: props.visible ? 'visible' : 'hidden',
   opacity: props.visible ? 1 : 0
 }));
