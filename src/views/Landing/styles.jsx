@@ -11,16 +11,17 @@ import {
 } from 'utils/themes';
 
 export const FADE_DELAY = 500;
+export const FADE_DURATION = 1000;
 
 export const Image = styled.img`
   width: 100%;
 `;
 
-export const Description = styled.div`
-  font-size: ${fontSize.xmedium}px;
-  line-height: ${lineHeight.description};
-  color: ${colors.cloudBurst};
-`;
+export const Description = styled.div(props => ({
+  fontSize: fontSize.xmedium,
+  lineHeight: lineHeight.description,
+  color: props.theme === 'light' ? colors.white : colors.cloudBurst
+}));
 
 export const Separator = styled.div(props => ({
   flexShrink: 0,
@@ -38,24 +39,25 @@ export const Separator = styled.div(props => ({
     : {})
 }));
 
-export const Button = styled.div`
-  padding: ${4 * BASE_UNIT}px ${4 * BASE_UNIT}px;
-  max-width: ${32 * BASE_UNIT}px;
-  color: ${colors.cloudBurst};
-  font-size: ${fontSize.medium}px;
-  font-weight: ${fontWeight.semibold};
-  border: 1px solid ${colors.cloudBurst};
-  border-radius: ${borderRadius.regular}px;
-  cursor: pointer;
-`;
+export const Button = styled.div(props => ({
+  padding: 4 * BASE_UNIT,
+  maxWidth: 32 * BASE_UNIT,
+  fontSize: fontSize.medium,
+  fontWeight: fontWeight.semibold,
+  border: `1px solid ${
+    props.theme === 'light' ? colors.white : colors.cloudBurst
+  }`,
+  borderRadius: borderRadius.regular,
+  cursor: 'pointer'
+}));
 
-export const ButtonLink = styled.a`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  color: ${colors.cloudBurst};
-  text-transform: none;
-  text-decoration: none;
-`;
+export const ButtonLink = styled.a(props => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100%',
+  width: '100%',
+  color: props.theme === 'light' ? colors.white : colors.cloudBurst,
+  textTransform: 'none',
+  textDecoration: 'none'
+}));

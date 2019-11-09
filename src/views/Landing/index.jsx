@@ -12,7 +12,7 @@ import { BASE_UNIT, colors } from 'utils/themes.jsx';
 ReactGA.pageview('landing');
 
 const Root = styled.div`
-  transition: background-color 0.5s ease;
+  background-color: ${colors.jellyBean};
 `;
 
 const MainContent = styled.div`
@@ -21,22 +21,12 @@ const MainContent = styled.div`
 
 const Divider = styled.div(props => ({
   flexShrink: 0,
-  ...(props.small
-    ? {
-        height: 12 * BASE_UNIT,
-        width: 12 * BASE_UNIT
-      }
-    : {}),
-  ...(props.large
-    ? {
-        height: 70 * BASE_UNIT,
-        width: 70 * BASE_UNIT
-      }
-    : {})
+  height: 50 * BASE_UNIT,
+  width: 50 * BASE_UNIT
 }));
 
 const Landing = () => {
-  const backgroundRef = useRef(null);
+  const contentRef = useRef(null);
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
@@ -46,21 +36,13 @@ const Landing = () => {
   });
 
   return (
-    <Root
-      style={{
-        backgroundColor:
-          backgroundRef.current != null &&
-          scroll >= backgroundRef.current.offsetTop
-            ? colors.white
-            : colors.waikawaGray
-      }}
-    >
+    <Root>
       <Hero />
-      <Divider ref={backgroundRef} large />
+      <Divider ref={contentRef} />
       <MainContent
         style={{
-          ...(backgroundRef.current != null &&
-          scroll >= backgroundRef.current.offsetTop
+          ...(contentRef.current != null &&
+          scroll >= contentRef.current.offsetTop
             ? {
                 visibility: 'visible',
                 opacity: 1
@@ -72,9 +54,7 @@ const Landing = () => {
         }}
       >
         <About />
-        <Divider small />
         <Creations />
-        <Divider small />
         <Thoughts />
       </MainContent>
     </Root>

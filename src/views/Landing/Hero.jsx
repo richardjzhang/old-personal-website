@@ -17,19 +17,16 @@ import {
 } from 'utils/themes';
 import camp_fire from 'static/camp_fire.svg';
 
-import { FADE_DELAY, Image } from './styles';
+import { FADE_DELAY, FADE_DURATION, Image, Description } from './styles';
+
+// Only shows up after second title has appeared and finished transition
+const DESCRIPTION_FADE_DELAY = 1.5 * FADE_DELAY + FADE_DURATION;
 
 const Title = styled.div`
-  font-size: ${fontSize.xxlarge}px;
+  font-size: ${fontSize.xxxlarge}px;
   font-weight: ${fontWeight.bold};
   line-height: ${lineHeight.title};
-  color: ${colors.athensGrey};
-`;
-
-const Description = styled.div`
-  font-size: ${fontSize.xmedium}px;
-  line-height: ${lineHeight.description};
-  color: ${colors.porcelain};
+  color: ${colors.white};
 `;
 
 const Separator = styled.div(props => ({
@@ -52,14 +49,16 @@ const Hero = () => (
   <Panel minHeight="100vh">
     <Wrapper>
       <Column width="30%">
-        <Fade right delay={FADE_DELAY}>
+        <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
           <Title>Hey!</Title>
-          <Title>I'm Richard.</Title>
+        </Fade>
+        <Fade bottom delay={1.5 * FADE_DELAY} duration={FADE_DURATION}>
+          <Title>I'm Richard</Title>
         </Fade>
         <Separator small />
-        <Fade delay={3 * FADE_DELAY}>
-          <Description>I come up with wacky ideas.</Description>
-          <Description>Then I make them happen.</Description>
+        <Fade delay={DESCRIPTION_FADE_DELAY}>
+          <Description theme="light">I come up with wacky ideas.</Description>
+          <Description theme="light">Then I make them happen.</Description>
         </Fade>
         <Separator large />
       </Column>

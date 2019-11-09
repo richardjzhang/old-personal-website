@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 import { BASE_UNIT } from '../../utils/themes.jsx';
 
-const PANEL_MIN_HEIGHT = '70vh';
-const PANEL_PADDING = 24;
+const PANEL_MIN_HEIGHT = '100vh';
+const PANEL_PADDING = 12 * BASE_UNIT;
 
 export const ColumnWrapper = styled.div`
   display: flex;
@@ -20,8 +20,8 @@ export const Column = styled.div(props => ({
 
 export const ColumnSeparator = styled.div`
   flex-shrink: 0;
-  width: ${12 * BASE_UNIT}px;
-  height: ${12 * BASE_UNIT}px;
+  width: ${24 * BASE_UNIT}px;
+  height: ${24 * BASE_UNIT}px;
 `;
 
 const Container = styled.div`

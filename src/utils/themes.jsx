@@ -1,7 +1,7 @@
 export const colors = {
   // Primary Colors
   ebony: '#0D0D21',
-  white: '#ffffff',
+  white: '#fff',
   malibu: '#62A6FF',
   cornflowerBlue: '#5758F7',
   saffron: '#F4B42E',
@@ -15,7 +15,13 @@ export const colors = {
   porcelain: '#F1F2F3',
   athensGrey: '#F9FAFB',
   mirage: '#1D263B',
-  waikawaGray: '#575A89'
+  waikawaGray: '#575A89',
+
+  // Pallette
+  jellyBean: '#286DA8',
+  bananaMania: '#FBE8A6',
+  geraldine: '#FA7C92',
+  downy: '#72CFA7'
 };
 
 export const breakPoints = {

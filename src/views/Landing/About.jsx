@@ -29,7 +29,7 @@ const Link = styled.a`
 `;
 
 const About = () => (
-  <Panel>
+  <Panel backgroundColor={colors.bananaMania}>
     <Wrapper>
       <Column width="60%">
         <Fade delay={FADE_DELAY}>
@@ -38,7 +38,7 @@ const About = () => (
       </Column>
       <ColumnSeparator />
       <Column width="40%">
-        <Fade right delay={FADE_DELAY}>
+        <Fade delay={FADE_DELAY}>
           <Description>
             I'm a frontend engineer based in Sydney and I'm currently helping to
             shape the future of mathematics education{' '}

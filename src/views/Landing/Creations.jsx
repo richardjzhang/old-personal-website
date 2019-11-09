@@ -7,6 +7,7 @@ import Panel, {
   ColumnSeparator
 } from 'components/Panel';
 import art_museum from 'static/art_museum.svg';
+import { colors } from 'utils/themes';
 
 import {
   FADE_DELAY,
@@ -18,19 +19,18 @@ import {
 } from './styles';
 
 const Creations = () => (
-  <Panel>
+  <Panel backgroundColor={colors.geraldine}>
     <Wrapper>
       <Column width="40%">
-        <Fade left delay={FADE_DELAY}>
-          <Description>
+        <Fade delay={FADE_DELAY}>
+          <Description theme="light">
             Being primarily a product engineer, most of my work has been focused
-            on building valuable and pragmatic experiences for users. I'm proud
-            to say that in many of these projects I made critical decisions that
-            ultimately contributed to higher user satisfaction.
+            on building valuable and pragmatic user experiences. Any critical
+            decisions I make are driven by data and user testing.
           </Description>
           <Separator large />
-          <Button>
-            <ButtonLink>Read more</ButtonLink>
+          <Button theme="light">
+            <ButtonLink theme="light">Read more</ButtonLink>
           </Button>
         </Fade>
       </Column>
