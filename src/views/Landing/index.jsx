@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Panel, { Column } from 'components/Panel';
 import Media from 'components/Media';
+import SocialIcon from 'components/SocialIcon';
 // $FlowFixMe
 import self_portrait from 'static/self_portrait.jpeg';
 import {
@@ -15,6 +16,7 @@ import {
   fontWeight,
   lineHeight
 } from 'utils/themes';
+import { urls } from 'utils/urls';
 
 const FADE_DELAY = 500;
 const FADE_DURATION = 1000;
@@ -34,6 +36,10 @@ const Description = styled.div(props => ({
   color: colors.white
 }));
 
+const IconWrapper = styled.div`
+  display: flex;
+`;
+
 const SecondColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,6 +49,12 @@ const SecondColumn = styled.div`
 
 const Separator = styled.div(props => ({
   flexShrink: 0,
+  ...(props.xSmall
+    ? {
+        height: 4 * BASE_UNIT,
+        width: 4 * BASE_UNIT
+      }
+    : {}),
   ...(props.small
     ? {
         height: 6 * BASE_UNIT,
@@ -78,6 +90,39 @@ const Title = styled.div`
   color: ${colors.white};
 `;
 
+const InfoColumn = () => (
+  <SecondColumn>
+    <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
+      <Subtitle>Hi there,</Subtitle>
+    </Fade>
+    <Separator large />
+    <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
+      <Title>
+        I'm Richard - a frontend engineer living in Sydney, Australia working at
+        Mathspace.
+      </Title>
+    </Fade>
+    <Separator medium />
+    <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
+      <Description>
+        I come up with wacky ideas. Then I make them happen.
+      </Description>
+      <Separator large />
+      <IconWrapper>
+        <SocialIcon url={urls.mailTo} />
+        <Separator xSmall />
+        <SocialIcon url={urls.linkedIn} />
+        <Separator xSmall />
+        <SocialIcon url={urls.github} />
+        <Separator xSmall />
+        <SocialIcon url={urls.medium} />
+        <Separator xSmall />
+        <SocialIcon url={urls.instagram} />
+      </IconWrapper>
+    </Fade>
+  </SecondColumn>
+);
+
 const Landing = () => (
   <Media query={`(min-width: ${breakPoints.large}px)`}>
     {isDesktopView =>
@@ -92,24 +137,7 @@ const Landing = () => (
             padding={25 * BASE_UNIT}
             backgroundColor={colors.geraldine}
           >
-            <SecondColumn>
-              <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
-                <Subtitle>Hi there,</Subtitle>
-              </Fade>
-              <Separator large />
-              <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
-                <Title>
-                  I'm Richard - a frontend engineer living in Sydney, Australia
-                  working at Mathspace.
-                </Title>
-              </Fade>
-              <Separator medium />
-              <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
-                <Description>
-                  I come up with wacky ideas. Then I make them happen.
-                </Description>
-              </Fade>
-            </SecondColumn>
+            <InfoColumn />
           </Column>
         </Panel>
       ) : (
@@ -120,24 +148,7 @@ const Landing = () => (
             padding={25 * BASE_UNIT}
             backgroundColor={colors.geraldine}
           >
-            <SecondColumn>
-              <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
-                <Subtitle>Hi there,</Subtitle>
-              </Fade>
-              <Separator large />
-              <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
-                <Title>
-                  I'm Richard - a frontend engineer living in Sydney, Australia
-                  working at Mathspace.
-                </Title>
-              </Fade>
-              <Separator medium />
-              <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
-                <Description>
-                  I come up with wacky ideas. Then I make them happen.
-                </Description>
-              </Fade>
-            </SecondColumn>
+            <InfoColumn />
           </Column>
         </Panel>
       )
