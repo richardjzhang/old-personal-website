@@ -30,11 +30,15 @@ const BackgroundImage = styled.div(props => ({
   backgroundPosition: '50% 50%'
 }));
 
-const Description = styled.div(props => ({
-  fontSize: fontSize.xmedium,
-  lineHeight: lineHeight.description,
-  color: colors.white
-}));
+const Description = styled.div`
+  font-size: ${fontSize.xmedium};
+  line-height: ${lineHeight.description};
+  color: ${colors.white};
+
+  @media (max-width: ${breakPoints.small}px) {
+    font-size: ${fontSize.medium}px;
+  }
+`;
 
 const IconWrapper = styled.div`
   display: flex;
@@ -88,6 +92,10 @@ const Title = styled.div`
   font-weight: ${fontWeight.bold};
   line-height: ${lineHeight.title};
   color: ${colors.white};
+
+  @media (max-width: ${breakPoints.small}px) {
+    font-size: ${fontSize.large}px;
+  }
 `;
 
 const InfoColumn = () => (
@@ -145,7 +153,7 @@ const Landing = () => (
           <Column
             width="100%"
             height="100vh"
-            padding={25 * BASE_UNIT}
+            padding={20 * BASE_UNIT}
             backgroundColor={colors.geraldine}
           >
             <InfoColumn />
