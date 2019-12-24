@@ -4,6 +4,7 @@ import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 
 import Panel, { Column } from 'components/Panel';
+// $FlowFixMe
 import self_portrait from 'static/self_portrait.jpeg';
 import {
   BASE_UNIT,
@@ -15,8 +16,6 @@ import {
 
 const FADE_DELAY = 500;
 const FADE_DURATION = 1000;
-// Only shows up after second title has appeared and finished transition
-const DESCRIPTION_FADE_DELAY = 2 * FADE_DELAY + FADE_DURATION;
 
 const BackgroundImage = styled.div(props => ({
   width: '100%',
