@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WebFont from 'webfontloader';
 
 import Landing from './views/Landing';
-import BlogArticle from './views/BlogArticle';
 import Error from './views/Error';
 import './index.css';
 
@@ -29,11 +28,6 @@ if (root !== null) {
     <Router>
       <Switch>
         <Route exact path="/" component={() => <Landing />} />
-        <Route
-          exact
-          path="/blog/:path"
-          component={props => <BlogArticle {...props} />}
-        />
         <Route exact path="*" component={() => <Error />} />
       </Switch>
     </Router>,

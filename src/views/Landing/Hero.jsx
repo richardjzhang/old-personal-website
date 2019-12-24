@@ -3,11 +3,8 @@ import React from 'react';
 import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 
-import Panel, {
-  ColumnWrapper as Wrapper,
-  Column,
-  ColumnSeparator
-} from 'components/Panel';
+import Panel, { Column } from 'components/Panel';
+import self_portrait from 'static/self_portrait.jpeg';
 import {
   BASE_UNIT,
   colors,
@@ -15,18 +12,32 @@ import {
   fontWeight,
   lineHeight
 } from 'utils/themes';
-import camp_fire from 'static/camp_fire.svg';
 
-import { FADE_DELAY, FADE_DURATION, Image, Description } from './styles';
-
+const FADE_DELAY = 500;
+const FADE_DURATION = 1000;
 // Only shows up after second title has appeared and finished transition
 const DESCRIPTION_FADE_DELAY = 1.5 * FADE_DELAY + FADE_DURATION;
 
-const Title = styled.div`
-  font-size: ${fontSize.xxxlarge}px;
-  font-weight: ${fontWeight.bold};
-  line-height: ${lineHeight.title};
-  color: ${colors.white};
+const BackgroundImage = styled.div(props => ({
+  width: '100%',
+  height: '100%',
+  backgroundImage: `url(${props.url})`,
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: '50% 50%'
+}));
+
+const Description = styled.div(props => ({
+  fontSize: fontSize.xmedium,
+  lineHeight: lineHeight.description,
+  color: colors.white
+}));
+
+const SecondColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 `;
 
 const Separator = styled.div(props => ({
@@ -37,6 +48,12 @@ const Separator = styled.div(props => ({
         width: 6 * BASE_UNIT
       }
     : {}),
+  ...(props.medium
+    ? {
+        height: 8 * BASE_UNIT,
+        width: 8 * BASE_UNIT
+      }
+    : {}),
   ...(props.large
     ? {
         height: 10 * BASE_UNIT,
@@ -45,30 +62,51 @@ const Separator = styled.div(props => ({
     : {})
 }));
 
+const Subtitle = styled.div`
+  font-size: ${fontSize.normal};
+  font-weight: ${fontWeight.semibold};
+  line-height: ${lineHeight.description};
+  color: ${colors.cloudBurst};
+  text-transform: uppercase;
+`;
+
+const Title = styled.div`
+  font-size: ${fontSize.xxlarge}px;
+  font-weight: ${fontWeight.bold};
+  line-height: ${lineHeight.title};
+  color: ${colors.white};
+`;
+
 const Hero = () => (
-  <Panel minHeight="100vh">
-    <Wrapper>
-      <Column width="30%">
+  <Panel>
+    <Column width="50%" height="100vh" padding={0}>
+      <BackgroundImage url={self_portrait} />
+    </Column>
+    <Column
+      width="50%"
+      height="100vh"
+      padding={25 * BASE_UNIT}
+      backgroundColor={colors.geraldine}
+    >
+      <SecondColumn>
         <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
-          <Title>Hey!</Title>
-        </Fade>
-        <Fade bottom delay={1.5 * FADE_DELAY} duration={FADE_DURATION}>
-          <Title>I'm Richard</Title>
-        </Fade>
-        <Separator small />
-        <Fade delay={DESCRIPTION_FADE_DELAY}>
-          <Description theme="light">I come up with wacky ideas.</Description>
-          <Description theme="light">Then I make them happen.</Description>
+          <Subtitle>Hi there,</Subtitle>
         </Fade>
         <Separator large />
-      </Column>
-      <ColumnSeparator />
-      <Column width="70%">
-        <Fade delay={FADE_DELAY}>
-          <Image src={camp_fire} alt="hero" />
+        <Fade bottom delay={1.5 * FADE_DELAY} duration={FADE_DURATION}>
+          <Title>
+            I'm Richard - a frontend engineer living in Sydney, Australia and
+            working at Mathspace.
+          </Title>
         </Fade>
-      </Column>
-    </Wrapper>
+        <Separator medium />
+        <Fade delay={DESCRIPTION_FADE_DELAY}>
+          <Description>
+            I come up with wacky ideas. Then I make them happen.
+          </Description>
+        </Fade>
+      </SecondColumn>
+    </Column>
   </Panel>
 );
 
