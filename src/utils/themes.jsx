@@ -1,15 +1,12 @@
 export const colors = {
   // Primary Colors
   ebony: '#0D0D21',
-  white: '#ffffff',
+  white: '#fff',
   malibu: '#62A6FF',
   cornflowerBlue: '#5758F7',
   saffron: '#F4B42E',
   dodgerBlue: '#3B80FE',
   black: '#000000',
-  redOrange: '#FF3838',
-  helioTrope: '#C88AFF',
-  brightTurquoise: '#00F0B4',
 
   // Greys
   cloudBurst: '#21374D',
@@ -18,19 +15,13 @@ export const colors = {
   porcelain: '#F1F2F3',
   athensGrey: '#F9FAFB',
   mirage: '#1D263B',
-  mineShaft: '#212121',
-  paleSky: '#737882',
+  waikawaGray: '#575A89',
 
-  // Logo colors
-  pelorous: '#31AFB4',
-  viking: '#72D4D8',
-  greenPea: '#1B6163',
-  wellRead: '#B33631',
-  tangaroa: '#031736'
-};
-
-export const hoverColors = {
-  cornflowerBlue: '#3435D8'
+  // Pallette
+  jellyBean: '#286DA8',
+  bananaMania: '#FBE8A6',
+  geraldine: '#FA7C92',
+  downy: '#72CFA7'
 };
 
 export const breakPoints = {
@@ -64,11 +55,12 @@ export const fontFamily = {
 };
 
 export const lineHeight = {
-  description: 1.5
+  title: 1.25,
+  description: 1.4
 };
 
 export const zIndex = {
-  sideMenu: 100
+  navbar: 100
 };
 
 export const borderRadius = {

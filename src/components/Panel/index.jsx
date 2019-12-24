@@ -2,58 +2,31 @@
 import React, { type Node } from 'react';
 import styled from 'styled-components';
 
+export const Column = styled.div(props => ({
+  padding: props.padding,
+  height: props.height,
+  width: props.width,
+  backgroundColor: props.backgroundColor,
+  boxSizing: 'border-box'
+}));
+
 const Container = styled.div`
   flex: 1;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
+
 type Props = {|
-  minHeight?: string,
   backgroundColor?: string,
-  marginTop?: number,
-  paddingTop?: number,
-  paddingRight?: number,
-  paddingBottom?: number,
-  paddingLeft?: number,
-  isCenteredVertically?: boolean,
-  isCenteredHorizontally?: boolean,
   children?: Node
 |};
 
-const Panel = ({
-  minHeight,
-  backgroundColor,
-  marginTop,
-  paddingTop,
-  paddingRight,
-  paddingBottom,
-  paddingLeft,
-  isCenteredVertically,
-  isCenteredHorizontally,
-  children
-}: Props) => (
+const Panel = ({ backgroundColor, children }: Props) => (
   <Container
     style={{
-      minHeight,
-      backgroundColor,
-      marginTop,
-      paddingTop,
-      paddingRight,
-      paddingBottom,
-      paddingLeft,
-      ...(isCenteredVertically
-        ? {
-            display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column'
-          }
-        : {}),
-      ...(isCenteredHorizontally
-        ? {
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column'
-          }
-        : {})
+      backgroundColor
     }}
   >
     {children}
