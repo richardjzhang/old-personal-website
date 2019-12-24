@@ -1,204 +1,148 @@
 // @flow
-import React, { useRef, useEffect, useState } from 'react';
-import ReactGA from 'react-ga';
-import styled from 'styled-components';
+import React from 'react';
 import Fade from 'react-reveal/Fade';
+import styled from 'styled-components';
 
-import About from './About';
-import Creations from './Creations';
-import Thoughts from './Thoughts';
-import SideMenu from './SideMenu';
-import Panel from '../../components/Panel';
-import ChevronDown from '../../components/Icons/ChevronDown';
+import Panel, { Column } from 'components/Panel';
+import Media from 'components/Media';
+// $FlowFixMe
+import self_portrait from 'static/self_portrait.jpeg';
 import {
   BASE_UNIT,
   breakPoints,
   colors,
   fontSize,
-  fontWeight
-} from '../../utils/themes.jsx';
-import logo from '../../static/personal_logo.png';
+  fontWeight,
+  lineHeight
+} from 'utils/themes';
 
-ReactGA.pageview('landing');
+const FADE_DELAY = 500;
+const FADE_DURATION = 1000;
 
-const PANEL_MIN_HEIGHT = '100vh';
+const BackgroundImage = styled.div(props => ({
+  width: '100%',
+  height: '100%',
+  backgroundImage: `url(${props.url})`,
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: '50% 50%'
+}));
 
-const Container = styled.div`
-  background-color: ${colors.ebony};
+const Description = styled.div(props => ({
+  fontSize: fontSize.xmedium,
+  lineHeight: lineHeight.description,
+  color: colors.white
+}));
+
+const SecondColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 `;
 
-const Logo = styled.img`
-  margin-bottom: ${12 * BASE_UNIT}px;
-  width: 30%;
-  max-width: 200px;
-  max-height: 200px;
-  min-width: 125px;
-  min-height: 125px;
+const Separator = styled.div(props => ({
+  flexShrink: 0,
+  ...(props.small
+    ? {
+        height: 6 * BASE_UNIT,
+        width: 6 * BASE_UNIT
+      }
+    : {}),
+  ...(props.medium
+    ? {
+        height: 8 * BASE_UNIT,
+        width: 8 * BASE_UNIT
+      }
+    : {}),
+  ...(props.large
+    ? {
+        height: 10 * BASE_UNIT,
+        width: 10 * BASE_UNIT
+      }
+    : {})
+}));
 
-  @media (max-width: ${breakPoints.large}px) {
-    margin-bottom: ${10 * BASE_UNIT}px;
-  }
-
-  @media screen and (max-height: 600px) {
-    width: 30%;
-  }
-`;
-
-const TitleWrapper = styled.div`
-  text-align: center;
-  max-width: 85%;
-  margin-bottom: 100px;
+const Subtitle = styled.div`
+  font-size: ${fontSize.normal};
+  font-weight: ${fontWeight.semibold};
+  line-height: ${lineHeight.description};
+  color: ${colors.cloudBurst};
+  text-transform: uppercase;
 `;
 
 const Title = styled.div`
-  font-size: ${fontSize.xxxlarge}px;
+  font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.bold};
+  line-height: ${lineHeight.title};
   color: ${colors.white};
-
-  @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.xxlarge}px;
-  }
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.xlarge}px;
-  }
 `;
 
-const Description = styled.div`
-  margin-top: ${6 * BASE_UNIT}px;
-  max-width: 750px;
-  font-size: ${fontSize.large}px;
-  color: ${colors.porcelain};
-
-  @media (max-width: ${breakPoints.medium}px) {
-    font-size: ${fontSize.xmedium}px;
-  }
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.medium}px;
-  }
-`;
-
-const Divider = styled.div`
-  margin: ${25 * BASE_UNIT}px auto;
-  max-width: 33%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: ${breakPoints.large}px) {
-    max-width: 66%;
-  }
-`;
-
-const Line = styled.span`
-  flex: 1;
-  background-color: ${colors.paleSky};
-  height: 1px;
-`;
-
-const Square = styled.span`
-  width: 9px;
-  height: 9px;
-  margin: 0 10px;
-  border: 1px solid ${colors.paleSky};
-  transform: rotate(45deg);
-  border-radius: 1px;
-`;
-
-const handleTransition = (ref: any) => {
-  return ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-};
-
-const Landing = () => {
-  const aboutRef = useRef(null);
-  const backgroundRef = useRef(null);
-  const creationsRef = useRef(null);
-  const thoughtsRef = useRef(null);
-
-  const [scroll, setScroll] = useState(0);
-
-  useEffect(() => {
-    document.addEventListener('scroll', () => {
-      setScroll(window.scrollY);
-    });
-  });
-
-  return (
-    <Container>
-      <SideMenu
-        aboutRef={aboutRef}
-        creationsRef={creationsRef}
-        thoughtsRef={thoughtsRef}
-        scroll={scroll}
-        handleTransition={handleTransition}
-      />
-      <div
-        style={{
-          backgroundColor:
-            backgroundRef.current != null &&
-            scroll >= backgroundRef.current.offsetTop
-              ? colors.mirage
-              : colors.ebony,
-          transition: 'background-color 0.5s ease'
-        }}
-      >
-        <Panel
-          minHeight={PANEL_MIN_HEIGHT}
-          isCenteredVertically
-          isCenteredHorizontally
-        >
-          <TitleWrapper>
-            <Fade delay={300}>
-              <Logo src={logo} alt="" />
-            </Fade>
-            <Fade bottom delay={500}>
-              <Title>Hey, I'm Richard</Title>
-              <Description>
-                I craft code that executes people's dreams into reality
-              </Description>
-            </Fade>
-          </TitleWrapper>
-          <ChevronDown setRef={() => handleTransition(aboutRef)} />
+const Landing = () => (
+  <Media query={`(min-width: ${breakPoints.large}px)`}>
+    {isDesktopView =>
+      isDesktopView ? (
+        <Panel>
+          <Column width="50%" height="100vh" padding={0}>
+            <BackgroundImage url={self_portrait} />
+          </Column>
+          <Column
+            width="50%"
+            height="100vh"
+            padding={25 * BASE_UNIT}
+            backgroundColor={colors.geraldine}
+          >
+            <SecondColumn>
+              <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
+                <Subtitle>Hi there,</Subtitle>
+              </Fade>
+              <Separator large />
+              <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
+                <Title>
+                  I'm Richard - a frontend engineer living in Sydney, Australia
+                  working at Mathspace.
+                </Title>
+              </Fade>
+              <Separator medium />
+              <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
+                <Description>
+                  I come up with wacky ideas. Then I make them happen.
+                </Description>
+              </Fade>
+            </SecondColumn>
+          </Column>
         </Panel>
-        <div ref={backgroundRef} style={{ marginBottom: 200 }} />
-        <div
-          style={{
-            ...(backgroundRef.current != null &&
-            scroll >= backgroundRef.current.offsetTop
-              ? {
-                  visibility: 'visible',
-                  transition: 'visibility 0.5s, opacity 0.5s ease-in-out',
-                  opacity: 1
-                }
-              : {
-                  visibility: 'hidden',
-                  opacity: 0,
-                  transition: 'visibility 0.5s, opacity 0.5s ease-in-out'
-                })
-          }}
-        >
-          <Divider ref={aboutRef}>
-            <Line />
-            <Square />
-            <Line />
-          </Divider>
-          <About />
-          <Divider ref={creationsRef}>
-            <Line />
-            <Square />
-            <Line />
-          </Divider>
-          <Creations />
-          <Divider ref={thoughtsRef}>
-            <Line />
-            <Square />
-            <Line />
-          </Divider>
-          <Thoughts />
-        </div>
-      </div>
-    </Container>
-  );
-};
+      ) : (
+        <Panel>
+          <Column
+            width="100%"
+            height="100vh"
+            padding={25 * BASE_UNIT}
+            backgroundColor={colors.geraldine}
+          >
+            <SecondColumn>
+              <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
+                <Subtitle>Hi there,</Subtitle>
+              </Fade>
+              <Separator large />
+              <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
+                <Title>
+                  I'm Richard - a frontend engineer living in Sydney, Australia
+                  working at Mathspace.
+                </Title>
+              </Fade>
+              <Separator medium />
+              <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
+                <Description>
+                  I come up with wacky ideas. Then I make them happen.
+                </Description>
+              </Fade>
+            </SecondColumn>
+          </Column>
+        </Panel>
+      )
+    }
+  </Media>
+);
+
 export default Landing;
