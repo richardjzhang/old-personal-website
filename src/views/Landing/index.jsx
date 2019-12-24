@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import Panel, { Column } from 'components/Panel';
 import Media from 'components/Media';
-import SocialIcon from 'components/SocialIcon';
+import SocialIcon, { SocialIconWrapper } from 'components/SocialIcon';
 // $FlowFixMe
 import self_portrait from 'static/self_portrait.jpeg';
 import {
@@ -30,14 +30,14 @@ const BackgroundImage = styled.div(props => ({
   backgroundPosition: '50% 50%'
 }));
 
-const Description = styled.div(props => ({
-  fontSize: fontSize.xmedium,
-  lineHeight: lineHeight.description,
-  color: colors.white
-}));
+const Description = styled.div`
+  font-size: ${fontSize.xmedium};
+  line-height: ${lineHeight.description};
+  color: ${colors.white};
 
-const IconWrapper = styled.div`
-  display: flex;
+  @media (max-width: ${breakPoints.small}px) {
+    font-size: ${fontSize.medium}px;
+  }
 `;
 
 const SecondColumn = styled.div`
@@ -88,6 +88,10 @@ const Title = styled.div`
   font-weight: ${fontWeight.bold};
   line-height: ${lineHeight.title};
   color: ${colors.white};
+
+  @media (max-width: ${breakPoints.small}px) {
+    font-size: ${fontSize.large}px;
+  }
 `;
 
 const InfoColumn = () => (
@@ -108,7 +112,7 @@ const InfoColumn = () => (
         I come up with wacky ideas. Then I make them happen.
       </Description>
       <Separator large />
-      <IconWrapper>
+      <SocialIconWrapper>
         <SocialIcon url={urls.mailTo} />
         <Separator xSmall />
         <SocialIcon url={urls.linkedIn} />
@@ -118,7 +122,7 @@ const InfoColumn = () => (
         <SocialIcon url={urls.medium} />
         <Separator xSmall />
         <SocialIcon url={urls.instagram} />
-      </IconWrapper>
+      </SocialIconWrapper>
     </Fade>
   </SecondColumn>
 );
@@ -145,7 +149,7 @@ const Landing = () => (
           <Column
             width="100%"
             height="100vh"
-            padding={25 * BASE_UNIT}
+            padding={20 * BASE_UNIT}
             backgroundColor={colors.geraldine}
           >
             <InfoColumn />
