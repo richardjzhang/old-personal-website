@@ -4,10 +4,12 @@ import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 
 import Panel, { Column } from 'components/Panel';
+import Media from 'components/Media';
 // $FlowFixMe
 import self_portrait from 'static/self_portrait.jpeg';
 import {
   BASE_UNIT,
+  breakPoints,
   colors,
   fontSize,
   fontWeight,
@@ -77,36 +79,70 @@ const Title = styled.div`
 `;
 
 const Landing = () => (
-  <Panel>
-    <Column width="50%" height="100vh" padding={0}>
-      <BackgroundImage url={self_portrait} />
-    </Column>
-    <Column
-      width="50%"
-      height="100vh"
-      padding={25 * BASE_UNIT}
-      backgroundColor={colors.geraldine}
-    >
-      <SecondColumn>
-        <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
-          <Subtitle>Hi there,</Subtitle>
-        </Fade>
-        <Separator large />
-        <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
-          <Title>
-            I'm Richard - a frontend engineer living in Sydney, Australia
-            working at Mathspace.
-          </Title>
-        </Fade>
-        <Separator medium />
-        <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
-          <Description>
-            I come up with wacky ideas. Then I make them happen.
-          </Description>
-        </Fade>
-      </SecondColumn>
-    </Column>
-  </Panel>
+  <Media query={`(min-width: ${breakPoints.large}px)`}>
+    {isDesktopView =>
+      isDesktopView ? (
+        <Panel>
+          <Column width="50%" height="100vh" padding={0}>
+            <BackgroundImage url={self_portrait} />
+          </Column>
+          <Column
+            width="50%"
+            height="100vh"
+            padding={25 * BASE_UNIT}
+            backgroundColor={colors.geraldine}
+          >
+            <SecondColumn>
+              <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
+                <Subtitle>Hi there,</Subtitle>
+              </Fade>
+              <Separator large />
+              <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
+                <Title>
+                  I'm Richard - a frontend engineer living in Sydney, Australia
+                  working at Mathspace.
+                </Title>
+              </Fade>
+              <Separator medium />
+              <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
+                <Description>
+                  I come up with wacky ideas. Then I make them happen.
+                </Description>
+              </Fade>
+            </SecondColumn>
+          </Column>
+        </Panel>
+      ) : (
+        <Panel>
+          <Column
+            width="100%"
+            height="100vh"
+            padding={25 * BASE_UNIT}
+            backgroundColor={colors.geraldine}
+          >
+            <SecondColumn>
+              <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
+                <Subtitle>Hi there,</Subtitle>
+              </Fade>
+              <Separator large />
+              <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
+                <Title>
+                  I'm Richard - a frontend engineer living in Sydney, Australia
+                  working at Mathspace.
+                </Title>
+              </Fade>
+              <Separator medium />
+              <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
+                <Description>
+                  I come up with wacky ideas. Then I make them happen.
+                </Description>
+              </Fade>
+            </SecondColumn>
+          </Column>
+        </Panel>
+      )
+    }
+  </Media>
 );
 
 export default Landing;
