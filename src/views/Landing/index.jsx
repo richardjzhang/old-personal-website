@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import Panel, { Column } from 'components/Panel';
 import Media from 'components/Media';
-import SocialIcon from 'components/SocialIcon';
+import SocialIcon, { SocialIconWrapper } from 'components/SocialIcon';
 // $FlowFixMe
 import self_portrait from 'static/self_portrait.jpeg';
 import {
@@ -38,10 +38,6 @@ const Description = styled.div`
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.medium}px;
   }
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
 `;
 
 const SecondColumn = styled.div`
@@ -116,7 +112,7 @@ const InfoColumn = () => (
         I come up with wacky ideas. Then I make them happen.
       </Description>
       <Separator large />
-      <IconWrapper>
+      <SocialIconWrapper>
         <SocialIcon url={urls.mailTo} />
         <Separator xSmall />
         <SocialIcon url={urls.linkedIn} />
@@ -126,7 +122,7 @@ const InfoColumn = () => (
         <SocialIcon url={urls.medium} />
         <Separator xSmall />
         <SocialIcon url={urls.instagram} />
-      </IconWrapper>
+      </SocialIconWrapper>
     </Fade>
   </SecondColumn>
 );
