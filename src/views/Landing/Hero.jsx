@@ -16,7 +16,7 @@ import {
 const FADE_DELAY = 500;
 const FADE_DURATION = 1000;
 // Only shows up after second title has appeared and finished transition
-const DESCRIPTION_FADE_DELAY = 1.5 * FADE_DELAY + FADE_DURATION;
+const DESCRIPTION_FADE_DELAY = 2 * FADE_DELAY + FADE_DURATION;
 
 const BackgroundImage = styled.div(props => ({
   width: '100%',
@@ -93,14 +93,14 @@ const Hero = () => (
           <Subtitle>Hi there,</Subtitle>
         </Fade>
         <Separator large />
-        <Fade bottom delay={1.5 * FADE_DELAY} duration={FADE_DURATION}>
+        <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
           <Title>
-            I'm Richard - a frontend engineer living in Sydney, Australia and
+            I'm Richard - a frontend engineer living in Sydney, Australia
             working at Mathspace.
           </Title>
         </Fade>
         <Separator medium />
-        <Fade delay={DESCRIPTION_FADE_DELAY}>
+        <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
           <Description>
             I come up with wacky ideas. Then I make them happen.
           </Description>
