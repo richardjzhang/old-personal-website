@@ -18,5 +18,6 @@ module.name_mapper='^utils\(.*\)$' -> '<PROJECT_ROOT>/src/utils\1'
 module.name_mapper='^static\(.*\)$' -> '<PROJECT_ROOT>/src/static\1'
 module.system.node.resolve_dirname=node_modules
 module.system.node.resolve_dirname=src
+module.name_mapper.extension='\(bmp\|gif\|jpg\|jpeg\|png\|psd\|svg\|webp\|m4v\|mov\|mp4\|mpeg\|mpg\|webm\|aac\|aiff\|caf\|m4a\|mp3\|wav\|html\|pdf\)' -> 'RelativeImageStub'
 
 [strict]
