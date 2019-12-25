@@ -102,7 +102,7 @@ const InfoColumn = () => (
     <Separator large />
     <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
       <Title>
-        I'm Richard - a frontend engineer living in Sydney, Australia working at
+        I'm Richard — a frontend engineer living in Sydney, Australia working at
         Mathspace.
       </Title>
     </Fade>
