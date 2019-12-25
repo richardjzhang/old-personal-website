@@ -114,13 +114,9 @@ const InfoColumn = () => (
       <Separator large />
       <SocialIconWrapper>
         <SocialIcon url={urls.mailTo} />
-        <Separator xSmall />
         <SocialIcon url={urls.linkedIn} />
-        <Separator xSmall />
         <SocialIcon url={urls.github} />
-        <Separator xSmall />
         <SocialIcon url={urls.medium} />
-        <Separator xSmall />
         <SocialIcon url={urls.instagram} />
       </SocialIconWrapper>
     </Fade>
