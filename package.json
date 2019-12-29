@@ -3,21 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "chess.js": "^0.10.2",
-    "chessboardjsx": "^2.4.0",
-    "contentful": "^7.8.2",
-    "flow-bin": "^0.98.1",
-    "husky": "^2.3.0",
-    "lint-staged": "^8.1.7",
-    "moment": "^2.24.0",
-    "path": "^0.12.7",
-    "prettier": "^1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-ga": "^2.6.0",
-    "react-helmet": "^5.2.1",
-    "react-mailchimp-subscribe": "^2.1.0",
-    "react-markdown": "^4.1.0",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "0.9.x",
@@ -25,7 +13,12 @@
     "styled-components": "^5.0.0-beta.6",
     "webfontloader": "^1.6.28"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "flow-bin": "^0.98.1",
+    "prettier": "^1.17.1",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

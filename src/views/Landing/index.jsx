@@ -40,7 +40,7 @@ const Description = styled.div`
   }
 `;
 
-const SecondColumn = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,7 +95,7 @@ const Title = styled.div`
 `;
 
 const InfoColumn = () => (
-  <SecondColumn>
+  <Wrapper>
     <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
       <Subtitle>Hi there,</Subtitle>
     </Fade>
@@ -120,7 +120,7 @@ const InfoColumn = () => (
         <SocialIcon url={urls.instagram} />
       </SocialIconWrapper>
     </Fade>
-  </SecondColumn>
+  </Wrapper>
 );
 
 const Landing = () => (
