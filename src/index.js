@@ -1,5 +1,4 @@
 // @flow
-
 import React from 'react';
 import ReactGA from 'react-ga';
 import ReactDOM from 'react-dom';
@@ -22,15 +21,12 @@ WebFont.load({
   }
 });
 
-const root = document.getElementById('root');
-if (root !== null) {
-  ReactDOM.render(
-    <Router>
-      <Switch>
-        <Route exact path="/" component={() => <Landing />} />
-        <Route exact path="*" component={() => <Error />} />
-      </Switch>
-    </Router>,
-    root
-  );
-}
+ReactDOM.render(
+  <Router>
+    <Switch>
+      <Route exact path="/" component={() => <Landing />} />
+      <Route exact path="*" component={() => <Error />} />
+    </Switch>
+  </Router>,
+  document.getElementById('root')
+);
