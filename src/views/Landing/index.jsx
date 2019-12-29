@@ -31,20 +31,9 @@ const BackgroundImage = styled.div(props => ({
 }));
 
 const Description = styled.div`
-  font-size: ${fontSize.xmedium};
+  font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.description};
   color: ${colors.white};
-
-  @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.medium}px;
-  }
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
 `;
 
 const Separator = styled.div(props => ({
@@ -76,7 +65,7 @@ const Separator = styled.div(props => ({
 }));
 
 const Subtitle = styled.div`
-  font-size: ${fontSize.normal};
+  font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
   line-height: ${lineHeight.description};
   color: ${colors.cloudBurst};
@@ -92,6 +81,13 @@ const Title = styled.div`
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.large}px;
   }
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 `;
 
 const InfoColumn = () => (
