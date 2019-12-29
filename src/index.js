@@ -21,12 +21,14 @@ WebFont.load({
   }
 });
 
-ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route exact path="/" component={() => <Landing />} />
-      <Route exact path="*" component={() => <Error />} />
-    </Switch>
-  </Router>,
-  document.getElementById('root')
-);
+const root = document.getElementById('root');
+root != null &&
+  ReactDOM.render(
+    <Router>
+      <Switch>
+        <Route exact path="/" component={() => <Landing />} />
+        <Route exact path="*" component={() => <Error />} />
+      </Switch>
+    </Router>,
+    root
+  );
