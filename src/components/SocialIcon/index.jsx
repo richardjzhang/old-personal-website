@@ -30,6 +30,7 @@ const SocialIcon = ({ url }: Props) => (
     }}
     bgColor={colors.cloudBurst}
     fgColor={colors.white}
+    target="_blank"
   />
 );
 
