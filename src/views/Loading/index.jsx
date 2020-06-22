@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
-import loading_bar from '../../static/bar.svg';
+import loading_bar from 'assets/bar.svg';
 
 import { colors, fontSize, fontWeight } from '../../utils/themes.jsx';
 
