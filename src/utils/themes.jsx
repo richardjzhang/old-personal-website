@@ -1,28 +1,17 @@
 export const colors = {
   // Primary Colors
-  ebony: '#0D0D21',
-  white: '#fff',
-  cornflowerBlue: '#5758F7',
-  saffron: '#F4B42E',
   dodgerBlue: '#3B80FE',
-  black: '#000000',
-
-  // Greys
   cloudBurst: '#21374D',
-  hitGray: '#9EACB2',
-  iron: '#D4D7D9',
-  porcelain: '#F1F2F3',
-  athensGrey: '#F9FAFB',
-  mirage: '#1D263B',
-  waikawaGray: '#575A89',
 
-  // Pallette
-  jellyBean: '#286DA8',
-  bananaMania: '#FBE8A6',
-  geraldine: '#FA7C92',
-  emerald: '#54C594',
-  malibu: '#62A6FF',
-  lavendarPurple: '#A48CBF'
+  // Palette
+  sail: '#B7D8F9',
+  iceCold: '#B7F9D8',
+  dairyCream: '#F9D8B7',
+  cupid: '#F9B7D8',
+
+  // Other
+  white: '#FFF',
+  black: '#000000'
 };
 
 export const breakPoints = {
