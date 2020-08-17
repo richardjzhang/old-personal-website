@@ -1,0 +1,73 @@
+// @flow
+import React from 'react';
+import styled from 'styled-components';
+
+import css3Logo from 'assets/css3_logo.svg';
+import djangoLogo from 'assets/django_logo.svg';
+import eslintLogo from 'assets/eslint_logo.svg';
+import flowLogo from 'assets/flow_logo.svg';
+import gitLogo from 'assets/git_logo.svg';
+import graphqlLogo from 'assets/graphql_logo.svg';
+import html5Logo from 'assets/html5_logo.svg';
+import javascriptLogo from 'assets/javascript_logo.svg';
+import jestLogo from 'assets/jest_logo.svg';
+import mysqlLogo from 'assets/mysql_logo.svg';
+import nodejsLogo from 'assets/nodejs_logo.svg';
+import pythonLogo from 'assets/python_logo.svg';
+import reactLogo from 'assets/react_logo.svg';
+import storybookLogo from 'assets/storybook_logo.svg';
+
+import { BASE_UNIT } from 'utils/themes.jsx';
+
+const GUTTER = 6 * BASE_UNIT;
+const LOGOS = [
+  {
+    image: html5Logo,
+    url: 'https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5'
+  },
+  { image: css3Logo, url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+  {
+    image: javascriptLogo,
+    url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript'
+  },
+  { image: reactLogo, url: 'https://reactjs.org/' },
+  { image: graphqlLogo, url: 'https://graphql.org/' },
+  { image: eslintLogo, url: 'https://eslint.org/' },
+  { image: flowLogo, url: 'https://flow.org/' },
+  { image: storybookLogo, url: 'https://storybook.js.org/' },
+  { image: jestLogo, url: 'https://jestjs.io/' },
+  { image: gitLogo, url: 'https://git-scm.com/' },
+  { image: mysqlLogo, url: 'https://www.mysql.com/' },
+  { image: nodejsLogo, url: 'https://nodejs.org/en/' },
+  { image: pythonLogo, url: 'https://www.python.org/' },
+  { image: djangoLogo, url: 'https://www.djangoproject.com/' }
+];
+
+const LogoWrapper = styled.img`
+  height: 100%;
+  width: 100%;
+`;
+
+const Logo = ({ image, url }: {| image: string, url: string |}) => (
+  <a style={{ margin: GUTTER }} href={url} target="_blank">
+    <LogoWrapper src={image} alt="logo" />
+  </a>
+);
+
+const Root = styled.div`
+  margin: ${-GUTTER}px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const Toolbelt = () => (
+  <Root>
+    {LOGOS.map(({ image, url }, index) => (
+      <Logo key={image} image={image} url={url} />
+    ))}
+  </Root>
+);
+
+export default Toolbelt;

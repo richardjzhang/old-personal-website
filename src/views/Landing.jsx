@@ -8,9 +8,10 @@ import Panel, { Column } from 'components/Panel';
 import Media from 'components/Media';
 import Separator from 'components/Separator';
 import SocialIcon, { SocialIconWrapper } from 'components/SocialIcon';
+import Toolbelt from 'components/Toolbelt';
 // $FlowFixMe
 import selfPortrait from 'assets/self-portrait.jpeg';
-import paintRoller from 'assets/paint-roller.json';
+import paintRoller from 'assets/paint_roller.json';
 import {
   BASE_UNIT,
   breakPoints,
@@ -24,15 +25,15 @@ import { urls } from 'utils/urls';
 const FADE_DELAY = 500;
 const FADE_DURATION = 1000;
 const BACKGROUND_COLORS = [
-  colors.geraldine,
-  colors.malibu,
-  colors.emerald,
-  colors.lavendarPurple
+  colors.sail,
+  colors.iceCold,
+  colors.dairyCream,
+  colors.cupid
 ];
 
 const BackgroundImage = styled.div(props => ({
   width: '100%',
-  height: '100%',
+  height: '100vh',
   backgroundImage: `url(${props.url})`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
@@ -42,7 +43,7 @@ const BackgroundImage = styled.div(props => ({
 const Description = styled.div`
   font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.description};
-  color: ${colors.white};
+  color: ${colors.cloudBurst};
 `;
 
 const Subtitle = styled.div`
@@ -54,10 +55,13 @@ const Subtitle = styled.div`
 `;
 
 const Title = styled.div`
+  display: ${props => props.isCentered && 'flex'};
+  justify-content: ${props => props.isCentered && 'center'};
+
   font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.bold};
   line-height: ${lineHeight.title};
-  color: ${colors.white};
+  color: ${colors.cloudBurst};
 
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.large}px;
@@ -107,6 +111,18 @@ const InfoColumn = () => (
   </Wrapper>
 );
 
+const ToolsetColumn = () => (
+  <Wrapper>
+    <Fade delay={FADE_DELAY} duration={FADE_DURATION}>
+      <Title isCentered>These are some of the tools I work with...</Title>
+    </Fade>
+    <Separator size={20} />
+    <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
+      <Toolbelt />
+    </Fade>
+  </Wrapper>
+);
+
 const Landing = () => {
   const [backgroundColorIndex, setBackgroundColorIndex] = React.useState(0);
   const defaultPaintRollerOptions = {
@@ -118,7 +134,7 @@ const Landing = () => {
     }
   };
   return (
-    <Panel>
+    <React.Fragment>
       <PaintRoller
         onClick={() =>
           setBackgroundColorIndex(b =>
@@ -133,35 +149,38 @@ const Landing = () => {
           isClickToPauseDisabled={true}
         />
       </PaintRoller>
-      <Media query={`(min-width: ${breakPoints.large}px)`}>
-        {isDesktopView =>
-          isDesktopView ? (
-            <React.Fragment>
-              <Column width="50%" height="100vh" padding={0}>
-                <BackgroundImage url={selfPortrait} />
-              </Column>
-              <Column
-                width="50%"
-                height="100vh"
-                padding={25 * BASE_UNIT}
-                backgroundColor={BACKGROUND_COLORS[backgroundColorIndex]}
-              >
+      <Panel backgroundColor={BACKGROUND_COLORS[backgroundColorIndex]}>
+        <Media query={`(min-width: ${breakPoints.large}px)`}>
+          {isDesktopView =>
+            isDesktopView ? (
+              <React.Fragment>
+                <Column width="50%" height="100%" padding={0}>
+                  <BackgroundImage url={selfPortrait} />
+                </Column>
+                <Column width="50%" height="100%" padding={25 * BASE_UNIT}>
+                  <InfoColumn />
+                </Column>
+              </React.Fragment>
+            ) : (
+              <Column width="100%" height="100%" padding={20 * BASE_UNIT}>
                 <InfoColumn />
               </Column>
-            </React.Fragment>
-          ) : (
-            <Column
-              width="100%"
-              height="100vh"
-              padding={20 * BASE_UNIT}
-              backgroundColor={BACKGROUND_COLORS[backgroundColorIndex]}
-            >
-              <InfoColumn />
-            </Column>
-          )
+            )
+          }
+        </Media>
+      </Panel>
+      <Panel
+        backgroundColor={
+          backgroundColorIndex !== BACKGROUND_COLORS.length - 1
+            ? BACKGROUND_COLORS[backgroundColorIndex + 1]
+            : BACKGROUND_COLORS[0]
         }
-      </Media>
-    </Panel>
+      >
+        <Column width="100%" height="100%" padding={20 * BASE_UNIT}>
+          <ToolsetColumn />
+        </Column>
+      </Panel>
+    </React.Fragment>
   );
 };
 

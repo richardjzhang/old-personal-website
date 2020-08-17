@@ -2,9 +2,9 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
-import loading_bar from 'assets/bar.svg';
+import loadingBar from 'assets/loading_bar.svg';
 
-import { colors, fontSize, fontWeight } from '../../utils/themes.jsx';
+import { colors, fontSize, fontWeight } from 'utils/themes.jsx';
 
 ReactGA.pageview('error');
 
@@ -30,7 +30,7 @@ const IconWrapper = styled.div`
 const Error = () => (
   <Root>
     <IconWrapper>
-      <img src={loading_bar} alt="loading" />
+      <img src={loadingBar} alt="loading" />
     </IconWrapper>
   </Root>
 );

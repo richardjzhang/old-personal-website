@@ -49,7 +49,7 @@ const Error = () => (
       width="100%"
       height="100vh"
       padding={20 * BASE_UNIT}
-      backgroundColor={colors.geraldine}
+      backgroundColor={colors.sail}
     >
       <Wrapper>
         <Message>Oops! It seems like this page doesn't exist :(</Message>
