@@ -11,8 +11,8 @@ import graphqlLogo from 'assets/graphql_logo.svg';
 import html5Logo from 'assets/html5_logo.svg';
 import javascriptLogo from 'assets/javascript_logo.svg';
 import jestLogo from 'assets/jest_logo.svg';
-import mysqlLogo from 'assets/mysql_logo.svg';
 import nodejsLogo from 'assets/nodejs_logo.svg';
+import postgresqlLogo from 'assets/postgresql_logo.svg';
 import pythonLogo from 'assets/python_logo.svg';
 import reactLogo from 'assets/react_logo.svg';
 import storybookLogo from 'assets/storybook_logo.svg';
@@ -37,8 +37,8 @@ const LOGOS = [
   { image: storybookLogo, url: 'https://storybook.js.org/' },
   { image: jestLogo, url: 'https://jestjs.io/' },
   { image: gitLogo, url: 'https://git-scm.com/' },
-  { image: mysqlLogo, url: 'https://www.mysql.com/' },
   { image: nodejsLogo, url: 'https://nodejs.org/en/' },
+  { image: postgresqlLogo, url: 'https://www.postgresql.org/' },
   { image: pythonLogo, url: 'https://www.python.org/' },
   { image: djangoLogo, url: 'https://www.djangoproject.com/' }
 ];
