@@ -16,8 +16,9 @@ import nodejsLogo from 'assets/nodejs_logo.svg';
 import pythonLogo from 'assets/python_logo.svg';
 import reactLogo from 'assets/react_logo.svg';
 import storybookLogo from 'assets/storybook_logo.svg';
+import Media from 'components/Media';
 
-import { BASE_UNIT } from 'utils/themes.jsx';
+import { BASE_UNIT, breakPoints } from 'utils/themes.jsx';
 
 const GUTTER = 6 * BASE_UNIT;
 const LOGOS = [
@@ -43,19 +44,23 @@ const LOGOS = [
   { image: djangoLogo, url: 'https://www.djangoproject.com/' }
 ];
 
-const LogoWrapper = styled.img`
-  height: 100%;
-  width: 100%;
-`;
-
-const Logo = ({ image, url }: {| image: string, url: string |}) => (
+const Logo = ({
+  height,
+  image,
+  url
+}: {|
+  height: number,
+  image: string,
+  url: string
+|}) => (
   <a style={{ margin: GUTTER }} href={url} target="_blank">
-    <LogoWrapper src={image} alt="logo" />
+    <img src={image} alt="logo" style={{ height }} />
   </a>
 );
 
 const Root = styled.div`
   margin: ${-GUTTER}px;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,11 +68,20 @@ const Root = styled.div`
 `;
 
 const Toolbelt = () => (
-  <Root>
-    {LOGOS.map(({ image, url }, index) => (
-      <Logo key={image} image={image} url={url} />
-    ))}
-  </Root>
+  <Media query={`(min-width: ${breakPoints.large}px)`}>
+    {isDesktopView => (
+      <Root>
+        {LOGOS.map(({ image, url }, index) => (
+          <Logo
+            key={image}
+            height={isDesktopView ? 150 : 75}
+            image={image}
+            url={url}
+          />
+        ))}
+      </Root>
+    )}
+  </Media>
 );
 
 export default Toolbelt;
