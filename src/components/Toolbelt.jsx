@@ -20,7 +20,6 @@ import Media from 'components/Media';
 
 import { BASE_UNIT, breakPoints } from 'utils/themes.jsx';
 
-const GUTTER = 6 * BASE_UNIT;
 const LOGOS = [
   {
     image: html5Logo,
@@ -44,6 +43,20 @@ const LOGOS = [
   { image: djangoLogo, url: 'https://www.djangoproject.com/' }
 ];
 
+const LOGO_GAP = 6 * BASE_UNIT;
+const TRANSITION_DURATION = '0.4s';
+const TRANSITION_DISTANCE = 2 * BASE_UNIT;
+
+const Anchor = styled.a`
+  margin: ${LOGO_GAP}px;
+  transition: padding ${TRANSITION_DURATION} ease,
+    margin ${TRANSITION_DURATION} ease;
+  &:hover {
+    margin-top: ${LOGO_GAP - TRANSITION_DISTANCE}px;
+    padding-bottom: ${TRANSITION_DISTANCE}px;
+  }
+`;
+
 const Logo = ({
   height,
   image,
@@ -53,13 +66,13 @@ const Logo = ({
   image: string,
   url: string
 |}) => (
-  <a style={{ margin: GUTTER }} href={url} target="_blank">
+  <Anchor href={url} target="_blank">
     <img src={image} alt="logo" style={{ height }} />
-  </a>
+  </Anchor>
 );
 
 const Root = styled.div`
-  margin: ${-GUTTER}px;
+  margin: ${-LOGO_GAP}px;
   max-width: 1200px;
   display: flex;
   justify-content: center;
