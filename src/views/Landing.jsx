@@ -8,7 +8,6 @@ import Panel, { Column } from 'components/Panel';
 import Media from 'components/Media';
 import Separator from 'components/Separator';
 import SocialIcon, { SocialIconWrapper } from 'components/SocialIcon';
-import Toolbelt from 'components/Toolbelt';
 // $FlowFixMe
 import selfPortrait from 'assets/self-portrait.jpeg';
 import paintRoller from 'assets/paint_roller.json';
@@ -111,18 +110,6 @@ const InfoColumn = () => (
   </Wrapper>
 );
 
-const ToolsetColumn = () => (
-  <Wrapper>
-    <Fade delay={FADE_DELAY} duration={FADE_DURATION}>
-      <Title isCentered>These are some of the tools I work with...</Title>
-    </Fade>
-    <Separator size={20} />
-    <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
-      <Toolbelt />
-    </Fade>
-  </Wrapper>
-);
-
 const Landing = () => {
   const [backgroundColorIndex, setBackgroundColorIndex] = React.useState(0);
   const defaultPaintRollerOptions = {
@@ -168,17 +155,6 @@ const Landing = () => {
             )
           }
         </Media>
-      </Panel>
-      <Panel
-        backgroundColor={
-          backgroundColorIndex !== BACKGROUND_COLORS.length - 1
-            ? BACKGROUND_COLORS[backgroundColorIndex + 1]
-            : BACKGROUND_COLORS[0]
-        }
-      >
-        <Column width="100%" height="100%" padding={20 * BASE_UNIT}>
-          <ToolsetColumn />
-        </Column>
       </Panel>
     </React.Fragment>
   );
