@@ -8,6 +8,8 @@ import WebFont from 'webfontloader';
 import Landing from './views/Landing';
 import Error from './views/Error';
 import './index.css';
+// $FlowFixMe
+import './fonts/LemonMilkRegular.otf';
 
 ReactGA.initialize('UA-144304332-1', { debug: true });
 

@@ -2,6 +2,7 @@ export const colors = {
   // Primary Colors
   dodgerBlue: '#3B80FE',
   cloudBurst: '#21374D',
+  mineShaft: '#292929',
 
   // Palette
   sail: '#B7D8F9',

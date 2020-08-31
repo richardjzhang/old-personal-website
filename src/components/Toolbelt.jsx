@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import css3Logo from 'assets/css3_logo.svg';
+import cypressLogo from 'assets/cypress_logo.svg';
 import djangoLogo from 'assets/django_logo.svg';
 import eslintLogo from 'assets/eslint_logo.svg';
 import flowLogo from 'assets/flow_logo.svg';
@@ -35,6 +36,7 @@ const LOGOS = [
   { image: eslintLogo, url: 'https://eslint.org/' },
   { image: flowLogo, url: 'https://flow.org/' },
   { image: storybookLogo, url: 'https://storybook.js.org/' },
+  { image: cypressLogo, url: 'https://www.cypress.io/' },
   { image: jestLogo, url: 'https://jestjs.io/' },
   { image: gitLogo, url: 'https://git-scm.com/' },
   { image: nodejsLogo, url: 'https://nodejs.org/en/' },
@@ -87,7 +89,7 @@ const Toolbelt = () => (
         {LOGOS.map(({ image, url }, index) => (
           <Logo
             key={image}
-            height={isDesktopView ? 150 : 75}
+            height={isDesktopView ? 100 : 75}
             image={image}
             url={url}
           />

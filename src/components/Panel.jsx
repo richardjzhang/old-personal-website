@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const Column = styled.div(props => ({
   padding: props.padding,
-  minHeight: props.height,
+  height: '100vh',
   width: props.width,
   backgroundColor: props.backgroundColor,
   boxSizing: 'border-box',
@@ -14,13 +14,21 @@ export const Column = styled.div(props => ({
   flexDirection: 'column'
 }));
 
-const Container = styled.div`
-  flex: 1;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+export const ColumnTitle = styled.div(props => ({
+  fontFamily: 'LemonMilk',
+  fontSize: 72,
+  color: props.color
+}));
+
+const Container = styled.div(props => ({
+  flex: 1,
+  boxSizing: 'border-box',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  maxHeight: '100vh',
+  position: 'relative'
+}));
 
 type Props = {|
   minHeight?: string,

@@ -4,11 +4,12 @@ import Fade from 'react-reveal/Fade';
 import styled from 'styled-components';
 import Lottie from 'react-lottie';
 
-import Panel, { Column } from 'components/Panel';
+import Panel, { Column, ColumnTitle } from 'components/Panel';
 import Media from 'components/Media';
 import Separator from 'components/Separator';
 import SocialIcon, { SocialIconWrapper } from 'components/SocialIcon';
 import Toolbelt from 'components/Toolbelt';
+import mathspaceHero from 'assets/mathspace-hero.png';
 // $FlowFixMe
 import selfPortrait from 'assets/self-portrait.jpeg';
 import paintRoller from 'assets/paint_roller.json';
@@ -25,10 +26,10 @@ import { urls } from 'utils/urls';
 const FADE_DELAY = 500;
 const FADE_DURATION = 1000;
 const BACKGROUND_COLORS = [
-  colors.sail,
+  colors.cupid,
   colors.iceCold,
-  colors.dairyCream,
-  colors.cupid
+  colors.sail,
+  colors.dairyCream
 ];
 
 const BackgroundImage = styled.div(props => ({
@@ -43,14 +44,15 @@ const BackgroundImage = styled.div(props => ({
 const Description = styled.div`
   font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.description};
-  color: ${colors.cloudBurst};
+  color: ${colors.white};
 `;
 
 const Subtitle = styled.div`
+font-family: LemonMilk
   font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
   line-height: ${lineHeight.description};
-  color: ${colors.cloudBurst};
+  color: ${colors.dodgerBlue};
   text-transform: uppercase;
 `;
 
@@ -61,7 +63,7 @@ const Title = styled.div`
   font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.bold};
   line-height: ${lineHeight.title};
-  color: ${colors.cloudBurst};
+  color: ${colors.white};
 
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.large}px;
@@ -90,8 +92,8 @@ const InfoColumn = () => (
     <Separator size={10} />
     <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
       <Title>
-        I'm Richard — a frontend developer living in Sydney, Australia working
-        at Mathspace.
+        I'm Richard — a frontend engineer living in Sydney, Australia working at
+        Mathspace.
       </Title>
     </Fade>
     <Separator size={8} />
@@ -111,73 +113,63 @@ const InfoColumn = () => (
   </Wrapper>
 );
 
-const ToolsetColumn = () => (
-  <Wrapper>
-    <Fade delay={FADE_DELAY} duration={FADE_DURATION}>
-      <Title isCentered>These are some of the tools I work with...</Title>
-    </Fade>
-    <Separator size={20} />
-    <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
-      <Toolbelt />
-    </Fade>
-  </Wrapper>
-);
-
 const Landing = () => {
-  const [backgroundColorIndex, setBackgroundColorIndex] = React.useState(0);
-  const defaultPaintRollerOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: paintRoller,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  };
+  const workRef = React.useRef(null);
+  const [scrollTop, setScrollTop] = React.useState(0);
+
+  React.useEffect(() => {
+    const onScroll = () => {
+      const windowScrollTop = window.pageYOffset;
+      const elementOffset =
+        workRef.current != null ? workRef.current.offsetTop : 0;
+      setScrollTop(elementOffset - windowScrollTop);
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  React.useEffect(() => {
+    console.log(scrollTop);
+  }, [scrollTop]);
+
   return (
     <React.Fragment>
-      <PaintRoller
-        onClick={() =>
-          setBackgroundColorIndex(b =>
-            b < BACKGROUND_COLORS.length - 1 ? b + 1 : 0
-          )
-        }
-      >
-        <Lottie
-          options={defaultPaintRollerOptions}
-          height={40}
-          width={40}
-          isClickToPauseDisabled={true}
-        />
-      </PaintRoller>
-      <Panel backgroundColor={BACKGROUND_COLORS[backgroundColorIndex]}>
+      <Panel backgroundColor={colors.mineShaft}>
         <Media query={`(min-width: ${breakPoints.large}px)`}>
           {isDesktopView =>
             isDesktopView ? (
               <React.Fragment>
-                <Column width="50%" height="100%" padding={0}>
+                <Column width="50%" padding={0} zIndex={0}>
                   <BackgroundImage url={selfPortrait} />
                 </Column>
-                <Column width="50%" height="100%" padding={25 * BASE_UNIT}>
+                <Column width="50%" padding={25 * BASE_UNIT} zIndex={1}>
                   <InfoColumn />
                 </Column>
               </React.Fragment>
             ) : (
-              <Column width="100%" height="100%" padding={20 * BASE_UNIT}>
+              <Column width="100%" padding={20 * BASE_UNIT}>
                 <InfoColumn />
               </Column>
             )
           }
         </Media>
       </Panel>
-      <Panel
-        backgroundColor={
-          backgroundColorIndex !== BACKGROUND_COLORS.length - 1
-            ? BACKGROUND_COLORS[backgroundColorIndex + 1]
-            : BACKGROUND_COLORS[0]
-        }
-      >
-        <Column width="100%" height="100%" padding={20 * BASE_UNIT}>
-          <ToolsetColumn />
+      <div ref={workRef} />
+      <Panel>
+        <Column
+          width="50%"
+          padding={25 * BASE_UNIT}
+          backgroundColor={colors.dodgerBlue}
+        >
+          <Wrapper>
+            <Fade delay={FADE_DELAY} duration={FADE_DURATION}>
+              <ColumnTitle color={colors.white}>Work</ColumnTitle>
+            </Fade>
+          </Wrapper>
+        </Column>
+        <Column width="50%" padding={0} zIndex={0}>
+          <BackgroundImage url={mathspaceHero} />
+          <BackgroundImage url={mathspaceHero} />
         </Column>
       </Panel>
     </React.Fragment>
