@@ -45,7 +45,9 @@ export const lineHeight = {
 };
 
 export const zIndex = {
-  navbar: 100
+  panel: 1,
+  canvas: 3,
+  ctas: 100
 };
 
 export const borderRadius = {

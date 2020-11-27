@@ -2,6 +2,8 @@
 import React, { type Node } from 'react';
 import styled from 'styled-components';
 
+import { zIndex } from 'utils/themes';
+
 export const Column = styled.div(props => ({
   padding: props.padding,
   minHeight: props.height,
@@ -15,6 +17,10 @@ export const Column = styled.div(props => ({
 }));
 
 const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: ${zIndex.panel};
   flex: 1;
   box-sizing: border-box;
   display: flex;
@@ -25,15 +31,22 @@ const Container = styled.div`
 
 type Props = {|
   minHeight?: string,
+  minWidth?: string,
   backgroundColor?: string,
   children?: Node
 |};
 
-const Panel = ({ backgroundColor, children, minHeight = '100vh' }: Props) => (
+const Panel = ({
+  backgroundColor,
+  children,
+  minHeight = '100vh',
+  minWidth = '100vw'
+}: Props) => (
   <Container
     style={{
       backgroundColor,
-      minHeight
+      minHeight,
+      minWidth
     }}
   >
     {children}

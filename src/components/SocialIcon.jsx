@@ -3,15 +3,23 @@ import React from 'react';
 import { SocialIcon as Icon } from 'react-social-icons';
 import styled from 'styled-components';
 
-import { BASE_UNIT, borderRadius, boxShadow, colors } from 'utils/themes';
+import {
+  BASE_UNIT,
+  borderRadius,
+  boxShadow,
+  colors,
+  zIndex
+} from 'utils/themes';
 
 const ICON_VERTICAL_MARGIN = BASE_UNIT;
 const ICON_HORIZONTAL_MARGIN = 2 * BASE_UNIT;
 
 export const SocialIcons = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   margin: ${-ICON_VERTICAL_MARGIN}px ${-ICON_HORIZONTAL_MARGIN}px;
+  z-index: ${zIndex.ctas};
 `;
 
 const Root = styled.div({

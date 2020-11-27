@@ -5,6 +5,7 @@ import Tada from 'react-reveal/Tada';
 import styled from 'styled-components';
 import Lottie from 'react-lottie';
 
+import Canvas from 'components/Canvas';
 import Panel, { Column } from 'components/Panel';
 import Media from 'components/Media';
 import Separator from 'components/Separator';
@@ -20,7 +21,8 @@ import {
   colors,
   fontSize,
   fontWeight,
-  lineHeight
+  lineHeight,
+  zIndex
 } from 'utils/themes';
 import { urls } from 'utils/urls';
 
@@ -45,7 +47,7 @@ const BackgroundImage = styled.div(props => ({
 const Description = styled.div`
   font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.description};
-  color: ${colors.honorNight};
+  color: ${props => props.color || colors.honorNight};
 `;
 
 const Subtitle = styled.div`
@@ -92,6 +94,7 @@ const PaintRoller = styled.div`
   top: 32px;
   right: 32px;
   cursor: pointer;
+  z-index: ${zIndex.ctas};
 `;
 
 const InfoColumn = () => (
@@ -148,15 +151,20 @@ const Landing = () => {
       preserveAspectRatio: 'xMidYMid slice'
     }
   };
+
+  function incrementBackgroundColor() {
+    setBackgroundColorIndex(b =>
+      b < BACKGROUND_COLORS.length - 1 ? b + 1 : 0
+    );
+  }
+
+  function getBackgroundColor() {
+    return BACKGROUND_COLORS[backgroundColorIndex];
+  }
+
   return (
     <React.Fragment>
-      <PaintRoller
-        onClick={() =>
-          setBackgroundColorIndex(b =>
-            b < BACKGROUND_COLORS.length - 1 ? b + 1 : 0
-          )
-        }
-      >
+      <PaintRoller onClick={incrementBackgroundColor}>
         <Lottie
           options={defaultPaintRollerOptions}
           height={40}
@@ -164,7 +172,7 @@ const Landing = () => {
           isClickToPauseDisabled={true}
         />
       </PaintRoller>
-      <Panel backgroundColor={BACKGROUND_COLORS[backgroundColorIndex]}>
+      <Panel backgroundColor={getBackgroundColor()}>
         <Media query={`(min-width: ${breakPoints.large}px)`}>
           {isDesktopView =>
             isDesktopView ? (
@@ -173,6 +181,16 @@ const Landing = () => {
                   <InfoColumn />
                 </Column>
                 <Column width="50%" height="100%" padding={0}>
+                  <Description
+                    color={colors.white}
+                    style={{
+                      position: 'fixed',
+                      right: 16,
+                      bottom: 16
+                    }}
+                  >
+                    Click to draw on me!
+                  </Description>
                   <BackgroundImage url={selfPortrait} />
                 </Column>
               </React.Fragment>
@@ -184,6 +202,11 @@ const Landing = () => {
           }
         </Media>
       </Panel>
+      <Canvas
+        strokeColor={getBackgroundColor()}
+        width={window.innerWidth / 2}
+        left={window.innerWidth / 2}
+      />
     </React.Fragment>
   );
 };
