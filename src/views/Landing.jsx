@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import Tada from 'react-reveal/Tada';
 import styled from 'styled-components';
 import Lottie from 'react-lottie';
 
@@ -95,21 +96,36 @@ const PaintRoller = styled.div`
 
 const InfoColumn = () => (
   <Wrapper>
-    <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
+    <Tada bottom delay={FADE_DELAY} duration={FADE_DURATION}>
       <Subtitle>Hi there</Subtitle>
-    </Fade>
+    </Tada>
     <Separator size={10} />
-    <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>
-      <Title>
-        I'm Richard — a frontend developer living in Sydney, Australia working
-        at Mathspace.
-      </Title>
-    </Fade>
+    <Title>
+      <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION} bottom>
+        I'm Richard — a frontend
+      </Fade>
+      <Fade
+        delay={FADE_DELAY + FADE_DURATION + 50}
+        duration={FADE_DURATION}
+        bottom
+      >
+        developer living in Sydney,
+      </Fade>
+      <Fade
+        delay={FADE_DELAY + FADE_DURATION + 100}
+        duration={FADE_DURATION}
+        bottom
+      >
+        Australia working at Mathspace.
+      </Fade>
+    </Title>
     <Separator size={8} />
-    <Fade delay={FADE_DELAY + 2 * FADE_DURATION}>
+    <Fade delay={FADE_DELAY + 2 * FADE_DURATION} bottom>
       <Description>
         I come up with wacky ideas. Then I make them happen.
       </Description>
+    </Fade>
+    <Fade delay={FADE_DELAY + 3 * FADE_DURATION}>
       <Separator size={10} />
       <SocialIcons>
         <SocialIcon url={urls.mailTo} />
