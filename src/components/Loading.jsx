@@ -16,7 +16,7 @@ const Root = styled.div`
   overflow: hidden;
   background-color: ${colors.mirage};
   font-size: ${fontSize.xxlarge}px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${fontWeight.semibold};
   color: ${colors.white};
 `;
 

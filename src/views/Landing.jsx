@@ -13,6 +13,7 @@ import selfPortrait from 'assets/self-portrait.jpeg';
 import paintRoller from 'assets/paint_roller.json';
 import {
   BASE_UNIT,
+  borderRadius,
   breakPoints,
   colors,
   fontSize,
@@ -24,10 +25,10 @@ import { urls } from 'utils/urls';
 const FADE_DELAY = 500;
 const FADE_DURATION = 1000;
 const BACKGROUND_COLORS = [
+  colors.cupid,
   colors.sail,
   colors.iceCold,
-  colors.dairyCream,
-  colors.cupid
+  colors.dairyCream
 ];
 
 const BackgroundImage = styled.div(props => ({
@@ -42,25 +43,30 @@ const BackgroundImage = styled.div(props => ({
 const Description = styled.div`
   font-size: ${fontSize.medium}px;
   line-height: ${lineHeight.description};
-  color: ${colors.cloudBurst};
+  color: ${colors.honorNight};
 `;
 
 const Subtitle = styled.div`
-  font-size: ${fontSize.medium}px;
+  padding: 8px 12px;
+  background-color: ${colors.white};
+  width: fit-content;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  border-radius: ${borderRadius.regular}px;
+  font-weight: ${fontWeight.semibold};
   font-weight: ${fontWeight.semibold};
   line-height: ${lineHeight.description};
-  color: ${colors.cloudBurst};
+  color: ${colors.dodgerBlue};
   text-transform: uppercase;
 `;
 
 const Title = styled.div`
   display: ${props => props.isCentered && 'flex'};
   justify-content: ${props => props.isCentered && 'center'};
-
+  font-weight: ${fontWeight.semibold};
   font-size: ${fontSize.xxlarge}px;
-  font-weight: ${fontWeight.bold};
   line-height: ${lineHeight.title};
-  color: ${colors.cloudBurst};
+  color: ${colors.honorNight};
 
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.large}px;
@@ -84,7 +90,7 @@ const PaintRoller = styled.div`
 const InfoColumn = () => (
   <Wrapper>
     <Fade bottom delay={FADE_DELAY} duration={FADE_DURATION}>
-      <Subtitle>Hi there,</Subtitle>
+      <Subtitle>Hi there</Subtitle>
     </Fade>
     <Separator size={10} />
     <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION}>

@@ -13,11 +13,7 @@ ReactGA.initialize('UA-144304332-1', { debug: true });
 
 WebFont.load({
   google: {
-    families: [
-      'Montserrat:400,500,600,700',
-      'Merriweather:400,500,600,700',
-      'sans-serif'
-    ]
+    families: ['Jost:400', 'Jost:500', 'Jost:600', 'sans-serif']
   }
 });
 

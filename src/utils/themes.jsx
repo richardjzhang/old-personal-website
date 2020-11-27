@@ -2,6 +2,7 @@ export const colors = {
   // Primary Colors
   dodgerBlue: '#3B80FE',
   cloudBurst: '#21374D',
+  honorNight: '#0C2426',
 
   // Palette
   sail: '#B7D8F9',
@@ -22,8 +23,8 @@ export const breakPoints = {
 };
 
 export const fontSize = {
-  normal: 14,
-  medium: 16,
+  normal: 16,
+  medium: 18,
   xmedium: 20,
   large: 24,
   xlarge: 32,
@@ -33,15 +34,9 @@ export const fontSize = {
 };
 
 export const fontWeight = {
-  light: 200,
   regular: 400,
-  semibold: 600,
-  bold: 700
-};
-
-export const fontFamily = {
-  title: 'Montserrat',
-  body: 'Merriweather'
+  semibold: 500,
+  bold: 600
 };
 
 export const lineHeight = {

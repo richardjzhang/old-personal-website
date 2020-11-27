@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 
 const Message = styled.div`
   font-size: ${fontSize.xxlarge}px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${fontWeight.semibold};
   color: ${colors.white};
 
   @media (max-width: ${breakPoints.small}px) {
@@ -37,9 +37,9 @@ const Message = styled.div`
 const HomeLink = styled.div`
   margin-top: ${8 * BASE_UNIT}px;
   font-size: ${fontSize.medium}px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${fontWeight.semibold};
   text-transform: uppercase;
-  color: ${colors.cloudBurst};
+  color: ${colors.honorNight};
   cursor: pointer;
 `;
 
