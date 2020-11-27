@@ -169,11 +169,11 @@ const Landing = () => {
           {isDesktopView =>
             isDesktopView ? (
               <React.Fragment>
-                <Column width="50%" height="100%" padding={0}>
-                  <BackgroundImage url={selfPortrait} />
-                </Column>
                 <Column width="50%" height="100%" padding={25 * BASE_UNIT}>
                   <InfoColumn />
+                </Column>
+                <Column width="50%" height="100%" padding={0}>
+                  <BackgroundImage url={selfPortrait} />
                 </Column>
               </React.Fragment>
             ) : (
