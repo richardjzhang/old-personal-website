@@ -15,6 +15,7 @@ import paintRoller from 'assets/paint_roller.json';
 import {
   BASE_UNIT,
   borderRadius,
+  boxShadow,
   breakPoints,
   colors,
   fontSize,
@@ -51,8 +52,7 @@ const Subtitle = styled.div`
   padding: 8px 12px;
   background-color: ${colors.white};
   width: fit-content;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  box-shadow: ${boxShadow};
   border-radius: ${borderRadius.regular}px;
   font-weight: ${fontWeight.semibold};
   font-weight: ${fontWeight.semibold};

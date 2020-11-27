@@ -3,7 +3,7 @@ import React from 'react';
 import { SocialIcon as Icon } from 'react-social-icons';
 import styled from 'styled-components';
 
-import { BASE_UNIT, borderRadius, colors } from 'utils/themes';
+import { BASE_UNIT, borderRadius, boxShadow, colors } from 'utils/themes';
 
 const ICON_VERTICAL_MARGIN = BASE_UNIT;
 const ICON_HORIZONTAL_MARGIN = 2 * BASE_UNIT;
@@ -24,6 +24,7 @@ const IconWrapper = styled.div({
   margin: `${ICON_VERTICAL_MARGIN}px ${ICON_HORIZONTAL_MARGIN}px`,
   height: 40,
   width: 40,
+  boxShadow,
   borderRadius: borderRadius.circle,
   backgroundColor: colors.dodgerBlue,
   display: 'flex',
