@@ -3,34 +3,55 @@ import React from 'react';
 import { SocialIcon as Icon } from 'react-social-icons';
 import styled from 'styled-components';
 
-import { BASE_UNIT, colors } from 'utils/themes';
+import { BASE_UNIT, borderRadius, colors } from 'utils/themes';
 
 const ICON_VERTICAL_MARGIN = BASE_UNIT;
 const ICON_HORIZONTAL_MARGIN = 2 * BASE_UNIT;
 
-export const SocialIconWrapper = styled.div`
+export const SocialIcons = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: ${-ICON_VERTICAL_MARGIN}px ${-ICON_HORIZONTAL_MARGIN}px;
 `;
+
+const Root = styled.div({
+  position: 'relative'
+});
+
+const IconWrapper = styled.div({
+  position: 'relative',
+  flexShrink: 0,
+  margin: `${ICON_VERTICAL_MARGIN}px ${ICON_HORIZONTAL_MARGIN}px`,
+  height: 40,
+  width: 40,
+  borderRadius: borderRadius.circle,
+  backgroundColor: colors.dodgerBlue,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  bottom: 0,
+  transition: 'bottom 0.25s ease',
+
+  '&:hover': {
+    bottom: 5
+  }
+});
 
 type Props = {|
   url: string
 |};
 
 const SocialIcon = ({ url }: Props) => (
-  <Icon
-    url={url}
-    style={{
-      height: 40,
-      width: 40,
-      flexShrink: 0,
-      margin: `${ICON_VERTICAL_MARGIN}px ${ICON_HORIZONTAL_MARGIN}px`
-    }}
-    bgColor={colors.dodgerBlue}
-    fgColor={colors.white}
-    target="_blank"
-  />
+  <Root>
+    <IconWrapper>
+      <Icon
+        url={url}
+        bgColor="transparent"
+        fgColor={colors.white}
+        target="_blank"
+      />
+    </IconWrapper>
+  </Root>
 );
 
 export default SocialIcon;

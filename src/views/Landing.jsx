@@ -7,7 +7,7 @@ import Lottie from 'react-lottie';
 import Panel, { Column } from 'components/Panel';
 import Media from 'components/Media';
 import Separator from 'components/Separator';
-import SocialIcon, { SocialIconWrapper } from 'components/SocialIcon';
+import SocialIcon, { SocialIcons } from 'components/SocialIcon';
 // $FlowFixMe
 import selfPortrait from 'assets/self-portrait.jpeg';
 import paintRoller from 'assets/paint_roller.json';
@@ -58,6 +58,11 @@ const Subtitle = styled.div`
   line-height: ${lineHeight.description};
   color: ${colors.dodgerBlue};
   text-transform: uppercase;
+  transition: transform 0.25s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const Title = styled.div`
@@ -78,6 +83,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  user-select: none;
 `;
 
 const PaintRoller = styled.div`
@@ -105,13 +111,13 @@ const InfoColumn = () => (
         I come up with wacky ideas. Then I make them happen.
       </Description>
       <Separator size={10} />
-      <SocialIconWrapper>
+      <SocialIcons>
         <SocialIcon url={urls.mailTo} />
         <SocialIcon url={urls.linkedIn} />
         <SocialIcon url={urls.github} />
         <SocialIcon url={urls.medium} />
         <SocialIcon url={urls.instagram} />
-      </SocialIconWrapper>
+      </SocialIcons>
     </Fade>
   </Wrapper>
 );
