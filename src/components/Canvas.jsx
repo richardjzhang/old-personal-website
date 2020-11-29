@@ -1,8 +1,9 @@
 // @flow
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { zIndex } from '../utils/themes';
 
 type Props = {
+  canvasRef: React$ElementRef<any>,
   top: number,
   left: number,
   width: number,
@@ -15,8 +16,14 @@ type Coordinate = {
   y: number
 };
 
-const Canvas = ({ width, height, top, left, strokeColor }: Props) => {
-  const canvasRef = useRef(null);
+const Canvas = ({
+  canvasRef,
+  width,
+  height,
+  top,
+  left,
+  strokeColor
+}: Props) => {
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState(undefined);
 

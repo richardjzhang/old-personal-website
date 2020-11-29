@@ -3,7 +3,6 @@ import React from 'react';
 import Fade from 'react-reveal/Fade';
 import Tada from 'react-reveal/Tada';
 import styled from 'styled-components';
-import Lottie from 'react-lottie';
 
 import Canvas from 'components/Canvas';
 import Panel, { Column } from 'components/Panel';
@@ -12,7 +11,8 @@ import Separator from 'components/Separator';
 import SocialIcon, { SocialIcons } from 'components/SocialIcon';
 // $FlowFixMe
 import selfPortrait from 'assets/self-portrait.jpeg';
-import paintRoller from 'assets/paint_roller.json';
+import eraser from 'assets/eraser.svg';
+import paintBrush from 'assets/paint_brush.svg';
 import {
   BASE_UNIT,
   borderRadius,
@@ -89,13 +89,23 @@ const Wrapper = styled.div`
   user-select: none;
 `;
 
-const PaintRoller = styled.div`
-  position: fixed;
-  top: 32px;
-  right: 32px;
-  cursor: pointer;
-  z-index: ${zIndex.ctas};
-`;
+const IMAGE_SIZE = 40;
+const IMAGE_GUTTER = 32;
+
+const Image = styled.img(props => ({
+  position: 'absolute',
+  top: IMAGE_GUTTER,
+  right: props.right,
+  height: IMAGE_SIZE,
+  width: IMAGE_SIZE,
+  cursor: 'pointer',
+  zIndex: zIndex.ctas,
+  transition: 'top 0.25s ease',
+
+  '&:hover': {
+    top: 27
+  }
+}));
 
 const InfoColumn = () => (
   <Wrapper>
@@ -142,15 +152,8 @@ const InfoColumn = () => (
 );
 
 const Landing = () => {
+  const canvasRef = React.useRef(null);
   const [backgroundColorIndex, setBackgroundColorIndex] = React.useState(0);
-  const defaultPaintRollerOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: paintRoller,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  };
 
   function incrementBackgroundColor() {
     setBackgroundColorIndex(b =>
@@ -162,16 +165,25 @@ const Landing = () => {
     return BACKGROUND_COLORS[backgroundColorIndex];
   }
 
+  const clearCanvas = () => {
+    if (!canvasRef.current) return;
+    const canvas: HTMLCanvasElement = canvasRef.current;
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+  };
+
   return (
     <React.Fragment>
-      <PaintRoller onClick={incrementBackgroundColor}>
-        <Lottie
-          options={defaultPaintRollerOptions}
-          height={40}
-          width={40}
-          isClickToPauseDisabled={true}
-        />
-      </PaintRoller>
+      <Image
+        src={eraser}
+        right={IMAGE_GUTTER + IMAGE_SIZE + 16}
+        onClick={clearCanvas}
+      />
+      <Image
+        src={paintBrush}
+        right={IMAGE_GUTTER}
+        onClick={incrementBackgroundColor}
+      />
       <Panel backgroundColor={getBackgroundColor()}>
         <Media query={`(min-width: ${breakPoints.large}px)`}>
           {isDesktopView =>
@@ -203,6 +215,7 @@ const Landing = () => {
         </Media>
       </Panel>
       <Canvas
+        canvasRef={canvasRef}
         strokeColor={getBackgroundColor()}
         width={window.innerWidth / 2}
         left={window.innerWidth / 2}
