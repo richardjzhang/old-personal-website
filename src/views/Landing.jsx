@@ -174,11 +174,17 @@ const Landing = () => {
 
   return (
     <React.Fragment>
-      <Image
-        src={eraser}
-        right={IMAGE_GUTTER + IMAGE_SIZE + 16}
-        onClick={clearCanvas}
-      />
+      <Media query={`(min-width: ${breakPoints.large}px)`}>
+        {isDesktopView =>
+          isDesktopView ? (
+            <Image
+              src={eraser}
+              right={IMAGE_GUTTER + IMAGE_SIZE + 16}
+              onClick={clearCanvas}
+            />
+          ) : null
+        }
+      </Media>
       <Image
         src={paintBrush}
         right={IMAGE_GUTTER}
