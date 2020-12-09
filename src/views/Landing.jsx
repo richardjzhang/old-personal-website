@@ -211,6 +211,13 @@ const Landing = () => {
                   </Description>
                   <BackgroundImage url={selfPortrait} />
                 </Column>
+                <Canvas
+                  canvasRef={canvasRef}
+                  strokeColor={getBackgroundColor()}
+                  height={window.innerHeight}
+                  width={window.innerWidth / 2}
+                  left={window.innerWidth / 2}
+                />
               </React.Fragment>
             ) : (
               <Column width="100%" height="100%" padding={20 * BASE_UNIT}>
@@ -220,12 +227,6 @@ const Landing = () => {
           }
         </Media>
       </Panel>
-      <Canvas
-        canvasRef={canvasRef}
-        strokeColor={getBackgroundColor()}
-        width={window.innerWidth / 2}
-        left={window.innerWidth / 2}
-      />
     </React.Fragment>
   );
 };
