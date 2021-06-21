@@ -115,21 +115,21 @@ const InfoColumn = () => (
     <Separator size={10} />
     <Title>
       <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION} bottom>
-        I'm Richard — a frontend
+        I'm Richard — a fullstack
       </Fade>
       <Fade
         delay={FADE_DELAY + FADE_DURATION + 50}
         duration={FADE_DURATION}
         bottom
       >
-        developer living in Sydney,
+        engineer living in Sydney,
       </Fade>
       <Fade
         delay={FADE_DELAY + FADE_DURATION + 100}
         duration={FADE_DURATION}
         bottom
       >
-        Australia working at Mathspace.
+        Australia working at RangeMe.
       </Fade>
     </Title>
     <Separator size={8} />
