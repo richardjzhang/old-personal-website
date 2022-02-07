@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import Fade from 'react-reveal/Fade';
-import Tada from 'react-reveal/Tada';
 import styled from 'styled-components';
 
 import Canvas from 'components/Canvas';
@@ -11,8 +10,9 @@ import Separator from 'components/Separator';
 import SocialIcon, { SocialIcons } from 'components/SocialIcon';
 // $FlowFixMe
 import selfPortrait from 'assets/self-portrait.jpeg';
-import eraser from 'assets/eraser.svg';
-import paintBrush from 'assets/paint_brush.svg';
+import trash from 'assets/trash.svg';
+import paintBrush from 'assets/paint_brush_1.svg';
+import canvasBrush from 'assets/paint_brush_2.svg';
 import {
   BASE_UNIT,
   borderRadius,
@@ -26,13 +26,13 @@ import {
 } from 'utils/themes';
 import { urls } from 'utils/urls';
 
-const FADE_DELAY = 500;
+const FADE_DELAY = 300;
 const FADE_DURATION = 1000;
 const BACKGROUND_COLORS = [
-  colors.cupid,
-  colors.sail,
-  colors.iceCold,
-  colors.dairyCream
+  colors.dairyCream,
+  colors.spearmint,
+  colors.roseQuartz,
+  colors.pewter
 ];
 
 const BackgroundImage = styled.div(props => ({
@@ -45,26 +45,12 @@ const BackgroundImage = styled.div(props => ({
 }));
 
 const Description = styled.div`
-  font-size: ${fontSize.medium}px;
+  font-size: ${fontSize.xlarge}px;
   line-height: ${lineHeight.description};
-  color: ${props => props.color || colors.honorNight};
-`;
+  color: ${colors.honorNight};
 
-const Subtitle = styled.div`
-  padding: 8px 12px;
-  background-color: ${colors.white};
-  width: fit-content;
-  box-shadow: ${boxShadow};
-  border-radius: ${borderRadius.regular}px;
-  font-weight: ${fontWeight.semibold};
-  font-weight: ${fontWeight.semibold};
-  line-height: ${lineHeight.description};
-  color: ${colors.dodgerBlue};
-  text-transform: uppercase;
-  transition: transform 0.25s ease;
-
-  &:hover {
-    transform: scale(1.05);
+  @media (max-width: ${breakPoints.small}px) {
+    font-size: ${fontSize.large}px;
   }
 `;
 
@@ -72,14 +58,18 @@ const Title = styled.div`
   display: ${props => props.isCentered && 'flex'};
   justify-content: ${props => props.isCentered && 'center'};
   font-weight: ${fontWeight.semibold};
-  font-size: ${fontSize.xxlarge}px;
+  font-size: ${fontSize.xxxxlarge}px;
   line-height: ${lineHeight.title};
   color: ${colors.honorNight};
 
   @media (max-width: ${breakPoints.small}px) {
-    font-size: ${fontSize.large}px;
+    font-size: ${fontSize.xxlarge}px;
   }
 `;
+
+const Root = styled.div({
+  position: 'relative'
+});
 
 const Wrapper = styled.div`
   display: flex;
@@ -89,57 +79,60 @@ const Wrapper = styled.div`
   user-select: none;
 `;
 
-const IMAGE_SIZE = 40;
-const IMAGE_GUTTER = 32;
-
-const Image = styled.img(props => ({
+const CANVAS_ACTIONS_GUTTER = 32;
+const CanvasActions = styled.div({
+  backgroundColor: colors.white,
+  borderRadius: 16,
+  boxShadow,
+  display: 'flex',
+  padding: 16,
   position: 'absolute',
-  top: IMAGE_GUTTER,
-  right: props.right,
-  height: IMAGE_SIZE,
-  width: IMAGE_SIZE,
+  right: CANVAS_ACTIONS_GUTTER,
+  top: CANVAS_ACTIONS_GUTTER,
+  zIndex: zIndex.ctas
+});
+
+const IMAGE_SIZE = 32;
+const Image = styled.img({
   cursor: 'pointer',
-  zIndex: zIndex.ctas,
+  height: IMAGE_SIZE,
+  position: 'relative',
+  top: 0,
   transition: 'top 0.25s ease',
+  width: IMAGE_SIZE,
 
   '&:hover': {
-    top: 27
+    top: -4
   }
-}));
+});
 
 const InfoColumn = () => (
   <Wrapper>
-    <Tada bottom delay={FADE_DELAY} duration={FADE_DURATION}>
-      <Subtitle>Hi there</Subtitle>
-    </Tada>
     <Separator size={10} />
     <Title>
       <Fade delay={FADE_DELAY + FADE_DURATION} duration={FADE_DURATION} bottom>
-        I'm Richard — a fullstack
-      </Fade>
-      <Fade
-        delay={FADE_DELAY + FADE_DURATION + 50}
-        duration={FADE_DURATION}
-        bottom
-      >
-        engineer living in Sydney,
-      </Fade>
-      <Fade
-        delay={FADE_DELAY + FADE_DURATION + 100}
-        duration={FADE_DURATION}
-        bottom
-      >
-        Australia working at RangeMe.
+        Hello, I'm Richard
       </Fade>
     </Title>
     <Separator size={8} />
-    <Fade delay={FADE_DELAY + 2 * FADE_DURATION} bottom>
-      <Description>
+    <Description>
+      <Fade
+        delay={FADE_DELAY + 2 * FADE_DURATION}
+        duration={FADE_DURATION}
+        bottom
+      >
+        I'm a fullstack engineer living in Sydney, Australia working at RangeMe.
+      </Fade>
+      <Fade
+        delay={FADE_DELAY + 2 * FADE_DURATION + 100}
+        duration={FADE_DURATION}
+        bottom
+      >
         I come up with wacky ideas. Then I make them happen.
-      </Description>
-    </Fade>
+      </Fade>
+    </Description>
+    <Separator size={10} />
     <Fade delay={FADE_DELAY + 3 * FADE_DURATION}>
-      <Separator size={10} />
       <SocialIcons>
         <SocialIcon url={urls.mailTo} />
         <SocialIcon url={urls.linkedIn} />
@@ -167,67 +160,67 @@ const Landing = () => {
 
   const clearCanvas = () => {
     if (!canvasRef.current) return;
-    const canvas: HTMLCanvasElement = canvasRef.current;
+    const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
   };
 
   return (
-    <React.Fragment>
+    <Root>
       <Media query={`(min-width: ${breakPoints.large}px)`}>
         {isDesktopView =>
           isDesktopView ? (
-            <Image
-              src={eraser}
-              right={IMAGE_GUTTER + IMAGE_SIZE + 16}
-              onClick={clearCanvas}
-            />
-          ) : null
-        }
-      </Media>
-      <Image
-        src={paintBrush}
-        right={IMAGE_GUTTER}
-        onClick={incrementBackgroundColor}
-      />
-      <Panel backgroundColor={getBackgroundColor()}>
-        <Media query={`(min-width: ${breakPoints.large}px)`}>
-          {isDesktopView =>
-            isDesktopView ? (
-              <React.Fragment>
+            <React.Fragment>
+              <CanvasActions>
+                <Image src={trash} onClick={clearCanvas} />
+                <Separator size={4} />
+                <div
+                  onClick={incrementBackgroundColor}
+                  style={{
+                    backgroundColor: getBackgroundColor(),
+                    borderRadius: borderRadius.circle,
+                    boxShadow:
+                      'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset',
+                    cursor: 'pointer',
+                    height: 32,
+                    width: 32
+                  }}
+                />
+              </CanvasActions>
+              <Panel backgroundColor={getBackgroundColor()}>
                 <Column width="50%" height="100%" padding={25 * BASE_UNIT}>
                   <InfoColumn />
                 </Column>
                 <Column width="50%" height="100%" padding={0}>
-                  <Description
-                    color={colors.white}
-                    style={{
-                      position: 'fixed',
-                      right: 16,
-                      bottom: 16
-                    }}
-                  >
-                    Click to draw on me!
-                  </Description>
                   <BackgroundImage url={selfPortrait} />
                 </Column>
                 <Canvas
                   canvasRef={canvasRef}
+                  customCursor={`url(${canvasBrush}) 0 52, auto`}
                   strokeColor={getBackgroundColor()}
                   height={window.innerHeight}
                   width={window.innerWidth / 2}
                   left={window.innerWidth / 2}
                 />
-              </React.Fragment>
-            ) : (
-              <Column width="100%" height="100%" padding={20 * BASE_UNIT}>
-                <InfoColumn />
-              </Column>
-            )
-          }
-        </Media>
-      </Panel>
-    </React.Fragment>
+              </Panel>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Image
+                src={paintBrush}
+                right={CANVAS_ACTIONS_GUTTER}
+                onClick={incrementBackgroundColor}
+              />
+              <Panel backgroundColor={getBackgroundColor()}>
+                <Column width="100%" height="100%" padding={20 * BASE_UNIT}>
+                  <InfoColumn />
+                </Column>
+              </Panel>
+            </React.Fragment>
+          )
+        }
+      </Media>
+    </Root>
   );
 };
 

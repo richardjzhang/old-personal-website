@@ -1,9 +1,10 @@
 // @flow
 import React, { useCallback, useEffect, useState } from 'react';
-import { zIndex } from '../utils/themes';
+import { zIndex } from 'utils/themes';
 
 type Props = {
   canvasRef: React$ElementRef<any>,
+  customCursor: string,
   top: number,
   left: number,
   width: number,
@@ -18,6 +19,7 @@ type Coordinate = {
 
 const Canvas = ({
   canvasRef,
+  customCursor,
   width,
   height,
   top,
@@ -128,7 +130,13 @@ const Canvas = ({
       ref={canvasRef}
       height={height}
       width={width}
-      style={{ position: 'absolute', top, left, zIndex: zIndex.canvas }}
+      style={{
+        position: 'absolute',
+        top,
+        left,
+        zIndex: zIndex.canvas,
+        cursor: customCursor
+      }}
     />
   );
 };

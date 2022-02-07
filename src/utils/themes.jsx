@@ -5,10 +5,10 @@ export const colors = {
   honorNight: '#0C2426',
 
   // Palette
-  sail: '#B7D8F9',
-  iceCold: '#B7F9D8',
+  spearmint: '#b6e5d8',
+  pewter: '#ece3f0',
   dairyCream: '#F9D8B7',
-  cupid: '#F9B7D8',
+  roseQuartz: '#ffd4db',
 
   // Other
   white: '#FFF',

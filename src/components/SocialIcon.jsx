@@ -11,8 +11,8 @@ import {
   zIndex
 } from 'utils/themes';
 
-const ICON_VERTICAL_MARGIN = BASE_UNIT;
-const ICON_HORIZONTAL_MARGIN = 2 * BASE_UNIT;
+const ICON_VERTICAL_MARGIN = 3 * BASE_UNIT;
+const ICON_HORIZONTAL_MARGIN = 3 * BASE_UNIT;
 
 export const SocialIcons = styled.div`
   position: relative;
@@ -30,11 +30,11 @@ const IconWrapper = styled.div({
   position: 'relative',
   flexShrink: 0,
   margin: `${ICON_VERTICAL_MARGIN}px ${ICON_HORIZONTAL_MARGIN}px`,
-  height: 40,
-  width: 40,
+  height: 48,
+  width: 48,
   boxShadow,
   borderRadius: borderRadius.circle,
-  backgroundColor: colors.dodgerBlue,
+  backgroundColor: colors.cloudBurst,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
