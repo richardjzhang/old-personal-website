@@ -92,18 +92,34 @@ const CanvasActions = styled.div({
   zIndex: zIndex.ctas
 });
 
-const IMAGE_SIZE = 32;
-const Image = styled.img({
+const ColorSelector = styled.div(props => ({
+  backgroundColor: props.backgroundColor,
+  borderRadius: borderRadius.circle,
+  boxShadow:
+    'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset',
   cursor: 'pointer',
-  height: IMAGE_SIZE,
+  height: 32,
+  width: 32
+}));
+
+const Image = styled.img(props => ({
+  cursor: 'pointer',
+  height: props.height,
   position: 'relative',
   top: 0,
   transition: 'top 0.25s ease',
-  width: IMAGE_SIZE,
+  width: props.width,
 
   '&:hover': {
     top: -4
   }
+}));
+
+const PaintBrushWrapper = styled.div({
+  position: 'absolute',
+  right: CANVAS_ACTIONS_GUTTER,
+  top: CANVAS_ACTIONS_GUTTER,
+  zIndex: zIndex.ctas
 });
 
 const InfoColumn = () => (
@@ -172,19 +188,16 @@ const Landing = () => {
           isDesktopView ? (
             <React.Fragment>
               <CanvasActions>
-                <Image src={trash} onClick={clearCanvas} />
+                <Image
+                  height={32}
+                  width={32}
+                  src={trash}
+                  onClick={clearCanvas}
+                />
                 <Separator size={4} />
-                <div
+                <ColorSelector
+                  backgroundColor={getBackgroundColor()}
                   onClick={incrementBackgroundColor}
-                  style={{
-                    backgroundColor: getBackgroundColor(),
-                    borderRadius: borderRadius.circle,
-                    boxShadow:
-                      'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset',
-                    cursor: 'pointer',
-                    height: 32,
-                    width: 32
-                  }}
                 />
               </CanvasActions>
               <Panel backgroundColor={getBackgroundColor()}>
@@ -206,11 +219,14 @@ const Landing = () => {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <Image
-                src={paintBrush}
-                right={CANVAS_ACTIONS_GUTTER}
-                onClick={incrementBackgroundColor}
-              />
+              <PaintBrushWrapper>
+                <Image
+                  height={48}
+                  width={48}
+                  src={paintBrush}
+                  onClick={incrementBackgroundColor}
+                />
+              </PaintBrushWrapper>
               <Panel backgroundColor={getBackgroundColor()}>
                 <Column width="100%" height="100%" padding={20 * BASE_UNIT}>
                   <InfoColumn />
