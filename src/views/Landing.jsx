@@ -13,6 +13,7 @@ import selfPortrait from 'assets/self-portrait.jpeg';
 import trash from 'assets/trash.svg';
 import paintBrush from 'assets/paint_brush_1.svg';
 import canvasBrush from 'assets/paint_brush_2.svg';
+import colorSelector from 'assets/colors.svg';
 import {
   BASE_UNIT,
   borderRadius,
@@ -81,28 +82,26 @@ const Wrapper = styled.div`
 
 const CANVAS_ACTIONS_GUTTER = 32;
 const CanvasActions = styled.div({
+  alignItems: 'flex-end',
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'absolute',
+  right: CANVAS_ACTIONS_GUTTER,
+  top: CANVAS_ACTIONS_GUTTER
+});
+
+const Icons = styled.div({
+  alignItems: 'center',
   backgroundColor: colors.white,
   borderRadius: 16,
   boxShadow,
   display: 'flex',
   padding: 16,
-  position: 'absolute',
-  right: CANVAS_ACTIONS_GUTTER,
-  top: CANVAS_ACTIONS_GUTTER,
+  width: 'fit-content',
   zIndex: zIndex.ctas
 });
 
-const ColorSelector = styled.div(props => ({
-  backgroundColor: props.backgroundColor,
-  borderRadius: borderRadius.circle,
-  boxShadow:
-    'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset',
-  cursor: 'pointer',
-  height: 32,
-  width: 32
-}));
-
-const Image = styled.img(props => ({
+const Icon = styled.img(props => ({
   cursor: 'pointer',
   height: props.height,
   position: 'relative',
@@ -112,6 +111,30 @@ const Image = styled.img(props => ({
 
   '&:hover': {
     top: -4
+  }
+}));
+
+const ColorSelector = styled.div({
+  alignItems: 'center',
+  backgroundColor: colors.white,
+  borderRadius: 16,
+  boxShadow,
+  display: 'flex',
+  padding: 16,
+  width: 'fit-content',
+  zIndex: zIndex.ctas
+});
+
+const Color = styled.div(props => ({
+  backgroundColor: props.backgroundColor,
+  borderRadius: borderRadius.circle,
+  boxSizing: 'border-box',
+  cursor: 'pointer',
+  height: 32,
+  width: 32,
+
+  '&:hover': {
+    border: `1px solid ${colors.cloudBurst}`
   }
 }));
 
@@ -138,13 +161,7 @@ const InfoColumn = () => (
         bottom
       >
         I'm a fullstack engineer living in Sydney, Australia working at RangeMe.
-      </Fade>
-      <Fade
-        delay={FADE_DELAY + 2 * FADE_DURATION + 100}
-        duration={FADE_DURATION}
-        bottom
-      >
-        I come up with wacky ideas. Then I make them happen.
+        I like to come up with wacky ideas and make them happen.
       </Fade>
     </Description>
     <Separator size={10} />
@@ -163,6 +180,7 @@ const InfoColumn = () => (
 const Landing = () => {
   const canvasRef = React.useRef(null);
   const [backgroundColorIndex, setBackgroundColorIndex] = React.useState(0);
+  const [showColors, setShowColors] = React.useState(false);
 
   function incrementBackgroundColor() {
     setBackgroundColorIndex(b =>
@@ -188,17 +206,47 @@ const Landing = () => {
           isDesktopView ? (
             <React.Fragment>
               <CanvasActions>
-                <Image
-                  height={32}
-                  width={32}
-                  src={trash}
-                  onClick={clearCanvas}
-                />
-                <Separator size={4} />
-                <ColorSelector
-                  backgroundColor={getBackgroundColor()}
-                  onClick={incrementBackgroundColor}
-                />
+                <Icons>
+                  <Icon
+                    height={32}
+                    width={32}
+                    src={trash}
+                    onClick={clearCanvas}
+                  />
+                  <Separator size={4} />
+                  <Icon
+                    height={32}
+                    width={32}
+                    src={colorSelector}
+                    onClick={() => setShowColors(s => !s)}
+                  />
+                </Icons>
+                {showColors && (
+                  <React.Fragment>
+                    <Separator size={4} />
+                    <ColorSelector>
+                      <Color
+                        backgroundColor={colors.dairyCream}
+                        onClick={() => setBackgroundColorIndex(0)}
+                      />
+                      <Separator size={4} />
+                      <Color
+                        backgroundColor={colors.spearmint}
+                        onClick={() => setBackgroundColorIndex(1)}
+                      />
+                      <Separator size={4} />
+                      <Color
+                        backgroundColor={colors.roseQuartz}
+                        onClick={() => setBackgroundColorIndex(2)}
+                      />
+                      <Separator size={4} />
+                      <Color
+                        backgroundColor={colors.pewter}
+                        onClick={() => setBackgroundColorIndex(3)}
+                      />
+                    </ColorSelector>
+                  </React.Fragment>
+                )}
               </CanvasActions>
               <Panel backgroundColor={getBackgroundColor()}>
                 <Column width="50%" height="100%" padding={25 * BASE_UNIT}>
@@ -220,7 +268,7 @@ const Landing = () => {
           ) : (
             <React.Fragment>
               <PaintBrushWrapper>
-                <Image
+                <Icon
                   height={48}
                   width={48}
                   src={paintBrush}
