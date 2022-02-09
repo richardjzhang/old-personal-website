@@ -1,5 +1,4 @@
-// @flow
-import React, { type Node } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { zIndex } from 'utils/themes';
@@ -17,36 +16,26 @@ export const Column = styled.div(props => ({
 }));
 
 const Container = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   z-index: ${zIndex.panel};
   flex: 1;
   box-sizing: border-box;
   display: flex;
-  align-items: center;
-  justify-content: center;
   transition: background-color 0.5s ease;
 `;
-
-type Props = {|
-  minHeight?: string,
-  minWidth?: string,
-  backgroundColor?: string,
-  children?: Node
-|};
 
 const Panel = ({
   backgroundColor,
   children,
-  minHeight = '100vh',
-  minWidth = '100vw'
-}: Props) => (
+  minHeight = 0,
+  minWidth = '100vw',
+  padding
+}) => (
   <Container
     style={{
       backgroundColor,
       minHeight,
-      minWidth
+      minWidth,
+      padding
     }}
   >
     {children}

@@ -9,6 +9,11 @@ export const colors = {
   pewter: '#ece3f0',
   dairyCream: '#F9D8B7',
   roseQuartz: '#ffd4db',
+  cream: '#FAE8E0',
+
+  // Grays
+  whiteSmoke: '#F8F8F8',
+  blueBayoux: '#4c5d70',
 
   // Other
   white: '#FFF',
@@ -30,7 +35,7 @@ export const fontSize = {
   xlarge: 32,
   xxlarge: 40,
   xxxlarge: 48,
-  xxxxlarge: 72
+  xxxxlarge: 64
 };
 
 export const fontWeight = {

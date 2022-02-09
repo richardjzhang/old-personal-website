@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
@@ -27,7 +26,7 @@ const Wrapper = styled.div`
 const Message = styled.div`
   font-size: ${fontSize.xxlarge}px;
   font-weight: ${fontWeight.semibold};
-  color: ${colors.white};
+  color: ${colors.honorNight};
 
   @media (max-width: ${breakPoints.small}px) {
     font-size: ${fontSize.large}px;
@@ -39,7 +38,7 @@ const HomeLink = styled.div`
   font-size: ${fontSize.medium}px;
   font-weight: ${fontWeight.semibold};
   text-transform: uppercase;
-  color: ${colors.honorNight};
+  color: ${colors.cloudBurst};
   cursor: pointer;
 `;
 
@@ -49,7 +48,7 @@ const Error = () => (
       width="100%"
       height="100vh"
       padding={20 * BASE_UNIT}
-      backgroundColor={colors.spearmint}
+      backgroundColor={colors.cream}
     >
       <Wrapper>
         <Message>Oops! It seems like this page doesn't exist :(</Message>

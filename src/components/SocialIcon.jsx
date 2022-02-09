@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import { SocialIcon as Icon } from 'react-social-icons';
 import styled from 'styled-components';
@@ -46,11 +45,7 @@ const IconWrapper = styled.div({
   }
 });
 
-type Props = {|
-  url: string
-|};
-
-const SocialIcon = ({ url }: Props) => (
+const SocialIcon = ({ url }) => (
   <Root>
     <IconWrapper>
       <Icon

@@ -1,4 +1,3 @@
-// @flow
 import styled from 'styled-components';
 import { BASE_UNIT } from 'utils/themes';
 

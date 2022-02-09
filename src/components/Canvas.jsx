@@ -1,21 +1,5 @@
-// @flow
 import React, { useCallback, useEffect, useState } from 'react';
 import { zIndex } from 'utils/themes';
-
-type Props = {
-  canvasRef: React$ElementRef<any>,
-  customCursor: string,
-  top: number,
-  left: number,
-  width: number,
-  height: number,
-  strokeColor: string
-};
-
-type Coordinate = {
-  x: number,
-  y: number
-};
 
 const Canvas = ({
   canvasRef,
@@ -25,30 +9,27 @@ const Canvas = ({
   top,
   left,
   strokeColor
-}: Props) => {
+}) => {
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState(undefined);
 
-  const getCoordinates = (event: MouseEvent): Coordinate | void => {
+  const getCoordinates = () => {
     if (!canvasRef.current) {
       return;
     }
 
-    const canvas: HTMLCanvasElement = canvasRef.current;
+    const canvas = canvasRef.current;
     return {
       x: event.pageX - canvas.offsetLeft,
       y: event.pageY - canvas.offsetTop
     };
   };
 
-  const drawLine = (
-    originalMousePosition: Coordinate,
-    newMousePosition: Coordinate
-  ) => {
+  const drawLine = (originalMousePosition, newMousePosition) => {
     if (!canvasRef.current) {
       return;
     }
-    const canvas: HTMLCanvasElement = canvasRef.current;
+    const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
     if (context) {
       context.strokeStyle = strokeColor;
@@ -64,7 +45,7 @@ const Canvas = ({
     }
   };
 
-  const startPaint = useCallback((event: MouseEvent) => {
+  const startPaint = useCallback(event => {
     const coordinates = getCoordinates(event);
     if (coordinates) {
       setMousePosition(coordinates);
@@ -76,7 +57,7 @@ const Canvas = ({
     if (!canvasRef.current) {
       return;
     }
-    const canvas: HTMLCanvasElement = canvasRef.current;
+    const canvas = canvasRef.current;
     canvas.addEventListener('mousedown', startPaint);
     return () => {
       canvas.removeEventListener('mousedown', startPaint);
@@ -84,7 +65,7 @@ const Canvas = ({
   }, [startPaint]);
 
   const paint = useCallback(
-    (event: MouseEvent) => {
+    event => {
       if (isPainting) {
         const newMousePosition = getCoordinates(event);
         if (mousePosition && newMousePosition) {
@@ -100,7 +81,7 @@ const Canvas = ({
     if (!canvasRef.current) {
       return;
     }
-    const canvas: HTMLCanvasElement = canvasRef.current;
+    const canvas = canvasRef.current;
     canvas.addEventListener('mousemove', paint);
     return () => {
       canvas.removeEventListener('mousemove', paint);
@@ -116,7 +97,7 @@ const Canvas = ({
     if (!canvasRef.current) {
       return;
     }
-    const canvas: HTMLCanvasElement = canvasRef.current;
+    const canvas = canvasRef.current;
     canvas.addEventListener('mouseup', exitPaint);
     canvas.addEventListener('mouseleave', exitPaint);
     return () => {

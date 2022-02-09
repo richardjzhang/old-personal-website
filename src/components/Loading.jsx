@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';

@@ -1,18 +1,7 @@
-// @flow
-import React, { type Element } from 'react';
+import React from 'react';
 
-type Props = {
-  query: string,
-  children?: (matches: boolean) => Element<*> | null
-};
-
-type State = {
-  hasMounted: boolean,
-  matches: boolean
-};
-
-class Media extends React.Component<Props, State> {
-  mql: ?MediaQueryList;
+class Media extends React.Component {
+  mql;
 
   state = {
     hasMounted: false,
