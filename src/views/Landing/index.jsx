@@ -1,5 +1,6 @@
 import React from 'react';
 import Cover from './Cover';
+import Projects from './Projects';
 import Work from './Work';
 
 export default function Landing() {
@@ -7,6 +8,7 @@ export default function Landing() {
     <React.Fragment>
       <Cover />
       <Work />
+      <Projects />
     </React.Fragment>
   );
 }

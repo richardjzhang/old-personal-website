@@ -3,4 +3,5 @@ body {
   padding: 0;
   font-family: 'Jost', sans-serif;
   font-size: 16px;
+  overflow-x: hidden;
 }

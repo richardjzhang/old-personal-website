@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { colors, fontSize, fontWeight } from 'utils/themes';
 
+const Content = styled.div({
+  display: 'flex'
+});
+
 const InnerPanel = styled.div({
   alignItems: 'center',
   flexDirection: 'column',
@@ -18,4 +22,4 @@ const Title = styled.div(props => ({
   width: '100%'
 }));
 
-export { InnerPanel, Title };
+export { Content, InnerPanel, Title };

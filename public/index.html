@@ -8,12 +8,24 @@
       name="description"
       content="Hello, I'm Richard. I'm a software engineer living in Sydney, Australia working at RangeMe. I like to come up with wacky ideas and make them happen."
     />
-    <meta property="og:image" content="%PUBLIC_URL%/self_portrait.jpeg" />
+    <meta
+      property="og:image"
+      content="%PUBLIC_URL%/images/self_portrait.jpeg"
+    />
     <meta
       name="keywords"
       content="richard zhang, personal website, software engineer, sydney, australia"
     />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/images/favicon.ico" />
+
+    <!-- Preloaded images -->
+    <link
+      rel="preload"
+      href="%PUBLIC_URL%/images/hillsbets-demo.png"
+      as="image"
+    />
+    <link rel="preload" href="%PUBLIC_URL%/images/mtg-demo.png" as="image" />
+    <link rel="preload" href="%PUBLIC_URL%/images/chess-demo.png" as="image" />
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.

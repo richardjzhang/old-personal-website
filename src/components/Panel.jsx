@@ -28,14 +28,19 @@ const Panel = ({
   children,
   minHeight = 0,
   minWidth = '100vw',
-  padding
+  hPadding,
+  paddingTop,
+  paddingBottom
 }) => (
   <Container
     style={{
       backgroundColor,
       minHeight,
       minWidth,
-      padding
+      paddingLeft: hPadding,
+      paddingRight: hPadding,
+      paddingTop,
+      paddingBottom
     }}
   >
     {children}

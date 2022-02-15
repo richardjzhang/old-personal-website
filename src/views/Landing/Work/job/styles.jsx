@@ -11,8 +11,7 @@ const Date = styled.div({
 const Description = styled.div({
   color: colors.honorNight,
   fontSize: 20,
-  lineHeight: lineHeight.description,
-  maxWidth: 1200
+  lineHeight: lineHeight.description
 });
 
 const MobileSkills = styled.div({

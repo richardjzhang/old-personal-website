@@ -10,6 +10,7 @@ export const colors = {
   dairyCream: '#F9D8B7',
   roseQuartz: '#ffd4db',
   cream: '#FAE8E0',
+  provincialPink: '#fef9f7',
 
   // Grays
   whiteSmoke: '#F8F8F8',

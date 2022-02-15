@@ -12,8 +12,8 @@ function Work() {
   return (
     <Panel
       backgroundColor={colors.cream}
-      padding={isMobile ? 50 : 125}
-      minHeight="90vh"
+      hPadding={isMobile ? 50 : 75}
+      paddingTop={175}
     >
       <InnerPanel>
         <Title isMobile={isMobile}>Software Experience</Title>
