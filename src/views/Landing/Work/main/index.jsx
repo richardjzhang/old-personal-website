@@ -17,7 +17,7 @@ function Work() {
     >
       <InnerPanel>
         <Title isMobile={isMobile}>Software Experience</Title>
-        <Separator size={12} />
+        <Separator size={isMobile ? 6 : 12} />
         {jobs.map((job, index) => (
           <React.Fragment key={job.title}>
             {index !== 0 && <Separator size={24} />}

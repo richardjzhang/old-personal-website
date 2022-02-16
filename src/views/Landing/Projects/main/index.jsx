@@ -22,31 +22,35 @@ function Projects() {
     >
       <InnerPanel>
         <Title isMobile={isMobile}>Personal Projects</Title>
-        <Separator size={12} />
+        <Separator size={isMobile ? 6 : 12} />
         <Content>
-          <div>
-            <ProjectButton
-              logo={hillsbetsLogo}
-              onClick={() => setProject('hillsbets')}
-              selected={project === 'hillsbets'}
-              text="Hillsbets"
-            />
-            <Separator size={4} />
-            <ProjectButton
-              logo={mtgLogo}
-              onClick={() => setProject('mtg')}
-              selected={project === 'mtg'}
-              text="MTG Life Tracker"
-            />
-            <Separator size={4} />
-            <ProjectButton
-              logo={chessLogo}
-              onClick={() => setProject('chess')}
-              selected={project === 'chess'}
-              text="Chess"
-            />
-          </div>
-          <Separator size={20} />
+          {!isMobile && (
+            <React.Fragment>
+              <div>
+                <ProjectButton
+                  logo={hillsbetsLogo}
+                  onClick={() => setProject('hillsbets')}
+                  selected={project === 'hillsbets'}
+                  text="Hillsbets"
+                />
+                <Separator size={4} />
+                <ProjectButton
+                  logo={mtgLogo}
+                  onClick={() => setProject('mtg')}
+                  selected={project === 'mtg'}
+                  text="MTG Life Tracker"
+                />
+                <Separator size={4} />
+                <ProjectButton
+                  logo={chessLogo}
+                  onClick={() => setProject('chess')}
+                  selected={project === 'chess'}
+                  text="Chess"
+                />
+              </div>
+              <Separator size={20} />
+            </React.Fragment>
+          )}
           {project === 'hillsbets' && (
             <ProjectDescription
               description="A cryptocurrency dashboard with all the latest market information,
@@ -56,6 +60,8 @@ function Projects() {
               need to create an account."
               image="/images/hillsbets-demo.png"
               link="https://hillsbets.vercel.app"
+              nextProject={() => setProject('mtg')}
+              project="Hillsbets"
             />
           )}
           {project === 'mtg' && (
@@ -66,6 +72,8 @@ function Projects() {
               is also compatible with other card and board games."
               image="/images/mtg-demo.png"
               link="http://mtg.richardjzhang.com/"
+              nextProject={() => setProject('chess')}
+              project="MTG Life Tracker"
             />
           )}
           {project === 'chess' && (
@@ -76,6 +84,8 @@ function Projects() {
               against each other!"
               image="/images/chess-demo.png"
               link="http://chess.richardjzhang.com/"
+              nextProject={() => setProject('hillsbets')}
+              project="Chess"
             />
           )}
         </Content>
