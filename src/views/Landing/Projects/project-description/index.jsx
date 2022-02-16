@@ -22,11 +22,11 @@ function ProjectDescription({
   nextProject,
   project
 }) {
-  const isMobile = useMedia({ maxWidth: breakPoints.medium });
+  const isTablet = useMedia({ maxWidth: breakPoints.large });
   return (
     <div>
       <Title>
-        {isMobile ? (
+        {isTablet ? (
           <React.Fragment>
             <div>{project}</div>
             <Separator size={2} />
@@ -44,7 +44,7 @@ function ProjectDescription({
       <Image alt="Project image" src={image} />
       <Separator size={8} />
       <Footer>
-        {isMobile ? (
+        {isTablet ? (
           <NextButton onClick={nextProject}>
             Next
             <Separator size={2} />

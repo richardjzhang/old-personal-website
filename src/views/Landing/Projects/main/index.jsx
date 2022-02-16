@@ -13,6 +13,7 @@ import { Content, InnerPanel, Title } from './styles';
 function Projects() {
   const [project, setProject] = useState('hillsbets');
   const isMobile = useMedia({ maxWidth: breakPoints.medium });
+  const isTablet = useMedia({ maxWidth: breakPoints.large });
   return (
     <Panel
       backgroundColor={colors.cream}
@@ -22,9 +23,9 @@ function Projects() {
     >
       <InnerPanel>
         <Title isMobile={isMobile}>Personal Projects</Title>
-        <Separator size={isMobile ? 6 : 12} />
+        <Separator size={isTablet ? 6 : 12} />
         <Content>
-          {!isMobile && (
+          {!isTablet && (
             <React.Fragment>
               <div>
                 <ProjectButton
