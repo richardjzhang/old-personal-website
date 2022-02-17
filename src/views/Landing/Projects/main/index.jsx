@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import useMedia from 'use-media';
 import hillsbetsLogo from 'assets/hillsbets-logo.png';
 import mtgLogo from 'assets/mtg-logo.jpeg';
+import chatLogo from 'assets/chat-logo.svg';
 import chessLogo from 'assets/chess-logo.svg';
+import flickrLogo from 'assets/flickr-logo.svg';
 import Panel from 'components/Panel';
 import Separator from 'components/Separator';
 import ProjectButton from 'views/Landing/Projects/project-button';
@@ -36,6 +38,22 @@ function Projects() {
                 />
                 <Separator size={4} />
                 <ProjectButton
+                  isRoundLogo={false}
+                  logo={flickrLogo}
+                  onClick={() => setProject('flickr')}
+                  selected={project === 'flickr'}
+                  text="Flickr Search"
+                />
+                <Separator size={4} />
+                <ProjectButton
+                  isRoundLogo={false}
+                  logo={chatLogo}
+                  onClick={() => setProject('chat')}
+                  selected={project === 'chat'}
+                  text="Chat App"
+                />
+                <Separator size={4} />
+                <ProjectButton
                   logo={mtgLogo}
                   onClick={() => setProject('mtg')}
                   selected={project === 'mtg'}
@@ -61,8 +79,32 @@ function Projects() {
               need to create an account."
               image="/images/hillsbets-demo.png"
               link="https://hillsbets.vercel.app"
-              nextProject={() => setProject('mtg')}
+              nextProject={() => setProject('flickr')}
               project="Hillsbets"
+            />
+          )}
+          {project === 'flickr' && (
+            <ProjectDescription
+              description="This application utilises the Flickr public feed api to return public
+              content matching the search criteria. The purpose of this website was to redesign 
+              Flickr's current UI of displaying images and additional details. Particular focus was
+              placed on ensuring photos could be displayed in their optimal ratio and size."
+              image="/images/flickr-demo.png"
+              link="https://flickr-public-feed.herokuapp.com/"
+              nextProject={() => setProject('chat')}
+              project="Flickr Search"
+            />
+          )}
+          {project === 'chat' && (
+            <ProjectDescription
+              description="This application allows anonymous users to send real time messages via the 
+              browser if they happen to be on at the same time. Particular focus was placed on making it
+              easy to send messages and add emoticons. The user interface and design of this application is 
+              inspired from that of Facebook messenger."
+              image="/images/chat-demo.png"
+              link="https://richardjzhang-chat-app.herokuapp.com"
+              nextProject={() => setProject('mtg')}
+              project="Chat App"
             />
           )}
           {project === 'mtg' && (

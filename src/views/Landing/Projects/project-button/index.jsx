@@ -5,7 +5,7 @@ import { Root } from './styles';
 
 const LOGO_SIZE = 28;
 
-function ProjectButton({ logo, onClick, selected, text }) {
+function ProjectButton({ isRoundLogo = true, logo, onClick, selected, text }) {
   return (
     <Root onClick={onClick} selected={selected}>
       <img
@@ -13,7 +13,7 @@ function ProjectButton({ logo, onClick, selected, text }) {
         src={logo}
         height={LOGO_SIZE}
         width={LOGO_SIZE}
-        style={{ borderRadius: borderRadius.circle }}
+        style={{ borderRadius: isRoundLogo ? borderRadius.circle : 0 }}
       />
       <Separator size={3} />
       {text}
