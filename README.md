@@ -1,6 +1,6 @@
 This project is my personal website. It's pretty barebones at the moment and has gone through a few iterations.
 
-If you're interested in using it as a template feel free to fork the repo.
+If you're interested in using it as a template feel free to fork the repo!
 
 ## To start the project
 
