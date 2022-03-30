@@ -19,6 +19,3 @@ Add the following line to the .env file: `NODE_PATH=./src`
 
 ## Where is it hosted
 Currently hosted on Heroku, where auto deploys occur whenever the `production` branch of this repo is updated.
-
-## Anything else I should know?
-The website is pinged every 30 minutes using a Google Apps Script fetch function to prevent the website from going to sleep.
