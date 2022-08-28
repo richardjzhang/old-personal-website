@@ -114,7 +114,7 @@ function Projects() {
               their life total as well as edit the number of starting life points. This app
               is also compatible with other card and board games."
               image="/images/mtg-demo.png"
-              link="http://mtg.richardjzhang.com/"
+              link="https://mtg-life-counter-pink.vercel.app/"
               nextProject={() => setProject('chess')}
               project="MTG Life Tracker"
             />
