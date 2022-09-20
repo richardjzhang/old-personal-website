@@ -90,7 +90,7 @@ function Projects() {
               Flickr's current UI of displaying images and additional details. Particular focus was
               placed on ensuring photos could be displayed in their optimal ratio and size."
               image="/images/flickr-demo.png"
-              link="https://flickr-public-feed.herokuapp.com/"
+              link="https://flickr-public-feed.onrender.com/"
               nextProject={() => setProject('chat')}
               project="Flickr Search"
             />
