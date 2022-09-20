@@ -102,7 +102,7 @@ function Projects() {
               easy to send messages and add emoticons. The user interface and design of this application is 
               inspired from that of Facebook messenger."
               image="/images/chat-demo.png"
-              link="https://richardjzhang-chat-app.herokuapp.com"
+              link="https://chat-app-n4t3.onrender.com"
               nextProject={() => setProject('mtg')}
               project="Chat App"
             />
